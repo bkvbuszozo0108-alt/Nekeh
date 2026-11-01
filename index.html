@@ -2,7 +2,7 @@
 <html lang="hu">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,viewport-fit=cover">
 <link rel="icon" href="img/cimer.webp">
 <title>NEKEH Portál</title>
 <meta name="description" content="A Nemzeti Egységes Közrendvédelmi és Ellátási Hatóság (NEKEH) hivatalos portálja – Roblox szerepjáték-frakció.">
@@ -1158,6 +1158,7 @@ img.missing{opacity:0}
 .org-patches .pt:hover img{transform:translateY(-4px) rotate(-3deg)}
 .org-patches .pt:hover span{color:var(--link)}
 @media (max-width:1100px){.org-patches{gap:6px}.org-patches .pt{width:82px;font-size:11.5px}.org-patches .pt img{width:66px}}
+html{touch-action:pan-x pan-y;-webkit-text-size-adjust:100%}
 img{-webkit-user-drag:none;user-drag:none;-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
 .unit .patch,.div-card .art,.org-patches,.org-node,.insig-band .row,.poster .ph,.mug{-webkit-user-select:none;user-select:none;-webkit-touch-callout:none}
 body.shot-guard img,body.shot-guard .mug,body.shot-guard .av.has-photo,body.shot-guard .photo.has-photo{filter:blur(26px) grayscale(1)!important;transition:none!important}
@@ -4428,6 +4429,23 @@ $('#pn-rbx').addEventListener('change', async () => {
     if ((e.ctrlKey || e.metaKey) && (k === 'p' || k === 's')) { e.preventDefault(); cover(1200); }
   }, true);
   document.addEventListener('keyup', e => { if ((e.key || '').toLowerCase() === 'printscreen') { cover(2200); clearClip(); } }, true);
+  // Windows / Command key: blur at once; Win+Shift (snipping): cover the page
+  let metaDown = false, metaT = 0;
+  document.addEventListener('keydown', e => {
+    const k = e.key || '';
+    if (k === 'Meta' || k === 'OS' || k === 'Super' || k === 'Win') { metaDown = true; blurOn(); }
+    if ((metaDown || e.metaKey) && (k === 'Shift' || e.shiftKey)) cover(2600);
+  }, true);
+  document.addEventListener('keyup', e => {
+    const k = e.key || '';
+    if (k === 'Meta' || k === 'OS' || k === 'Super' || k === 'Win') { metaDown = false; clearTimeout(metaT); metaT = setTimeout(blurOff, 1200); }
+  }, true);
+  // no zooming: Ctrl/Cmd + wheel, Ctrl/Cmd + (+,-,0), pinch gestures
+  window.addEventListener('wheel', e => { if (e.ctrlKey || e.metaKey) e.preventDefault(); }, {passive:false});
+  document.addEventListener('keydown', e => { if ((e.ctrlKey || e.metaKey) && ['+', '-', '=', '0', 'Add', 'Subtract'].includes(e.key)) e.preventDefault(); }, true);
+  ['gesturestart', 'gesturechange', 'gestureend'].forEach(t => document.addEventListener(t, e => e.preventDefault(), {passive:false}));
+  document.addEventListener('touchmove', e => { if (e.touches && e.touches.length > 1) e.preventDefault(); }, {passive:false});
+  let lastTap = 0; document.addEventListener('touchend', e => { const n = Date.now(); if (n - lastTap < 300 && !e.target.closest('input,textarea,select')) e.preventDefault(); lastTap = n; }, {passive:false});
   window.addEventListener('blur', blurOn);
   window.addEventListener('focus', () => setTimeout(blurOff, 150));
   document.addEventListener('visibilitychange', () => { if (document.hidden) blurOn(); else setTimeout(blurOff, 150); });
