@@ -97,7 +97,21 @@ A hangcsatornához és a bejelentkezéshez az oldalnak **https**-en kell futnia.
 
 - Egy csatornában legfeljebb 8 fő beszélhet egyszerre. A hang közvetlenül a résztvevők gépei között halad, a szerver csak összeköti őket.
 - Első belépéskor a böngésző engedélyt kér a mikrofonhoz. Ezt engedélyezni kell.
-- Ritkán előfordul (pl. egyes iskolai vagy céges hálózatokon), hogy két ember nem hallja egymást. Ilyenkor segít, ha valamelyikük mobilnetre vált.
+- Mobilinterneten, iskolai vagy céges hálózaton előfordulhat, hogy két ember nem hallja egymást. Ilyenkor kell egy ingyenes közvetítő (TURN) szerver: regisztrálj az ExpressTURN-nél (havi 1000 GB ingyen), és a kapott adatokat írd be a **Vezetés → Beállítások → Hangközvetítő szerver** részen. A „Kapcsolat tesztelése” gomb megmutatja, működik-e.
+
+## A Roblox-játék összekapcsolása
+
+A játékban lévő NEKEH-rendszer (szolgálati tábla, tablet, nyilvántartás) ugyanabba az adatbázisba ír, mint a weboldal.
+
+1. A weboldalon: **Vezetés → Roblox-játék összekapcsolása → Játékszerver-fiók létrehozása**. Ez egy külön, csak a játéknak szánt fiókot hoz létre.
+2. Nyomd meg a **Konfiguráció másolása** gombot.
+3. A Roblox Studióban nyisd meg: **ServerScriptService › NEKEH › Config**, és cseréld le a teljes tartalmát a kimásolt szövegre.
+4. **Game Settings → Security → Allow HTTP Requests** legyen bekapcsolva (a sablonban be van).
+5. Publikáld a játékot. Az aktív szerverek a Vezetés oldalon megjelennek.
+
+A tagoknak egyszer össze kell kötniük a Roblox-fiókjukat: **Személyi aktám → Roblox-fiók → Összekapcsolási kód kérése**, majd a játékban a Szolgálati táblánál beírják a kódot. Utána a jelvényszámukkal léphetnek szolgálatba. A jelvényszámokat a Főbiztos a Vezetés → Állomány táblában módosíthatja.
+
+Fontos: a játékot ne tedd nyilvánosan másolhatóvá (Uncopylocked), mert a Config modulban van a játékszerver kulcsa. Ha mégis kiszivárgott, a Vezetés oldalon a **Kulcs megújítása** gombbal cserélheted.
 
 ## Elfelejtett jelszó
 
