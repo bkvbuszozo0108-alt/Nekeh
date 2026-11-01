@@ -1141,7 +1141,12 @@ img.missing{opacity:0}
 .ch-intro .band{max-width:110px!important}
 .insig-band{align-self:stretch;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-top:18px;padding:14px 18px;border:1px dashed var(--rule);border-radius:10px;background:var(--card)}
 .insig-band .row{display:flex;gap:6px}
-.insig-band .row img{width:38px;height:38px}
+.insig-band .row img{width:38px;height:auto;filter:drop-shadow(0 2px 4px rgba(0,0,0,.4))}
+.org-art{display:flex;align-items:center;justify-content:center;gap:10px;margin:-2px 0 10px}
+.org-art .org-logo{margin:0!important}
+.org-art .org-patch{width:66px;height:auto;filter:drop-shadow(0 4px 8px rgba(0,0,0,.4));transition:transform .4s cubic-bezier(.2,.7,.2,1)}
+.org-node:hover .org-patch{transform:rotate(5deg) scale(1.05)}
+@media (max-width:900px){.org-art .org-patch{width:52px}}
 @media (max-width:1100px){.divs{grid-template-columns:1fr}}
 @media (max-width:900px){.org-node .org-logo{width:64px;height:64px}}
 @media (max-width:560px){.div-card{grid-template-columns:1fr}.div-card .art .lg,.div-card .art .pt{width:92px}}
@@ -1287,12 +1292,12 @@ img.missing{opacity:0}
           <div class="org-top"><img src="img/cimer.webp" alt="" width="54" height="54"><div><b>Főbiztos</b><span>Vészhelyzet idején az ország második legmagasabb rangú tisztségviselője</span></div></div>
           <div class="org-stem"></div>
           <div class="org-row">
-            <div class="org-node"><img class="org-logo" src="img/logo-kozrend.webp" alt="A Közrendvédelmi Parancsnokság logója" width="84" height="84"><b>Közrendvédelmi Parancsnokság</b><span>Rendfenntartás, gyorsbeavatkozás</span>
+            <div class="org-node"><div class="org-art"><img class="org-logo" src="img/logo-kozrend.webp" alt="A Közrendvédelmi Parancsnokság logója" width="84" height="84"><img class="org-patch" src="img/folt-kozrend.webp" alt="" width="66" height="85"></div><b>Közrendvédelmi Parancsnokság</b><span>Rendfenntartás, gyorsbeavatkozás</span>
               <div class="units"><a href="#egysegek"><img src="img/folt-mesterlovesz.webp" alt="" width="30" height="39">Mesterlövész Egység</a><a href="#egysegek"><img src="img/folt-taktikai.webp" alt="" width="30" height="39">Taktikai és Fegyverspecifikus Alosztály</a></div></div>
-            <div class="org-node"><img class="org-logo" src="img/logo-ellatasi-fo.webp" alt="A Személyellátási és Logisztikai Főosztály logója" width="84" height="84"><b>Személyellátási és Logisztikai Főosztály</b><span>Ellátás, evakuáció, egészségügy</span>
+            <div class="org-node"><div class="org-art"><img class="org-logo" src="img/logo-ellatasi-fo.webp" alt="A Személyellátási és Logisztikai Főosztály logója" width="84" height="84"><img class="org-patch" src="img/folt-ellatasi-fo.webp" alt="" width="66" height="85"></div><b>Személyellátási és Logisztikai Főosztály</b><span>Ellátás, evakuáció, egészségügy</span>
               <div class="units"><a href="#egysegek"><img src="img/folt-ellatas.webp" alt="" width="30" height="39">Ellátás</a></div></div>
-            <div class="org-node"><img class="org-logo" src="img/logo-strategiai.webp" alt="A Stratégiai Tervezési és Vészhelyzeti Tanács logója" width="84" height="84"><b>Stratégiai Tervezési és Vészhelyzeti Tanács</b><span>Tervezés, krízisdöntések</span></div>
-            <div class="org-node"><img class="org-logo" src="img/logo-titkos.webp" alt="A Titkos Műveletek Osztályának logója" width="84" height="84"><b>Titkos Műveletek Osztálya</b><span>Minősített műveletek</span></div>
+            <div class="org-node"><div class="org-art"><img class="org-logo" src="img/logo-strategiai.webp" alt="A Stratégiai Tervezési és Vészhelyzeti Tanács logója" width="84" height="84"><img class="org-patch" src="img/folt-strategiai.webp" alt="" width="66" height="85"></div><b>Stratégiai Tervezési és Vészhelyzeti Tanács</b><span>Tervezés, krízisdöntések</span></div>
+            <div class="org-node"><div class="org-art"><img class="org-logo" src="img/logo-titkos.webp" alt="A Titkos Műveletek Osztályának logója" width="84" height="84"><img class="org-patch" src="img/folt-titkos.webp" alt="" width="66" height="85"></div><b>Titkos Műveletek Osztálya</b><span>Minősített műveletek</span></div>
           </div>
           <div class="insig-band"><span style="font-size:14px;color:var(--ink-2)">Minden főosztály és egység saját logót és felvarrót visel.</span><span class="row" id="insigRow"></span><a class="btn btn-line btn-sm" href="#egysegek">Jelképek megtekintése →</a></div>
         </div>
@@ -2308,7 +2313,7 @@ function buildStatic(){
       d.units.length ? h('div', {class:'subs'}, d.units.map(id => h('a', {href:'#egysegek', onclick:e => { e.preventDefault(); document.getElementById('unitCards').scrollIntoView({behavior:'smooth', block:'start'}); }}, h('img', {src:UNIT[id].logo, alt:''}), UNIT[id].short))) : null,
       h('div', {class:'dl-row'}, h('a', {href:`jelkepek/felvarro-${d.id}.png`, download:true, text:'Pajzs (PNG, nagy felbontás)'}), h('a', {href:`jelkepek/teglalap-${d.id}.png`, download:true, text:'Kis téglalap (PNG)'}), h('a', {href:`jelkepek/logo-${d.id}.png`, download:true, text:'Logó (PNG)'})))));
   const ir = $('#insigRow');
-  if (ir) for (const id of [...DIVISIONS.map(d => d.id), ...UNITS.map(u => u.id)]) ir.append(h('img', {src:`img/logo-${id}.webp`, alt:'', loading:'lazy', width:'38', height:'38'}));
+  if (ir) for (const id of [...DIVISIONS.map(d => d.id), ...UNITS.map(u => u.id)]) ir.append(h('img', {src:`img/folt-${id}.webp`, alt:'', loading:'lazy', width:'38', height:'49'}));
   const pick = $('#unitPick');
   for (const u of UNITS) pick.append(h('input', {type:'radio', name:'unit', id:'u-' + u.id, value:u.id}), h('label', {for:'u-' + u.id}, h('span', {class:'pi'}, h('img', {src:u.patch, alt:''})), h('span', {text:u.name})));
   $$('.svc .ic[data-icon]').forEach(el => el.innerHTML = icon(el.dataset.icon, 22));
