@@ -17,6 +17,12 @@ service cloud.firestore {
     function isMember() { return isOwner() || hasRole(); }
     function isLeader() { return isOwner() || (hasRole() && role().level >= 50); }
     function unitIs(u) { return hasRole() && role().unit == u; }
+    function atLeast(n) { return isOwner() || (hasRole() && role().level >= n); }
+    // A Roblox-játékszerver saját szolgálati fiókja (Vezetés → Roblox-játék összekapcsolása)
+    function isGame() {
+      return signedIn() && exists(/databases/$(database)/documents/meta/game)
+        && get(/databases/$(database)/documents/meta/game).data.uid == request.auth.uid;
+    }
 
     function canSee(ch) {
       return isMember() && (
@@ -35,6 +41,14 @@ service cloud.firestore {
       allow read: if true;
       allow create: if signedIn() && !ownerExists() && request.resource.data.uid == request.auth.uid;
       allow update, delete: if false;
+    }
+
+    // A játékszerver-fiók azonosítója és belépési adatai: csak a Főbiztos látja
+    match /meta/game {
+      allow read, write: if isOwner();
+    }
+    match /secret/{doc} {
+      allow read, write: if isOwner();
     }
 
     // Riasztási fokozat, közlemény, szabályzat, rangnevek
@@ -97,11 +111,12 @@ service cloud.firestore {
     // Szolgálati napló: aktuális státusz (nyilvános létszámhoz) és lezárt szolgálatok
     match /duty/{uid} {
       allow read: if true;
-      allow write: if isMember() && request.auth.uid == uid;
+      allow write: if (isMember() && request.auth.uid == uid) || isGame();
     }
     match /dutylog/{id} {
       allow read: if isMember();
-      allow create: if isMember() && request.resource.data.uid == request.auth.uid
+      allow create: if (isMember() && request.resource.data.uid == request.auth.uid
+          || isGame())
         && request.resource.data.mins is number && request.resource.data.mins <= 1440;
       allow delete: if isOwner();
     }
@@ -109,7 +124,8 @@ service cloud.firestore {
     // Jelentések
     match /reports/{id} {
       allow read: if isLeader() || (signedIn() && resource.data.uid == request.auth.uid);
-      allow create: if isMember() && request.resource.data.uid == request.auth.uid && request.resource.data.status == 'submitted';
+      allow create: if (isMember() && request.resource.data.uid == request.auth.uid && request.resource.data.status == 'submitted')
+        || (isGame() && request.resource.data.status == 'submitted' && request.resource.data.src == 'roblox');
       allow update: if isLeader()
         || (signedIn() && resource.data.uid == request.auth.uid && resource.data.status == 'returned' && request.resource.data.status == 'submitted');
       allow delete: if isOwner();
@@ -149,6 +165,55 @@ service cloud.firestore {
         && request.resource.data.at is number;
       allow read, update: if isLeader();
       allow delete: if isOwner();
+    }
+
+    // Személy- és körözési nyilvántartás
+    match /persons/{pid} {
+      allow read: if isMember() || isGame() || resource.data.publicWanted == true;
+      allow create: if (isGame() && request.resource.data.get('publicWanted', false) != true)
+        || (isMember() && request.resource.data.createdBy == request.auth.uid
+          && (request.resource.data.get('wanted', false) != true || atLeast(30))
+          && (request.resource.data.get('publicWanted', false) != true || atLeast(50)));
+      allow update: if (isGame() && (!request.resource.data.diff(resource.data).affectedKeys().hasAny(['publicWanted']) || request.resource.data.publicWanted == false))
+        || (isMember()
+          && (!request.resource.data.diff(resource.data).affectedKeys().hasAny(['wanted', 'wlevel', 'wreason', 'wsince', 'wby']) || atLeast(30))
+          && (!request.resource.data.diff(resource.data).affectedKeys().hasAny(['publicWanted']) || atLeast(50)));
+      allow delete: if isOwner();
+      match /entries/{eid} {
+        allow read: if isMember() || isGame();
+        allow create: if isGame() || (isMember() && request.resource.data.by == request.auth.uid);
+        allow delete: if isOwner();
+      }
+    }
+
+    // Feltöltött képek (tömörítve): a tagok látják, a nyilvános körözések képei bárki
+    match /images/{id} {
+      allow read: if isMember() || resource.data.pub == true;
+      allow create: if isMember() && request.resource.data.by == request.auth.uid
+        && request.resource.data.d is string && request.resource.data.d.size() < 950000;
+      allow update: if atLeast(50) && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['pub']);
+      allow delete: if isOwner() || (signedIn() && resource.data.by == request.auth.uid);
+    }
+
+    // Roblox-fiók összekapcsolása: a tag kódot kér, a játék ellenőrzi és összeköti
+    match /rbxcodes/{uid} {
+      allow read: if isGame() || (signedIn() && request.auth.uid == uid);
+      allow create, update: if isMember() && request.auth.uid == uid
+        && request.resource.data.code is string && request.resource.data.code.size() == 6
+        && request.resource.data.name is string && request.resource.data.name.size() <= 20;
+      allow delete: if isGame() || (signedIn() && request.auth.uid == uid);
+    }
+    match /rbxlinks/{rid} {
+      allow read: if signedIn();
+      allow create, update: if isGame();
+      allow delete: if isGame() || isOwner() || (signedIn() && resource.data.uid == request.auth.uid);
+    }
+
+    // Futó játékszerverek jelzései (létszám, szolgálatban lévők)
+    match /gameservers/{id} {
+      allow read: if true;
+      allow write: if isGame();
+      allow delete: if isGame() || isOwner();
     }
 
     // Online jelzés és "éppen ír…"
