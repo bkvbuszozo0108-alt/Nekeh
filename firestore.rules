@@ -1,0 +1,109 @@
+rules_version = '2';
+
+// NEKEH Portál – Firestore biztonsági szabályok
+// Másold be teljes egészében: Firebase Console → Firestore Database → Rules → Publish.
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function signedIn() { return request.auth != null; }
+    function ownerExists() { return exists(/databases/$(database)/documents/meta/owner); }
+    function isOwner() {
+      return signedIn() && ownerExists()
+        && get(/databases/$(database)/documents/meta/owner).data.uid == request.auth.uid;
+    }
+    function hasRole() { return signedIn() && exists(/databases/$(database)/documents/roles/$(request.auth.uid)); }
+    function role() { return get(/databases/$(database)/documents/roles/$(request.auth.uid)).data; }
+    function isMember() { return isOwner() || hasRole(); }
+    function isLeader() { return isOwner() || (hasRole() && role().level >= 50); }
+    function unitIs(u) { return hasRole() && role().unit == u; }
+
+    function canSee(ch) {
+      return isMember() && (
+        ch in ['kozlemenyek', 'szabalyzat', 'altalanos', 'bemutatkozas', 'szabadido', 'bevetes', 'jelentesek', 'logisztika']
+        || isLeader()
+        || (ch == 'u-mesterlovesz' && unitIs('mesterlovesz'))
+        || (ch == 'u-taktikai' && unitIs('taktikai'))
+        || (ch == 'u-ellatas' && unitIs('ellatas'))
+      );
+    }
+    function canPost(ch) { return canSee(ch) && ch != 'szabalyzat' && (ch != 'kozlemenyek' || isLeader()); }
+    function canVoice(room) { return isMember() && (room != 'v-vezetoi' || isLeader()); }
+
+    // A Főbiztos kijelölése: csak egyszer hozható létre, utána nem módosítható.
+    match /meta/owner {
+      allow read: if true;
+      allow create: if signedIn() && !ownerExists() && request.resource.data.uid == request.auth.uid;
+      allow update, delete: if false;
+    }
+
+    // Riasztási fokozat, közlemény, szabályzat, rangnevek
+    match /config/{doc} {
+      allow read: if true;
+      allow write: if isOwner();
+    }
+
+    // Hivatalos Közlöny
+    match /decrees/{id} {
+      allow read: if true;
+      allow write: if isOwner();
+    }
+
+    // Profilok: mindenki a sajátját írja
+    match /users/{uid} {
+      allow read: if signedIn();
+      allow create, update: if signedIn() && request.auth.uid == uid
+        && request.resource.data.username is string
+        && request.resource.data.rpName is string
+        && request.resource.data.rpName.size() <= 40;
+      allow delete: if isOwner();
+    }
+
+    // Rendfokozat és egység: csak a Főbiztos állítja
+    match /roles/{uid} {
+      allow read: if signedIn();
+      allow write: if isOwner();
+    }
+
+    // Felvételi kérelmek
+    match /applications/{uid} {
+      allow read: if signedIn() && (request.auth.uid == uid || isOwner());
+      allow create: if signedIn() && request.auth.uid == uid && request.resource.data.status == 'pending';
+      allow update: if isOwner()
+        || (signedIn() && request.auth.uid == uid && resource.data.status == 'rejected' && request.resource.data.status == 'pending');
+      allow delete: if isOwner();
+    }
+
+    // Szöveges csatornák
+    match /channels/{ch}/messages/{id} {
+      allow read: if canSee(ch);
+      allow create: if canPost(ch)
+        && request.resource.data.uid == request.auth.uid
+        && request.resource.data.t is string
+        && request.resource.data.t.size() <= 1500;
+      allow update: if canSee(ch) && (
+        (resource.data.uid == request.auth.uid && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['t', 'e']))
+        || request.resource.data.diff(resource.data).affectedKeys().hasOnly(['rx'])
+      );
+      allow delete: if signedIn() && (resource.data.uid == request.auth.uid || isOwner());
+    }
+
+    // Online jelzés és "éppen ír…"
+    match /presence/{uid} {
+      allow read: if isMember();
+      allow write: if signedIn() && request.auth.uid == uid;
+    }
+
+    // Hangcsatornák: résztvevők és kapcsolatfelvételi jelzések
+    match /voice/{room}/members/{uid} {
+      allow read: if canVoice(room);
+      allow create, update: if canVoice(room) && request.auth.uid == uid;
+      allow delete: if signedIn() && (request.auth.uid == uid || isOwner());
+    }
+    match /voice/{room}/signals/{id} {
+      allow read: if signedIn() && (resource.data.to == request.auth.uid || resource.data.from == request.auth.uid);
+      allow create: if canVoice(room) && request.resource.data.from == request.auth.uid;
+      allow delete: if signedIn() && (resource.data.to == request.auth.uid || resource.data.from == request.auth.uid);
+    }
+  }
+}

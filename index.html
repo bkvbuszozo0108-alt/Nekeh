@@ -1,0 +1,2391 @@
+<!doctype html>
+<html lang="hu">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<link rel="icon" href="img/cimer.webp">
+<title>NEKEH Portál</title>
+<meta name="description" content="A Nemzeti Egységes Közrendvédelmi és Ellátási Hatóság (NEKEH) hivatalos portálja – Roblox szerepjáték-frakció.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Cinzel:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500&family=Public+Sans:ital,wght@0,400;0,500;0,600;0,700;1,400&display=swap">
+<style>
+/* Layout: ministerial portal — navy masthead with a gold rule over paper document columns;
+   the internal system opens as a command console (channels · traffic · roster) with voice rooms. */
+:root{
+  --paper:#F2F4F8; --card:#FFFFFF; --sunk:#E7EBF2; --sunk-2:#DAE0EB; --hover:rgba(10,38,103,.06); --scrim:rgba(6,16,44,.55);
+  --ink:#0C1838; --ink-2:#455068; --ink-3:#69738D; --rule:#D2D9E5;
+  --navy:#0A2667; --navy-2:#14367F; --navy-deep:#061A4C; --on-navy:#F5F7FC; --on-navy-2:#B7C2DC;
+  --gold:#B4974A; --gold-ink:#7A6018; --gold-bright:#DCC173; --gold-tint:rgba(180,151,74,.14);
+  --link:#1B48A6; --focus:#2F6AE4; --patch-bg:#111419;
+  --ok:#1C7548; --ok-bg:#E1F1E8; --warn:#8C5900; --warn-bg:#FBF0DA; --danger:#AE251B; --danger-bg:#FBE6E3; --crisis:#7D0F12; --crisis-bg:#F6D9DA;
+  --rk0:#69738D; --rk1:#3A63B2; --rk2:#255C96; --rk3:#4F5C76; --rk4:#87680F; --rk5:#A0720A;
+  --shadow:0 1px 2px rgba(6,26,76,.06),0 10px 28px rgba(6,26,76,.10);
+  --f-display:"Cinzel","Trajan Pro",Georgia,"Times New Roman",serif;
+  --f-body:"Public Sans",system-ui,-apple-system,"Segoe UI",Roboto,sans-serif;
+  --f-mono:"IBM Plex Mono",ui-monospace,"SFMono-Regular",Menlo,Consolas,monospace;
+  --gutter:max(16px,env(safe-area-inset-left,0px));
+  --gutter-r:max(16px,env(safe-area-inset-right,0px));
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --paper:#07112A; --card:#0D1938; --sunk:#0A1531; --sunk-2:#132250; --hover:rgba(183,194,220,.07); --scrim:rgba(2,6,18,.7);
+  --ink:#E6EAF4; --ink-2:#A7B1CA; --ink-3:#77829F; --rule:#1D2C56;
+  --navy:#0A2463; --navy-2:#173A87; --navy-deep:#051337; --on-navy:#F5F7FC; --on-navy-2:#B7C2DC;
+  --gold:#C7A957; --gold-ink:#DABF6E; --gold-bright:#E3CA7B; --gold-tint:rgba(199,169,87,.14);
+  --link:#93B4FF; --focus:#7FA6FF; --patch-bg:#05070B;
+  --ok:#57C994; --ok-bg:rgba(87,201,148,.12); --warn:#F0B54E; --warn-bg:rgba(240,181,78,.12); --danger:#F2776C; --danger-bg:rgba(242,119,108,.13); --crisis:#FF8A8A; --crisis-bg:rgba(255,90,90,.16);
+  --rk0:#7F8AA6; --rk1:#89A8EC; --rk2:#9CC4F2; --rk3:#C9D1E0; --rk4:#DABF6E; --rk5:#F2CF68;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 12px 32px rgba(0,0,0,.35);
+  color-scheme:dark;
+}}
+:root[data-theme="dark"]{
+  --paper:#07112A; --card:#0D1938; --sunk:#0A1531; --sunk-2:#132250; --hover:rgba(183,194,220,.07); --scrim:rgba(2,6,18,.7);
+  --ink:#E6EAF4; --ink-2:#A7B1CA; --ink-3:#77829F; --rule:#1D2C56;
+  --navy:#0A2463; --navy-2:#173A87; --navy-deep:#051337; --on-navy:#F5F7FC; --on-navy-2:#B7C2DC;
+  --gold:#C7A957; --gold-ink:#DABF6E; --gold-bright:#E3CA7B; --gold-tint:rgba(199,169,87,.14);
+  --link:#93B4FF; --focus:#7FA6FF; --patch-bg:#05070B;
+  --ok:#57C994; --ok-bg:rgba(87,201,148,.12); --warn:#F0B54E; --warn-bg:rgba(240,181,78,.12); --danger:#F2776C; --danger-bg:rgba(242,119,108,.13); --crisis:#FF8A8A; --crisis-bg:rgba(255,90,90,.16);
+  --rk0:#7F8AA6; --rk1:#89A8EC; --rk2:#9CC4F2; --rk3:#C9D1E0; --rk4:#DABF6E; --rk5:#F2CF68;
+  --shadow:0 1px 2px rgba(0,0,0,.3),0 12px 32px rgba(0,0,0,.35);
+  color-scheme:dark;
+}
+[hidden]{display:none!important}
+img{max-width:100%}
+html,body{height:100%}
+body{background:var(--paper);color:var(--ink);font:400 15px/1.55 var(--f-body);-webkit-font-smoothing:antialiased;overflow:hidden;margin:0}
+*,*::before,*::after{box-sizing:border-box}
+button,input,select,textarea{font:inherit;color:inherit}
+a{color:var(--link)}
+:focus-visible{outline:2px solid var(--focus);outline-offset:2px;border-radius:3px}
+h1,h2,h3{text-wrap:balance;margin:0}
+p{margin:0}
+.mono{font-family:var(--f-mono);font-variant-numeric:tabular-nums}
+
+/* ---------- shell ---------- */
+#app{display:flex;flex-direction:column;height:100%}
+.gov-strip{background:var(--navy-deep);color:var(--on-navy-2);font-size:12px;letter-spacing:.02em}
+.gov-strip .in{display:flex;gap:16px;align-items:center;padding:5px var(--gutter-r) 5px var(--gutter);max-width:1280px;margin:0 auto}
+.gov-strip b{color:var(--gold-bright);font-weight:600}
+.gov-strip .rp{margin-left:auto;opacity:.85}
+.demo-strip{background:var(--warn-bg);border-bottom:1px solid var(--rule);color:var(--ink)}
+.demo-strip .in{display:flex;flex-wrap:wrap;gap:6px 14px;align-items:center;padding:7px var(--gutter-r) 7px var(--gutter);max-width:1280px;margin:0 auto;font-size:13px}
+.demo-strip b{color:var(--warn);letter-spacing:.06em}
+.demo-strip .acts{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}
+.lnk-btn{border:1px solid var(--rule);border-radius:6px;padding:3px 10px;font-size:12px;font-weight:600;cursor:pointer;color:var(--ink);background:var(--card)}
+.lnk-btn:hover{border-color:var(--gold)}
+.mast{background:var(--navy);color:var(--on-navy);border-bottom:3px solid var(--gold);position:relative;z-index:20}
+.mast .in{display:flex;align-items:center;gap:16px;padding:10px var(--gutter-r) 10px var(--gutter);max-width:1280px;margin:0 auto}
+.brand{display:flex;align-items:center;gap:12px;color:inherit;text-decoration:none;min-width:0}
+.brand img{width:46px;height:46px;flex:none}
+.brand .wm{font-family:var(--f-display);font-weight:700;font-size:22px;letter-spacing:.12em;line-height:1}
+.brand .sub{display:block;font-size:11px;color:var(--on-navy-2);letter-spacing:.04em;margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.nav{display:flex;gap:2px;margin-left:auto;align-items:center}
+.nav a{color:var(--on-navy-2);text-decoration:none;font-size:14px;font-weight:500;padding:8px 11px;border-radius:6px;white-space:nowrap}
+.nav a:hover{color:var(--on-navy);background:rgba(255,255,255,.07)}
+.nav a.on{color:var(--on-navy);box-shadow:inset 0 -2px 0 var(--gold-bright)}
+.acct-wrap{position:relative;flex:none}
+.acct{display:flex;align-items:center;gap:8px;border:1px solid rgba(255,255,255,.2);background:rgba(255,255,255,.06);color:var(--on-navy);border-radius:999px;padding:4px 12px 4px 4px;cursor:pointer;max-width:240px}
+.acct:hover{background:rgba(255,255,255,.12)}
+.acct .av{width:30px;height:30px;font-size:12px}
+.acct .t{display:flex;flex-direction:column;line-height:1.15;text-align:left;min-width:0}
+.acct .t b{font-size:13px;font-weight:600;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.acct .t span{font-size:11px;color:var(--gold-bright);white-space:nowrap}
+.acct.out{padding:7px 14px;background:var(--gold-bright);color:#1A1405;border-color:var(--gold);font-weight:700;font-size:14px}
+.acct-menu{position:absolute;right:0;top:calc(100% + 8px);min-width:230px;background:var(--card);color:var(--ink);border:1px solid var(--rule);border-radius:8px;box-shadow:var(--shadow);padding:6px;z-index:60}
+.acct-menu .hd{padding:8px 10px 10px;border-bottom:1px solid var(--rule);margin-bottom:4px}
+.acct-menu .hd b{display:block}
+.acct-menu .hd span{font-size:12px;color:var(--ink-3)}
+.acct-menu button,.acct-menu a{display:flex;gap:10px;align-items:center;width:100%;border:0;background:none;padding:9px 10px;border-radius:6px;text-align:left;cursor:pointer;color:var(--ink);text-decoration:none;font-size:14px}
+.acct-menu button:hover,.acct-menu a:hover{background:var(--hover)}
+.menu-btn{display:none;background:none;border:1px solid rgba(255,255,255,.2);color:var(--on-navy);border-radius:6px;padding:6px 8px;cursor:pointer;margin-left:auto}
+main{flex:1;min-height:0;overflow:auto;position:relative}
+main.is-app{overflow:hidden}
+.view[hidden]{display:none!important}
+.wrap{max-width:1180px;margin:0 auto;padding-left:var(--gutter);padding-right:var(--gutter-r)}
+
+/* ---------- buttons, pills ---------- */
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;border-radius:6px;padding:10px 18px;font-weight:600;font-size:14px;border:1px solid transparent;cursor:pointer;text-decoration:none;line-height:1.2}
+.btn-gold{background:var(--gold-bright);color:#1A1405;border-color:var(--gold)}
+.btn-gold:hover{filter:brightness(1.05)}
+.btn-navy{background:var(--navy);color:var(--on-navy)}
+.btn-navy:hover{background:var(--navy-2)}
+.btn-line{background:transparent;color:var(--ink);border-color:var(--rule)}
+.btn-line:hover{background:var(--hover)}
+.btn-ghost-light{background:transparent;color:var(--on-navy);border-color:rgba(255,255,255,.35)}
+.btn-ghost-light:hover{background:rgba(255,255,255,.08)}
+.btn-danger{background:transparent;color:var(--danger);border-color:var(--danger)}
+.btn-danger:hover{background:var(--danger-bg)}
+.btn-sm{padding:6px 12px;font-size:13px}
+.btn[disabled]{opacity:.5;cursor:not-allowed}
+.pill{display:inline-flex;align-items:center;gap:6px;font-size:12px;font-weight:600;padding:3px 10px;border-radius:999px;white-space:nowrap}
+.pill::before{content:"";width:7px;height:7px;border-radius:50%;background:currentColor}
+.t-ok{color:var(--ok);background:var(--ok-bg)}
+.t-warn{color:var(--warn);background:var(--warn-bg)}
+.t-danger{color:var(--danger);background:var(--danger-bg)}
+.t-crisis{color:var(--crisis);background:var(--crisis-bg)}
+.t-info{color:var(--link);background:var(--hover)}
+.eyebrow{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--gold-ink)}
+.notice{border:1px solid var(--rule);border-left:4px solid var(--gold);background:var(--card);border-radius:6px;padding:14px 16px;display:flex;gap:12px;align-items:flex-start}
+.notice b{display:block;margin-bottom:2px}
+.notice.warn{border-left-color:var(--warn)}
+.notice.danger{border-left-color:var(--danger)}
+.notice.ok{border-left-color:var(--ok)}
+
+/* ---------- home ---------- */
+.hero{background:radial-gradient(120% 140% at 15% 0%,var(--navy-2) 0%,var(--navy) 45%,var(--navy-deep) 100%);color:var(--on-navy);border-bottom:1px solid var(--gold)}
+.hero .wrap{display:grid;grid-template-columns:auto 1fr minmax(260px,330px);gap:36px;align-items:center;padding-block:48px 52px}
+.hero .seal{width:220px;height:220px;filter:drop-shadow(0 10px 30px rgba(0,0,0,.35))}
+.hero h1{font-family:var(--f-display);font-weight:600;font-size:clamp(26px,3.3vw,40px);line-height:1.12;letter-spacing:.02em;margin-top:10px}
+.hero .eyebrow{color:var(--gold-bright)}
+.hero .motto{font-family:var(--f-display);font-size:18px;color:var(--gold-bright);margin-top:14px;letter-spacing:.04em}
+.hero .lead{color:var(--on-navy-2);margin-top:14px;max-width:60ch}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:10px;margin-top:24px}
+.hero-txt{min-width:0;display:flex;flex-direction:column}
+.status-card{background:rgba(3,10,32,.42);border:1px solid rgba(220,193,115,.35);border-radius:10px;padding:18px}
+.status-card .lbl{font-size:11px;letter-spacing:.14em;text-transform:uppercase;color:var(--on-navy-2)}
+.status-card .lvl{font-family:var(--f-display);font-size:22px;margin-top:6px;color:#fff}
+.status-card .lvl small{color:var(--gold-bright);font-size:15px;margin-right:6px}
+.status-card p{color:var(--on-navy-2);font-size:13px;margin-top:6px}
+.scale{display:grid;grid-template-columns:repeat(4,1fr);gap:4px;margin-top:14px}
+.scale i{height:6px;border-radius:2px;background:rgba(255,255,255,.14)}
+.scale i.on.ok{background:#4CC38A}.scale i.on.warn{background:#F0B44C}.scale i.on.danger{background:#EF6A5D}.scale i.on.crisis{background:#FF4D4D}
+.status-card .meta{display:flex;justify-content:space-between;gap:10px;margin-top:14px;padding-top:12px;border-top:1px solid rgba(255,255,255,.12);font-size:12px;color:var(--on-navy-2)}
+.status-card .meta b{color:#fff;font-weight:600}
+.motd{background:var(--gold-tint);border-bottom:1px solid var(--rule)}
+.motd .wrap{display:flex;gap:12px;align-items:baseline;padding-block:12px}
+.motd b{font-size:12px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-ink);white-space:nowrap}
+.motd p{white-space:pre-wrap;min-width:0}
+.sec{padding-block:52px;border-bottom:1px solid var(--rule)}
+.sec-head{display:grid;grid-template-columns:240px 1fr;gap:32px;align-items:start}
+.sec-head h2,.sec-title{font-family:var(--f-display);font-weight:600;font-size:26px;line-height:1.2;color:var(--ink)}
+.sec-head .eyebrow{display:block;margin-bottom:8px}
+.sec-title{margin:8px 0 24px}
+.prose{max-width:68ch;color:var(--ink-2);display:flex;flex-direction:column;gap:12px;font-size:16px}
+.prose strong{color:var(--ink)}
+.services{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px}
+.svc{display:flex;flex-direction:column;gap:8px;padding:18px;background:var(--card);border:1px solid var(--rule);border-radius:8px;text-decoration:none;color:var(--ink);transition:border-color .15s,transform .15s}
+.svc:hover{border-color:var(--gold);transform:translateY(-1px)}
+.svc .ic{width:42px;height:42px;border-radius:8px;background:var(--navy);color:var(--gold-bright);display:grid;place-items:center}
+.svc b{font-size:16px;margin-top:4px}
+.svc span{font-size:13px;color:var(--ink-2)}
+.svc .go{margin-top:auto;padding-top:6px;font-size:13px;font-weight:600;color:var(--link)}
+.dlist{border-top:1px solid var(--rule)}
+.dmini{display:grid;grid-template-columns:230px 1fr auto;gap:16px;align-items:baseline;padding:14px 0;border-bottom:1px solid var(--rule);text-decoration:none;color:var(--ink)}
+.dmini:hover b{color:var(--link)}
+.dmini .no{font-family:var(--f-mono);font-size:12px;color:var(--gold-ink)}
+.dmini time{font-size:12px;color:var(--ink-3);white-space:nowrap}
+.paras{list-style:none;margin:0;padding:0;border-top:1px solid var(--rule)}
+.paras li{display:grid;grid-template-columns:64px 1fr;gap:16px;padding:16px 0;border-bottom:1px solid var(--rule)}
+.paras .no{font-family:var(--f-display);font-weight:600;color:var(--gold-ink);font-size:18px}
+.paras b{display:block;color:var(--ink)}
+.paras span{color:var(--ink-2);font-size:14px}
+.duties{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.duty{background:var(--card);border:1px solid var(--rule);border-top:3px solid var(--navy);border-radius:4px 4px 8px 8px;padding:20px}
+.duty h3{font-size:17px;font-weight:700;margin-bottom:10px}
+.duty ul{margin:0;padding-left:18px;color:var(--ink-2);display:grid;gap:6px;font-size:14px}
+.org{display:flex;flex-direction:column;align-items:center}
+.org-top{background:var(--navy);color:var(--on-navy);border:1px solid var(--gold);border-radius:8px;padding:12px 22px;text-align:center;min-width:240px;max-width:100%}
+.org-top b{font-family:var(--f-display);font-size:18px;letter-spacing:.06em;display:block}
+.org-top span{font-size:12px;color:var(--on-navy-2)}
+.org-stem{width:2px;height:24px;background:var(--gold)}
+.org-row{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:14px;width:100%;position:relative;padding-top:24px}
+.org-row::before{content:"";position:absolute;top:0;left:12.5%;right:12.5%;height:2px;background:var(--gold)}
+.org-node{position:relative;background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:14px}
+.org-node::before{content:"";position:absolute;top:-24px;left:50%;width:2px;height:24px;background:var(--gold)}
+.org-node b{display:block;font-size:14px;line-height:1.3}
+.org-node span{display:block;font-size:12px;color:var(--ink-3);margin-top:4px}
+.org-node .units{display:flex;flex-direction:column;gap:6px;margin-top:10px;padding-top:10px;border-top:1px dashed var(--rule)}
+.org-node .units a{display:flex;align-items:center;gap:8px;font-size:13px;font-weight:600;color:var(--ink);text-decoration:none}
+.org-node .units a:hover{color:var(--link)}
+.org-node .units img{width:22px;height:auto}
+.symbols{display:grid;grid-template-columns:1.1fr 1fr;gap:28px;align-items:start}
+.swatches{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.sw{border:1px solid var(--rule);border-radius:8px;overflow:hidden;background:var(--card)}
+.sw i{display:block;height:70px}
+.sw div{padding:10px 12px}
+.sw b{display:block;font-size:14px}
+.sw span{font-size:12px;color:var(--ink-3)}
+.facts{border-top:1px solid var(--rule);margin-top:20px}
+.facts div{display:grid;grid-template-columns:130px 1fr;gap:12px;padding:12px 0;border-bottom:1px solid var(--rule);font-size:14px}
+.facts .k{color:var(--ink-3);font-weight:600;font-size:12px;letter-spacing:.06em;text-transform:uppercase;padding-top:2px}
+.seal-panel{background:var(--navy);border-radius:10px;padding:28px;display:flex;flex-direction:column;align-items:center;gap:14px;color:var(--on-navy-2);text-align:center}
+.seal-panel img{width:min(260px,100%);height:auto}
+.seal-panel b{font-family:var(--f-display);color:var(--gold-bright);font-weight:600;letter-spacing:.06em}
+.steps{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(4,minmax(0,1fr));counter-reset:s;border:1px solid var(--rule);border-radius:8px;background:var(--card);overflow:hidden}
+.steps li{padding:18px;border-right:1px solid var(--rule);counter-increment:s}
+.steps li:last-child{border-right:0}
+.steps li::before{content:counter(s);display:inline-grid;place-items:center;width:28px;height:28px;border-radius:50%;border:1px solid var(--gold);color:var(--gold-ink);font-weight:700;font-size:13px;margin-bottom:10px}
+.steps b{display:block}
+.steps span{font-size:13px;color:var(--ink-2)}
+.cta-band{display:flex;justify-content:space-between;align-items:center;gap:20px;flex-wrap:wrap;margin-top:28px}
+.faq{border-top:1px solid var(--rule)}
+.faq details{border-bottom:1px solid var(--rule)}
+.faq summary{padding:15px 0;font-weight:600;cursor:pointer;list-style:none;display:flex;justify-content:space-between;gap:12px}
+.faq summary::-webkit-details-marker{display:none}
+.faq summary::after{content:"+";color:var(--gold-ink);font-size:20px;line-height:1}
+.faq details[open] summary::after{content:"–"}
+.faq p{padding:0 0 16px;color:var(--ink-2);max-width:72ch}
+footer.foot{background:var(--navy-deep);color:var(--on-navy-2);font-size:13px}
+footer.foot .cols{display:grid;grid-template-columns:1.4fr 1fr 1fr;gap:28px;padding-block:32px 20px}
+footer.foot .brandf{display:flex;gap:14px;align-items:flex-start}
+footer.foot img{width:52px;height:52px;flex:none}
+footer.foot b{color:var(--on-navy);display:block;font-weight:600;margin-bottom:6px}
+footer.foot a{color:var(--on-navy-2);text-decoration:none;display:block;padding:2px 0}
+footer.foot a:hover{color:#fff;text-decoration:underline}
+footer.foot .legal{border-top:1px solid rgba(255,255,255,.1);padding-block:14px 22px;display:flex;justify-content:space-between;gap:12px;flex-wrap:wrap;font-size:12px}
+
+/* ---------- page head ---------- */
+.page-head{background:var(--navy);color:var(--on-navy);border-bottom:1px solid var(--gold)}
+.page-head .wrap{padding-block:26px 30px;display:flex;gap:20px;align-items:center}
+.page-head img{width:72px;height:72px;flex:none}
+.page-head h1{font-family:var(--f-display);font-weight:600;font-size:clamp(24px,3vw,32px)}
+.page-head p{color:var(--on-navy-2);margin-top:6px;max-width:70ch}
+.crumbs{display:flex;gap:6px;flex-wrap:wrap;font-size:12px;color:var(--on-navy-2);margin-bottom:8px}
+.crumbs a{color:var(--on-navy-2);text-decoration:none}
+.crumbs a:hover{color:#fff;text-decoration:underline}
+
+/* ---------- units & ranks ---------- */
+.units{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:20px}
+.unit{background:var(--card);border:1px solid var(--rule);border-radius:10px;overflow:hidden;display:flex;flex-direction:column}
+.unit .patch{background:var(--patch-bg);display:grid;place-items:center;padding:22px;height:250px}
+.unit .patch img{max-height:206px;width:auto}
+.unit .bd{padding:18px;display:flex;flex-direction:column;gap:8px;flex:1}
+.unit h3{font-size:18px;font-weight:700;line-height:1.25}
+.unit .par{font-size:12px;font-weight:600;letter-spacing:.06em;text-transform:uppercase;color:var(--gold-ink)}
+.unit p{color:var(--ink-2);font-size:14px;flex:1}
+.unit .ft{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-top:6px;font-size:13px;color:var(--ink-3)}
+.ladder{display:grid;grid-template-columns:repeat(6,minmax(0,1fr));gap:14px;align-items:end}
+.rung{display:flex;flex-direction:column;align-items:center;text-align:center;gap:10px}
+.rung .board{width:72px;height:164px;display:grid;place-items:end center}
+.rung .board img{width:72px;height:auto;border-radius:4px;box-shadow:var(--shadow)}
+.rung .board .none{width:72px;height:164px;border:2px dashed var(--rule);border-radius:6px;display:grid;place-items:center;color:var(--ink-3);font-size:11px;font-weight:600;letter-spacing:.12em;writing-mode:vertical-rl;text-transform:uppercase}
+.rung b{font-size:15px}
+.rung .lv{font-size:11px;color:var(--ink-3);letter-spacing:.08em;text-transform:uppercase}
+.rung p{font-size:13px;color:var(--ink-2)}
+.ladder-line{height:2px;background:linear-gradient(90deg,var(--rule),var(--gold));margin:6px 0 16px}
+
+/* ---------- közlöny ---------- */
+.decrees{display:flex;flex-direction:column;gap:16px}
+.decree{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:22px 24px;position:relative;overflow:hidden}
+.decree::before{content:"";position:absolute;inset:0 auto 0 0;width:4px;background:var(--gold)}
+.decree .no{font-family:var(--f-mono);font-size:13px;color:var(--gold-ink)}
+.decree h3{font-family:var(--f-display);font-size:20px;margin-top:6px;font-weight:600}
+.decree .body{white-space:pre-wrap;color:var(--ink-2);margin-top:12px;max-width:72ch;overflow-wrap:anywhere}
+.decree .sig{display:flex;justify-content:space-between;gap:12px;margin-top:18px;padding-top:12px;border-top:1px dashed var(--rule);font-size:13px;color:var(--ink-3);flex-wrap:wrap}
+.decree .sig b{color:var(--ink);font-weight:600}
+.empty-doc{background:var(--card);border:1px dashed var(--rule);border-radius:8px;padding:28px;text-align:center;color:var(--ink-3)}
+
+/* ---------- forms ---------- */
+.apply-grid{display:grid;grid-template-columns:300px minmax(0,1fr);gap:36px;align-items:start;padding-block:36px 64px}
+.apply-side{position:sticky;top:20px;display:flex;flex-direction:column;gap:18px}
+.apply-side .box{background:var(--card);border:1px solid var(--rule);border-radius:8px;padding:18px}
+.apply-side h3{font-size:15px;margin-bottom:10px}
+.apply-side ul{margin:0;padding-left:18px;color:var(--ink-2);font-size:14px;display:grid;gap:6px}
+.form{display:flex;flex-direction:column;gap:22px}
+.fs{background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:22px;margin:0;min-width:0}
+.fs legend{font-family:var(--f-display);font-weight:600;font-size:18px;padding:0 6px;margin-left:-6px;color:var(--ink)}
+.fs .hint{color:var(--ink-3);font-size:13px;margin:-2px 0 14px}
+.fs.acc{border-color:var(--gold);box-shadow:0 0 0 3px var(--gold-tint)}
+.grid2{display:grid;grid-template-columns:1fr 1fr;gap:16px}
+.fld{display:flex;flex-direction:column;gap:6px;min-width:0}
+.fld label,.fld .lab{font-weight:600;font-size:14px}
+.req{color:var(--danger)}
+.fld small{color:var(--ink-3);font-size:12px}
+.fld input,.fld select,.fld textarea{background:var(--paper);border:1px solid var(--rule);border-radius:6px;padding:10px 12px;font-size:15px;width:100%}
+.fld textarea{min-height:110px;resize:vertical;line-height:1.5}
+.fld input:focus,.fld select:focus,.fld textarea:focus{outline:none;border-color:var(--focus);box-shadow:0 0 0 3px color-mix(in srgb,var(--focus) 22%,transparent)}
+.fld.err input,.fld.err select,.fld.err textarea{border-color:var(--danger)}
+.fld .em{color:var(--danger);font-size:12px;font-weight:600}
+.fld .cnt{align-self:flex-end;font-size:12px;color:var(--ink-3)}
+.pw-wrap{position:relative}
+.pw-wrap input{padding-right:78px}
+.pw-wrap button{position:absolute;right:6px;top:50%;transform:translateY(-50%);border:0;background:none;font-size:12px;font-weight:600;color:var(--link);cursor:pointer;padding:6px}
+.q-no{font-family:var(--f-mono);font-size:12px;color:var(--gold-ink);margin-right:6px}
+.unit-pick{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px;position:relative}
+.unit-pick label{display:flex;flex-direction:column;align-items:center;gap:10px;border:1px solid var(--rule);border-radius:8px;padding:14px 10px;cursor:pointer;text-align:center;font-size:13px;font-weight:600;background:var(--paper)}
+.unit-pick label .pi{background:var(--patch-bg);border-radius:6px;width:100%;display:grid;place-items:center;padding:10px;height:120px}
+.unit-pick label img{max-height:100px;width:auto}
+.unit-pick input{position:absolute;left:0;top:0;width:1px;height:1px;margin:0;opacity:0;pointer-events:none}
+.unit-pick input:checked+label{border-color:var(--gold);box-shadow:0 0 0 2px var(--gold-tint);background:var(--card)}
+.unit-pick input:focus-visible+label{outline:2px solid var(--focus);outline-offset:2px}
+.chk{display:flex;gap:10px;align-items:flex-start;font-size:14px}
+.chk input{width:18px;height:18px;margin-top:2px;accent-color:var(--navy);flex:none}
+.form-foot{display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap}
+.form-foot small{color:var(--ink-3)}
+.form-err{color:var(--danger);font-size:13px;font-weight:600}
+.status-doc{background:var(--card);border:1px solid var(--rule);border-radius:10px;overflow:hidden;position:relative}
+.status-doc .hd{background:var(--navy);color:var(--on-navy);padding:18px 22px;display:flex;gap:14px;align-items:center;border-bottom:3px solid var(--gold)}
+.status-doc .hd img{width:50px;height:50px}
+.status-doc .hd b{font-family:var(--f-display);font-size:18px;display:block;letter-spacing:.04em}
+.status-doc .hd span{font-size:12px;color:var(--on-navy-2)}
+.status-doc .bd{padding:22px;display:flex;flex-direction:column;gap:18px}
+.stamp{position:absolute;right:30px;bottom:78px;transform:rotate(-9deg);border:3px double currentColor;border-radius:6px;padding:4px 14px;font-family:var(--f-display);font-weight:700;letter-spacing:.18em;font-size:17px;opacity:.85;pointer-events:none;background:var(--card)}
+.stamp.ok{color:var(--ok)}.stamp.pending{color:var(--link)}.stamp.danger{color:var(--danger)}
+.timeline{list-style:none;margin:0;padding:0;display:grid;grid-template-columns:repeat(3,minmax(0,1fr))}
+.timeline li{padding-top:14px;border-top:3px solid var(--rule);font-size:13px;color:var(--ink-3);padding-right:10px}
+.timeline li.done{border-top-color:var(--gold);color:var(--ink)}
+.timeline li.cur{border-top-color:var(--navy-2);color:var(--ink)}
+.timeline b{display:block;font-size:14px}
+.kv{display:grid;grid-template-columns:150px 1fr;gap:8px 14px;font-size:14px;margin:0}
+.kv dt{color:var(--ink-3);font-weight:600;font-size:12px;letter-spacing:.06em;text-transform:uppercase;padding-top:2px}
+.kv dd{margin:0;min-width:0;overflow-wrap:anywhere}
+.signoff{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:13px;color:var(--ink-3);border-top:1px dashed var(--rule);padding-top:14px}
+.signoff b{display:block;color:var(--ink);font-family:var(--f-display);font-weight:600}
+
+/* ---------- login ---------- */
+.gate-wrap{min-height:100%;display:grid;place-items:center;padding:40px var(--gutter-r) 40px var(--gutter);background:radial-gradient(90% 70% at 50% 0%,var(--gold-tint),transparent 70%)}
+.login{width:min(460px,100%);background:var(--card);border:1px solid var(--rule);border-radius:12px;box-shadow:var(--shadow);overflow:hidden}
+.login .hd{background:var(--navy);color:var(--on-navy);padding:24px;text-align:center;border-bottom:3px solid var(--gold)}
+.login .hd img{width:84px;height:84px}
+.login .hd b{display:block;font-family:var(--f-display);font-size:19px;letter-spacing:.06em;margin-top:10px}
+.login .hd span{font-size:11px;color:var(--on-navy-2);letter-spacing:.14em;text-transform:uppercase}
+.login .bd{padding:22px;display:flex;flex-direction:column;gap:14px}
+.login .btn{width:100%}
+.login .fine{font-size:12px;color:var(--ink-3);text-align:center}
+.login .alt{text-align:center;font-size:14px;color:var(--ink-2)}
+.idrow{display:flex;gap:12px;align-items:center;border:1px solid var(--rule);border-radius:8px;padding:12px;background:var(--paper)}
+.idrow b{display:block}
+.idrow span{font-size:13px;color:var(--ink-3)}
+.two-col{display:grid;grid-template-columns:repeat(2,minmax(0,460px));gap:24px;justify-content:center;align-items:start;width:100%}
+
+/* ---------- console ---------- */
+.console{display:grid;grid-template-columns:264px minmax(0,1fr) 240px;height:100%;min-height:0;background:var(--card);position:relative}
+.chan-side{background:var(--sunk);display:flex;flex-direction:column;min-height:0;border-right:1px solid var(--rule)}
+.server-head{display:flex;gap:10px;align-items:center;padding:14px 14px 12px;background:var(--navy);color:var(--on-navy);border-bottom:2px solid var(--gold)}
+.server-head img{width:40px;height:40px;flex:none}
+.server-head b{font-family:var(--f-display);font-size:17px;letter-spacing:.1em;display:block;line-height:1.1}
+.server-head span{font-size:11px;color:var(--on-navy-2)}
+.alert-strip{display:flex;align-items:center;gap:8px;padding:8px 14px;font-size:12px;font-weight:600;border-bottom:1px solid var(--rule)}
+.alert-strip .dot{width:8px;height:8px;border-radius:50%;background:currentColor;flex:none}
+.chan-list{flex:1;overflow:auto;padding:10px 8px 16px}
+.cat{margin-top:14px}
+.cat:first-child{margin-top:4px}
+.cat h4{margin:0 0 4px;padding:0 8px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+.ch{display:flex;align-items:center;gap:8px;width:100%;border:0;background:none;padding:6px 8px;border-radius:6px;color:var(--ink-3);cursor:pointer;text-align:left;font-size:15px}
+.ch svg{flex:none;opacity:.85}
+.ch span{flex:1;min-width:0;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.ch:hover{background:var(--hover);color:var(--ink-2)}
+.ch.on{background:var(--sunk-2);color:var(--ink);font-weight:600}
+.ch.unread{color:var(--ink);font-weight:600}
+.ch .badge{background:var(--danger);color:#fff;font-size:11px;font-weight:700;border-radius:999px;padding:1px 7px}
+.ch .udot{width:8px;height:8px;border-radius:50%;background:var(--ink)}
+.ch .cnt{font-size:11px;color:var(--ink-3);font-weight:600}
+.vch-people{display:flex;flex-direction:column;gap:1px;padding:0 0 4px 30px}
+.vp{display:flex;align-items:center;gap:8px;font-size:13px;color:var(--ink-2);padding:3px 6px;border-radius:4px;min-width:0}
+.vp .av{width:22px;height:22px;font-size:9px}
+.vp b{font-weight:500;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.vp.speaking .av{box-shadow:0 0 0 2px var(--ok)}
+.vp .mi{margin-left:auto;color:var(--danger);display:inline-flex;flex:none}
+.voice-bar{border-top:1px solid var(--rule);background:var(--sunk);padding:10px 12px;display:flex;align-items:center;gap:8px}
+.voice-bar .st{flex:1;min-width:0;line-height:1.2}
+.voice-bar .st b{display:block;font-size:13px;color:var(--ok)}
+.voice-bar .st span{display:block;font-size:12px;color:var(--ink-3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.me-panel{display:flex;align-items:center;gap:10px;padding:10px 12px;background:var(--sunk-2);border-top:1px solid var(--rule)}
+.me-panel .who{flex:1;min-width:0;line-height:1.2;background:none;border:0;text-align:left;cursor:pointer;padding:0}
+.me-panel b{display:block;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.me-panel span{font-size:12px;color:var(--ink-3)}
+.icon-btn{display:inline-grid;place-items:center;width:34px;height:34px;border-radius:6px;border:0;background:none;color:var(--ink-3);cursor:pointer;flex:none}
+.icon-btn:hover{background:var(--hover);color:var(--ink)}
+.icon-btn.on{color:var(--ink);background:var(--hover)}
+.icon-btn.red{color:var(--danger)}
+.av{width:40px;height:40px;border-radius:50%;flex:none;display:inline-grid;place-items:center;font-weight:700;color:#fff;font-size:15px;position:relative;letter-spacing:.02em}
+.av-sm{width:32px;height:32px;font-size:12px}
+.av-wrap{position:relative;flex:none;display:inline-flex}
+.av-wrap .on-dot{position:absolute;right:-2px;bottom:-2px;width:13px;height:13px;border-radius:50%;background:var(--ok);border:3px solid var(--sunk)}
+.chat{display:flex;flex-direction:column;min-width:0;min-height:0}
+.chat-head{display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:1px solid var(--rule);min-height:56px}
+.chat-head h2{font-size:16px;font-weight:700;white-space:nowrap}
+.chat-head p{color:var(--ink-3);font-size:13px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0;flex:1;padding-left:12px;border-left:1px solid var(--rule)}
+.chat-head .hash{color:var(--ink-3);display:inline-flex}
+.only-narrow{display:none}
+.msgs{flex:1;overflow:auto;padding:8px 0 16px;min-height:0}
+.ch-intro{padding:28px 20px 16px;border-bottom:1px solid var(--rule);margin-bottom:10px}
+.ch-intro .big{width:56px;height:56px;border-radius:50%;background:var(--sunk-2);display:grid;place-items:center;color:var(--ink-2);margin-bottom:12px}
+.ch-intro h3{font-size:24px;font-weight:700}
+.ch-intro p{color:var(--ink-3);margin-top:4px}
+.ch-intro .band{margin-top:14px;max-width:320px;width:100%;border-radius:6px}
+.day{display:flex;align-items:center;gap:12px;margin:14px 20px 6px;color:var(--ink-3);font-size:12px;font-weight:600}
+.day::before,.day::after{content:"";flex:1;height:1px;background:var(--rule)}
+.msg{display:grid;grid-template-columns:56px minmax(0,1fr);padding:2px 20px 2px 0;position:relative}
+.msg.gs{margin-top:12px;padding-top:4px}
+.msg:hover{background:var(--hover)}
+.msg .lt{display:flex;justify-content:center;padding-top:2px}
+.msg .lt time{font-size:10px;color:var(--ink-3);opacity:0;padding-top:4px;font-family:var(--f-mono)}
+.msg:hover .lt time{opacity:1}
+.msg.mention{background:var(--gold-tint);box-shadow:inset 3px 0 0 var(--gold)}
+.msg.p2{box-shadow:inset 3px 0 0 var(--warn)}
+.msg.p3{box-shadow:inset 3px 0 0 var(--danger);background:var(--danger-bg)}
+.mhead{display:flex;align-items:baseline;gap:8px;flex-wrap:wrap}
+.mname{font-weight:700;font-size:15px;background:none;border:0;padding:0;cursor:pointer}
+.mname:hover{text-decoration:underline}
+.avbtn{border:0;background:none;padding:0;cursor:pointer;border-radius:50%}
+.rk-chip{display:inline-flex;align-items:center;gap:5px;font-size:11px;font-weight:600;color:var(--ink-3);border:1px solid var(--rule);border-radius:4px;padding:0 6px;line-height:18px}
+.rk-chip img{width:7px;height:16px;object-fit:cover;object-position:top;border-radius:1px}
+.mhead time{font-size:12px;color:var(--ink-3)}
+.mtext{white-space:pre-wrap;overflow-wrap:anywhere;font-size:15px;line-height:1.5;color:var(--ink)}
+.mtext code{font-family:var(--f-mono);font-size:13px;background:var(--sunk);border:1px solid var(--rule);border-radius:4px;padding:0 4px}
+.mtext .mn{background:var(--gold-tint);color:var(--gold-ink);font-weight:600;border-radius:3px;padding:0 2px}
+.edited{font-size:11px;color:var(--ink-3);margin-left:4px}
+.mreply{display:flex;gap:6px;align-items:center;font-size:13px;color:var(--ink-3);margin-bottom:2px;min-width:0}
+.mreply b{color:var(--ink-2);font-weight:600;white-space:nowrap}
+.mreply span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis;min-width:0}
+.prio-tag{display:inline-block;font-size:10px;font-weight:700;letter-spacing:.1em;border-radius:3px;padding:1px 6px;margin-bottom:3px}
+.prio-tag.p2{color:var(--warn);background:var(--warn-bg)}
+.prio-tag.p3{color:var(--danger);background:var(--danger-bg)}
+.reacts{display:flex;flex-wrap:wrap;gap:4px;margin-top:4px}
+.react{display:inline-flex;align-items:center;gap:4px;border:1px solid var(--rule);background:var(--sunk);border-radius:6px;padding:1px 7px;font-size:13px;cursor:pointer;color:var(--ink-2)}
+.react.mine{border-color:var(--gold);background:var(--gold-tint);color:var(--ink)}
+.mtools{position:absolute;right:16px;top:-14px;display:none;background:var(--card);border:1px solid var(--rule);border-radius:6px;box-shadow:var(--shadow);padding:2px}
+.msg:hover .mtools,.msg:focus-within .mtools,.msg.tools-on .mtools{display:flex}
+.mtools .icon-btn{width:30px;height:30px}
+.mtools .icon-btn.armed{color:var(--danger);background:var(--danger-bg)}
+.typing{height:22px;padding:0 20px;font-size:12px;color:var(--ink-2);display:flex;align-items:center;gap:6px}
+.typing .dots{display:inline-flex;gap:3px}
+.typing .dots i{width:5px;height:5px;border-radius:50%;background:var(--ink-3);animation:blink 1.2s infinite}
+.typing .dots i:nth-child(2){animation-delay:.2s}.typing .dots i:nth-child(3){animation-delay:.4s}
+@keyframes blink{0%,80%,100%{opacity:.25}40%{opacity:1}}
+.composer{padding:0 16px 16px;position:relative}
+.cbar{display:flex;align-items:center;gap:8px;background:var(--sunk);border:1px solid var(--rule);border-bottom:0;border-radius:8px 8px 0 0;padding:6px 10px;font-size:13px;color:var(--ink-2)}
+.cbar b{color:var(--ink)}
+.cbar .x{margin-left:auto}
+.cbar:not([hidden])+.cbar{border-radius:0}
+.prio-bar{gap:6px}
+.prio-bar button{border:1px solid var(--rule);background:var(--card);border-radius:999px;padding:2px 10px;font-size:12px;font-weight:600;cursor:pointer;color:var(--ink-2)}
+.prio-bar button[aria-pressed="true"].p1{border-color:var(--ok);color:var(--ok);background:var(--ok-bg)}
+.prio-bar button[aria-pressed="true"].p2{border-color:var(--warn);color:var(--warn);background:var(--warn-bg)}
+.prio-bar button[aria-pressed="true"].p3{border-color:var(--danger);color:var(--danger);background:var(--danger-bg)}
+.crow{display:flex;align-items:flex-end;gap:8px;background:var(--sunk);border:1px solid var(--rule);border-radius:8px;padding:6px 6px 6px 14px}
+.cbar:not([hidden])~.crow{border-radius:0 0 8px 8px}
+.crow textarea{flex:1;border:0;background:transparent;resize:none;padding:8px 0;max-height:40vh;line-height:1.45;font-size:15px;min-width:0}
+.crow textarea:focus{outline:none}
+.crow:focus-within{border-color:var(--focus)}
+.send{width:38px;height:38px;border-radius:6px;border:0;background:var(--navy);color:var(--on-navy);display:grid;place-items:center;cursor:pointer;flex:none}
+.send:hover{background:var(--navy-2)}
+.ro-note{display:flex;gap:8px;align-items:center;background:var(--sunk);border:1px dashed var(--rule);border-radius:8px;padding:12px 14px;font-size:13px;color:var(--ink-3)}
+.char-cnt{position:absolute;right:26px;bottom:-2px;font-size:11px;color:var(--ink-3)}
+.char-cnt.over{color:var(--danger);font-weight:700}
+.pop{position:absolute;z-index:40;background:var(--card);border:1px solid var(--rule);border-radius:8px;box-shadow:var(--shadow);padding:4px}
+.mention-pop{left:16px;right:16px;bottom:calc(100% - 8px);max-height:240px;overflow:auto}
+.mention-pop .opt{display:flex;align-items:center;gap:10px;width:100%;border:0;background:none;border-radius:6px;padding:6px 8px;cursor:pointer;text-align:left}
+.mention-pop .opt.sel,.mention-pop .opt:hover{background:var(--hover)}
+.mention-pop .opt span{font-size:12px;color:var(--ink-3);margin-left:auto}
+.react-pop{display:flex;gap:2px;position:fixed}
+.react-pop button{border:0;background:none;font-size:20px;width:36px;height:36px;border-radius:6px;cursor:pointer}
+.react-pop button:hover{background:var(--hover)}
+.mem-side{background:var(--sunk);border-left:1px solid var(--rule);overflow:auto;padding:12px 8px}
+.mem-side h4{margin:16px 8px 6px;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+.mem-side h4:first-child{margin-top:4px}
+.mem{display:flex;align-items:center;gap:10px;width:100%;border:0;background:none;border-radius:6px;padding:5px 8px;cursor:pointer;text-align:left}
+.mem:hover{background:var(--hover)}
+.mem .nm{display:block;font-weight:600;font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mem .sb{display:block;font-size:12px;color:var(--ink-3);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mem.off{opacity:.5}
+.mem>div{min-width:0}
+.rules-doc{padding:24px 22px;max-width:760px}
+.rules-doc ol{margin:16px 0 0;padding:0;list-style:none;counter-reset:r;border-top:1px solid var(--rule)}
+.rules-doc li{counter-increment:r;display:grid;grid-template-columns:44px 1fr;padding:12px 0;border-bottom:1px solid var(--rule)}
+.rules-doc li::before{content:counter(r) ".";font-family:var(--f-display);font-weight:600;color:var(--gold-ink)}
+.loading-note{margin:16px 20px;color:var(--ink-3);font-size:13px}
+.voice-stage{flex:1;overflow:auto;padding:24px 20px;min-height:0;display:flex;flex-direction:column;gap:22px}
+.vtiles{display:grid;grid-template-columns:repeat(auto-fill,minmax(170px,1fr));gap:14px}
+.vtile{background:var(--navy-deep);color:var(--on-navy);border-radius:10px;aspect-ratio:4/3;display:flex;flex-direction:column;align-items:center;justify-content:center;gap:8px;position:relative;border:2px solid transparent;max-width:100%;padding:10px;text-align:center}
+.vtile.speaking{border-color:#4CC38A;box-shadow:0 0 0 3px rgba(76,195,138,.3)}
+.vtile .av{width:64px;height:64px;font-size:22px}
+.vtile b{font-size:14px}
+.vtile span{font-size:12px;color:var(--on-navy-2)}
+.vtile .flags{position:absolute;right:10px;bottom:10px;display:flex;gap:6px;color:#F2776C}
+.vtile .conn{position:absolute;left:10px;top:10px;font-size:11px;color:var(--on-navy-2)}
+.vctl{display:flex;gap:10px;justify-content:center;flex-wrap:wrap}
+.vbtn{display:inline-flex;align-items:center;gap:8px;border-radius:999px;padding:10px 18px;border:1px solid var(--rule);background:var(--card);color:var(--ink);font-weight:600;cursor:pointer}
+.vbtn:hover{border-color:var(--ink-3)}
+.vbtn.on{background:var(--danger-bg);color:var(--danger);border-color:var(--danger)}
+.vbtn.leave{background:var(--danger);color:#fff;border-color:var(--danger)}
+.vbtn.join{background:var(--ok);color:#fff;border-color:var(--ok)}
+.vhead{display:flex;gap:14px;align-items:center}
+.vhead .ic{width:52px;height:52px;border-radius:50%;background:var(--sunk-2);display:grid;place-items:center;color:var(--ink-2);flex:none}
+.vhead h3{font-size:22px;font-weight:700}
+.vhead p{color:var(--ink-3);font-size:14px}
+
+/* ---------- admin ---------- */
+.adm{display:flex;flex-direction:column;gap:28px;padding-block:32px 64px}
+.panel{background:var(--card);border:1px solid var(--rule);border-radius:10px}
+.panel>.ph{display:flex;align-items:center;gap:12px;padding:16px 20px;border-bottom:1px solid var(--rule);flex-wrap:wrap}
+.panel>.ph h2{font-size:17px;font-weight:700}
+.panel>.ph .cnt{font-size:12px;color:var(--ink-3)}
+.panel>.pb{padding:20px}
+.alert-seg{display:grid;grid-template-columns:repeat(4,minmax(0,1fr));gap:10px}
+.alert-seg button{border:1px solid var(--rule);background:var(--paper);border-radius:8px;padding:12px;text-align:left;cursor:pointer}
+.alert-seg button b{display:block;font-family:var(--f-display);font-size:16px}
+.alert-seg button span{font-size:12px;color:var(--ink-3)}
+.alert-seg button[aria-pressed="true"]{border-width:2px;padding:11px}
+.alert-seg button.ok[aria-pressed="true"]{border-color:var(--ok);background:var(--ok-bg)}
+.alert-seg button.warn[aria-pressed="true"]{border-color:var(--warn);background:var(--warn-bg)}
+.alert-seg button.danger[aria-pressed="true"]{border-color:var(--danger);background:var(--danger-bg)}
+.alert-seg button.crisis[aria-pressed="true"]{border-color:var(--crisis);background:var(--crisis-bg)}
+.app-card{border:1px solid var(--rule);border-radius:8px;margin-bottom:12px;background:var(--paper)}
+.app-card summary{display:flex;align-items:center;gap:12px;padding:12px 14px;cursor:pointer;list-style:none;flex-wrap:wrap}
+.app-card summary::-webkit-details-marker{display:none}
+.app-card summary .nm{font-weight:700}
+.app-card summary .ref{font-size:12px;color:var(--ink-3)}
+.app-card summary .grow{flex:1}
+.app-card .ans{padding:4px 14px 14px;display:flex;flex-direction:column;gap:14px}
+.app-card .qa b{display:block;font-size:13px;color:var(--ink-2)}
+.app-card .qa p{white-space:pre-wrap;overflow-wrap:anywhere;font-size:14px;margin-top:2px}
+.decide{display:flex;flex-wrap:wrap;gap:10px;align-items:flex-end;padding-top:12px;border-top:1px solid var(--rule)}
+.decide .fld{min-width:200px;flex:1}
+.tbl-wrap{overflow-x:auto}
+table.roster{width:100%;border-collapse:collapse;font-size:14px;min-width:720px}
+.roster th{text-align:left;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);font-weight:700;padding:8px 10px;border-bottom:1px solid var(--rule)}
+.roster td{padding:8px 10px;border-bottom:1px solid var(--rule);vertical-align:middle}
+.roster select{background:var(--paper);border:1px solid var(--rule);border-radius:6px;padding:6px 8px;font-size:13px}
+.roster .who{display:flex;align-items:center;gap:10px}
+.roster .who b{display:block}
+.roster .who span{font-size:12px;color:var(--ink-3)}
+.empty{color:var(--ink-3);font-size:14px;padding:6px 0}
+.rank-names{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:12px}
+.dec-admin{display:flex;justify-content:space-between;align-items:center;gap:12px;padding:10px 0;border-bottom:1px solid var(--rule)}
+.dec-admin div{min-width:0}
+.dec-admin b{display:block}
+.dec-admin span{font-size:12px;color:var(--ink-3);font-family:var(--f-mono)}
+
+/* ---------- modal / toast ---------- */
+.scrim{position:fixed;inset:0;background:var(--scrim);display:grid;place-items:center;z-index:100;padding:20px}
+.modal{background:var(--card);border-radius:12px;box-shadow:var(--shadow);width:min(520px,100%);max-height:calc(100% - 20px);overflow:auto}
+.modal .mh{display:flex;align-items:center;gap:10px;padding:16px 18px;border-bottom:1px solid var(--rule)}
+.modal .mh h2{font-size:17px;font-weight:700;flex:1}
+.modal .mb{padding:18px;display:flex;flex-direction:column;gap:14px}
+.modal .mf{display:flex;justify-content:flex-end;gap:10px;padding:0 18px 18px;flex-wrap:wrap}
+.modal ol.guide{margin:0;padding-left:20px;display:grid;gap:10px;font-size:14px;color:var(--ink-2)}
+.modal ol.guide b{color:var(--ink)}
+.idcard{border-radius:10px;overflow:hidden;border:1px solid var(--gold);background:var(--card)}
+.idcard .top{background:linear-gradient(120deg,var(--navy-deep),var(--navy) 60%,var(--navy-2));color:var(--on-navy);display:flex;align-items:center;gap:10px;padding:10px 14px;border-bottom:2px solid var(--gold)}
+.idcard .top img{width:34px;height:34px}
+.idcard .top b{font-family:var(--f-display);letter-spacing:.08em;font-size:14px;display:block}
+.idcard .top span{font-size:10px;letter-spacing:.14em;color:var(--gold-bright)}
+.idcard .body{display:grid;grid-template-columns:auto 1fr auto;gap:16px;padding:16px;align-items:start;position:relative}
+.idcard .body::after{content:"";position:absolute;right:-30px;bottom:-40px;width:200px;height:200px;background:url(img/cimer.webp) center/contain no-repeat;opacity:.07;pointer-events:none}
+.idcard .photo{width:76px;height:92px;border-radius:6px;display:grid;place-items:center;font-size:28px;font-weight:700;color:#fff}
+.idcard .nm{font-size:19px;font-weight:700;line-height:1.2}
+.idcard .rb{font-size:13px;color:var(--ink-3)}
+.idcard dl{display:grid;grid-template-columns:auto 1fr;gap:4px 12px;margin:10px 0 0;font-size:13px}
+.idcard dt{color:var(--ink-3);font-size:11px;letter-spacing:.08em;text-transform:uppercase;font-weight:600;padding-top:1px}
+.idcard dd{margin:0;overflow-wrap:anywhere}
+.idcard .board{width:34px;height:auto;border-radius:3px}
+.idcard .bio{grid-column:1/-1;font-size:14px;color:var(--ink-2);white-space:pre-wrap;border-top:1px dashed var(--rule);padding-top:10px}
+.toasts{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);display:flex;flex-direction:column;gap:8px;z-index:200;width:min(440px,calc(100% - 32px))}
+.toast{background:var(--ink);color:var(--paper);border-radius:8px;padding:10px 14px;font-size:14px;box-shadow:var(--shadow)}
+
+/* ---------- responsive ---------- */
+@media (max-width:1100px){
+  .console{grid-template-columns:248px minmax(0,1fr)}
+  .mem-side{position:absolute;right:0;top:0;bottom:0;width:260px;z-index:30;box-shadow:var(--shadow);display:none}
+  .console.show-mem .mem-side{display:block}
+  .hero .wrap{grid-template-columns:auto 1fr}
+  .hero .status-card{grid-column:1/-1}
+  .services{grid-template-columns:repeat(2,minmax(0,1fr))}
+}
+@media (max-width:900px){
+  .nav{display:none;position:absolute;top:100%;left:0;right:0;flex-direction:column;align-items:stretch;background:var(--navy);padding:8px var(--gutter-r) 12px var(--gutter);border-bottom:3px solid var(--gold)}
+  .nav.open{display:flex}
+  .nav a.on{box-shadow:inset 3px 0 0 var(--gold-bright)}
+  .menu-btn{display:inline-flex}
+  .acct .t{display:none}
+  .acct:not(.out){padding:4px}
+  .sec-head{grid-template-columns:1fr;gap:14px}
+  .duties,.units{grid-template-columns:1fr}
+  .org-row{grid-template-columns:1fr 1fr}
+  .org-row::before,.org-node::before{display:none}
+  .symbols{grid-template-columns:1fr}
+  .steps{grid-template-columns:1fr 1fr}
+  .steps li:nth-child(2){border-right:0}
+  .steps li:nth-child(-n+2){border-bottom:1px solid var(--rule)}
+  .ladder{grid-template-columns:repeat(3,minmax(0,1fr));row-gap:28px}
+  .apply-grid{grid-template-columns:1fr}
+  .apply-side{position:static;order:2}
+  .alert-seg{grid-template-columns:1fr 1fr}
+  .rank-names{grid-template-columns:1fr 1fr}
+  .two-col{grid-template-columns:minmax(0,460px)}
+  footer.foot .cols{grid-template-columns:1fr 1fr}
+  footer.foot .brandf{grid-column:1/-1}
+  .dmini{grid-template-columns:1fr auto}
+  .dmini .no{grid-column:1/-1}
+}
+@media (max-width:720px){
+  .console{grid-template-columns:minmax(0,1fr)}
+  .chan-side{position:absolute;left:0;top:0;bottom:0;width:min(290px,86vw);z-index:31;box-shadow:var(--shadow);display:none}
+  .console.show-chans .chan-side{display:flex}
+  .only-narrow{display:inline-grid}
+  .chat-head p{display:none}
+  .hero .wrap{grid-template-columns:1fr;padding-block:32px}
+  .hero .seal{width:150px;height:150px}
+  .grid2,.unit-pick{grid-template-columns:1fr}
+  .unit-pick label{flex-direction:row;text-align:left}
+  .unit-pick label .pi{width:80px;height:80px;flex:none}
+  .unit-pick label img{max-height:64px}
+  .timeline{grid-template-columns:1fr;gap:10px}
+  .kv{grid-template-columns:1fr;gap:2px}
+  .kv dd{margin-bottom:8px}
+  .paras li{grid-template-columns:44px 1fr}
+  .facts div{grid-template-columns:1fr;gap:2px}
+  .brand .sub{display:none}
+  .gov-strip .rp{display:none}
+  .idcard .body{grid-template-columns:auto 1fr}
+  .idcard .body .board{display:none}
+  .page-head img{width:52px;height:52px}
+  .msg{grid-template-columns:48px minmax(0,1fr);padding-right:10px}
+  .mtools{right:8px}
+  .stamp{position:static;transform:none;align-self:flex-start;margin:16px 22px 0}
+}
+@media (max-width:480px){
+  .org-row,.services,.steps{grid-template-columns:1fr}
+  .steps li{border-right:0;border-bottom:1px solid var(--rule)}
+  .ladder{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .alert-seg,.rank-names{grid-template-columns:1fr}
+  footer.foot .cols{grid-template-columns:1fr}
+  .demo-strip .acts{margin-left:0}
+}
+@media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+</style>
+</head>
+<body>
+
+<div id="app">
+  <div class="gov-strip"><div class="in"><span>A <b>NEKEH</b> hivatalos portálja</span><span id="today"></span><span class="rp">Roblox szerepjáték-frakció</span></div></div>
+  <div class="demo-strip" id="demoStrip" hidden><div class="in"><b>BEMUTATÓ MÓD</b><span>Az adatok csak ebben a böngészőben tárolódnak. Éles használathoz kösd be a Firebase-t.</span><span class="acts"><button class="lnk-btn" type="button" id="demoGuide">Éles indítás lépései</button><button class="lnk-btn" type="button" id="demoSample">Példaadatok betöltése</button><button class="lnk-btn" type="button" id="demoReset">Bemutató törlése</button></span></div></div>
+  <header class="mast">
+    <div class="in">
+      <a class="brand" href="#fooldal" aria-label="NEKEH főoldal">
+        <img src="img/cimer.webp" alt="" width="46" height="46">
+        <span><span class="wm">NEKEH</span><span class="sub">Nemzeti Egységes Közrendvédelmi és Ellátási Hatóság</span></span>
+      </a>
+      <button class="menu-btn" id="menuBtn" aria-expanded="false" aria-controls="nav" aria-label="Menü">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg>
+      </button>
+      <nav class="nav" id="nav" aria-label="Fő navigáció">
+        <a href="#fooldal">Főoldal</a>
+        <a href="#egysegek">Egységek</a>
+        <a href="#kozlony">Közlöny</a>
+        <a href="#jelentkezes">Jelentkezés</a>
+        <a href="#belso">Belső rendszer</a>
+        <a href="#vezetes" id="navAdmin" hidden>Vezetés</a>
+      </nav>
+      <div class="acct-wrap"><button class="acct out" id="acctBtn" type="button" aria-haspopup="menu" aria-expanded="false">Bejelentkezés</button><div class="acct-menu" id="acctMenu" role="menu" hidden></div></div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ================= FŐOLDAL ================= -->
+    <section class="view" id="v-fooldal">
+      <div class="hero">
+        <div class="wrap">
+          <img class="seal" src="img/cimer.webp" alt="A Nemzeti Egységes Közrendvédelmi és Ellátási Hatóság címere" width="220" height="220">
+          <div class="hero-txt">
+            <span class="eyebrow">Országos hatóság · különleges jogállás</span>
+            <h1>Nemzeti Egységes Közrendvédelmi és Ellátási Hatóság</h1>
+            <p class="motto">„Mindenki felett, mindenkiért.”</p>
+            <p class="lead">Törvény által létrehozott országos hatóság, amely minden állami, önkormányzati, katonai és civil szervezet felett jogosult intézkedni.</p>
+            <div class="ctas">
+              <a class="btn btn-gold" href="#jelentkezes">Jelentkezés az állományba</a>
+              <a class="btn btn-ghost-light" href="#belepes">Bejelentkezés</a>
+            </div>
+          </div>
+          <aside class="status-card" aria-live="polite">
+            <div class="lbl">Aktuális riasztási fokozat</div>
+            <div class="lvl" id="homeAlertLvl"><small>I.</small>Normál működés</div>
+            <p id="homeAlertDesc">A Hatóság szokásos rend szerint látja el feladatait.</p>
+            <div class="scale" id="homeScale"><i class="on ok"></i><i></i><i></i><i></i></div>
+            <div class="meta"><span>Állomány: <b id="statMembers">–</b></span><span>Egységek: <b>3</b></span><span>Szolgálatban: <b id="statOnline">–</b></span></div>
+          </aside>
+        </div>
+      </div>
+      <div class="motd" id="motd" hidden><div class="wrap"><b>Közlemény</b><p id="motdText"></p></div></div>
+
+      <section class="sec"><div class="wrap">
+        <span class="eyebrow">Elektronikus ügyintézés</span>
+        <h2 class="sec-title">Mit szeretnél intézni?</h2>
+        <div class="services">
+          <a class="svc" href="#jelentkezes"><span class="ic" data-icon="file"></span><b>Jelentkezés az állományba</b><span>Online felvételi kérelem kérdőívvel, iktatószámmal.</span><span class="go">Kérelem indítása →</span></a>
+          <a class="svc" href="#belepes"><span class="ic" data-icon="key"></span><b>Bejelentkezés</b><span>Belépés szolgálati azonosítóval és jelszóval.</span><span class="go">Belépés →</span></a>
+          <a class="svc" href="#belso"><span class="ic" data-icon="radio"></span><b>Belső kommunikáció</b><span>Szöveges és hangcsatornák az állomány számára.</span><span class="go">Megnyitás →</span></a>
+          <a class="svc" href="#kozlony"><span class="ic" data-icon="scroll"></span><b>Hivatalos Közlöny</b><span>A Hatóság rendeletei és közleményei.</span><span class="go">Közlöny →</span></a>
+        </div>
+      </div></section>
+
+      <section class="sec"><div class="wrap sec-head">
+        <div><span class="eyebrow">Hivatalos Közlöny</span><h2>Legutóbbi rendeletek</h2></div>
+        <div><div class="dlist" id="homeDecrees"></div><p style="margin-top:14px"><a href="#kozlony">A teljes Közlöny megtekintése →</a></p></div>
+      </div></section>
+
+      <section class="sec"><div class="wrap sec-head">
+        <div><span class="eyebrow">A Hatóságról</span><h2>Feladatunk a teljes közrend</h2></div>
+        <div class="prose">
+          <p>A NEKEH egy különleges státuszú, törvény által létrehozott országos hatóság, amely <strong>minden állami, önkormányzati, katonai és civil szervezet felett</strong> jogosult intézkedni.</p>
+          <p>Feladata a teljes közrend fenntartása, a lakosság biztonságának garantálása, valamint bármilyen vészhelyzetben a személyek és közösségek ellátása, legyen szó bűnözés megfékezéséről, katasztrófahelyzetről, járványról vagy akár háborúról.</p>
+        </div>
+      </div></section>
+
+      <section class="sec"><div class="wrap sec-head">
+        <div><span class="eyebrow">Jogállás és hatáskör</span><h2>A Hatóság jogköre</h2></div>
+        <ol class="paras">
+          <li><span class="no">1. §</span><div><b>Fölérendeltség</b><span>Fölérendelt minden más rendvédelmi, katonai és közigazgatási szervnek.</span></div></li>
+          <li><span class="no">2. §</span><div><b>Krízisirányítás</b><span>Krízishelyzetben átveheti az ország teljes irányítását.</span></div></li>
+          <li><span class="no">3. §</span><div><b>Vészhelyzeti jogalkotás</b><span>Vészhelyzet idejére saját törvényhozási joggal rendelkezik.</span></div></li>
+          <li><span class="no">4. §</span><div><b>Beszámolási kötelezettség</b><span>Közvetlenül az államfőnek és a Nemzetbiztonsági Tanácsnak tartozik beszámolással.</span></div></li>
+        </ol>
+      </div></section>
+
+      <section class="sec"><div class="wrap">
+        <span class="eyebrow">Fő feladatkörök</span>
+        <h2 class="sec-title">Három pillér, egy parancsnoki lánc</h2>
+        <div class="duties">
+          <div class="duty"><h3>Közrendvédelem</h3><ul><li>Országos bűnmegelőzési és rendfenntartási műveletek.</li><li>Elit gyorsbeavatkozó egységek: terrorelhárítás, kiberbiztonság, bűnüldözés.</li></ul></div>
+          <div class="duty"><h3>Személyellátás</h3><ul><li>Élelmiszer-, gyógyszer- és vízellátás biztosítása.</li><li>Evakuációs műveletek és ideiglenes lakóhelyek biztosítása.</li><li>Egészségügyi ellátó egységek telepítése.</li></ul></div>
+          <div class="duty"><h3>Vészhelyzeti koordináció</h3><ul><li>Összes frakció, hatóság és hivatal azonnali alárendelése.</li><li>Katonai és civil logisztika összehangolása.</li></ul></div>
+        </div>
+      </div></section>
+
+      <section class="sec"><div class="wrap">
+        <span class="eyebrow">Szervezeti felépítés</span>
+        <h2 class="sec-title">A Hatóság szervezete</h2>
+        <div class="org">
+          <div class="org-top"><b>Főbiztos</b><span>Vészhelyzet idején az ország második legmagasabb rangú tisztségviselője</span></div>
+          <div class="org-stem"></div>
+          <div class="org-row">
+            <div class="org-node"><b>Közrendvédelmi Parancsnokság</b><span>Rendfenntartás, gyorsbeavatkozás</span>
+              <div class="units"><a href="#egysegek"><img src="img/mesterlovesz.webp" alt="" width="22" height="31">Mesterlövész Egység</a><a href="#egysegek"><img src="img/taktikai.webp" alt="" width="22" height="33">Taktikai és Fegyverspecifikus Alosztály</a></div></div>
+            <div class="org-node"><b>Személyellátási és Logisztikai Főosztály</b><span>Ellátás, evakuáció, egészségügy</span>
+              <div class="units"><a href="#egysegek"><img src="img/ellatas.webp" alt="" width="22" height="34">Ellátás</a></div></div>
+            <div class="org-node"><b>Stratégiai Tervezési és Vészhelyzeti Tanács</b><span>Tervezés, krízisdöntések</span></div>
+            <div class="org-node"><b>Titkos Műveletek Osztálya</b><span>Minősített műveletek</span></div>
+          </div>
+        </div>
+      </div></section>
+
+      <section class="sec"><div class="wrap">
+        <span class="eyebrow">Egyenruha és jelképek</span>
+        <h2 class="sec-title">Színek, címer, járművek</h2>
+        <div class="symbols">
+          <div>
+            <div class="swatches">
+              <div class="sw"><i style="background:#0A2667"></i><div><b>Mélykék</b><span>a biztonság</span></div></div>
+              <div class="sw"><i style="background:linear-gradient(135deg,#E6CF85,#B4974A)"></i><div><b>Arany</b><span>a hatalom</span></div></div>
+              <div class="sw"><i style="background:#FFFFFF;box-shadow:inset 0 -1px 0 #D2D9E5"></i><div><b>Fehér</b><span>a tisztaság</span></div></div>
+            </div>
+            <div class="facts">
+              <div><span class="k">Jelvény</span><span>Kör alakú pajzs, benne stilizált csillag és szárnyak, körben arany peremmel.</span></div>
+              <div><span class="k">Vállap</span><span>Mélykék mező a Hatóság címerével; a rendfokozatot ezüst vagy arany csillagok jelzik.</span></div>
+              <div><span class="k">Járművek</span><span>Páncélozott terepjárók, speciális helikopterek, mobil vezérlőállomások.</span></div>
+            </div>
+          </div>
+          <div class="seal-panel"><img src="img/cimer.webp" alt="A NEKEH címere" width="260" height="260" loading="lazy"><b>A Hatóság címere</b><span>Felül a NEKEH rövidítés, alul a Hatóság teljes neve.</span></div>
+        </div>
+      </div></section>
+
+      <section class="sec"><div class="wrap">
+        <span class="eyebrow">Csatlakozás</span>
+        <h2 class="sec-title">Így lehetsz a NEKEH tagja</h2>
+        <ol class="steps">
+          <li><b>Jelentkezés</b><span>Kitöltöd a kérdőívet, és létrehozod a szolgálati azonosítódat.</span></li>
+          <li><b>Iktatás</b><span>A kérelmed iktatószámot kap, és a vezetés elé kerül.</span></li>
+          <li><b>Elbírálás</b><span>A Főbiztos átnézi a válaszaidat, szükség esetén interjúra hív.</span></li>
+          <li><b>Felvétel</b><span>Újonc rendfokozattal bekerülsz az állományba és egy egységbe.</span></li>
+        </ol>
+        <div class="cta-band"><p style="color:var(--ink-2)">Az elbírálás állapotát bejelentkezés után a Jelentkezés oldalon követheted.</p><a class="btn btn-navy" href="#jelentkezes">Jelentkezés indítása</a></div>
+      </div></section>
+
+      <section class="sec"><div class="wrap sec-head">
+        <div><span class="eyebrow">Tájékoztató</span><h2>Gyakori kérdések</h2></div>
+        <div class="faq">
+          <details><summary>Ki jelentkezhet a NEKEH-be?</summary><p>Bárki, aki aktív Roblox-játékos, elfogadja a szabályzatot és a szolgálati láncot. A jelentkezést a vezetés egyénileg bírálja el.</p></details>
+          <details><summary>Mennyi ideig tart az elbírálás?</summary><p>Általában néhány nap. A kérelmed állapotát (beküldve, interjú, döntés) bejelentkezés után a Jelentkezés oldalon látod.</p></details>
+          <details><summary>Hogyan lépek be a belső rendszerbe?</summary><p>A jelentkezéskor megadott szolgálati azonosítóval és jelszóval, a Bejelentkezés oldalon. A belső csatornák a felvétel után nyílnak meg.</p></details>
+          <details><summary>Elfelejtettem a jelszavam. Mit tegyek?</summary><p>Jelezd a vezetésnek (például játékon belül vagy Discordon). A Főbiztos vissza tudja állítani a hozzáférésedet.</p></details>
+          <details><summary>Hogyan lehet előlépni?</summary><p>Az előléptetésről a Főbiztos dönt az aktivitás, a szolgálati teljesítmény és a szabályzat betartása alapján.</p></details>
+          <details><summary>Van hangcsatorna?</summary><p>Igen. A belső rendszerben négy hangcsatorna van, köztük egy vezetői tárgyaló. A belépéshez engedélyezned kell a mikrofont a böngészőben.</p></details>
+        </div>
+      </div></section>
+    </section>
+
+    <!-- ================= EGYSÉGEK ================= -->
+    <section class="view" id="v-egysegek" hidden>
+      <div class="page-head"><div class="wrap"><img src="img/cimer.webp" alt="" width="72" height="72"><div><nav class="crumbs" aria-label="Morzsamenü"><a href="#fooldal">Főoldal</a><span>›</span><span>Egységek és rendfokozatok</span></nav><h1>Egységek és rendfokozatok</h1><p>A NEKEH műveleti egységei és a rendfokozati lánc. Jelentkezéskor kiválaszthatod, melyik egységben szolgálnál.</p></div></div></div>
+      <section class="sec"><div class="wrap">
+        <span class="eyebrow">Egységek</span>
+        <h2 class="sec-title">Műveleti egységek</h2>
+        <div class="units" id="unitCards"></div>
+      </div></section>
+      <section class="sec"><div class="wrap">
+        <span class="eyebrow">Rendfokozatok</span>
+        <h2 class="sec-title" style="margin-bottom:8px">Rendfokozati lánc</h2>
+        <p style="color:var(--ink-2);max-width:70ch">A rendfokozatot vállap jelzi. Az ezüst csillagok a tiszti, az arany csillagok a vezetői szintet jelölik. Előléptetésről a Főbiztos dönt.</p>
+        <div class="ladder-line"></div>
+        <div class="ladder" id="ladder"></div>
+      </div></section>
+    </section>
+
+    <!-- ================= KÖZLÖNY ================= -->
+    <section class="view" id="v-kozlony" hidden>
+      <div class="page-head"><div class="wrap"><img src="img/cimer.webp" alt="" width="72" height="72"><div><nav class="crumbs" aria-label="Morzsamenü"><a href="#fooldal">Főoldal</a><span>›</span><span>Hivatalos Közlöny</span></nav><h1>Hivatalos Közlöny</h1><p>A Nemzeti Egységes Közrendvédelmi és Ellátási Hatóság rendeletei, kihirdetésük sorrendjében.</p></div></div></div>
+      <div class="wrap" style="padding-block:32px 64px"><div class="decrees" id="decreeList"></div></div>
+    </section>
+
+    <!-- ================= JELENTKEZÉS ================= -->
+    <section class="view" id="v-jelentkezes" hidden>
+      <div class="page-head"><div class="wrap"><img src="img/cimer.webp" alt="" width="72" height="72"><div><nav class="crumbs" aria-label="Morzsamenü"><a href="#fooldal">Főoldal</a><span>›</span><span>Jelentkezés</span></nav><h1>Felvételi kérelem</h1><p>Töltsd ki a kérdőívet. Beküldéskor létrejön a szolgálati azonosítód, a kérelmed iktatószámot kap, és a vezetés elé kerül.</p></div></div></div>
+      <div class="wrap apply-grid">
+        <aside class="apply-side">
+          <div class="box"><h3>Feltételek</h3><ul><li>Aktív Roblox-fiók</li><li>Szerepjátékban megfelelő viselkedés</li><li>A szolgálati lánc elfogadása</li><li>Rendszeres aktivitás</li></ul></div>
+          <div class="box"><h3>Az eljárás menete</h3><ul><li>Beküldés és iktatás</li><li>Elbírálás a vezetés által</li><li>Interjú (szükség esetén)</li><li>Felvétel Újonc rendfokozattal</li></ul></div>
+          <div class="box"><h3>Már jelentkeztél?</h3><p style="font-size:14px;color:var(--ink-2)"><a href="#belepes">Jelentkezz be</a> a szolgálati azonosítóddal, és itt látod a kérelmed állapotát.</p></div>
+        </aside>
+        <div style="min-width:0;display:flex;flex-direction:column;gap:18px">
+          <div id="applyNotice" hidden></div>
+          <div id="applyStatus" hidden></div>
+          <form class="form" id="applyForm" novalidate>
+            <fieldset class="fs">
+              <legend>Személyes adatok</legend>
+              <p class="hint">A csillaggal jelölt mezők kitöltése kötelező.</p>
+              <div class="grid2">
+                <div class="fld"><label for="a-roblox">Roblox-felhasználónév <span class="req">*</span></label><input id="a-roblox" maxlength="40" autocomplete="off" placeholder="pl. KovacsBence_2010"></div>
+                <div class="fld"><label for="a-rp">Szolgálati (RP) név <span class="req">*</span></label><input id="a-rp" maxlength="40" autocomplete="off" placeholder="pl. Kovács Bence"><small>Ezen a néven jelensz meg a belső rendszerben.</small></div>
+                <div class="fld"><label for="a-age">Korosztály <span class="req">*</span></label><select id="a-age"><option value="">Válassz…</option><option>13–15 év</option><option>16–17 év</option><option>18 év felett</option></select></div>
+                <div class="fld"><label for="a-discord">Discord-név</label><input id="a-discord" maxlength="40" autocomplete="off" placeholder="nem kötelező"></div>
+                <div class="fld"><label for="a-act">Heti aktivitás <span class="req">*</span></label><select id="a-act"><option value="">Válassz…</option><option>1–3 óra</option><option>4–7 óra</option><option>8–14 óra</option><option>15 óránál több</option></select></div>
+              </div>
+            </fieldset>
+            <fieldset class="fs">
+              <legend>Egység és tapasztalat</legend>
+              <div class="fld" style="margin-bottom:16px"><span class="lab" id="a-unit-lab">Melyik egységbe jelentkezel? <span class="req">*</span></span>
+                <div class="unit-pick" role="radiogroup" aria-labelledby="a-unit-lab" id="unitPick"></div>
+              </div>
+              <div class="fld" style="margin-bottom:16px"><label for="a-exp">Korábbi frakciós tapasztalat</label><textarea id="a-exp" maxlength="1500" placeholder="Melyik frakcióban, milyen rangban, mennyi ideig szolgáltál?"></textarea></div>
+              <div class="fld"><label for="a-mot">Miért szeretnél a NEKEH tagja lenni? <span class="req">*</span></label><textarea id="a-mot" maxlength="1500" data-min="80"></textarea><span class="cnt" data-for="a-mot"></span></div>
+            </fieldset>
+            <fieldset class="fs">
+              <legend>Helyzetgyakorlatok</legend>
+              <p class="hint">Írd le a saját szavaiddal, hogyan járnál el. Nincs egyetlen jó válasz.</p>
+              <div class="fld" style="margin-bottom:16px"><label for="a-q1"><span class="q-no">1.</span>Egy városban zavargás tör ki, és a helyi rendőrség nem tudja kezelni. Mi az első három lépésed NEKEH-ügynökként? <span class="req">*</span></label><textarea id="a-q1" maxlength="1500" data-min="40"></textarea><span class="cnt" data-for="a-q1"></span></div>
+              <div class="fld" style="margin-bottom:16px"><label for="a-q2"><span class="q-no">2.</span>Egy feletted álló tiszt olyan parancsot ad, amely szerinted ellentmond a szabályzatnak. Mit teszel? <span class="req">*</span></label><textarea id="a-q2" maxlength="1500" data-min="40"></textarea><span class="cnt" data-for="a-q2"></span></div>
+              <div class="fld"><label for="a-q3"><span class="q-no">3.</span>Mit jelent számodra a jelmondat: „Mindenki felett, mindenkiért.”? <span class="req">*</span></label><textarea id="a-q3" maxlength="1500" data-min="30"></textarea><span class="cnt" data-for="a-q3"></span></div>
+            </fieldset>
+            <fieldset class="fs acc" id="accountFs">
+              <legend>Szolgálati azonosító és jelszó</legend>
+              <p class="hint">Ezzel lépsz majd be a portálra. Claude- vagy más fiók nem kell.</p>
+              <div class="grid2">
+                <div class="fld"><label for="a-user">Szolgálati azonosító <span class="req">*</span></label><input id="a-user" maxlength="20" autocomplete="username" placeholder="pl. kovacs.bence" spellcheck="false" autocapitalize="off"><small>3–20 karakter: betű, szám, pont, aláhúzás.</small></div>
+                <div></div>
+                <div class="fld"><label for="a-pw">Jelszó <span class="req">*</span></label><div class="pw-wrap"><input id="a-pw" type="password" maxlength="64" autocomplete="new-password"><button type="button" data-toggle="a-pw">Mutat</button></div><small>Legalább 6 karakter.</small></div>
+                <div class="fld"><label for="a-pw2">Jelszó újra <span class="req">*</span></label><div class="pw-wrap"><input id="a-pw2" type="password" maxlength="64" autocomplete="new-password"><button type="button" data-toggle="a-pw2">Mutat</button></div></div>
+              </div>
+            </fieldset>
+            <fieldset class="fs">
+              <legend>Nyilatkozat</legend>
+              <div style="display:flex;flex-direction:column;gap:12px">
+                <label class="chk"><input type="checkbox" id="a-c1"><span>Elolvastam és elfogadom a NEKEH szabályzatát. <span class="req">*</span></span></label>
+                <label class="chk"><input type="checkbox" id="a-c2"><span>Tudomásul veszem, hogy a belső rendszer tartalmát nem adhatom tovább. <span class="req">*</span></span></label>
+              </div>
+            </fieldset>
+            <div class="form-foot"><small>A piszkozatot (jelszó nélkül) ez a böngésző megjegyzi.</small><button class="btn btn-navy" type="submit" id="applySubmit">Kérelem beküldése</button></div>
+          </form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= BEJELENTKEZÉS ================= -->
+    <section class="view" id="v-belepes" hidden>
+      <div class="gate-wrap" id="loginBox"></div>
+    </section>
+
+    <!-- ================= BELSŐ RENDSZER ================= -->
+    <section class="view" id="v-belso" hidden style="height:100%">
+      <div class="gate-wrap" id="gate"></div>
+      <div class="console" id="console" hidden>
+        <aside class="chan-side" id="chanSide">
+          <div class="server-head"><img src="img/cimer.webp" alt="" width="40" height="40"><div><b>NEKEH</b><span>Belső kommunikációs rendszer</span></div></div>
+          <div class="alert-strip" id="alertStrip"></div>
+          <nav class="chan-list" id="chanList" aria-label="Csatornák"></nav>
+          <div class="voice-bar" id="voiceBar" hidden></div>
+          <div class="me-panel" id="mePanel"></div>
+        </aside>
+        <div class="chat">
+          <header class="chat-head">
+            <button class="icon-btn only-narrow" id="btnChans" aria-label="Csatornák"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+            <span class="hash" id="chIcon"></span><h2 id="chName">általános</h2><p id="chTopic"></p>
+            <button class="icon-btn" id="btnMembers" aria-label="Állomány megjelenítése" style="margin-left:auto"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.6-3.6 3.3-5.5 6.5-5.5s5.9 1.9 6.5 5.5"/><path d="M16 4.6a3.5 3.5 0 0 1 0 6.8M18 14.8c2 .7 3.2 2.4 3.5 5.2"/></svg></button>
+          </header>
+          <div class="voice-stage" id="voiceStage" hidden></div>
+          <div class="msgs" id="msgs" role="log" aria-label="Üzenetek"></div>
+          <div class="typing" id="typing" aria-live="polite"></div>
+          <form class="composer" id="composer">
+            <div class="cbar prio-bar" id="prioBar" hidden><span>Sürgősség:</span><button type="button" class="p1" data-p="1" aria-pressed="true">Rutin</button><button type="button" class="p2" data-p="2" aria-pressed="false">Sürgős</button><button type="button" class="p3" data-p="3" aria-pressed="false">Vészhelyzet</button></div>
+            <div class="cbar" id="ctxBar" hidden></div>
+            <div class="crow" id="crow"><textarea id="msgInput" rows="1" maxlength="1600" aria-label="Üzenet"></textarea><button class="send" type="submit" aria-label="Küldés"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 12l16-8-6 16-2.5-6.5z"/><path d="M11.5 13.5L20 4"/></svg></button></div>
+            <div class="ro-note" id="roNote" hidden></div>
+            <span class="char-cnt" id="charCnt" hidden></span>
+            <div class="pop mention-pop" id="mentionPop" hidden role="listbox" aria-label="Említés"></div>
+          </form>
+        </div>
+        <aside class="mem-side" id="memSide" aria-label="Állomány"></aside>
+      </div>
+    </section>
+
+    <!-- ================= VEZETÉS ================= -->
+    <section class="view" id="v-vezetes" hidden>
+      <div class="page-head"><div class="wrap"><img src="img/cimer.webp" alt="" width="72" height="72"><div><nav class="crumbs" aria-label="Morzsamenü"><a href="#fooldal">Főoldal</a><span>›</span><span>Vezetés</span></nav><h1>Főbiztosi Hivatal</h1><p>Kérelmek elbírálása, az állomány kezelése, rendeletek kihirdetése, riasztási fokozat és beállítások.</p></div></div></div>
+      <div class="wrap adm">
+        <div id="admDenied" hidden class="notice danger"><div><b>Nincs jogosultságod</b>Ezt az oldalt csak a Főbiztos érheti el. <a href="#belepes">Bejelentkezés</a></div></div>
+        <div id="admBody" hidden style="display:flex;flex-direction:column;gap:28px">
+          <div class="panel"><div class="ph"><h2>Riasztási fokozat</h2><span class="cnt">A főoldalon és a belső rendszerben azonnal megjelenik.</span></div><div class="pb"><div class="alert-seg" id="admAlert"></div></div></div>
+          <div class="panel"><div class="ph"><h2>Felvételi kérelmek</h2><span class="cnt" id="admAppsCnt"></span></div><div class="pb" id="admApps"></div></div>
+          <div class="panel"><div class="ph"><h2>Állomány</h2><span class="cnt" id="admRosterCnt"></span></div><div class="pb"><div class="tbl-wrap" id="admRoster"></div></div></div>
+          <div class="panel"><div class="ph"><h2>Rendelet kihirdetése</h2><span class="cnt" id="decNext"></span></div><div class="pb" style="display:flex;flex-direction:column;gap:16px">
+            <form id="decForm" style="display:flex;flex-direction:column;gap:14px">
+              <div class="fld"><label for="d-title">A rendelet tárgya</label><input id="d-title" maxlength="120" placeholder="pl. a fokozott készültség elrendeléséről"></div>
+              <div class="fld"><label for="d-body">Szöveg</label><textarea id="d-body" maxlength="5000" style="min-height:150px" placeholder="1. § …&#10;2. § …"></textarea></div>
+              <div style="display:flex;justify-content:flex-end"><button class="btn btn-navy" type="submit">Kihirdetés a Közlönyben</button></div>
+            </form>
+            <div id="decAdminList"></div>
+          </div></div>
+          <form class="panel" id="admSettings"><div class="ph"><h2>Közlemény, rendfokozatok, szabályzat</h2></div><div class="pb" style="display:flex;flex-direction:column;gap:18px">
+            <div class="fld"><label for="s-motd">Közlemény a főoldalon</label><textarea id="s-motd" maxlength="600" style="min-height:70px" placeholder="Üresen hagyva nem jelenik meg."></textarea></div>
+            <div class="fld"><span class="lab">Rendfokozatok elnevezése</span><div class="rank-names" id="rankNameInputs"></div></div>
+            <div class="fld"><label for="s-rules">Szabályzat</label><textarea id="s-rules" maxlength="4000" style="min-height:200px"></textarea><small>Soronként egy szabály. A belső rendszer #szabályzat csatornáján jelenik meg.</small></div>
+            <div style="display:flex;justify-content:flex-end"><button class="btn btn-navy" type="submit">Beállítások mentése</button></div>
+          </div></form>
+        </div>
+      </div>
+    </section>
+
+    <footer class="foot" id="foot">
+      <div class="wrap cols">
+        <div class="brandf"><img src="img/cimer.webp" alt="" width="52" height="52"><div><b>Nemzeti Egységes Közrendvédelmi és Ellátási Hatóság</b><span>„Mindenki felett, mindenkiért.”</span></div></div>
+        <div><b>Ügyintézés</b><a href="#jelentkezes">Felvételi kérelem</a><a href="#belepes">Bejelentkezés</a><a href="#belso">Belső rendszer</a></div>
+        <div><b>Tájékoztatás</b><a href="#kozlony">Hivatalos Közlöny</a><a href="#egysegek">Egységek és rendfokozatok</a><a href="#fooldal">A Hatóságról</a></div>
+      </div>
+      <div class="wrap legal"><span>© <span id="year">2026</span> NEKEH · Főbiztosi Hivatal</span><span>Roblox szerepjáték-frakció. A NEKEH kitalált szervezet, nem valós állami szerv.</span></div>
+    </footer>
+  </main>
+</div>
+
+<div class="scrim" id="scrim" hidden><div class="modal" role="dialog" aria-modal="true" aria-labelledby="modalTitle" id="modal"></div></div>
+<div class="pop react-pop" id="reactPop" hidden></div>
+<div class="toasts" id="toasts" aria-live="polite"></div>
+<div id="audioSink" hidden></div>
+
+<script>
+"use strict";
+/* =====================================================================
+   ÉLES HASZNÁLAT: másold ide a Firebase-projekted webes konfigurációját
+   (lásd TELEPITES.md). Amíg null, az oldal BEMUTATÓ MÓDBAN fut.
+   ===================================================================== */
+const FIREBASE_CONFIG = {
+  apiKey: "AIzaSyD3sNuj7hIs_ofjKAAApdNDUMFhxw5BwIE",
+  authDomain: "nekeh-ecb46.firebaseapp.com",
+  projectId: "nekeh-ecb46",
+  storageBucket: "nekeh-ecb46.firebasestorage.app",
+  messagingSenderId: "970068784192",
+  appId: "1:970068784192:web:85c59d4ac6eb955ad0dba5"
+};
+/* Példa:
+const FIREBASE_CONFIG = {
+  apiKey: "AIza...",
+  authDomain: "nekeh-portal.firebaseapp.com",
+  projectId: "nekeh-portal",
+  storageBucket: "nekeh-portal.appspot.com",
+  messagingSenderId: "1234567890",
+  appId: "1:1234567890:web:abcdef"
+};
+*/
+const LOGIN_DOMAIN = 'nekeh.example.com';   // a felhasználónevekből képzett belső e-mail-címek domainje
+const FB_VERSION = '10.12.2';
+const ICE_SERVERS = [{urls:['stun:stun.l.google.com:19302','stun:stun1.l.google.com:19302']}];
+
+/* ================= constants ================= */
+const RANKS = [
+  {id:'r0', name:'Újonc', level:10, board:null, desc:'Próbaidős állomány. Felvétel után minden új tag ezzel kezd.'},
+  {id:'r1', name:'Ügynök', level:20, board:'img/vallap-1.webp', desc:'Teljes jogú műveleti állomány, önálló szolgálatellátás.'},
+  {id:'r2', name:'Tiszt', level:30, board:'img/vallap-2.webp', desc:'Szolgálatparancsnoki feladatok, kisebb csoportok vezetése.'},
+  {id:'r3', name:'Főtiszt', level:40, board:'img/vallap-3.webp', desc:'Műveletek tervezése és irányítása, újoncok kiképzése.'},
+  {id:'r4', name:'Parancsnok', level:50, board:'img/vallap-4.webp', desc:'Egység vagy főosztály vezetője, a Vészhelyzeti Tanács tagja.'},
+  {id:'r5', name:'Főbiztos', level:60, board:'img/vallap-5.webp', desc:'A Hatóság vezetője; vészhelyzetben az ország második legmagasabb rangú tisztségviselője.'},
+];
+const RANK = Object.fromEntries(RANKS.map(r => [r.id, r]));
+const UNITS = [
+  {id:'mesterlovesz', name:'Mesterlövész Egység', short:'Mesterlövész', patch:'img/mesterlovesz.webp', band:'img/mesterlovesz-csik.webp', parent:'Közrendvédelmi Parancsnokság', desc:'Nagy távolságú precíziós támogatás, megfigyelés és felderítés a gyorsbeavatkozó műveletek során.'},
+  {id:'taktikai', name:'Taktikai és Fegyverspecifikus Alosztály', short:'Taktikai Alosztály', patch:'img/taktikai.webp', band:'img/taktikai-csik.webp', parent:'Közrendvédelmi Parancsnokság', desc:'Terrorelhárítás, épületbehatolás, speciális fegyverzet kezelése és harctéri egészségügyi támogatás.'},
+  {id:'ellatas', name:'Ellátás', short:'Ellátás', patch:'img/ellatas.webp', band:'img/ellatas-csik.webp', parent:'Személyellátási és Logisztikai Főosztály', desc:'Élelmiszer-, gyógyszer- és vízellátás, evakuáció, ideiglenes szállások és egészségügyi ellátóhelyek telepítése.'},
+];
+const UNIT = Object.fromEntries(UNITS.map(u => [u.id, u]));
+const CATS = [
+  {name:'Tájékoztatás', ch:[
+    {id:'kozlemenyek', name:'közlemények', topic:'Hivatalos közlemények. Írni Parancsnok vagy magasabb rendfokozattal lehet.', post:50, icon:'megaphone'},
+    {id:'szabalyzat', name:'szabályzat', topic:'A belső rendszer szabályai.', kind:'rules', icon:'book'},
+  ]},
+  {name:'Általános', ch:[
+    {id:'altalanos', name:'általános', topic:'Általános beszélgetés az állomány számára.'},
+    {id:'bemutatkozas', name:'bemutatkozás', topic:'Mutatkozz be az állománynak.'},
+    {id:'szabadido', name:'szabadidő', topic:'Szolgálaton kívüli beszélgetés.'},
+  ]},
+  {name:'Műveletek', ch:[
+    {id:'bevetes', name:'bevetés-irányítás', topic:'Riasztások és bevetések koordinálása. Jelöld a sürgősséget.', prio:true, icon:'siren'},
+    {id:'jelentesek', name:'jelentések', topic:'Szolgálati és bevetési jelentések.'},
+    {id:'logisztika', name:'ellátás-logisztika', topic:'Készletek, szállítás, evakuáció.'},
+  ]},
+  {name:'Egységek', ch:[
+    {id:'u-mesterlovesz', name:'mesterlövész', unit:'mesterlovesz', topic:'A Mesterlövész Egység csatornája.'},
+    {id:'u-taktikai', name:'taktikai-alosztály', unit:'taktikai', topic:'A Taktikai és Fegyverspecifikus Alosztály csatornája.'},
+    {id:'u-ellatas', name:'ellátás', unit:'ellatas', topic:'Az Ellátás egység csatornája.'},
+  ]},
+  {name:'Vezetés', ch:[
+    {id:'parancsnoki', name:'parancsnoki-törzs', view:50, topic:'A parancsnokok és a Főbiztos egyeztetése.'},
+    {id:'tanacs', name:'vészhelyzeti-tanács', view:50, topic:'Stratégiai Tervezési és Vészhelyzeti Tanács.'},
+    {id:'titkos', name:'titkos-műveletek', view:50, topic:'Titkos Műveletek Osztálya. Minősített tartalom.'},
+  ]},
+];
+const CHANNELS = CATS.flatMap(c => c.ch);
+const CH = Object.fromEntries(CHANNELS.map(c => [c.id, c]));
+const VOICE = [
+  {id:'v-eligazito', name:'Eligazító', topic:'Napi eligazítás és bejelentések élőszóban.'},
+  {id:'v-radio', name:'Bevetési rádió', topic:'Élő kommunikáció bevetés közben.'},
+  {id:'v-piheno', name:'Pihenő', topic:'Kötetlen beszélgetés szolgálaton kívül.'},
+  {id:'v-vezetoi', name:'Vezetői tárgyaló', view:50, topic:'Parancsnok vagy magasabb rendfokozattal.'},
+];
+const VCH = Object.fromEntries(VOICE.map(v => [v.id, v]));
+const VOICE_MAX = 8;
+const ALERTS = {
+  1:{roman:'I.', name:'Normál működés', desc:'A Hatóság szokásos rend szerint látja el feladatait.', tone:'ok'},
+  2:{roman:'II.', name:'Fokozott készültség', desc:'Megerősített járőrözés, az egységek készenlétben.', tone:'warn'},
+  3:{roman:'III.', name:'Vészhelyzet', desc:'Vészhelyzeti jogalkotás, az érintett szervek alárendelése.', tone:'danger'},
+  4:{roman:'IV.', name:'Krízisirányítás', desc:'A NEKEH átvette az ország teljes irányítását.', tone:'crisis'},
+};
+const DEFAULT_RULES = [
+  'A szolgálati lánc tiszteletben tartása kötelező: a parancsot a közvetlen feletteseden keresztül kapod, és neki jelentesz.',
+  'A belső rendszerben kizárólag a szolgálati neveden szerepelhetsz.',
+  'A belső csatornák tartalma bizalmas, más frakcióknak nem adható tovább.',
+  'Sértő, bántó vagy kirekesztő viselkedés nem megengedett.',
+  'A #bevetés-irányítás csatornán csak műveleti üzenet szerepelhet, sürgősségi jelöléssel.',
+  'A hangcsatornákban a vezetői utasításnak elsőbbsége van; a rádióban csak a szükséges forgalmazás folyhat.',
+  'Rendfokozatot és egységbeosztást kizárólag a Főbiztos módosíthat.',
+].join('\n');
+const DEFAULT_CONFIG = {alert:1, motd:'', rules:DEFAULT_RULES, rankNames:{}};
+const REACTS = [['like','👍'],['ok','✅'],['salute','🫡'],['alert','❗'],['eyes','👀'],['fire','🔥']];
+const MAX_LEN = 1500;
+const ROMAN = ['I','II','III','IV','V','VI','VII','VIII','IX','X','XI','XII'];
+const AV_COLORS = ['#2B4C8C','#1F6E6A','#7A4E1D','#5B3D8A','#8A2F3C','#3D6B2E','#2F5F7A','#6B4A2B'];
+
+/* ================= icons ================= */
+const ICON = {
+  hash:'<path d="M5 9h14M4 15h14M10 3L8 21M16 3l-2 18"/>',
+  lock:'<rect x="5" y="11" width="14" height="9" rx="2"/><path d="M8 11V8a4 4 0 0 1 8 0v3"/>',
+  megaphone:'<path d="M3 11v2a1 1 0 0 0 1 1h3l6 4V6L7 10H4a1 1 0 0 0-1 1z"/><path d="M17 9a4 4 0 0 1 0 6"/>',
+  book:'<path d="M5 4h10a3 3 0 0 1 3 3v13H8a3 3 0 0 1-3-3z"/><path d="M5 17a3 3 0 0 1 3-3h10"/>',
+  siren:'<path d="M7 18v-6a5 5 0 0 1 10 0v6"/><path d="M5 21h14M12 3v2M4.2 6.2l1.4 1.4M19.8 6.2l-1.4 1.4"/>',
+  reply:'<path d="M9 14L4 9l5-5"/><path d="M4 9h10a6 6 0 0 1 6 6v5"/>',
+  smile:'<circle cx="12" cy="12" r="9"/><path d="M8.5 14.5a4.5 4.5 0 0 0 7 0M9 9.5h.01M15 9.5h.01"/>',
+  edit:'<path d="M4 20h4L19 9l-4-4L4 16z"/><path d="M13.5 6.5l4 4"/>',
+  trash:'<path d="M4 7h16M10 11v6M14 11v6M6 7l1 13h10l1-13M9 7V4h6v3"/>',
+  x:'<path d="M6 6l12 12M18 6L6 18"/>',
+  gear:'<circle cx="12" cy="12" r="3"/><path d="M12 2v3M12 19v3M4.9 4.9l2.1 2.1M17 17l2.1 2.1M2 12h3M19 12h3M4.9 19.1L7 17M17 7l2.1-2.1"/>',
+  exit:'<path d="M15 4h3a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2h-3"/><path d="M10 17l-5-5 5-5M5 12h11"/>',
+  speaker:'<path d="M4 9v6h4l5 4V5L8 9z"/><path d="M16 9a4 4 0 0 1 0 6M18.5 6.5a8 8 0 0 1 0 11"/>',
+  mic:'<rect x="9" y="3" width="6" height="11" rx="3"/><path d="M5 11a7 7 0 0 0 14 0M12 18v3"/>',
+  micOff:'<path d="M15 10V6a3 3 0 0 0-5.7-1.3M9 9v2a3 3 0 0 0 4.6 2.5M5 11a7 7 0 0 0 11.2 5.6M19 11a7 7 0 0 1-.6 2.8M12 18v3M3 3l18 18"/>',
+  headOff:'<path d="M4 15v-3a8 8 0 0 1 13.7-5.6M20 12v3"/><path d="M4 15h3v5H5a1 1 0 0 1-1-1zM20 15h-3v5h2a1 1 0 0 0 1-1z"/><path d="M3 3l18 18"/>',
+  head:'<path d="M4 15v-3a8 8 0 0 1 16 0v3"/><path d="M4 15h3v5H5a1 1 0 0 1-1-1zM20 15h-3v5h2a1 1 0 0 0 1-1z"/>',
+  phoneOff:'<path d="M3 10.5c5-4.7 13-4.7 18 0l-2.2 2.6-3.3-1.6V9.2a11 11 0 0 0-5 0v2.3l-3.3 1.6z"/>',
+  file:'<path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8z"/><path d="M14 3v5h5M9 13h6M9 17h6"/>',
+  key:'<circle cx="8" cy="15" r="4"/><path d="M10.8 12.2L20 3M16 7l3 3M14 9l2 2"/>',
+  radio:'<rect x="3" y="8" width="18" height="12" rx="2"/><path d="M7 8l10-5M7 14h.01M11 14h6M11 17h6"/>',
+  scroll:'<path d="M8 3h11a2 2 0 0 1 2 2v2h-4"/><path d="M17 7v12a2 2 0 0 1-2 2H6a2 2 0 0 1-2-2v-2h10v2a2 2 0 0 0 2 2"/><path d="M8 3a2 2 0 0 0-2 2v12M10 9h4M10 13h4"/>',
+  id:'<rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2.5"/><path d="M5.5 16.5c.6-1.8 2-2.8 3.5-2.8s2.9 1 3.5 2.8M15 10h3M15 14h3"/>',
+  user:'<circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/>',
+  shield:'<path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/>',
+};
+function icon(name, size=18){ return `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICON[name]||''}</svg>`; }
+
+/* ================= helpers ================= */
+const $ = (s, r=document) => r.querySelector(s);
+const $$ = (s, r=document) => [...r.querySelectorAll(s)];
+function h(tag, props, ...kids){
+  const el = document.createElement(tag);
+  if (props) for (const [k,v] of Object.entries(props)) {
+    if (v == null || v === false) continue;
+    if (k === 'class') el.className = v;
+    else if (k === 'text') el.textContent = v;
+    else if (k === 'html') el.innerHTML = v;
+    else if (k.startsWith('on') && typeof v === 'function') el.addEventListener(k.slice(2), v);
+    else if (k === 'style') el.style.cssText = v;
+    else el.setAttribute(k, v === true ? '' : v);
+  }
+  for (const kid of kids.flat()) { if (kid == null || kid === false) continue; el.append(kid.nodeType ? kid : document.createTextNode(String(kid))); }
+  return el;
+}
+const store = {
+  get(k, d){ try { const v = localStorage.getItem('nekeh:'+k); return v == null ? d : JSON.parse(v); } catch { return d; } },
+  set(k, v){ try { localStorage.setItem('nekeh:'+k, JSON.stringify(v)); } catch {} },
+  del(k){ try { localStorage.removeItem('nekeh:'+k); } catch {} },
+};
+const clone = o => JSON.parse(JSON.stringify(o));
+const rid = () => Math.random().toString(36).slice(2, 10) + Date.now().toString(36).slice(-4);
+const esc = s => String(s).replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const escRe = s => s.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+const fmtDate = ts => new Date(ts).toLocaleDateString('hu-HU', {year:'numeric', month:'long', day:'numeric'});
+const fmtTime = ts => new Date(ts).toLocaleTimeString('hu-HU', {hour:'2-digit', minute:'2-digit'});
+const dayStart = x => new Date(x.getFullYear(), x.getMonth(), x.getDate()).getTime();
+function fmtStamp(ts){
+  const d = new Date(ts), diff = Math.round((dayStart(new Date()) - dayStart(d)) / 864e5);
+  if (diff === 0) return 'ma ' + fmtTime(ts);
+  if (diff === 1) return 'tegnap ' + fmtTime(ts);
+  return d.toLocaleDateString('hu-HU', {year:'numeric', month:'2-digit', day:'2-digit'}) + ' ' + fmtTime(ts);
+}
+function dayLabel(ts){ const diff = Math.round((dayStart(new Date()) - dayStart(new Date(ts))) / 864e5); return diff === 0 ? 'Ma' : diff === 1 ? 'Tegnap' : fmtDate(ts); }
+function decreeNo(d){ const t = new Date(d.date); return `${d.no}/${d.year}. (${ROMAN[t.getMonth()]}. ${t.getDate()}.) NEKEH rendelet`; }
+function toast(msg){ const t = h('div', {class:'toast', role:'status', text:msg}); $('#toasts').append(t); setTimeout(() => t.remove(), 4500); }
+const initials = n => (String(n||'?').trim().split(/\s+/).map(w => w[0]).join('').slice(0,2) || '?').toUpperCase();
+function avColor(uid){ let x = 0; for (const c of String(uid)) x = (x * 31 + c.charCodeAt(0)) >>> 0; return AV_COLORS[x % AV_COLORS.length]; }
+function errText(e){
+  const c = (e && e.code) || '';
+  const map = {
+    'auth/email-already-in-use':'Ez a szolgálati azonosító már foglalt. Válassz másikat.',
+    'auth/invalid-credential':'Hibás szolgálati azonosító vagy jelszó.', 'auth/invalid-login-credentials':'Hibás szolgálati azonosító vagy jelszó.',
+    'auth/wrong-password':'Hibás szolgálati azonosító vagy jelszó.', 'auth/user-not-found':'Hibás szolgálati azonosító vagy jelszó.',
+    'auth/weak-password':'A jelszó legalább 6 karakter legyen.', 'auth/too-many-requests':'Túl sok próbálkozás. Várj néhány percet.',
+    'auth/network-request-failed':'Nincs kapcsolat a szerverrel. Ellenőrizd az internetet.', 'auth/invalid-email':'Érvénytelen szolgálati azonosító.',
+    'auth/operation-not-allowed':'A Firebase-ben nincs bekapcsolva az e-mail/jelszavas belépés (lásd TELEPITES.md, 2. lépés).',
+    'auth/requires-recent-login':'Biztonsági okból jelentkezz be újra, majd próbáld meg ismét.',
+    'permission-denied':'Ehhez nincs jogosultságod.', 'unavailable':'A szerver most nem érhető el. Próbáld újra.',
+    'not-found':'A keresett adat nem található.', 'resource-exhausted':'Elérted a napi ingyenes keretet. Próbáld újra később.',
+  };
+  return map[c] || ('Hiba történt' + (e && e.message ? ': ' + e.message : '.'));
+}
+async function sha256(s){
+  try { const b = await crypto.subtle.digest('SHA-256', new TextEncoder().encode(s)); return [...new Uint8Array(b)].map(x => x.toString(16).padStart(2,'0')).join(''); }
+  catch { let x = 5381; for (const c of s) x = ((x << 5) + x + c.charCodeAt(0)) >>> 0; return 'h' + x.toString(16); }
+}
+function loadScript(src){ return new Promise((res, rej) => { const s = document.createElement('script'); s.src = src; s.onload = res; s.onerror = () => rej(new Error('Nem tölthető be: ' + src)); document.head.append(s); }); }
+const USER_RE = /^[a-zA-Z0-9_.]{3,20}$/;
+
+/* ================= backends ================= */
+function FirebaseBackend(cfg){
+  firebase.initializeApp(cfg);
+  const auth = firebase.auth(), fs = firebase.firestore(), FV = firebase.firestore.FieldValue;
+  const toEmail = u => u.trim().toLowerCase() + '@' + LOGIN_DOMAIN;
+  const fromEmail = e => String(e || '').split('@')[0];
+  const out = s => s.exists ? {id:s.id, ...s.data()} : null;
+  return {
+    mode:'live',
+    onAuth(cb){ return auth.onAuthStateChanged(u => cb(u ? {uid:u.uid, username:fromEmail(u.email)} : null)); },
+    async register(u, pw){ const c = await auth.createUserWithEmailAndPassword(toEmail(u), pw); return {uid:c.user.uid, username:fromEmail(c.user.email)}; },
+    async login(u, pw){ const c = await auth.signInWithEmailAndPassword(toEmail(u), pw); return {uid:c.user.uid, username:fromEmail(c.user.email)}; },
+    logout(){ return auth.signOut(); },
+    async changePassword(oldPw, newPw){ const u = auth.currentUser; await u.reauthenticateWithCredential(firebase.auth.EmailAuthProvider.credential(u.email, oldPw)); await u.updatePassword(newPw); },
+    watchDoc(path, cb, err){ return fs.doc(path).onSnapshot(s => cb(out(s)), err); },
+    watchCol(path, o, cb, err){
+      let q = fs.collection(path);
+      if (o.where) q = q.where(o.where[0], o.where[1], o.where[2]);
+      if (o.order) q = q.orderBy(o.order, o.dir || 'asc');
+      if (o.limit) q = q.limit(o.limit);
+      return q.onSnapshot(qs => cb(qs.docs.map(d => ({id:d.id, ...d.data()}))), err);
+    },
+    set(path, data, merge){ return fs.doc(path).set(data, merge ? {merge:true} : {}); },
+    update(path, data){ return fs.doc(path).update(data); },
+    async add(col, data){ const r = await fs.collection(col).add(data); return r.id; },
+    del(path){ return fs.doc(path).delete(); },
+    rx(path, key, uid, on){ return fs.doc(path).update({['rx.' + key]: on ? FV.arrayUnion(uid) : FV.arrayRemove(uid)}); },
+  };
+}
+function LocalBackend(){
+  const DBK = 'nekeh-demo:db', ACK = 'nekeh-demo:accounts', SEK = 'nekeh-demo:session';
+  const read = (k, d, ss) => { try { const v = (ss ? sessionStorage : localStorage).getItem(k); return v ? JSON.parse(v) : d; } catch { return d; } };
+  const write = (k, v, ss) => { try { (ss ? sessionStorage : localStorage).setItem(k, JSON.stringify(v)); } catch {} };
+  let db = read(DBK, {});
+  let mem = null; // session fallback if storage is blocked
+  const subs = new Set(), authSubs = new Set();
+  let pending = false;
+  const flush = () => { pending = false; for (const f of [...subs]) { try { f(); } catch (e) { console.error(e); } } };
+  const notify = () => { if (!pending) { pending = true; setTimeout(flush, 0); } };
+  const persist = () => { write(DBK, db); notify(); };
+  const session = () => read(SEK, null, true) || mem;
+  const setSession = s => { mem = s; try { if (s) sessionStorage.setItem(SEK, JSON.stringify(s)); else sessionStorage.removeItem(SEK); } catch {} for (const f of authSubs) f(s); };
+  window.addEventListener('storage', e => { if (e.key === DBK) { db = read(DBK, {}); notify(); } });
+  const docOut = p => db[p] ? {id:p.split('/').pop(), ...clone(db[p])} : null;
+  const colOut = (p, o) => {
+    const pre = p + '/', depth = p.split('/').length + 1;
+    let list = Object.keys(db).filter(k => k.startsWith(pre) && k.split('/').length === depth).map(k => ({id:k.slice(pre.length), ...clone(db[k])}));
+    if (o.where) list = list.filter(d => d[o.where[0]] === o.where[2]);
+    if (o.order) { list.sort((a, b) => (a[o.order] ?? 0) - (b[o.order] ?? 0)); if (o.dir === 'desc') list.reverse(); }
+    if (o.limit) list = list.slice(0, o.limit);
+    return list;
+  };
+  const fail = (code, msg) => { const e = new Error(msg || code); e.code = code; return e; };
+  const acc = () => read(ACK, {});
+  return {
+    mode:'demo',
+    onAuth(cb){ authSubs.add(cb); setTimeout(() => cb(session()), 0); return () => authSubs.delete(cb); },
+    async register(u, pw){
+      const a = acc(), k = u.trim().toLowerCase();
+      if (a[k]) throw fail('auth/email-already-in-use');
+      if (pw.length < 6) throw fail('auth/weak-password');
+      const uid = 'demo_' + rid(); a[k] = {uid, username:u.trim(), hash:await sha256(k + ':' + pw)}; write(ACK, a);
+      const s = {uid, username:u.trim()}; setSession(s); return s;
+    },
+    async login(u, pw){
+      const a = acc(), k = u.trim().toLowerCase(), x = a[k];
+      if (!x || x.hash !== await sha256(k + ':' + pw)) throw fail('auth/invalid-credential');
+      const s = {uid:x.uid, username:x.username}; setSession(s); return s;
+    },
+    async logout(){ setSession(null); },
+    async changePassword(oldPw, newPw){
+      const s = session(); if (!s) throw fail('permission-denied');
+      const a = acc(), k = s.username.toLowerCase();
+      if (!a[k] || a[k].hash !== await sha256(k + ':' + oldPw)) throw fail('auth/invalid-credential');
+      if (newPw.length < 6) throw fail('auth/weak-password');
+      a[k].hash = await sha256(k + ':' + newPw); write(ACK, a);
+    },
+    watchDoc(p, cb){ const f = () => cb(docOut(p)); subs.add(f); setTimeout(f, 0); return () => subs.delete(f); },
+    watchCol(p, o, cb){ const f = () => cb(colOut(p, o || {})); subs.add(f); setTimeout(f, 0); return () => subs.delete(f); },
+    async set(p, data, merge){ db[p] = merge ? {...(db[p] || {}), ...clone(data)} : clone(data); persist(); },
+    async update(p, data){ if (!db[p]) throw fail('not-found'); db[p] = {...db[p], ...clone(data)}; persist(); },
+    async add(col, data){ const id = rid(); db[col + '/' + id] = clone(data); persist(); return id; },
+    async del(p){ delete db[p]; persist(); },
+    async rx(p, key, uid, on){ if (!db[p]) throw fail('not-found'); const d = db[p]; d.rx = d.rx || {}; const s = new Set(d.rx[key] || []); on ? s.add(uid) : s.delete(uid); d.rx[key] = [...s]; persist(); },
+    async seedAccount(u, pw, uid){ const a = acc(), k = u.toLowerCase(); a[k] = {uid, username:u, hash:await sha256(k + ':' + pw)}; write(ACK, a); },
+    seed(entries){ Object.assign(db, clone(entries)); persist(); },
+    reset(){ db = {}; write(DBK, db); try { localStorage.removeItem(ACK); } catch {} setSession(null); notify(); },
+  };
+}
+
+/* ================= state ================= */
+const S = {
+  B:null, mode:null, ready:false, bootError:null,
+  auth:undefined, ownerUid:undefined, config:{...DEFAULT_CONFIG}, users:{}, roles:{}, myApp:undefined, apps:{}, decrees:[], presence:{},
+  heads:{}, msgs:{}, voiceMembers:{},
+  loaded:{config:false, users:false, roles:false, apps:false, decrees:false, msgs:{}}, msgErr:{},
+  route:'fooldal', ch:store.get('ch','altalanos'), view:'text', vch:null, prio:1, reply:null, editing:null,
+  showMembers:true, showMembersNarrow:false, reapply:false, prefUnit:null,
+};
+const SUBS = new Map();
+
+/* ================= identity & permissions ================= */
+const me = () => (S.auth && S.auth.uid) || null;
+const isOwnerUid = uid => !!uid && uid === S.ownerUid;
+function rankOf(uid){
+  if (!uid) return null;
+  const r = S.roles[uid];
+  if (r && RANK[r.rank]) return RANK[r.rank];
+  if (isOwnerUid(uid)) return RANK.r5;
+  return null;
+}
+const isMember = uid => !!rankOf(uid);
+const levelOf = uid => rankOf(uid)?.level ?? 0;
+const isLeader = uid => isOwnerUid(uid) || levelOf(uid) >= 50;
+const unitOf = uid => (S.roles[uid] && S.roles[uid].unit) || null;
+const rankName = r => (r && (S.config.rankNames?.[r.id] || r.name)) || '';
+function nameOf(uid){ const u = S.users[uid]; return (u && (u.rpName || u.username)) || (uid === me() && S.auth ? S.auth.username : 'Ismeretlen'); }
+function rankColor(uid){ const r = rankOf(uid); return r ? `var(--rk${r.id.slice(1)})` : 'var(--ink-2)'; }
+function memberIds(){ const ids = new Set(Object.keys(S.roles).filter(id => RANK[S.roles[id]?.rank])); if (S.ownerUid) ids.add(S.ownerUid); return [...ids]; }
+function canViewCh(uid, ch){
+  if (!isMember(uid) || !ch) return false;
+  if (ch.view && !isLeader(uid)) return false;
+  if (ch.unit && unitOf(uid) !== ch.unit && !isLeader(uid)) return false;
+  return true;
+}
+function canPostCh(uid, ch){ return canViewCh(uid, ch) && ch.kind !== 'rules' && !(ch.post && !isLeader(uid)); }
+const canVoice = (uid, v) => isMember(uid) && !!v && !(v.view && !isLeader(uid));
+const visibleChannels = () => CHANNELS.filter(c => canViewCh(me(), c));
+const visibleVoice = () => VOICE.filter(v => canVoice(me(), v));
+const isOnline = uid => Date.now() - (S.presence[uid]?.ts || 0) < 210e3;
+function curCh(){ let ch = CH[S.ch]; if (!ch || !canViewCh(me(), ch)) { ch = CH.altalanos; S.ch = 'altalanos'; } return ch; }
+function access(){
+  if (!S.ready) return 'loading';
+  if (!S.auth) return 'out';
+  if (S.ownerUid === undefined || !S.loaded.roles || !S.loaded.users) return 'loading';
+  if (isMember(me())) return S.users[me()] ? 'member' : 'member-noprofile';
+  if (S.myApp === undefined) return 'loading';
+  if (S.myApp) return 'applicant';
+  return 'guest';
+}
+
+/* ================= avatars ================= */
+function avatarEl(uid, cls='av'){ const s = h('span', {class:cls, text:initials(nameOf(uid)), 'aria-hidden':'true'}); s.style.background = avColor(uid); return s; }
+
+/* ================= subscriptions ================= */
+function dbErr(key){ return e => { console.warn('[NEKEH]', key, e && (e.code || e.message)); if (key.startsWith('msgs:')) { S.msgErr[key.split(':')[1].split('@')[0]] = true; scheduleRender(); } }; }
+function syncSubs(){
+  if (!S.B) return;
+  const W = new Map(), uid = me(), B = S.B;
+  W.set('owner', () => B.watchDoc('meta/owner', d => { S.ownerUid = d ? d.uid : null; changed(); }, dbErr('owner')));
+  W.set('config', () => B.watchDoc('config/main', d => { S.config = {...DEFAULT_CONFIG, ...(d || {})}; S.loaded.config = true; changed(); }, dbErr('config')));
+  W.set('decrees', () => B.watchCol('decrees', {order:'date', dir:'desc', limit:100}, l => { S.decrees = l; S.loaded.decrees = true; changed(); }, dbErr('decrees')));
+  if (uid) {
+    W.set('users@' + uid, () => B.watchCol('users', {}, l => { S.users = Object.fromEntries(l.map(d => [d.id, d])); S.loaded.users = true; changed(); }, dbErr('users')));
+    W.set('roles@' + uid, () => B.watchCol('roles', {}, l => { S.roles = Object.fromEntries(l.map(d => [d.id, d])); S.loaded.roles = true; changed(); }, dbErr('roles')));
+    W.set('myapp@' + uid, () => B.watchDoc('applications/' + uid, d => { S.myApp = d; changed(); }, e => { dbErr('myapp')(e); S.myApp = null; changed(); }));
+    if (S.ownerUid === uid) W.set('apps@' + uid, () => B.watchCol('applications', {}, l => { S.apps = Object.fromEntries(l.map(d => [d.id, d])); S.loaded.apps = true; changed(); }, dbErr('apps')));
+    if (isMember(uid)) {
+      W.set('presence@' + uid, () => B.watchCol('presence', {}, l => { S.presence = Object.fromEntries(l.map(d => [d.id, d])); changed(); }, dbErr('presence')));
+      for (const c of visibleChannels()) if (c.kind !== 'rules') W.set(`head:${c.id}@${uid}`, () => B.watchCol(`channels/${c.id}/messages`, {order:'ts', dir:'desc', limit:1}, l => { S.heads[c.id] = l[0] || null; changed(); }, dbErr('head:' + c.id)));
+      const ch = curCh();
+      if (ch.kind !== 'rules') W.set(`msgs:${ch.id}@${uid}`, () => B.watchCol(`channels/${ch.id}/messages`, {order:'ts', dir:'desc', limit:80}, l => { S.msgs[ch.id] = l.slice().reverse(); S.loaded.msgs[ch.id] = true; S.msgErr[ch.id] = false; changed(); }, dbErr(`msgs:${ch.id}@${uid}`)));
+      for (const v of visibleVoice()) W.set(`vm:${v.id}@${uid}`, () => B.watchCol(`voice/${v.id}/members`, {}, l => { S.voiceMembers[v.id] = l; changed(); voiceSync(); }, dbErr('vm:' + v.id)));
+    }
+  }
+  for (const [k, un] of SUBS) if (!W.has(k)) { try { un && un(); } catch {} SUBS.delete(k); }
+  for (const [k, fn] of W) if (!SUBS.has(k)) { try { SUBS.set(k, fn()); } catch (e) { console.warn(e); } }
+}
+let rafPending = false;
+function changed(){ scheduleRender(true); }
+function scheduleRender(withSubs){
+  if (withSubs) S._needSubs = true;
+  if (rafPending) return;
+  rafPending = true;
+  requestAnimationFrame(() => { rafPending = false; if (S._needSubs) { S._needSubs = false; syncSubs(); } renderAll(); });
+}
+
+/* ================= routing ================= */
+const ROUTES = ['fooldal','egysegek','kozlony','jelentkezes','belepes','belso','vezetes'];
+function route(){
+  let r = location.hash.slice(1);
+  if (!ROUTES.includes(r)) r = 'fooldal';
+  S.route = r;
+  $$('.view').forEach(v => v.hidden = v.id !== 'v-' + r);
+  $$('#nav a').forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + r));
+  $('#nav').classList.remove('open'); $('#menuBtn').setAttribute('aria-expanded','false');
+  closeAcctMenu();
+  $('#main').scrollTop = 0;
+  if (r === 'belso') S.forceBottom = true;
+  renderAll();
+  heartbeat();
+}
+
+/* ================= render: chrome ================= */
+function renderAll(){
+  renderChrome(); renderHome();
+  if (S.route === 'egysegek') renderUnitsPage();
+  if (S.route === 'kozlony') renderKozlony();
+  if (S.route === 'jelentkezes') renderApply();
+  if (S.route === 'belepes') renderLogin();
+  if (S.route === 'belso') renderInternal();
+  if (S.route === 'vezetes') renderAdmin();
+}
+function renderChrome(){
+  $('#demoStrip').hidden = S.mode !== 'demo';
+  $('#navAdmin').hidden = !(me() && isOwnerUid(me()));
+  const inApp = S.route === 'belso' && access() === 'member';
+  $('#main').classList.toggle('is-app', inApp);
+  $('#foot').hidden = S.route === 'belso' || S.route === 'belepes';
+  const btn = $('#acctBtn');
+  const key = JSON.stringify([me(), S.auth && nameOf(me()), access(), rankName(rankOf(me()))]);
+  if (btn.dataset.k === key) return;
+  btn.dataset.k = key; btn.replaceChildren();
+  if (!S.auth) { btn.className = 'acct out'; btn.textContent = S.ready ? 'Bejelentkezés' : '…'; return; }
+  btn.className = 'acct';
+  const st = access();
+  const sub = st === 'member' || st === 'member-noprofile' ? rankName(rankOf(me())) : st === 'applicant' ? 'Jelentkező' : st === 'loading' ? ' ' : 'Vendég';
+  btn.append(avatarEl(me(), 'av'), h('span', {class:'t'}, h('b', {text:nameOf(me())}), h('span', {text:sub})));
+  btn.setAttribute('aria-label', 'Fiók: ' + nameOf(me()));
+}
+function openAcctMenu(){
+  if (!S.auth) { location.hash = 'belepes'; return; }
+  const m = $('#acctMenu'); m.replaceChildren();
+  const st = access();
+  m.append(h('div', {class:'hd'}, h('b', {text:nameOf(me())}), h('span', {text:'Azonosító: ' + (S.users[me()]?.username || S.auth.username)})));
+  const item = (ic, label, fn) => h('button', {type:'button', role:'menuitem', html:icon(ic, 16), onclick:() => { closeAcctMenu(); fn(); }}, label);
+  if (S.users[me()]) m.append(item('id', 'Szolgálati igazolványom', () => openIdCard(me())));
+  if (S.users[me()]) m.append(item('user', 'Profil és jelszó', openProfileEdit));
+  if (st === 'member') m.append(item('radio', 'Belső rendszer', () => { location.hash = 'belso'; }));
+  else m.append(item('file', 'Kérelmem állapota', () => { location.hash = 'jelentkezes'; }));
+  if (isOwnerUid(me())) m.append(item('shield', 'Vezetés', () => { location.hash = 'vezetes'; }));
+  m.append(item('exit', 'Kijelentkezés', doLogout));
+  m.hidden = false; $('#acctBtn').setAttribute('aria-expanded', 'true');
+  setTimeout(() => document.addEventListener('click', outsideAcct), 0);
+}
+function outsideAcct(e){ if (!$('.acct-wrap').contains(e.target)) closeAcctMenu(); }
+function closeAcctMenu(){ $('#acctMenu').hidden = true; $('#acctBtn').setAttribute('aria-expanded', 'false'); document.removeEventListener('click', outsideAcct); }
+async function doLogout(){ await leaveVoice(); try { if (me()) await S.B.set('presence/' + me(), {ts:0, ch:null, typing:null}, true); } catch {} await S.B.logout(); toast('Kijelentkeztél.'); location.hash = 'fooldal'; }
+
+/* ================= render: home ================= */
+function renderHome(){
+  const lvl = S.config.alert || 1, a = ALERTS[lvl] || ALERTS[1];
+  $('#homeAlertLvl').replaceChildren(h('small', {text:a.roman}), a.name);
+  $('#homeAlertDesc').textContent = a.desc;
+  $$('#homeScale i').forEach((i, k) => { i.className = k + 1 <= lvl ? 'on ' + a.tone : ''; });
+  $('#statMembers').textContent = S.loaded.roles ? memberIds().length + ' fő' : '–';
+  $('#statOnline').textContent = Object.keys(S.presence).length ? Object.keys(S.presence).filter(isOnline).length + ' fő' : '–';
+  const motd = (S.config.motd || '').trim(); $('#motd').hidden = !motd; $('#motdText').textContent = motd;
+  if (S.route !== 'fooldal') return;
+  const box = $('#homeDecrees'); box.replaceChildren();
+  const list = S.decrees.slice(0, 3);
+  if (!list.length) box.append(h('p', {class:'empty', style:'padding:14px 0', text:S.loaded.decrees ? 'Még nem jelent meg rendelet a Közlönyben.' : 'Betöltés…'}));
+  for (const d of list) box.append(h('a', {class:'dmini', href:'#kozlony'}, h('span', {class:'no', text:decreeNo(d)}), h('b', {text:d.title}), h('time', {text:fmtDate(d.date)})));
+}
+
+/* ================= render: units & ranks ================= */
+let unitsBuilt = false;
+function buildStatic(){
+  if (unitsBuilt) return; unitsBuilt = true;
+  const wrap = $('#unitCards');
+  for (const u of UNITS) wrap.append(h('article', {class:'unit'},
+    h('div', {class:'patch'}, h('img', {src:u.patch, alt:u.name + ' felvarró', loading:'lazy'})),
+    h('div', {class:'bd'}, h('span', {class:'par', text:u.parent}), h('h3', {text:u.name}), h('p', {text:u.desc}),
+      h('div', {class:'ft'}, h('span', {class:'u-count', 'data-unit':u.id}), h('button', {class:'btn btn-line btn-sm', type:'button', onclick:() => { S.prefUnit = u.id; location.hash = 'jelentkezes'; }, text:'Jelentkezés ide'})))));
+  const pick = $('#unitPick');
+  for (const u of UNITS) pick.append(h('input', {type:'radio', name:'unit', id:'u-' + u.id, value:u.id}), h('label', {for:'u-' + u.id}, h('span', {class:'pi'}, h('img', {src:u.patch, alt:''})), h('span', {text:u.name})));
+  $$('.svc .ic[data-icon]').forEach(el => el.innerHTML = icon(el.dataset.icon, 22));
+}
+function renderUnitsPage(){
+  const counts = {}; for (const id of memberIds()) { const u = unitOf(id); if (u) counts[u] = (counts[u] || 0) + 1; }
+  $$('.u-count').forEach(el => { el.textContent = S.loaded.roles ? `${counts[el.dataset.unit] || 0} fő az állományban` : ''; });
+  const lad = $('#ladder'); lad.replaceChildren();
+  RANKS.forEach((r, i) => lad.append(h('div', {class:'rung'},
+    h('div', {class:'board'}, r.board ? h('img', {src:r.board, alt:rankName(r) + ' vállap', loading:'lazy'}) : h('span', {class:'none', text:'Próbaidő'})),
+    h('div', null, h('b', {text:rankName(r)}), h('div', {class:'lv', text:(i + 1) + '. fokozat'})), h('p', {text:r.desc}))));
+}
+
+/* ================= render: közlöny ================= */
+function renderKozlony(){
+  const box = $('#decreeList'); box.replaceChildren();
+  if (!S.decrees.length) { box.append(h('div', {class:'empty-doc', text:S.loaded.decrees ? 'A Közlönyben még nincs kihirdetett rendelet.' : 'Betöltés…'})); return; }
+  for (const d of S.decrees) box.append(h('article', {class:'decree'},
+    h('div', {class:'no', text:decreeNo(d)}), h('h3', {text:d.title}), h('div', {class:'body', text:d.body}),
+    h('div', {class:'sig'}, h('span', null, 'Kihirdetve: ', fmtDate(d.date)), h('span', null, h('b', {text:nameOf(d.author) !== 'Ismeretlen' ? nameOf(d.author) : 'A Főbiztos'}), ' · Főbiztos'))));
+}
+
+/* ================= render: apply ================= */
+const DRAFT_FIELDS = ['a-roblox','a-rp','a-age','a-discord','a-act','a-exp','a-mot','a-q1','a-q2','a-q3','a-user'];
+function renderApply(){
+  const st = access();
+  const notice = $('#applyNotice'), status = $('#applyStatus'), form = $('#applyForm');
+  if (S.prefUnit) { const r = $('#u-' + S.prefUnit); if (r) r.checked = true; S.prefUnit = null; saveDraft(); }
+  const key = JSON.stringify([st, S.myApp && [S.myApp.status, S.myApp.note, S.myApp.decidedAt], S.reapply, S.auth && S.auth.uid]);
+  if (status.dataset.k === key) return; status.dataset.k = key;
+  notice.hidden = true; status.hidden = true; form.hidden = false;
+  $('#accountFs').hidden = !!S.auth;
+  const setNotice = (cls, title, body) => { notice.hidden = false; notice.className = 'notice ' + cls; notice.replaceChildren(h('div', null, h('b', {text:title}), body)); };
+  if (st === 'member' || st === 'member-noprofile') { form.hidden = true; setNotice('ok', 'Már az állomány tagja vagy', h('span', null, 'Rendfokozatod: ' + rankName(rankOf(me())) + '. ', h('a', {href:'#belso', text:'Tovább a belső rendszerbe'}))); }
+  else if (st === 'applicant' && !(S.myApp.status === 'rejected' && S.reapply)) { form.hidden = true; status.hidden = false; status.replaceChildren(statusDoc(S.myApp)); }
+  else if (st === 'loading' && S.auth) setNotice('', 'Betöltés…', 'Egy pillanat, betöltjük az adataidat.');
+  else if (S.auth) {
+    const u = S.users[me()];
+    if (u) { if (!$('#a-rp').value) $('#a-rp').value = u.rpName || ''; if (!$('#a-roblox').value) $('#a-roblox').value = u.roblox || ''; }
+    setNotice('', 'Bejelentkezve: ' + nameOf(me()), 'A kérelmet ehhez a szolgálati azonosítóhoz rögzítjük.');
+  }
+}
+function statusDoc(app){
+  const map = {pending:['Elbírálás alatt','t-warn','IKTATVA','pending'], interview:['Interjúra behívva','t-info','INTERJÚ','pending'], accepted:['Felvéve','t-ok','JÓVÁHAGYVA','ok'], rejected:['Elutasítva','t-danger','ELUTASÍTVA','danger']};
+  const [label, tone, stampTxt, stampCls] = map[app.status] || map.pending;
+  const step = i => i === 0 ? 'done' : i === 1 ? (app.status === 'pending' ? 'cur' : 'done') : (app.status === 'accepted' || app.status === 'rejected') ? 'done' : app.status === 'interview' ? 'cur' : '';
+  const u = UNIT[app.unit];
+  return h('div', {class:'status-doc'},
+    h('div', {class:'hd'}, h('img', {src:'img/cimer.webp', alt:''}), h('div', null, h('b', {text:'Iktatási igazolás'}), h('span', {text:'Nemzeti Egységes Közrendvédelmi és Ellátási Hatóság · Főbiztosi Hivatal'}))),
+    h('span', {class:'stamp ' + stampCls, text:stampTxt}),
+    h('div', {class:'bd'},
+      h('div', {style:'display:flex;justify-content:space-between;align-items:center;gap:12px;flex-wrap:wrap'},
+        h('div', null, h('div', {class:'eyebrow', text:'Iktatószám'}), h('div', {class:'mono', style:'font-size:17px;margin-top:2px', text:app.ref || '—'})),
+        h('span', {class:'pill ' + tone, text:label})),
+      h('ol', {class:'timeline'},
+        h('li', {class:step(0)}, h('b', {text:'Beküldve'}), app.submitted ? fmtStamp(app.submitted) : ''),
+        h('li', {class:step(1)}, h('b', {text:app.status === 'interview' ? 'Interjú' : 'Elbírálás'}), app.status === 'interview' ? 'Keresd a vezetést az időpontért.' : 'A vezetés átnézi a válaszaidat.'),
+        h('li', {class:step(2)}, h('b', {text:'Döntés'}), app.decidedAt ? fmtStamp(app.decidedAt) : 'Még nincs döntés.')),
+      h('dl', {class:'kv'},
+        h('dt', {text:'Kérelmező'}), h('dd', {text:app.rpName || ''}),
+        h('dt', {text:'Roblox'}), h('dd', {text:app.roblox || ''}),
+        h('dt', {text:'Egység'}), h('dd', {text:u ? u.name : '—'})),
+      app.note ? h('div', {class:'notice ' + (app.status === 'rejected' ? 'danger' : '')}, h('div', null, h('b', {text:'A vezetés megjegyzése'}), h('span', {style:'white-space:pre-wrap', text:app.note}))) : null,
+      h('div', {class:'signoff'}, h('div', null, 'Kelt: ', app.submitted ? fmtDate(app.submitted) : '—'), h('div', {style:'text-align:right'}, h('b', {text:'Főbiztosi Hivatal'}), 'NEKEH')),
+      app.status === 'rejected' ? h('div', null, h('button', {class:'btn btn-navy', type:'button', onclick:() => { S.reapply = true; fillFormFromApp(app); renderApply(); }, text:'Új kérelem beküldése'})) : null,
+      app.status === 'accepted' ? h('div', null, h('a', {class:'btn btn-navy', href:'#belso', text:'Belépés a belső rendszerbe'})) : null));
+}
+function fillFormFromApp(app){
+  const set = (id, v) => { const el = $('#' + id); if (el && v != null) el.value = v; };
+  set('a-roblox', app.roblox); set('a-rp', app.rpName); set('a-age', app.age); set('a-discord', app.discord); set('a-act', app.activity);
+  set('a-exp', app.experience); set('a-mot', app.motivation); set('a-q1', app.q1); set('a-q2', app.q2); set('a-q3', app.q3);
+  const r = $('#u-' + app.unit); if (r) r.checked = true;
+  updateCounters();
+}
+function saveDraft(){ const d = {}; for (const id of DRAFT_FIELDS) d[id] = $('#' + id).value; d.unit = ($('input[name=unit]:checked') || {}).value || ''; store.set('draft', d); }
+function loadDraft(){ const d = store.get('draft', null); if (!d) return; for (const id of DRAFT_FIELDS) if (d[id]) $('#' + id).value = d[id]; if (d.unit) { const r = $('#u-' + d.unit); if (r) r.checked = true; } }
+function updateCounters(){ $$('.cnt[data-for]').forEach(c => { const t = $('#' + c.dataset.for), n = t.value.trim().length, min = +t.dataset.min || 0; c.textContent = n >= min ? `${n} karakter` : `${n} / legalább ${min} karakter`; }); }
+function genRef(){ const d = new Date(), p = n => String(n).padStart(2,'0'); return `NEKEH/JEL/${d.getFullYear()}/${p(d.getMonth()+1)}${p(d.getDate())}-${Math.random().toString(36).slice(2,6).toUpperCase()}`; }
+function genBadge(){ return 'NK-' + (1000 + Math.floor(Math.random() * 9000)); }
+function fieldErr(id, msg){ const f = $('#' + id).closest('.fld'); f.classList.add('err'); f.append(h('span', {class:'em', text:msg})); }
+function clearErrs(root){ $$('.fld', root).forEach(f => { f.classList.remove('err'); f.querySelectorAll('.em').forEach(x => x.remove()); }); }
+async function submitApply(e){
+  e.preventDefault();
+  if (!S.B) return toast('A rendszer még töltődik.');
+  clearErrs($('#applyForm'));
+  const v = id => $('#' + id).value.trim();
+  const errs = [];
+  const need = (id, msg, min=1) => { if (v(id).length < min) { errs.push(id); fieldErr(id, msg); } };
+  need('a-roblox', 'Add meg a Roblox-felhasználóneved.'); need('a-rp', 'Add meg a szolgálati neved (legalább 2 karakter).', 2);
+  need('a-age', 'Válaszd ki a korosztályod.'); need('a-act', 'Válaszd ki a heti aktivitásod.');
+  need('a-mot', 'Legalább 80 karakterben írd le, miért jelentkezel.', 80);
+  need('a-q1', 'Legalább 40 karakteres választ várunk.', 40); need('a-q2', 'Legalább 40 karakteres választ várunk.', 40); need('a-q3', 'Legalább 30 karakteres választ várunk.', 30);
+  const unit = ($('input[name=unit]:checked') || {}).value;
+  if (!unit) { const f = $('#unitPick').closest('.fld'); f.classList.add('err'); f.append(h('span', {class:'em', text:'Válassz egységet.'})); errs.push('u-' + UNITS[0].id); }
+  if (!S.auth) {
+    if (!USER_RE.test(v('a-user'))) { errs.push('a-user'); fieldErr('a-user', '3–20 karakter: betű, szám, pont vagy aláhúzás (ékezet és szóköz nélkül).'); }
+    if ($('#a-pw').value.length < 6) { errs.push('a-pw'); fieldErr('a-pw', 'A jelszó legalább 6 karakter legyen.'); }
+    else if ($('#a-pw').value !== $('#a-pw2').value) { errs.push('a-pw2'); fieldErr('a-pw2', 'A két jelszó nem egyezik.'); }
+  }
+  if (!$('#a-c1').checked || !$('#a-c2').checked) { errs.push('a-c1'); toast('Fogadd el a nyilatkozatokat.'); }
+  if (errs.length) { const el = $('#' + errs[0]); el && el.focus(); el && el.scrollIntoView({block:'center', behavior:'smooth'}); return; }
+  const btn = $('#applySubmit'); btn.disabled = true; btn.textContent = 'Iktatás folyamatban…';
+  try {
+    let uid = me(), username = S.auth ? (S.users[uid]?.username || S.auth.username) : v('a-user');
+    if (!S.auth) {
+      try { const a = await S.B.register(username, $('#a-pw').value); uid = a.uid; S.auth = a; }
+      catch (err) { if (err.code === 'auth/email-already-in-use') { fieldErr('a-user', errText(err)); $('#a-user').focus(); } else toast(errText(err)); return; }
+    }
+    const app = {roblox:v('a-roblox'), rpName:v('a-rp'), age:v('a-age'), discord:v('a-discord'), activity:v('a-act'), unit,
+      experience:v('a-exp'), motivation:v('a-mot'), q1:v('a-q1'), q2:v('a-q2'), q3:v('a-q3'), agreed:true, submitted:Date.now(), ref:genRef(), status:'pending'};
+    const prev = S.users[uid] || {};
+    await S.B.set('users/' + uid, {username, rpName:app.rpName, roblox:app.roblox, badge:prev.badge || genBadge(), createdAt:prev.createdAt || Date.now(), bio:prev.bio || ''}, true);
+    await S.B.set('applications/' + uid, app);
+    S.myApp = app; S.reapply = false; store.del('draft');
+    $('#a-pw').value = ''; $('#a-pw2').value = '';
+    toast('Kérelem iktatva: ' + app.ref);
+    $('#applyStatus').dataset.k = ''; renderAll(); $('#main').scrollTop = 0;
+  } catch (err) { toast(errText(err)); }
+  finally { btn.disabled = false; btn.textContent = 'Kérelem beküldése'; }
+}
+
+/* ================= login & setup ================= */
+function pwField(id, label, auto){ return h('div', {class:'fld'}, h('label', {for:id, text:label}), h('div', {class:'pw-wrap'}, h('input', {id, type:'password', maxlength:'64', autocomplete:auto}), h('button', {type:'button', 'data-toggle':id, text:'Mutat'}))); }
+function loginCard(prefix, note){
+  const f = h('form', {style:'display:flex;flex-direction:column;gap:14px', novalidate:true},
+    h('div', {class:'fld'}, h('label', {for:prefix + '-u', text:'Szolgálati azonosító'}), h('input', {id:prefix + '-u', maxlength:'20', autocomplete:'username', spellcheck:'false', autocapitalize:'off'})),
+    pwField(prefix + '-p', 'Jelszó', 'current-password'),
+    h('p', {class:'form-err', id:prefix + '-err', hidden:true}),
+    h('button', {class:'btn btn-gold', type:'submit', text:'Belépés'}));
+  f.addEventListener('submit', async e => {
+    e.preventDefault();
+    const u = $('#' + prefix + '-u').value.trim(), p = $('#' + prefix + '-p').value, er = $('#' + prefix + '-err');
+    er.hidden = true;
+    if (!u || !p) { er.hidden = false; er.textContent = 'Add meg az azonosítót és a jelszót.'; return; }
+    const b = f.querySelector('button[type=submit]'); b.disabled = true; b.textContent = 'Hitelesítés…';
+    try { await S.B.login(u, p); document.activeElement && document.activeElement.blur(); toast('Sikeres belépés.'); if (S.route === 'belepes') setTimeout(() => { location.hash = 'belso'; }, 50); }
+    catch (err) { er.hidden = false; er.textContent = errText(err); }
+    finally { b.disabled = false; b.textContent = 'Belépés'; }
+  });
+  return h('div', {class:'login'},
+    h('div', {class:'hd'}, h('img', {src:'img/cimer.webp', alt:''}), h('b', {text:'Hitelesített belépés'}), h('span', {text:'Belső informatikai rendszer'})),
+    h('div', {class:'bd'}, note ? h('div', {class:'notice'}, h('div', null, note)) : null, f,
+      h('p', {class:'alt'}, 'Még nincs azonosítód? ', h('a', {href:'#jelentkezes', text:'Jelentkezz az állományba'})),
+      h('p', {class:'fine', text:'A rendszer használata a NEKEH szabályzatának hatálya alá esik. A jelszavadat senkinek ne add ki.'})));
+}
+function setupCard(){
+  const f = h('form', {style:'display:flex;flex-direction:column;gap:12px', novalidate:true},
+    h('div', {class:'fld'}, h('label', {for:'su-rp', text:'Szolgálati név'}), h('input', {id:'su-rp', maxlength:'40', placeholder:'pl. Varga Ákos'})),
+    h('div', {class:'fld'}, h('label', {for:'su-rb', text:'Roblox-felhasználónév'}), h('input', {id:'su-rb', maxlength:'40'})),
+    S.auth ? null : h('div', {class:'fld'}, h('label', {for:'su-u', text:'Szolgálati azonosító'}), h('input', {id:'su-u', maxlength:'20', autocomplete:'username', spellcheck:'false', autocapitalize:'off'}), h('small', {text:'3–20 karakter: betű, szám, pont, aláhúzás.'})),
+    S.auth ? null : pwField('su-p', 'Jelszó (legalább 6 karakter)', 'new-password'),
+    S.auth ? null : pwField('su-p2', 'Jelszó újra', 'new-password'),
+    h('p', {class:'form-err', id:'su-err', hidden:true}),
+    h('button', {class:'btn btn-navy', type:'submit', text:'Főbiztosi fiók létrehozása'}));
+  f.addEventListener('submit', async e => {
+    e.preventDefault();
+    const er = $('#su-err'); er.hidden = true;
+    const rp = $('#su-rp').value.trim(), rb = $('#su-rb').value.trim(), u = S.auth ? '' : $('#su-u').value.trim(), p = S.auth ? '' : $('#su-p').value;
+    const bad = msg => { er.hidden = false; er.textContent = msg; };
+    if (rp.length < 2) return bad('Add meg a szolgálati neved.');
+    if (!S.auth) {
+      if (!USER_RE.test(u)) return bad('Az azonosító 3–20 karakter legyen: betű, szám, pont vagy aláhúzás.');
+      if (p.length < 6) return bad('A jelszó legalább 6 karakter legyen.');
+      if (p !== $('#su-p2').value) return bad('A két jelszó nem egyezik.');
+    }
+    const b = f.querySelector('button[type=submit]'); b.disabled = true; b.textContent = 'Létrehozás…';
+    try {
+      const a = S.auth ? S.auth : await S.B.register(u, p);
+      await S.B.set('meta/owner', {uid:a.uid, at:Date.now()});
+      await S.B.set('users/' + a.uid, {username:S.auth ? (S.users[a.uid]?.username || a.username) : u, rpName:rp, roblox:rb, badge:'NK-1001', createdAt:Date.now(), bio:''}, true);
+      await S.B.set('config/main', {...DEFAULT_CONFIG, updatedAt:Date.now()}, true);
+      document.activeElement && document.activeElement.blur();
+      toast('A rendszer beállítva. Üdvözöljük, Főbiztos!'); location.hash = 'vezetes';
+    } catch (err) { bad(errText(err)); }
+    finally { b.disabled = false; b.textContent = 'Főbiztosi fiók létrehozása'; }
+  });
+  return h('div', {class:'login'},
+    h('div', {class:'hd'}, h('img', {src:'img/cimer.webp', alt:''}), h('b', {text:'A rendszer első beállítása'}), h('span', {text:'Első indítás'})),
+    h('div', {class:'bd'}, h('div', {class:'notice warn'}, h('div', null, h('b', {text:'Még nincs Főbiztos'}), 'Az első létrehozott fiók kapja a teljes vezetői jogot. Ezt csak egyszer lehet megtenni.')), f));
+}
+function signedInCard(){
+  const st = access();
+  const r = rankOf(me());
+  return h('div', {class:'login'},
+    h('div', {class:'hd'}, h('img', {src:'img/cimer.webp', alt:''}), h('b', {text:'Bejelentkezve'}), h('span', {text:'Belső informatikai rendszer'})),
+    h('div', {class:'bd'},
+      h('div', {class:'idrow'}, avatarEl(me(), 'av'), h('div', {style:'min-width:0'}, h('b', {text:nameOf(me())}), h('span', {text:r ? rankName(r) : st === 'applicant' ? 'Jelentkező' : 'Nem állományi tag'}))),
+      st === 'member' ? h('a', {class:'btn btn-gold', href:'#belso', text:'Tovább a belső rendszerbe'}) : h('a', {class:'btn btn-gold', href:'#jelentkezes', text:st === 'applicant' ? 'Kérelmem állapota' : 'Jelentkezés az állományba'}),
+      h('button', {class:'btn btn-line', type:'button', onclick:doLogout, text:'Kijelentkezés'})));
+}
+function guardedRender(box, key, build){
+  const ae = document.activeElement;
+  if (box.dataset.k === key) return;
+  if (box.contains(ae) && /INPUT|TEXTAREA|SELECT/.test(ae.tagName)) return;
+  box.dataset.k = key; box.replaceChildren(build());
+}
+function renderLogin(){
+  const box = $('#loginBox');
+  const st = access();
+  const key = JSON.stringify([S.ready, !!S.auth, S.ownerUid === null, st, S.bootError]);
+  guardedRender(box, key, () => {
+    if (S.bootError) return h('div', {class:'login'}, h('div', {class:'bd'}, h('div', {class:'notice danger'}, h('div', null, h('b', {text:'A rendszer nem indult el'}), S.bootError))));
+    if (!S.ready) return h('p', {class:'empty', text:'Betöltés…'});
+    if (S.auth && S.ownerUid === null) return setupCard();
+    if (S.auth) return signedInCard();
+    if (S.ownerUid === null) return h('div', {class:'two-col'}, setupCard(), loginCard('lg'));
+    return loginCard('lg');
+  });
+}
+
+/* ================= internal: gate ================= */
+function renderInternal(){
+  const st = access();
+  const gate = $('#gate'), con = $('#console');
+  const show = st === 'member';
+  gate.hidden = show; con.hidden = !show;
+  renderChrome();
+  if (show) { gate.dataset.k = ''; renderConsole(); return; }
+  const key = JSON.stringify([st, S.myApp && S.myApp.status, S.ownerUid === null]);
+  guardedRender(gate, key, () => {
+    if (st === 'loading') return h('p', {class:'empty', text:'Betöltés…'});
+    if (st === 'out') return S.ownerUid === null ? h('div', {class:'two-col'}, setupCard(), loginCard('ig')) : loginCard('ig', 'A belső rendszer csak az állomány tagjai számára érhető el. Lépj be a szolgálati azonosítóddal.');
+    if (st === 'member-noprofile') return profileCreateCard();
+    const msg = st === 'applicant' ? {pending:'A kérelmed elbírálás alatt áll. A belső rendszer a felvétel után nyílik meg.', interview:'Interjúra hívtak. Keresd a vezetést az időpontért.', rejected:'A kérelmedet elutasították. Új kérelmet a Jelentkezés oldalon adhatsz be.', accepted:'A felvételed rögzítése folyamatban. Frissíts egy perc múlva.'}[S.myApp.status] || '' : 'Ezzel az azonosítóval még nem adtál be felvételi kérelmet.';
+    return h('div', {class:'login'}, h('div', {class:'hd'}, h('img', {src:'img/cimer.webp', alt:''}), h('b', {text:'Nincs hozzáférésed'}), h('span', {text:'Belső informatikai rendszer'})),
+      h('div', {class:'bd'}, h('div', {class:'idrow'}, avatarEl(me(), 'av'), h('div', null, h('b', {text:nameOf(me())}), h('span', {text:st === 'applicant' ? 'Jelentkező' : 'Nem állományi tag'}))), h('p', {style:'color:var(--ink-2);font-size:14px', text:msg}), h('a', {class:'btn btn-gold', href:'#jelentkezes', text:st === 'applicant' ? 'Kérelmem megtekintése' : 'Jelentkezés az állományba'})));
+  });
+}
+function profileCreateCard(){
+  const f = h('form', {style:'display:flex;flex-direction:column;gap:12px'},
+    h('div', {class:'fld'}, h('label', {for:'pc-rp', text:'Szolgálati (RP) név'}), h('input', {id:'pc-rp', maxlength:'40'})),
+    h('div', {class:'fld'}, h('label', {for:'pc-rb', text:'Roblox-felhasználónév'}), h('input', {id:'pc-rb', maxlength:'40'})),
+    h('button', {class:'btn btn-gold', type:'submit', text:'Profil létrehozása'}));
+  f.addEventListener('submit', async e => {
+    e.preventDefault(); const rp = $('#pc-rp').value.trim(); if (rp.length < 2) return toast('Adj meg legalább 2 karakteres nevet.');
+    try { await S.B.set('users/' + me(), {username:S.auth.username, rpName:rp, roblox:$('#pc-rb').value.trim(), badge:genBadge(), createdAt:Date.now(), bio:''}, true); document.activeElement.blur(); }
+    catch (err) { toast(errText(err)); }
+  });
+  return h('div', {class:'login'}, h('div', {class:'hd'}, h('img', {src:'img/cimer.webp', alt:''}), h('b', {text:'Szolgálati adatok'}), h('span', {text:'Első belépés'})), h('div', {class:'bd'}, f));
+}
+
+/* ================= console ================= */
+function renderConsole(){
+  const con = $('#console');
+  con.classList.toggle('show-mem', !!S.showMembersNarrow);
+  $('#btnMembers').classList.toggle('on', S.showMembers);
+  const wide = matchMedia('(min-width: 1101px)').matches;
+  $('#memSide').hidden = wide ? !S.showMembers : false;
+  con.style.gridTemplateColumns = wide && !S.showMembers ? '264px minmax(0,1fr)' : '';
+  renderAlertStrip(); renderChanList(); renderVoiceBar(); renderMePanel(); renderMembers();
+  if (S.view === 'voice' && S.vch && VCH[S.vch]) renderVoiceStage(); else { S.view = 'text'; renderChat(); }
+  renderTyping();
+  markRead();
+}
+function renderAlertStrip(){ const a = ALERTS[S.config.alert] || ALERTS[1]; const el = $('#alertStrip'); el.className = 'alert-strip t-' + a.tone; el.replaceChildren(h('span', {class:'dot'}), h('span', {text:`${a.roman} fokozat · ${a.name}`})); }
+const lastRead = () => store.get('read:' + (me() || 'x'), {});
+function markRead(){
+  if (!me() || S.route !== 'belso' || S.view !== 'text' || document.hidden) return;
+  const list = S.msgs[S.ch] || []; const last = list.length ? list[list.length - 1].ts : 0;
+  const lr = lastRead(); if ((lr[S.ch] || 0) < last) { lr[S.ch] = last; store.set('read:' + me(), lr); }
+}
+function mentionsMe(m){
+  if (!m || m.uid === me()) return false;
+  const t = String(m.t || '').toLowerCase(), nm = S.users[me()]?.rpName;
+  return (!!nm && t.includes('@' + nm.toLowerCase())) || (t.includes('@mindenki') && isLeader(m.uid));
+}
+function renderChanList(){
+  const list = $('#chanList'); list.replaceChildren();
+  const lr = lastRead();
+  for (const cat of CATS) {
+    const chs = cat.ch.filter(c => canViewCh(me(), c)); if (!chs.length) continue;
+    const box = h('div', {class:'cat'}, h('h4', {text:cat.name}));
+    for (const c of chs) {
+      const head = S.heads[c.id];
+      const unread = head && head.ts > (lr[c.id] || 0) && head.uid !== me();
+      const on = S.view === 'text' && c.id === S.ch;
+      const btn = h('button', {class:'ch' + (on ? ' on' : '') + (unread && !on ? ' unread' : ''), type:'button', 'aria-current':on ? 'true' : null, html:icon((c.view || c.unit) ? 'lock' : (c.icon || 'hash'), 18)});
+      btn.append(h('span', {text:c.name}));
+      if (!on && unread) btn.append(mentionsMe(head) ? h('span', {class:'badge', text:'@'}) : h('i', {class:'udot'}));
+      btn.addEventListener('click', () => switchCh(c.id));
+      box.append(btn);
+    }
+    list.append(box);
+  }
+  const vbox = h('div', {class:'cat'}, h('h4', {text:'Hangcsatornák'}));
+  for (const v of visibleVoice()) {
+    const people = freshVoice(v.id);
+    const on = S.view === 'voice' && S.vch === v.id;
+    const btn = h('button', {class:'ch' + (on ? ' on' : ''), type:'button', html:icon(v.view ? 'lock' : 'speaker', 18), title:VC.room === v.id ? 'Csatlakozva' : 'Csatlakozás'});
+    btn.append(h('span', {text:v.name}));
+    if (people.length) btn.append(h('span', {class:'cnt', text:`${people.length}/${VOICE_MAX}`}));
+    btn.addEventListener('click', () => openVoice(v.id, true));
+    vbox.append(btn);
+    if (people.length) vbox.append(h('div', {class:'vch-people'}, people.map(p => h('div', {class:'vp' + (VC.speaking.has(p.id) ? ' speaking' : ''), 'data-vp':p.id}, avatarEl(p.id, 'av'), h('b', {text:nameOf(p.id)}), p.muted || p.deaf ? h('span', {class:'mi', html:icon(p.deaf ? 'headOff' : 'micOff', 14)}) : null))));
+  }
+  list.append(vbox);
+}
+function switchCh(id){
+  $('#console').classList.remove('show-chans');
+  if (S.ch === id && S.view === 'text') return;
+  S.ch = id; S.view = 'text'; store.set('ch', id); S.reply = null; S.editing = null; S.forceBottom = true;
+  syncSubs(); renderConsole(); heartbeat(true);
+  if (matchMedia('(min-width: 721px)').matches) $('#msgInput').focus();
+}
+function renderMePanel(){
+  const p = $('#mePanel'); p.replaceChildren();
+  const wrap = h('span', {class:'av-wrap'}, avatarEl(me(), 'av av-sm'), h('i', {class:'on-dot'}));
+  p.append(wrap, h('button', {class:'who', type:'button', onclick:() => openIdCard(me())}, h('b', {text:nameOf(me())}), h('span', {text:rankName(rankOf(me()))})),
+    h('button', {class:'icon-btn', type:'button', 'aria-label':'Profil és jelszó', title:'Profil és jelszó', html:icon('gear'), onclick:openProfileEdit}),
+    h('button', {class:'icon-btn', type:'button', 'aria-label':'Kijelentkezés', title:'Kijelentkezés', html:icon('exit'), onclick:doLogout}));
+}
+
+/* ---------- messages ---------- */
+function fmtText(t){
+  let s = esc(String(t).replace(/[\u0000\u0001]/g, ''));
+  const codes = [], links = [];
+  s = s.replace(/`([^`\n]{1,200})`/g, (_, c) => { codes.push(c); return `\u0000${codes.length - 1}\u0000`; });
+  s = s.replace(/https?:\/\/[^\s<]+[^\s<.,;:!?)\]]/g, u => { links.push(u); return `\u0001${links.length - 1}\u0001`; });
+  const names = [...new Set(memberIds().map(id => S.users[id]?.rpName).filter(Boolean))].sort((a, b) => b.length - a.length);
+  const pats = names.map(n => escRe(esc(n))); pats.push('mindenki');
+  s = s.replace(new RegExp('@(' + pats.join('|') + ')', 'gi'), m => `<span class="mn">${m}</span>`);
+  s = s.replace(/\*\*([^*\n]+)\*\*/g, '<strong>$1</strong>').replace(/(^|[\s(])\*([^*\n]+)\*/g, '$1<em>$2</em>');
+  s = s.replace(/\u0000(\d+)\u0000/g, (_, i) => `<code>${codes[+i]}</code>`);
+  s = s.replace(/\u0001(\d+)\u0001/g, (_, i) => `<a href="${links[+i]}" target="_blank" rel="noopener noreferrer">${links[+i]}</a>`);
+  return s;
+}
+function renderChat(){
+  $('#voiceStage').hidden = true; $('#msgs').hidden = false; $('#composer').hidden = false; $('#typing').hidden = false;
+  const ch = curCh();
+  $('#chIcon').innerHTML = icon((ch.view || ch.unit) ? 'lock' : (ch.icon || 'hash'), 20);
+  $('#chName').textContent = ch.name; $('#chTopic').textContent = ch.topic || '';
+  const box = $('#msgs');
+  const atBottom = box.scrollHeight - box.scrollTop - box.clientHeight < 140;
+  const frag = document.createDocumentFragment();
+  if (ch.kind === 'rules') {
+    const rules = (S.config.rules || DEFAULT_RULES).split('\n').map(x => x.trim()).filter(Boolean);
+    frag.append(h('div', {class:'rules-doc'}, h('div', {class:'eyebrow', text:'Hatályos szabályzat'}), h('h3', {style:'font-family:var(--f-display);font-size:24px;margin-top:6px', text:'A NEKEH belső szabályzata'}), h('ol', null, rules.map(r => h('li', null, h('span', {text:r}))))));
+    box.replaceChildren(frag); renderComposer(); return;
+  }
+  const u = ch.unit ? UNIT[ch.unit] : null;
+  frag.append(h('div', {class:'ch-intro'}, h('div', {class:'big', html:icon((ch.view || ch.unit) ? 'lock' : (ch.icon || 'hash'), 28)}), h('h3', {text:'#' + ch.name}), h('p', {text:`Ez a #${ch.name} csatorna kezdete. ${ch.topic || ''}`}), u ? h('img', {class:'band', src:u.band, alt:u.name + ' felvarró'}) : null));
+  if (S.msgErr[ch.id]) frag.append(h('p', {class:'loading-note', text:'Ehhez a csatornához nincs olvasási jogosultságod, vagy a kapcsolat megszakadt.'}));
+  else if (!S.loaded.msgs[ch.id]) frag.append(h('p', {class:'loading-note', text:'Üzenetek betöltése…'}));
+  const list = S.msgs[ch.id] || [];
+  if (list.length >= 80) frag.append(h('p', {class:'loading-note', text:'A csatorna legutóbbi 80 üzenete látható.'}));
+  const byId = Object.fromEntries(list.map(m => [m.id, m]));
+  let prev = null;
+  for (const m of list) {
+    if (typeof m.t !== 'string' || typeof m.ts !== 'number') continue;
+    if (!prev || new Date(prev.ts).toDateString() !== new Date(m.ts).toDateString()) { frag.append(h('div', {class:'day', text:dayLabel(m.ts)})); prev = null; }
+    const gs = !prev || prev.uid !== m.uid || m.ts - prev.ts > 5 * 60e3 || !!m.re || m.p > 1;
+    frag.append(msgEl(m, gs, ch, byId));
+    prev = m;
+  }
+  box.replaceChildren(frag);
+  if (atBottom || S.forceBottom) { box.scrollTop = box.scrollHeight; S.forceBottom = false; }
+  renderComposer();
+}
+function msgEl(m, gs, ch, byId){
+  const cls = ['msg']; if (gs) cls.push('gs'); if (mentionsMe(m)) cls.push('mention'); if (m.p > 1) cls.push('p' + m.p);
+  const el = h('div', {class:cls.join(' ')});
+  const lt = h('div', {class:'lt'});
+  if (gs) lt.append(h('button', {class:'avbtn', type:'button', 'aria-label':nameOf(m.uid) + ' igazolványa', onclick:() => openIdCard(m.uid)}, avatarEl(m.uid)));
+  else lt.append(h('time', {text:fmtTime(m.ts)}));
+  const body = h('div', {style:'min-width:0'});
+  if (m.re) { const o = byId[m.re.i]; body.append(h('div', {class:'mreply'}, h('span', {html:icon('reply', 14), style:'flex:none;display:inline-flex'}), h('b', {text:nameOf(m.re.u)}), h('span', {text:o ? o.t.slice(0, 120) : 'Korábbi üzenet'}))); }
+  if (gs) {
+    const r = rankOf(m.uid);
+    const nm = h('button', {class:'mname', type:'button', text:nameOf(m.uid), onclick:() => openIdCard(m.uid)}); nm.style.color = rankColor(m.uid);
+    body.append(h('div', {class:'mhead'}, nm, r ? h('span', {class:'rk-chip'}, r.board ? h('img', {src:r.board, alt:''}) : null, rankName(r)) : null, h('time', {text:fmtStamp(m.ts)})));
+  }
+  if (m.p > 1) body.append(h('span', {class:'prio-tag p' + m.p, text:m.p === 3 ? 'VÉSZHELYZET' : 'SÜRGŐS'}));
+  const tx = h('div', {class:'mtext', html:fmtText(m.t)}); if (m.e) tx.append(h('span', {class:'edited', text:'(szerkesztve)'}));
+  body.append(tx);
+  const rx = m.rx || {};
+  const rr = h('div', {class:'reacts'});
+  for (const [k, e] of REACTS) { const who = Array.isArray(rx[k]) ? rx[k] : []; if (!who.length) continue;
+    const mine = who.includes(me());
+    rr.append(h('button', {class:'react' + (mine ? ' mine' : ''), type:'button', title:who.map(nameOf).join(', '), 'aria-pressed':String(mine), onclick:() => toggleReact(ch.id, m, k)}, e, h('span', {text:String(who.length)})));
+  }
+  if (rr.childElementCount) body.append(rr);
+  el.append(lt, body);
+  const tools = h('div', {class:'mtools'});
+  if (canPostCh(me(), ch)) {
+    tools.append(h('button', {class:'icon-btn', type:'button', title:'Válasz', 'aria-label':'Válasz', html:icon('reply', 16), onclick:() => startReply(m)}));
+    tools.append(h('button', {class:'icon-btn', type:'button', title:'Reakció', 'aria-label':'Reakció', html:icon('smile', 16), onclick:ev => openReactPop(ev.currentTarget, ch.id, m)}));
+    if (m.uid === me()) tools.append(h('button', {class:'icon-btn', type:'button', title:'Szerkesztés', 'aria-label':'Szerkesztés', html:icon('edit', 16), onclick:() => startEdit(m)}));
+  }
+  if (m.uid === me() || isOwnerUid(me())) {
+    const del = h('button', {class:'icon-btn', type:'button', title:'Törlés', 'aria-label':'Törlés', html:icon('trash', 16)});
+    del.addEventListener('click', () => {
+      if (!del.classList.contains('armed')) { del.classList.add('armed'); toast('Kattints még egyszer a törléshez.'); setTimeout(() => del.classList.remove('armed'), 3000); return; }
+      S.B.del(`channels/${ch.id}/messages/${m.id}`).catch(e => toast(errText(e)));
+    });
+    tools.append(del);
+  }
+  if (tools.childElementCount) el.append(tools);
+  el.addEventListener('click', ev => { if (ev.target.closest('button,a')) return; $$('.msg.tools-on').forEach(x => { if (x !== el) x.classList.remove('tools-on'); }); el.classList.toggle('tools-on'); });
+  return el;
+}
+function toggleReact(chId, m, key){ closeReactPop(); const on = !((m.rx && m.rx[key]) || []).includes(me()); S.B.rx(`channels/${chId}/messages/${m.id}`, key, me(), on).catch(e => toast(errText(e))); }
+function startReply(m){ S.editing = null; S.reply = {i:m.id, u:m.uid}; renderComposer(); $('#msgInput').focus(); }
+function startEdit(m){ S.reply = null; S.editing = m.id; const inp = $('#msgInput'); inp.value = m.t; autoGrow(); renderComposer(); inp.focus(); }
+function openReactPop(anchor, chId, m){
+  const pop = $('#reactPop'); pop.replaceChildren();
+  for (const [k, e] of REACTS) pop.append(h('button', {type:'button', 'aria-label':'Reakció ' + e, text:e, onclick:() => toggleReact(chId, m, k)}));
+  pop.hidden = false;
+  const r = anchor.getBoundingClientRect(), w = pop.offsetWidth;
+  pop.style.left = Math.max(8, Math.min(window.innerWidth - w - 8, r.right - w)) + 'px';
+  pop.style.top = Math.max(8, r.top - 50) + 'px';
+  setTimeout(() => document.addEventListener('click', closeReactPopOnce, {once:true}), 0);
+}
+function closeReactPopOnce(ev){ if ($('#reactPop').contains(ev.target)) document.addEventListener('click', closeReactPopOnce, {once:true}); else closeReactPop(); }
+function closeReactPop(){ $('#reactPop').hidden = true; }
+
+/* ---------- composer ---------- */
+function renderComposer(){
+  const ch = curCh(), can = canPostCh(me(), ch);
+  $('#crow').hidden = !can; $('#roNote').hidden = can;
+  if (!can) {
+    const why = ch.kind === 'rules' ? 'A szabályzatot a Főbiztos a Vezetés oldalon szerkeszti.' : ch.post ? `Ebbe a csatornába ${rankName(RANK.r4)} vagy magasabb rendfokozattal lehet írni.` : 'Ebben a csatornában nem írhatsz.';
+    $('#roNote').replaceChildren(h('span', {html:icon('lock', 16), style:'display:inline-flex'}), h('span', {text:why}));
+  }
+  $('#prioBar').hidden = !(can && ch.prio && !S.editing);
+  $$('#prioBar button').forEach(b => b.setAttribute('aria-pressed', String(+b.dataset.p === S.prio)));
+  const cb = $('#ctxBar');
+  if (can && (S.reply || S.editing)) {
+    cb.hidden = false; cb.replaceChildren();
+    if (S.reply) cb.append(h('span', {html:icon('reply', 14), style:'display:inline-flex'}), h('span', null, 'Válasz neki: ', h('b', {text:nameOf(S.reply.u)})));
+    else cb.append(h('span', {html:icon('edit', 14), style:'display:inline-flex'}), h('b', {text:'Üzenet szerkesztése'}), h('span', {text:'· Esc a megszakításhoz'}));
+    cb.append(h('button', {class:'icon-btn x', type:'button', 'aria-label':'Mégse', html:icon('x', 16), onclick:cancelCtx, style:'width:26px;height:26px'}));
+  } else cb.hidden = true;
+  $('#msgInput').placeholder = `Üzenet a(z) #${ch.name} csatornába`;
+  updateCharCnt();
+}
+function cancelCtx(){ if (S.editing) $('#msgInput').value = ''; S.reply = null; S.editing = null; autoGrow(); renderComposer(); }
+function autoGrow(){ const t = $('#msgInput'); t.style.height = 'auto'; t.style.height = Math.min(t.scrollHeight, window.innerHeight * 0.4) + 'px'; }
+function updateCharCnt(){ const n = $('#msgInput').value.length, c = $('#charCnt'); c.hidden = n < MAX_LEN - 200; c.textContent = `${n} / ${MAX_LEN}`; c.classList.toggle('over', n > MAX_LEN); }
+async function sendMsg(e){
+  e && e.preventDefault();
+  const inp = $('#msgInput'), t = inp.value.trim();
+  if (!t) return;
+  if (t.length > MAX_LEN) return toast(`Az üzenet legfeljebb ${MAX_LEN} karakter lehet.`);
+  const ch = curCh(); if (!canPostCh(me(), ch)) return;
+  const editing = S.editing, reply = S.reply, prio = S.prio;
+  inp.value = ''; autoGrow(); S.reply = null; S.editing = null; S.prio = 1; S.forceBottom = true; renderComposer(); clearTyping();
+  try {
+    if (editing) await S.B.update(`channels/${ch.id}/messages/${editing}`, {t, e:Date.now()});
+    else {
+      const msg = {uid:me(), t, ts:Date.now(), rx:{}};
+      if (ch.prio && prio > 1) msg.p = prio;
+      if (reply) msg.re = {i:reply.i, u:reply.u};
+      await S.B.add(`channels/${ch.id}/messages`, msg);
+    }
+  } catch (err) { toast(errText(err)); inp.value = t; autoGrow(); }
+}
+
+/* ---------- mentions ---------- */
+let mSel = 0, mOpts = [];
+function updateMentionPop(){
+  const inp = $('#msgInput'), pop = $('#mentionPop');
+  const mm = inp.value.slice(0, inp.selectionStart).match(/(^|\s)@([^\s@]{0,30})$/);
+  if (!mm) { pop.hidden = true; mOpts = []; return; }
+  const q = mm[2].toLowerCase();
+  mOpts = memberIds().filter(id => id !== me() && S.users[id]?.rpName && S.users[id].rpName.toLowerCase().includes(q)).slice(0, 8).map(id => ({id, name:S.users[id].rpName}));
+  if (isLeader(me()) && 'mindenki'.startsWith(q)) mOpts.push({id:null, name:'mindenki'});
+  if (!mOpts.length) { pop.hidden = true; return; }
+  mSel = Math.min(mSel, mOpts.length - 1);
+  pop.replaceChildren(...mOpts.map((o, i) => h('button', {class:'opt' + (i === mSel ? ' sel' : ''), type:'button', role:'option', 'aria-selected':String(i === mSel), onmousedown:ev => { ev.preventDefault(); pickMention(i); }},
+    o.id ? avatarEl(o.id, 'av av-sm') : h('span', {class:'av av-sm', style:'background:var(--navy-2)', html:icon('megaphone', 16)}), h('b', {text:o.name}), h('span', {text:o.id ? rankName(rankOf(o.id)) : 'mindenki értesítése'}))));
+  pop.hidden = false;
+}
+function pickMention(i){
+  const o = mOpts[i]; if (!o) return;
+  const inp = $('#msgInput'), pos = inp.selectionStart;
+  const before = inp.value.slice(0, pos).replace(/@([^\s@]{0,30})$/, '@' + o.name + ' ');
+  inp.value = before + inp.value.slice(pos); inp.selectionStart = inp.selectionEnd = before.length;
+  $('#mentionPop').hidden = true; mOpts = []; inp.focus(); autoGrow();
+}
+
+/* ---------- members side ---------- */
+function renderMembers(){
+  const side = $('#memSide'); side.replaceChildren();
+  const ids = memberIds();
+  const byLevel = (a, b) => levelOf(b) - levelOf(a) || nameOf(a).localeCompare(nameOf(b), 'hu');
+  const on = ids.filter(isOnline), off = ids.filter(id => !isOnline(id));
+  const row = (id, offline) => {
+    const u = UNIT[unitOf(id)];
+    const wrap = h('span', {class:'av-wrap'}, avatarEl(id, 'av av-sm')); if (!offline) wrap.append(h('i', {class:'on-dot'}));
+    const nm = h('span', {class:'nm', text:nameOf(id)}); nm.style.color = rankColor(id);
+    const inVoice = VOICE.find(v => freshVoice(v.id).some(p => p.id === id));
+    return h('button', {class:'mem' + (offline ? ' off' : ''), type:'button', onclick:() => openIdCard(id)}, wrap, h('div', null, nm, h('span', {class:'sb', text:inVoice ? '🔊 ' + inVoice.name : u ? u.short : (isOwnerUid(id) ? 'Főbiztosi Hivatal' : 'Beosztás nélkül')})));
+  };
+  for (const r of [...RANKS].reverse()) { const g = on.filter(id => rankOf(id) === r).sort(byLevel); if (g.length) side.append(h('h4', {text:`${rankName(r)} — ${g.length}`}), ...g.map(id => row(id, false))); }
+  if (off.length) side.append(h('h4', {text:`Nem elérhető — ${off.length}`}), ...off.sort(byLevel).map(id => row(id, true)));
+}
+
+/* ---------- presence & typing ---------- */
+let lastBeat = 0, typingTimer = null, lastTyping = 0;
+function heartbeat(force){
+  if (!S.B || !me() || !isMember(me()) || document.hidden) return;
+  const now = Date.now(); if (!force && now - lastBeat < 60000) return; lastBeat = now;
+  S.B.set('presence/' + me(), {ts:now, ch:S.route === 'belso' && S.view === 'text' ? S.ch : null}, true).catch(() => {});
+}
+function onTypingInput(){
+  if (!me()) return; const now = Date.now();
+  if (now - lastTyping > 4000) { lastTyping = now; S.B.set('presence/' + me(), {ts:now, typing:S.ch, tt:now}, true).catch(() => {}); }
+  clearTimeout(typingTimer); typingTimer = setTimeout(clearTyping, 5000);
+}
+function clearTyping(){ clearTimeout(typingTimer); if (!lastTyping || !me()) return; lastTyping = 0; S.B.set('presence/' + me(), {typing:null}, true).catch(() => {}); }
+function renderTyping(){
+  const el = $('#typing'); if (!el || $('#console').hidden) return;
+  const now = Date.now();
+  const who = Object.entries(S.presence).filter(([id, p]) => id !== me() && p.typing === S.ch && now - (p.tt || 0) < 8000 && isMember(id)).map(([id]) => id);
+  el.replaceChildren();
+  if (!who.length || S.view !== 'text') return;
+  const names = who.slice(0, 3).map(nameOf);
+  el.append(h('span', {class:'dots'}, h('i'), h('i'), h('i')), h('span', {text:who.length === 1 ? `${names[0]} éppen ír…` : who.length <= 3 ? `${names.join(', ')} éppen írnak…` : 'Többen éppen írnak…'}));
+}
+
+/* ================= voice (WebRTC mesh, signalling through the database) ================= */
+const VC = {room:null, joinedAt:0, stream:null, pcs:new Map(), audios:new Map(), muted:false, deaf:false, unsub:null, hb:null, handled:new Set(), ctx:null, meters:new Map(), speaking:new Set(), meterTimer:null, joining:false};
+function freshVoice(room){ const now = Date.now(); return (S.voiceMembers[room] || []).filter(m => now - (m.ts || 0) < 150000).sort((a, b) => (a.joinedAt || 0) - (b.joinedAt || 0)); }
+function openVoice(id, join){
+  S.view = 'voice'; S.vch = id; $('#console').classList.remove('show-chans');
+  renderConsole();
+  if (join && VC.room !== id) joinVoice(id);
+}
+async function joinVoice(room){
+  if (VC.joining) return;
+  const v = VCH[room]; if (!canVoice(me(), v)) return toast('Ehhez a hangcsatornához nincs jogosultságod.');
+  if (freshVoice(room).filter(p => p.id !== me()).length >= VOICE_MAX) return toast(`A hangcsatorna megtelt (legfeljebb ${VOICE_MAX} fő).`);
+  if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia || typeof RTCPeerConnection === 'undefined') return toast('Ez a böngésző vagy nézet nem támogatja a hangkapcsolatot. Nyisd meg az oldalt Chrome-ban, Edge-ben vagy Firefoxban.');
+  VC.joining = true;
+  let stream;
+  try { stream = await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:true, noiseSuppression:true, autoGainControl:true}, video:false}); }
+  catch (e) { VC.joining = false; return toast(S.mode === 'demo' ? 'A bemutató nézetben a mikrofon le van tiltva. A saját címen futó éles oldalon a hangcsatorna működik.' : 'A mikrofonhoz nem kaptunk hozzáférést. Engedélyezd a böngésző címsorában, majd próbáld újra.'); }
+  if (VC.room) await leaveVoice(true);
+  VC.room = room; VC.stream = stream; VC.joinedAt = Date.now(); VC.muted = false; VC.deaf = false; VC.handled = new Set();
+  try { VC.ctx = new (window.AudioContext || window.webkitAudioContext)(); } catch { VC.ctx = null; }
+  addMeter(me(), stream);
+  try {
+    await S.B.set(`voice/${room}/members/${me()}`, {joinedAt:VC.joinedAt, ts:Date.now(), muted:false, deaf:false});
+    VC.unsub = S.B.watchCol(`voice/${room}/signals`, {where:['to', '==', me()]}, list => list.forEach(handleSignal), e => console.warn('signals', e));
+    VC.hb = setInterval(() => { if (VC.room) S.B.set(`voice/${VC.room}/members/${me()}`, {ts:Date.now()}, true).catch(() => {}); }, 30000);
+    toast('Csatlakoztál: ' + v.name);
+  } catch (e) { toast(errText(e)); await leaveVoice(true); }
+  VC.joining = false;
+  voiceSync(); renderAll();
+}
+async function leaveVoice(silent){
+  if (!VC.room) return;
+  const room = VC.room;
+  VC.room = null;
+  if (VC.unsub) { try { VC.unsub(); } catch {} VC.unsub = null; }
+  clearInterval(VC.hb); VC.hb = null;
+  for (const id of [...VC.pcs.keys()]) closePeer(id);
+  if (VC.stream) VC.stream.getTracks().forEach(t => t.stop());
+  VC.stream = null; VC.meters.clear(); VC.speaking.clear(); clearInterval(VC.meterTimer); VC.meterTimer = null;
+  if (VC.ctx) { try { VC.ctx.close(); } catch {} VC.ctx = null; }
+  try { await S.B.del(`voice/${room}/members/${me()}`); } catch {}
+  if (!silent) toast('Kiléptél a hangcsatornából.');
+  renderAll();
+}
+function closePeer(id){
+  const pc = VC.pcs.get(id); if (pc) { try { pc.close(); } catch {} VC.pcs.delete(id); }
+  const a = VC.audios.get(id); if (a) { a.srcObject = null; a.remove(); VC.audios.delete(id); }
+  VC.meters.delete(id); VC.speaking.delete(id);
+}
+function makePc(id){
+  const pc = new RTCPeerConnection({iceServers:ICE_SERVERS});
+  VC.stream.getTracks().forEach(t => pc.addTrack(t, VC.stream));
+  pc.ontrack = ev => {
+    let a = VC.audios.get(id);
+    if (!a) { a = new Audio(); a.autoplay = true; VC.audios.set(id, a); $('#audioSink').append(a); }
+    a.srcObject = ev.streams[0]; a.muted = VC.deaf; a.play().catch(() => {});
+    addMeter(id, ev.streams[0]);
+  };
+  pc.onconnectionstatechange = () => {
+    if (pc.connectionState === 'failed') { closePeer(id); setTimeout(voiceSync, 1500); }
+    if (S.view === 'voice') renderVoiceStage();
+  };
+  VC.pcs.set(id, pc);
+  return pc;
+}
+function iceDone(pc){ return new Promise(res => { if (pc.iceGatheringState === 'complete') return res(); const t = setTimeout(res, 3500); pc.addEventListener('icegatheringstatechange', () => { if (pc.iceGatheringState === 'complete') { clearTimeout(t); res(); } }); }); }
+function iAmCaller(peer){ return (VC.joinedAt > (peer.joinedAt || 0)) || (VC.joinedAt === peer.joinedAt && me() > peer.id); }
+function voiceSync(){
+  if (!VC.room || VC.joining) return;
+  const list = freshVoice(VC.room), ids = new Set(list.map(p => p.id));
+  for (const id of [...VC.pcs.keys()]) if (!ids.has(id)) closePeer(id);
+  for (const p of list) if (p.id !== me() && !VC.pcs.has(p.id) && iAmCaller(p)) callPeer(p.id);
+}
+async function callPeer(id){
+  try {
+    const pc = makePc(id);
+    await pc.setLocalDescription(await pc.createOffer());
+    await iceDone(pc);
+    if (!VC.room || VC.pcs.get(id) !== pc) return;
+    await S.B.add(`voice/${VC.room}/signals`, {from:me(), to:id, type:'offer', sdp:pc.localDescription.sdp, ts:Date.now()});
+  } catch (e) { console.warn('call', e); closePeer(id); }
+}
+async function handleSignal(sig){
+  if (!VC.room || VC.handled.has(sig.id)) return;
+  VC.handled.add(sig.id);
+  const room = VC.room;
+  S.B.del(`voice/${room}/signals/${sig.id}`).catch(() => {});
+  if (Date.now() - (sig.ts || 0) > 60000) return;
+  try {
+    if (sig.type === 'offer') {
+      closePeer(sig.from);
+      const pc = makePc(sig.from);
+      await pc.setRemoteDescription({type:'offer', sdp:sig.sdp});
+      await pc.setLocalDescription(await pc.createAnswer());
+      await iceDone(pc);
+      if (!VC.room) return;
+      await S.B.add(`voice/${room}/signals`, {from:me(), to:sig.from, type:'answer', sdp:pc.localDescription.sdp, ts:Date.now()});
+    } else if (sig.type === 'answer') {
+      const pc = VC.pcs.get(sig.from);
+      if (pc && pc.signalingState === 'have-local-offer') await pc.setRemoteDescription({type:'answer', sdp:sig.sdp});
+    }
+  } catch (e) { console.warn('signal', e); }
+}
+function addMeter(id, stream){
+  if (!VC.ctx) return;
+  try {
+    const src = VC.ctx.createMediaStreamSource(stream), an = VC.ctx.createAnalyser(); an.fftSize = 512; src.connect(an);
+    VC.meters.set(id, {an, buf:new Uint8Array(an.frequencyBinCount)});
+    if (!VC.meterTimer) VC.meterTimer = setInterval(pollMeters, 160);
+  } catch {}
+}
+function pollMeters(){
+  let dirty = false;
+  for (const [id, m] of VC.meters) {
+    m.an.getByteFrequencyData(m.buf); let sum = 0; for (const x of m.buf) sum += x;
+    const loud = sum / m.buf.length > 14 && !(id === me() && VC.muted);
+    if (loud !== VC.speaking.has(id)) { loud ? VC.speaking.add(id) : VC.speaking.delete(id); dirty = true; }
+  }
+  if (dirty) { $$('[data-vp]').forEach(el => el.classList.toggle('speaking', VC.speaking.has(el.dataset.vp))); $$('[data-vt]').forEach(el => el.classList.toggle('speaking', VC.speaking.has(el.dataset.vt))); }
+}
+function setMute(v){ VC.muted = v; if (VC.stream) VC.stream.getAudioTracks().forEach(t => t.enabled = !v); if (VC.room) S.B.set(`voice/${VC.room}/members/${me()}`, {muted:v, ts:Date.now()}, true).catch(() => {}); renderAll(); }
+function setDeaf(v){ VC.deaf = v; for (const a of VC.audios.values()) a.muted = v; if (v && !VC.muted) setMute(true); if (VC.room) S.B.set(`voice/${VC.room}/members/${me()}`, {deaf:v, ts:Date.now()}, true).catch(() => {}); renderAll(); }
+function renderVoiceBar(){
+  const bar = $('#voiceBar');
+  if (!VC.room) { bar.hidden = true; return; }
+  bar.hidden = false; bar.replaceChildren(
+    h('div', {class:'st'}, h('b', {text:'Hangkapcsolat él'}), h('span', {text:VCH[VC.room].name + ' · ' + freshVoice(VC.room).length + ' fő'})),
+    h('button', {class:'icon-btn' + (VC.muted ? ' red' : ''), type:'button', title:VC.muted ? 'Mikrofon be' : 'Némítás', 'aria-label':VC.muted ? 'Mikrofon bekapcsolása' : 'Némítás', html:icon(VC.muted ? 'micOff' : 'mic'), onclick:() => setMute(!VC.muted)}),
+    h('button', {class:'icon-btn' + (VC.deaf ? ' red' : ''), type:'button', title:VC.deaf ? 'Hang be' : 'Hang ki', 'aria-label':VC.deaf ? 'Hang bekapcsolása' : 'Hang kikapcsolása', html:icon(VC.deaf ? 'headOff' : 'head'), onclick:() => setDeaf(!VC.deaf)}),
+    h('button', {class:'icon-btn red', type:'button', title:'Kilépés', 'aria-label':'Kilépés a hangcsatornából', html:icon('phoneOff'), onclick:() => leaveVoice()}));
+}
+function renderVoiceStage(){
+  const v = VCH[S.vch]; if (!v) return;
+  $('#msgs').hidden = true; $('#composer').hidden = true; $('#typing').hidden = true;
+  const stage = $('#voiceStage'); stage.hidden = false;
+  $('#chIcon').innerHTML = icon(v.view ? 'lock' : 'speaker', 20); $('#chName').textContent = v.name; $('#chTopic').textContent = v.topic;
+  const joined = VC.room === v.id, people = freshVoice(v.id);
+  const tiles = h('div', {class:'vtiles'}, people.map(p => {
+    const pc = VC.pcs.get(p.id);
+    const conn = p.id === me() ? 'Te' : joined ? (pc ? ({connected:'Kapcsolódva', connecting:'Kapcsolódás…', new:'Kapcsolódás…', failed:'Sikertelen', disconnected:'Megszakadt'}[pc.connectionState] || '') : 'Várakozás…') : '';
+    return h('div', {class:'vtile' + (VC.speaking.has(p.id) ? ' speaking' : ''), 'data-vt':p.id}, h('span', {class:'conn', text:conn}), avatarEl(p.id, 'av'), h('b', {text:nameOf(p.id)}), h('span', {text:rankName(rankOf(p.id))}),
+      h('span', {class:'flags', html:(p.muted ? icon('micOff', 16) : '') + (p.deaf ? icon('headOff', 16) : '')}));
+  }));
+  const ctl = h('div', {class:'vctl'});
+  if (!joined) ctl.append(h('button', {class:'vbtn join', type:'button', html:icon('speaker', 18) + '<span>Csatlakozás a hangcsatornához</span>', onclick:() => joinVoice(v.id)}));
+  else ctl.append(
+    h('button', {class:'vbtn' + (VC.muted ? ' on' : ''), type:'button', html:icon(VC.muted ? 'micOff' : 'mic', 18) + `<span>${VC.muted ? 'Némítva' : 'Némítás'}</span>`, onclick:() => setMute(!VC.muted)}),
+    h('button', {class:'vbtn' + (VC.deaf ? ' on' : ''), type:'button', html:icon(VC.deaf ? 'headOff' : 'head', 18) + `<span>${VC.deaf ? 'Hang ki' : 'Hang kikapcsolása'}</span>`, onclick:() => setDeaf(!VC.deaf)}),
+    h('button', {class:'vbtn leave', type:'button', html:icon('phoneOff', 18) + '<span>Kilépés</span>', onclick:() => leaveVoice()}));
+  stage.replaceChildren(
+    h('div', {class:'vhead'}, h('span', {class:'ic', html:icon('speaker', 26)}), h('div', null, h('h3', {text:v.name}), h('p', {text:`${v.topic} · ${people.length}/${VOICE_MAX} fő`}))),
+    people.length ? tiles : h('p', {class:'empty', text:'Most senki sincs a csatornában.'}),
+    ctl,
+    h('p', {class:'empty', style:'text-align:center;font-size:12px', text:'A hang közvetlenül a résztvevők között halad. Ha valakit nem hallasz, kérd meg, hogy lépjen ki és be újra.'}));
+}
+
+/* ================= modals ================= */
+function openModal(title, body, foot){
+  const m = $('#modal');
+  m.replaceChildren(h('div', {class:'mh'}, h('h2', {id:'modalTitle', text:title}), h('button', {class:'icon-btn', type:'button', 'aria-label':'Bezárás', html:icon('x'), onclick:closeModal})), h('div', {class:'mb'}, body), foot ? h('div', {class:'mf'}, foot) : null);
+  $('#scrim').hidden = false;
+  setTimeout(() => (m.querySelector('input,textarea,select') || m.querySelector('.mf button, .mh button'))?.focus(), 0);
+}
+function closeModal(){ $('#scrim').hidden = true; }
+function openIdCard(uid){
+  const r = rankOf(uid), u = UNIT[unitOf(uid)], usr = S.users[uid] || {};
+  const nm = h('div', {class:'nm', text:nameOf(uid)}); nm.style.color = rankColor(uid);
+  const photo = h('span', {class:'photo', text:initials(nameOf(uid))}); photo.style.background = avColor(uid);
+  const card = h('div', {class:'idcard'},
+    h('div', {class:'top'}, h('img', {src:'img/cimer.webp', alt:''}), h('div', null, h('b', {text:'NEKEH'}), h('span', {text:'SZOLGÁLATI IGAZOLVÁNY'}))),
+    h('div', {class:'body'}, photo,
+      h('div', {style:'min-width:0'}, nm, h('div', {class:'rb', text:r ? rankName(r) : 'Nem állományi tag'}),
+        h('dl', null,
+          h('dt', {text:'Jelvényszám'}), h('dd', {class:'mono', text:usr.badge || '—'}),
+          h('dt', {text:'Egység'}), h('dd', {text:u ? u.name : (isOwnerUid(uid) ? 'Főbiztosi Hivatal' : '—')}),
+          h('dt', {text:'Roblox'}), h('dd', {text:usr.roblox || '—'}),
+          h('dt', {text:'Nyilvántartva'}), h('dd', {text:usr.createdAt ? fmtDate(usr.createdAt) : '—'}),
+          h('dt', {text:'Állapot'}), h('dd', {text:isOnline(uid) ? 'Szolgálatban (online)' : 'Nem elérhető'}))),
+      r?.board ? h('img', {class:'board', src:r.board, alt:rankName(r) + ' vállap'}) : h('span'),
+      usr.bio ? h('div', {class:'bio', text:usr.bio}) : null));
+  const foot = [];
+  if (uid === me()) foot.push(h('button', {class:'btn btn-line', type:'button', text:'Profil és jelszó', onclick:openProfileEdit}));
+  if (isOwnerUid(me()) && uid !== me()) foot.push(h('a', {class:'btn btn-line', href:'#vezetes', text:'Kezelés a Vezetés oldalon', onclick:closeModal}));
+  openModal('Szolgálati igazolvány', card, foot.length ? foot : null);
+}
+function openProfileEdit(){
+  const usr = S.users[me()] || {};
+  const body = h('div', {style:'display:flex;flex-direction:column;gap:14px'},
+    h('div', {class:'fld'}, h('label', {for:'p-rp', text:'Szolgálati (RP) név'}), h('input', {id:'p-rp', maxlength:'40', value:usr.rpName || ''})),
+    h('div', {class:'fld'}, h('label', {for:'p-rb', text:'Roblox-felhasználónév'}), h('input', {id:'p-rb', maxlength:'40', value:usr.roblox || ''})),
+    h('div', {class:'fld'}, h('label', {for:'p-bio', text:'Bemutatkozás'}), h('textarea', {id:'p-bio', maxlength:'300', style:'min-height:80px', text:usr.bio || ''}), h('small', {text:'Legfeljebb 300 karakter. Az igazolványodon jelenik meg.'})),
+    h('div', {style:'border-top:1px solid var(--rule);padding-top:14px;display:flex;flex-direction:column;gap:12px'}, h('b', {text:'Jelszó módosítása'}),
+      pwField('p-old', 'Jelenlegi jelszó', 'current-password'), pwField('p-new', 'Új jelszó (legalább 6 karakter)', 'new-password')));
+  const save = h('button', {class:'btn btn-navy', type:'button', text:'Mentés'});
+  save.addEventListener('click', async () => {
+    const rp = $('#p-rp').value.trim(); if (rp.length < 2) { $('#p-rp').focus(); return toast('Adj meg legalább 2 karakteres nevet.'); }
+    save.disabled = true;
+    try {
+      await S.B.set('users/' + me(), {username:usr.username || S.auth.username, rpName:rp, roblox:$('#p-rb').value.trim(), bio:$('#p-bio').value.trim(), badge:usr.badge || genBadge(), createdAt:usr.createdAt || Date.now()}, true);
+      const o = $('#p-old').value, n = $('#p-new').value;
+      if (o || n) { if (n.length < 6) throw {code:'auth/weak-password'}; await S.B.changePassword(o, n); toast('Jelszó módosítva.'); }
+      toast('Profil mentve.'); closeModal();
+    } catch (e) { toast(errText(e)); save.disabled = false; }
+  });
+  openModal('Profil és jelszó', body, [h('button', {class:'btn btn-line', type:'button', text:'Mégse', onclick:closeModal}), save]);
+}
+function openGuide(){
+  openModal('Éles indítás 5 lépésben', h('div', null,
+    h('p', {style:'color:var(--ink-2);font-size:14px;margin-bottom:12px', text:'A letöltött csomagban lévő TELEPITES.md részletesen leírja. Röviden:'}),
+    h('ol', {class:'guide'},
+      h('li', null, h('b', {text:'Firebase-projekt: '}), 'console.firebase.google.com → új projekt (ingyenes).'),
+      h('li', null, h('b', {text:'Belépés bekapcsolása: '}), 'Authentication → Sign-in method → Email/Password → Enable.'),
+      h('li', null, h('b', {text:'Adatbázis: '}), 'Firestore Database → Create database → Rules fülre bemásolod a firestore.rules tartalmát → Publish.'),
+      h('li', null, h('b', {text:'Konfiguráció: '}), 'Project settings → Web app → a kapott firebaseConfig-ot bemásolod az index.html elejére (FIREBASE_CONFIG).'),
+      h('li', null, h('b', {text:'Közzététel: '}), 'feltöltöd a mappát GitHub Pages-re vagy Netlify-ra, megnyitod, és létrehozod a Főbiztosi fiókot.'))),
+    [h('button', {class:'btn btn-navy', type:'button', text:'Rendben', onclick:closeModal})]);
+}
+
+/* ================= admin ================= */
+let settingsDirty = false;
+function renderAdmin(){
+  const ok = !!me() && isOwnerUid(me());
+  $('#admDenied').hidden = ok || access() === 'loading'; $('#admBody').hidden = !ok;
+  if (!ok) return;
+  const seg = $('#admAlert'); seg.replaceChildren();
+  for (const k of [1,2,3,4]) { const a = ALERTS[k]; seg.append(h('button', {type:'button', class:a.tone, 'aria-pressed':String((S.config.alert || 1) === k), onclick:() => saveConfig({alert:k}, `Riasztási fokozat: ${a.roman} ${a.name}`)}, h('b', {text:a.roman + ' ' + a.name}), h('span', {text:a.desc}))); }
+  renderAdmApps(); renderAdmRoster(); renderAdmDecrees();
+  if (!settingsDirty) fillSettings();
+}
+function fillSettings(){
+  $('#s-motd').value = S.config.motd || ''; $('#s-rules').value = S.config.rules || DEFAULT_RULES;
+  const box = $('#rankNameInputs');
+  if (!box.childElementCount) RANKS.forEach((r, i) => box.append(h('div', {class:'fld'}, h('label', {for:'rn-' + r.id, text:`${i + 1}. fokozat`}), h('input', {id:'rn-' + r.id, maxlength:'30', placeholder:r.name}))));
+  for (const r of RANKS) $('#rn-' + r.id).value = S.config.rankNames?.[r.id] || r.name;
+}
+async function saveConfig(patch, okMsg){ try { await S.B.set('config/main', {...patch, updatedAt:Date.now()}, true); toast(okMsg || 'Mentve.'); } catch (e) { toast(errText(e)); } }
+async function setRole(uid, patch, okMsg){
+  const cur = S.roles[uid] || {};
+  const next = {rank:cur.rank || 'r0', unit:cur.unit || null, since:cur.since || Date.now(), ...patch};
+  next.level = RANK[next.rank].level;
+  try { await S.B.set('roles/' + uid, next); toast(okMsg); } catch (e) { toast(errText(e)); }
+}
+function renderAdmApps(){
+  const box = $('#admApps');
+  if (box.contains(document.activeElement) && /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName)) return;
+  const open = new Set($$('#admApps details[open]').map(d => d.dataset.uid));
+  box.replaceChildren();
+  const order = {pending:0, interview:1, accepted:2, rejected:3};
+  const list = Object.entries(S.apps).filter(([, a]) => a && a.submitted).sort(([, a], [, b]) => (order[a.status] ?? 0) - (order[b.status] ?? 0) || b.submitted - a.submitted);
+  const pend = list.filter(([, a]) => a.status === 'pending' || a.status === 'interview').length;
+  $('#admAppsCnt').textContent = S.loaded.apps ? `${pend} elbírálásra vár · ${list.length} összesen` : 'Betöltés…';
+  if (!list.length) { box.append(h('p', {class:'empty', text:S.loaded.apps ? 'Még nincs beküldött kérelem. Ha valaki kitölti az űrlapot, itt jelenik meg.' : 'Betöltés…'})); return; }
+  const map = {pending:['Elbírálás alatt','t-warn'], interview:['Interjú','t-info'], accepted:['Felvéve','t-ok'], rejected:['Elutasítva','t-danger']};
+  for (const [uid, a] of list) {
+    const [lab, tone] = map[a.status] || map.pending, u = UNIT[a.unit];
+    const det = h('details', {class:'app-card', 'data-uid':uid}); if (open.has(uid)) det.open = true;
+    det.append(h('summary', null, avatarEl(uid, 'av av-sm'), h('span', {class:'nm', text:a.rpName || nameOf(uid)}), h('span', {class:'ref mono', text:a.ref || ''}), h('span', {class:'grow'}), h('span', {class:'ref', text:fmtStamp(a.submitted)}), h('span', {class:'pill ' + tone, text:lab})));
+    const qa = (q, t) => t ? h('div', {class:'qa'}, h('b', {text:q}), h('p', {text:t})) : null;
+    const ans = h('div', {class:'ans'},
+      h('dl', {class:'kv'}, h('dt', {text:'Azonosító'}), h('dd', {class:'mono', text:S.users[uid]?.username || '—'}), h('dt', {text:'Roblox'}), h('dd', {text:a.roblox || '—'}), h('dt', {text:'Korosztály'}), h('dd', {text:a.age || '—'}), h('dt', {text:'Discord'}), h('dd', {text:a.discord || '—'}), h('dt', {text:'Aktivitás'}), h('dd', {text:a.activity || '—'}), h('dt', {text:'Egység'}), h('dd', {text:u ? u.name : '—'})),
+      qa('Korábbi tapasztalat', a.experience), qa('Motiváció', a.motivation), qa('1. Zavargás – első három lépés', a.q1), qa('2. Szabályzatba ütköző parancs', a.q2), qa('3. A jelmondat jelentése', a.q3));
+    if (a.status === 'pending' || a.status === 'interview') {
+      const sel = h('select', {id:'d-unit-' + uid}, UNITS.map(x => { const o = h('option', {value:x.id, text:x.name}); if (x.id === a.unit) o.selected = true; return o; }));
+      const note = h('textarea', {id:'d-note-' + uid, maxlength:'500', style:'min-height:60px', placeholder:'Megjegyzés a kérelmezőnek (elutasításnál kötelező)'});
+      const dec = async (patch, msg) => { try { await S.B.update('applications/' + uid, {...patch, note:note.value.trim()}); toast(msg); } catch (e) { toast(errText(e)); } };
+      const accept = h('button', {class:'btn btn-navy btn-sm', type:'button', text:'Felvétel Újoncként'});
+      accept.addEventListener('click', async () => { accept.disabled = true; await setRole(uid, {rank:(S.roles[uid]?.rank) || 'r0', unit:sel.value}, `${a.rpName || 'A kérelmező'} felvéve.`); await dec({status:'accepted', decidedAt:Date.now()}, 'Határozat rögzítve.'); });
+      const inter = h('button', {class:'btn btn-line btn-sm', type:'button', text:'Behívás interjúra', onclick:() => dec({status:'interview'}, 'Interjúra behívva.')});
+      const reject = h('button', {class:'btn btn-danger btn-sm', type:'button', text:'Elutasítás'});
+      reject.addEventListener('click', () => { if (!note.value.trim()) { note.focus(); return toast('Elutasításnál írj indoklást.'); } dec({status:'rejected', decidedAt:Date.now()}, 'Kérelem elutasítva.'); });
+      ans.append(h('div', {class:'decide'}, h('div', {class:'fld'}, h('label', {for:'d-unit-' + uid, text:'Egységbe sorolás'}), sel), h('div', {class:'fld', style:'flex:2'}, h('label', {for:'d-note-' + uid, text:'Megjegyzés'}), note), h('div', {style:'display:flex;gap:8px;flex-wrap:wrap'}, accept, inter, reject)));
+    } else if (a.note) ans.append(qa('A vezetés megjegyzése', a.note));
+    det.append(ans); box.append(det);
+  }
+}
+function renderAdmRoster(){
+  const box = $('#admRoster');
+  if (box.contains(document.activeElement) && document.activeElement.tagName === 'SELECT') return;
+  const ids = memberIds().sort((a, b) => levelOf(b) - levelOf(a) || nameOf(a).localeCompare(nameOf(b), 'hu'));
+  $('#admRosterCnt').textContent = `${ids.length} fő`;
+  const tb = h('tbody');
+  for (const id of ids) {
+    const r = rankOf(id), usr = S.users[id] || {};
+    const rsel = h('select', {'aria-label':nameOf(id) + ' rendfokozata'}, RANKS.map(x => { const o = h('option', {value:x.id, text:rankName(x)}); if (r && x.id === r.id) o.selected = true; return o; }));
+    rsel.addEventListener('change', () => setRole(id, {rank:rsel.value}, `${nameOf(id)}: ${rankName(RANK[rsel.value])}`));
+    const usel = h('select', {'aria-label':nameOf(id) + ' egysége'}, h('option', {value:'', text:'Beosztás nélkül'}), UNITS.map(x => { const o = h('option', {value:x.id, text:x.short}); if (x.id === unitOf(id)) o.selected = true; return o; }));
+    usel.addEventListener('change', () => setRole(id, {unit:usel.value || null}, `${nameOf(id)} egysége módosítva.`));
+    let rm = null;
+    if (id !== me()) {
+      rm = h('button', {class:'btn btn-danger btn-sm', type:'button', text:'Eltávolítás'});
+      rm.addEventListener('click', async () => {
+        if (rm.dataset.armed !== '1') { rm.dataset.armed = '1'; rm.textContent = 'Biztosan?'; setTimeout(() => { rm.dataset.armed = ''; rm.textContent = 'Eltávolítás'; }, 3000); return; }
+        try { await S.B.del('roles/' + id); toast(`${nameOf(id)} eltávolítva az állományból.`); } catch (e) { toast(errText(e)); }
+      });
+    }
+    tb.append(h('tr', null,
+      h('td', null, h('div', {class:'who'}, avatarEl(id, 'av av-sm'), h('div', null, h('b', {text:nameOf(id)}), h('span', {text:(usr.username ? '@' + usr.username : '') + (usr.roblox ? ' · Roblox: ' + usr.roblox : '')})))),
+      h('td', {class:'mono', text:usr.badge || '—'}), h('td', null, rsel), h('td', null, usel),
+      h('td', {text:isOnline(id) ? 'Online' : '—'}), h('td', null, rm)));
+  }
+  box.replaceChildren(ids.length ? h('table', {class:'roster'}, h('thead', null, h('tr', null, ['Tag','Jelvényszám','Rendfokozat','Egység','Állapot',''].map(t => h('th', {text:t})))), tb) : h('p', {class:'empty', text:'Az állomány még üres. A felvett kérelmezők itt jelennek meg.'}));
+}
+function nextDecreeNo(){ const y = new Date().getFullYear(); return 1 + Math.max(0, ...S.decrees.filter(d => d.year === y).map(d => d.no || 0)); }
+function renderAdmDecrees(){
+  const nd = {no:nextDecreeNo(), year:new Date().getFullYear(), date:Date.now()};
+  $('#decNext').textContent = 'Következő szám: ' + decreeNo(nd);
+  const box = $('#decAdminList'); box.replaceChildren();
+  for (const d of S.decrees) {
+    const del = h('button', {class:'btn btn-danger btn-sm', type:'button', text:'Visszavonás'});
+    del.addEventListener('click', async () => { if (del.dataset.armed !== '1') { del.dataset.armed = '1'; del.textContent = 'Biztosan?'; setTimeout(() => { del.dataset.armed = ''; del.textContent = 'Visszavonás'; }, 3000); return; } try { await S.B.del('decrees/' + d.id); toast('Rendelet visszavonva.'); } catch (e) { toast(errText(e)); } });
+    box.append(h('div', {class:'dec-admin'}, h('div', null, h('b', {text:d.title}), h('span', {text:decreeNo(d)})), del));
+  }
+}
+
+/* ================= demo tools ================= */
+async function loadSample(){
+  if (S.mode !== 'demo') return;
+  const B = S.B, now = Date.now(), H = 3600e3;
+  let ownerId = S.ownerUid;
+  if (!ownerId) {
+    const a = await B.register('fobiztos', 'demo1234');
+    ownerId = a.uid;
+    await B.set('meta/owner', {uid:ownerId, at:now});
+    await B.set('users/' + ownerId, {username:'fobiztos', rpName:'Varga Ákos', roblox:'VargaAkos_RP', badge:'NK-1001', createdAt:now - 30 * 24 * H, bio:'A Hatóság Főbiztosa.'});
+  }
+  const ppl = [
+    ['pelda_1', 'kovacs.bence', 'Kovács Bence', 'r4', 'taktikai'], ['pelda_2', 'nagy.reka', 'Nagy Réka', 'r3', 'ellatas'],
+    ['pelda_3', 'toth.mark', 'Tóth Márk', 'r2', 'mesterlovesz'], ['pelda_4', 'szabo.lilla', 'Szabó Lilla', 'r1', 'ellatas'], ['pelda_5', 'kiss.adam', 'Kiss Ádám', 'r0', 'taktikai'],
+  ];
+  const seed = {};
+  ppl.forEach(([id, un, rp, rk, unit], i) => {
+    seed['users/' + id] = {username:un, rpName:rp, roblox:rp.replace(/\s/g, '') + '_RP', badge:'NK-' + (2100 + i * 37), createdAt:now - (20 - i * 3) * 24 * H, bio:'Példa állományi tag (bemutató adat).'};
+    seed['roles/' + id] = {rank:rk, level:RANK[rk].level, unit, since:now - (20 - i * 3) * 24 * H};
+    seed['presence/' + id] = {ts:i < 3 ? now : 0};
+  });
+  seed['users/pelda_6'] = {username:'farkas.daniel', rpName:'Farkas Dániel', roblox:'FarkasDani_RP', badge:'NK-3310', createdAt:now - 5 * H, bio:''};
+  seed['applications/pelda_6'] = {roblox:'FarkasDani_RP', rpName:'Farkas Dániel', age:'16–17 év', discord:'farkasdani', activity:'8–14 óra', unit:'mesterlovesz', experience:'Fél évig voltam a Városi Rendőrség tagja, őrmester rangban.', motivation:'Mindig is egy elit egységben akartam szolgálni. A NEKEH szervezettsége és a hierarchia betartása az, ami a legjobban vonz, és szeretnék a mesterlövészek között fejlődni.', q1:'Felmérem a helyzetet, jelentek a parancsnokságnak, majd biztosítom a civilek evakuálását a helyi erőkkel együttműködve.', q2:'Végrehajtás előtt tisztelettel jelzem a problémát, és ha fennáll, a szolgálati úton a következő felettesemhez fordulok.', q3:'Azt, hogy a Hatóság felelőssége mindenkire kiterjed: a hatalom kötelesség is.', agreed:true, submitted:now - 4 * H, ref:'NEKEH/JEL/2026/1031-P6DM', status:'pending'};
+  const msgs = [
+    ['kozlemenyek', ownerId, 'Üdvözlök minden állományi tagot a NEKEH belső rendszerében. Kérem, mindenki olvassa el a #szabályzat csatornát. @mindenki', 26],
+    ['altalanos', 'pelda_1', 'Ma este 20:00-kor gyakorlat lesz a kiképzőpályán, aki tud, jöjjön.', 3],
+    ['altalanos', 'pelda_2', 'Ott leszek, az Ellátás hozza a felszerelést.', 2.8],
+    ['altalanos', 'pelda_3', 'Megerősítem, **20:00**. A Mesterlövész Egység a tetőn helyezkedik el.', 2.5],
+    ['bevetes', 'pelda_1', 'Riasztás: zavargás a főtéren, két egység kell azonnal.', 1.2, 3],
+    ['bevetes', 'pelda_4', 'Ellátás úton, 3 perc.', 1.1, 2],
+  ];
+  msgs.forEach(([ch, uid, t, hoursAgo, p], i) => { const m = {uid, t, ts:now - hoursAgo * H, rx:i === 1 ? {like:['pelda_2','pelda_3'], salute:['pelda_4']} : {}}; if (p) m.p = p; seed[`channels/${ch}/messages/sample${i}`] = m; });
+  seed['decrees/sample1'] = {no:1, year:new Date().getFullYear(), date:now - 2 * 24 * H, title:'a belső kommunikációs rendszer használatáról', body:'1. § A Hatóság állománya a belső kommunikációt kizárólag a NEKEH belső rendszerén keresztül folytatja.\n2. § A #bevetés-irányítás csatornán közölt riasztásokat minden szolgálatban lévő tag köteles nyugtázni.\n3. § Ez a rendelet a kihirdetését követő napon lép hatályba.', author:ownerId};
+  B.seed(seed);
+  toast(S.auth ? 'Példaadatok betöltve.' : 'Példaadatok betöltve. Főbiztos belépés: fobiztos / demo1234');
+}
+
+/* ================= boot ================= */
+async function boot(){
+  $('#today').textContent = new Date().toLocaleDateString('hu-HU', {year:'numeric', month:'long', day:'numeric', weekday:'long'});
+  $('#year').textContent = new Date().getFullYear();
+  buildStatic();
+  route();
+  loadDraft(); updateCounters();
+  try {
+    if (FIREBASE_CONFIG && FIREBASE_CONFIG.apiKey) {
+      const base = `https://www.gstatic.com/firebasejs/${FB_VERSION}/`;
+      await loadScript(base + 'firebase-app-compat.js');
+      await Promise.all([loadScript(base + 'firebase-auth-compat.js'), loadScript(base + 'firebase-firestore-compat.js')]);
+      S.B = FirebaseBackend(FIREBASE_CONFIG);
+    } else S.B = LocalBackend();
+  } catch (e) { S.bootError = 'A Firebase nem tölthető be. Ellenőrizd az internetkapcsolatot és a FIREBASE_CONFIG beállítást. (' + (e.message || e) + ')'; S.ready = true; renderAll(); return; }
+  S.mode = S.B.mode;
+  S.B.onAuth(a => {
+    const prev = me();
+    S.auth = a;
+    if ((a && a.uid) !== prev) {
+      S.users = {}; S.roles = {}; S.myApp = undefined; S.apps = {}; S.heads = {}; S.msgs = {}; S.voiceMembers = {}; S.presence = {};
+      S.loaded = {...S.loaded, users:false, roles:false, apps:false, msgs:{}}; S.msgErr = {}; S.reapply = false;
+      $('#applyStatus').dataset.k = '';
+      if (VC.room) leaveVoice(true);
+    }
+    S.ready = true; changed();
+  });
+  syncSubs(); renderAll();
+  setInterval(() => { heartbeat(); renderTyping(); if (S.route === 'belso' && access() === 'member') { renderMembers(); renderChanList(); } }, 15000);
+  setInterval(renderTyping, 3000);
+}
+
+/* ================= events ================= */
+window.addEventListener('hashchange', route);
+$('#menuBtn').addEventListener('click', () => { const o = $('#nav').classList.toggle('open'); $('#menuBtn').setAttribute('aria-expanded', String(o)); });
+$('#acctBtn').addEventListener('click', e => { e.stopPropagation(); if ($('#acctMenu').hidden) openAcctMenu(); else closeAcctMenu(); });
+$('#scrim').addEventListener('click', e => { if (e.target === $('#scrim')) closeModal(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape') { if (!$('#scrim').hidden) closeModal(); closeReactPop(); closeAcctMenu(); } });
+document.addEventListener('click', e => { const b = e.target.closest('[data-toggle]'); if (!b) return; const inp = $('#' + b.dataset.toggle); if (!inp) return; const show = inp.type === 'password'; inp.type = show ? 'text' : 'password'; b.textContent = show ? 'Elrejt' : 'Mutat'; });
+$('#applyForm').addEventListener('submit', submitApply);
+$('#applyForm').addEventListener('input', () => { saveDraft(); updateCounters(); });
+$('#applyForm').addEventListener('change', saveDraft);
+$('#composer').addEventListener('submit', sendMsg);
+const inp = $('#msgInput');
+inp.addEventListener('input', () => { autoGrow(); updateCharCnt(); onTypingInput(); mSel = 0; updateMentionPop(); });
+inp.addEventListener('keydown', e => {
+  const popOpen = !$('#mentionPop').hidden && mOpts.length;
+  if (popOpen && (e.key === 'ArrowDown' || e.key === 'ArrowUp')) { e.preventDefault(); mSel = (mSel + (e.key === 'ArrowDown' ? 1 : -1) + mOpts.length) % mOpts.length; updateMentionPop(); return; }
+  if (popOpen && (e.key === 'Enter' || e.key === 'Tab')) { e.preventDefault(); pickMention(mSel); return; }
+  if (e.key === 'Escape') { if (popOpen) { $('#mentionPop').hidden = true; mOpts = []; } else cancelCtx(); return; }
+  if (e.key === 'Enter' && !e.shiftKey && !e.isComposing) { e.preventDefault(); sendMsg(); return; }
+  if (e.key === 'ArrowUp' && !inp.value) { const mine = (S.msgs[S.ch] || []).filter(m => m.uid === me()); const last = mine[mine.length - 1]; if (last) { e.preventDefault(); startEdit(last); } }
+});
+inp.addEventListener('blur', () => setTimeout(() => { $('#mentionPop').hidden = true; }, 150));
+$$('#prioBar button').forEach(b => b.addEventListener('click', () => { S.prio = +b.dataset.p; renderComposer(); }));
+$('#btnChans').addEventListener('click', () => $('#console').classList.toggle('show-chans'));
+$('#btnMembers').addEventListener('click', () => { if (matchMedia('(min-width: 1101px)').matches) S.showMembers = !S.showMembers; else S.showMembersNarrow = !S.showMembersNarrow; renderConsole(); });
+$('#msgs').addEventListener('click', () => { $('#console').classList.remove('show-chans'); if (S.showMembersNarrow) { S.showMembersNarrow = false; $('#console').classList.remove('show-mem'); } });
+$('#msgs').addEventListener('scroll', () => { const b = $('#msgs'); if (b.scrollHeight - b.scrollTop - b.clientHeight < 40) markRead(); }, {passive:true});
+$('#admSettings').addEventListener('input', () => { settingsDirty = true; });
+$('#admSettings').addEventListener('submit', async e => {
+  e.preventDefault();
+  const rankNames = {}; for (const r of RANKS) { const v = $('#rn-' + r.id).value.trim(); if (v && v !== r.name) rankNames[r.id] = v; }
+  await saveConfig({motd:$('#s-motd').value.trim(), rules:$('#s-rules').value.trim() || DEFAULT_RULES, rankNames}, 'Beállítások mentve.');
+  settingsDirty = false;
+});
+$('#decForm').addEventListener('submit', async e => {
+  e.preventDefault();
+  const title = $('#d-title').value.trim(), body = $('#d-body').value.trim();
+  if (title.length < 3 || body.length < 10) return toast('Add meg a rendelet tárgyát és szövegét.');
+  const d = {no:nextDecreeNo(), year:new Date().getFullYear(), date:Date.now(), title, body, author:me()};
+  try { await S.B.add('decrees', d); $('#d-title').value = ''; $('#d-body').value = ''; toast('Kihirdetve: ' + decreeNo(d)); } catch (err) { toast(errText(err)); }
+});
+$('#demoGuide').addEventListener('click', openGuide);
+$('#demoSample').addEventListener('click', () => loadSample().catch(e => toast(errText(e))));
+$('#demoReset').addEventListener('click', async e => {
+  const b = e.currentTarget;
+  if (b.dataset.armed !== '1') { b.dataset.armed = '1'; b.textContent = 'Biztosan törlöd?'; setTimeout(() => { b.dataset.armed = ''; b.textContent = 'Bemutató törlése'; }, 3000); return; }
+  await leaveVoice(true); S.B.reset(); store.del('draft'); b.dataset.armed = ''; b.textContent = 'Bemutató törlése'; toast('A bemutató adatai törölve.'); location.hash = 'fooldal';
+});
+document.addEventListener('visibilitychange', () => { if (!document.hidden) { heartbeat(true); markRead(); } });
+window.addEventListener('pagehide', () => { if (VC.room && me()) { try { S.B.del(`voice/${VC.room}/members/${me()}`); } catch {} } });
+window.addEventListener('resize', () => { if (S.route === 'belso' && access() === 'member') renderConsole(); });
+
+boot();
+</script>
+
+</body>
+</html>
