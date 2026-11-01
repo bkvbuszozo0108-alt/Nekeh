@@ -1150,6 +1150,12 @@ img.missing{opacity:0}
 @media (max-width:1100px){.divs{grid-template-columns:1fr}}
 @media (max-width:900px){.org-node .org-logo{width:64px;height:64px}}
 @media (max-width:560px){.div-card{grid-template-columns:1fr}.div-card .art .lg,.div-card .art .pt{width:92px}}
+.org-patches{align-self:stretch;display:flex;justify-content:center;gap:10px;flex-wrap:wrap;margin-top:14px;padding-top:14px;border-top:1px dashed var(--rule)}
+.org-patches .pt{display:flex;flex-direction:column;align-items:center;gap:8px;width:104px;text-decoration:none;color:var(--ink);font-size:12.5px;font-weight:600;line-height:1.3;text-align:center}
+.org-patches .pt img{width:84px;height:auto;filter:drop-shadow(0 6px 10px rgba(0,0,0,.45));transition:transform .4s cubic-bezier(.2,.7,.2,1)}
+.org-patches .pt:hover img{transform:translateY(-4px) rotate(-3deg)}
+.org-patches .pt:hover span{color:var(--link)}
+@media (max-width:1100px){.org-patches .pt{width:96px}.org-patches .pt img{width:74px}}
 </style>
 </head>
 <body>
@@ -1292,12 +1298,12 @@ img.missing{opacity:0}
           <div class="org-top"><img src="img/cimer.webp" alt="" width="54" height="54"><div><b>Főbiztos</b><span>Vészhelyzet idején az ország második legmagasabb rangú tisztségviselője</span></div></div>
           <div class="org-stem"></div>
           <div class="org-row">
-            <div class="org-node"><div class="org-art"><img class="org-logo" src="img/logo-kozrend.webp" alt="A Közrendvédelmi Parancsnokság logója" width="84" height="84"><img class="org-patch" src="img/folt-kozrend.webp" alt="" width="66" height="85"></div><b>Közrendvédelmi Parancsnokság</b><span>Rendfenntartás, gyorsbeavatkozás</span>
-              <div class="units"><a href="#egysegek"><img src="img/folt-mesterlovesz.webp" alt="" width="30" height="39">Mesterlövész Egység</a><a href="#egysegek"><img src="img/folt-taktikai.webp" alt="" width="30" height="39">Taktikai és Fegyverspecifikus Alosztály</a></div></div>
-            <div class="org-node"><div class="org-art"><img class="org-logo" src="img/logo-ellatasi-fo.webp" alt="A Személyellátási és Logisztikai Főosztály logója" width="84" height="84"><img class="org-patch" src="img/folt-ellatasi-fo.webp" alt="" width="66" height="85"></div><b>Személyellátási és Logisztikai Főosztály</b><span>Ellátás, evakuáció, egészségügy</span>
-              <div class="units"><a href="#egysegek"><img src="img/folt-ellatas.webp" alt="" width="30" height="39">Ellátás</a></div></div>
-            <div class="org-node"><div class="org-art"><img class="org-logo" src="img/logo-strategiai.webp" alt="A Stratégiai Tervezési és Vészhelyzeti Tanács logója" width="84" height="84"><img class="org-patch" src="img/folt-strategiai.webp" alt="" width="66" height="85"></div><b>Stratégiai Tervezési és Vészhelyzeti Tanács</b><span>Tervezés, krízisdöntések</span></div>
-            <div class="org-node"><div class="org-art"><img class="org-logo" src="img/logo-titkos.webp" alt="A Titkos Műveletek Osztályának logója" width="84" height="84"><img class="org-patch" src="img/folt-titkos.webp" alt="" width="66" height="85"></div><b>Titkos Műveletek Osztálya</b><span>Minősített műveletek</span></div>
+            <div class="org-node"><div class="org-art"><img class="org-logo" src="img/logo-kozrend.webp" alt="A Közrendvédelmi Parancsnokság logója" width="84" height="84"></div><b>Közrendvédelmi Parancsnokság</b><span>Rendfenntartás, gyorsbeavatkozás</span>
+              <div class="org-patches"><a class="pt" href="#egysegek"><img src="img/folt-mesterlovesz.webp" alt="Mesterlövész Egység felvarró" width="92" height="118" loading="lazy"><span>Mesterlövész Egység</span></a><a class="pt" href="#egysegek"><img src="img/folt-taktikai.webp" alt="Taktikai és Fegyverspecifikus Alosztály felvarró" width="92" height="118" loading="lazy"><span>Taktikai és Fegyverspecifikus Alosztály</span></a></div></div>
+            <div class="org-node"><div class="org-art"><img class="org-logo" src="img/logo-ellatasi-fo.webp" alt="A Személyellátási és Logisztikai Főosztály logója" width="84" height="84"></div><b>Személyellátási és Logisztikai Főosztály</b><span>Ellátás, evakuáció, egészségügy</span>
+              <div class="org-patches"><a class="pt" href="#egysegek"><img src="img/folt-ellatas.webp" alt="Ellátás felvarró" width="92" height="118" loading="lazy"><span>Ellátás</span></a></div></div>
+            <div class="org-node"><div class="org-art"><img class="org-logo" src="img/logo-strategiai.webp" alt="A Stratégiai Tervezési és Vészhelyzeti Tanács logója" width="84" height="84"></div><b>Stratégiai Tervezési és Vészhelyzeti Tanács</b><span>Tervezés, krízisdöntések</span><div class="org-patches"><a class="pt" href="#egysegek"><img src="img/folt-strategiai.webp" alt="Stratégiai Tanács felvarró" width="92" height="118" loading="lazy"><span>A Tanács felvarrója</span></a></div></div>
+            <div class="org-node"><div class="org-art"><img class="org-logo" src="img/logo-titkos.webp" alt="A Titkos Műveletek Osztályának logója" width="84" height="84"></div><b>Titkos Műveletek Osztálya</b><span>Minősített műveletek</span><div class="org-patches"><a class="pt" href="#egysegek"><img src="img/folt-titkos.webp" alt="Titkos Műveletek Osztálya felvarró" width="92" height="118" loading="lazy"><span>Az Osztály felvarrója</span></a></div></div>
           </div>
           <div class="insig-band"><span style="font-size:14px;color:var(--ink-2)">Minden főosztály és egység saját logót és felvarrót visel.</span><span class="row" id="insigRow"></span><a class="btn btn-line btn-sm" href="#egysegek">Jelképek megtekintése →</a></div>
         </div>
