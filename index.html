@@ -1168,6 +1168,10 @@ body.shot-guard img,body.shot-guard .mug,body.shot-guard .av.has-photo,body.shot
 body.shot-cover #shotGuard{display:flex}
 body.rec-hide img,body.rec-hide .mug,body.rec-hide .av.has-photo,body.rec-hide .idcard .photo.has-photo{visibility:hidden!important}
 @media print{img,.mug,.org-patches,.unit .patch,.div-card .art,.insig-band{visibility:hidden!important}}
+.ladder{grid-template-columns:repeat(6,minmax(0,1fr))!important;row-gap:34px!important}
+@media (max-width:1100px){.ladder{grid-template-columns:repeat(4,minmax(0,1fr))!important}}
+@media (max-width:700px){.ladder{grid-template-columns:repeat(3,minmax(0,1fr))!important}}
+@media (max-width:460px){.ladder{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
 </style>
 </head>
 <body>
@@ -1381,7 +1385,7 @@ body.rec-hide img,body.rec-hide .mug,body.rec-hide .av.has-photo,body.rec-hide .
       <section class="sec"><div class="wrap">
         <span class="eyebrow">Rendfokozatok</span>
         <h2 class="sec-title" style="margin-bottom:8px">Rendfokozati lánc</h2>
-        <p style="color:var(--ink-2);max-width:70ch">A rendfokozatot vállap jelzi. Az ezüst csillagok a tiszti, az arany csillagok a vezetői szintet jelölik. Előléptetésről a Főbiztos dönt.</p>
+        <p style="color:var(--ink-2);max-width:70ch">A rendfokozatot vállap jelzi. Az állományi kar kis ezüst, a felügyelői kar kis arany, a parancsnoki kar nagy arany csillagot visel; a Hatóság vezetése háromszögbe, illetve aranyszegélyes négyzetbe rendezett csillagokat. Előléptetésről a Főbiztos dönt.</p>
         <div class="ladder-line"></div>
         <div class="ladder" id="ladder"></div>
       </div></section>
@@ -1807,12 +1811,18 @@ const ICE_SERVERS = [{urls:['stun:stun.l.google.com:19302','stun:stun1.l.google.
 
 /* ================= constants ================= */
 const RANKS = [
-  {id:'r0', name:'Újonc', level:10, board:null, desc:'Próbaidős állomány. Felvétel után minden új tag ezzel kezd.'},
-  {id:'r1', name:'Ügynök', level:20, board:'img/vallap-1.webp', desc:'Teljes jogú műveleti állomány, önálló szolgálatellátás.'},
-  {id:'r2', name:'Tiszt', level:30, board:'img/vallap-2.webp', desc:'Szolgálatparancsnoki feladatok, kisebb csoportok vezetése.'},
-  {id:'r3', name:'Főtiszt', level:40, board:'img/vallap-3.webp', desc:'Műveletek tervezése és irányítása, újoncok kiképzése.'},
-  {id:'r4', name:'Parancsnok', level:50, board:'img/vallap-4.webp', desc:'Egység vagy főosztály vezetője, a Vészhelyzeti Tanács tagja.'},
-  {id:'r5', name:'Főbiztos', level:60, board:'img/vallap-5.webp', desc:'A Hatóság vezetője; vészhelyzetben az ország második legmagasabb rangú tisztségviselője.'},
+  {id:'r0', name:'Újonc', level:10, tier:0, board:null, desc:'Próbaidős állomány. Felvétel után minden új tag ezzel kezd.'},
+  {id:'r1', name:'Ügynök', level:15, tier:1, board:'img/rang-r1.webp', desc:'Teljes jogú műveleti állomány, önálló szolgálatellátás.'},
+  {id:'r1b', name:'Törzsügynök', level:18, tier:1, board:'img/rang-r1b.webp', desc:'Tapasztalt ügynök, a járőrpárok vezetője és az újoncok mentora.'},
+  {id:'r1c', name:'Vezető ügynök', level:22, tier:1, board:'img/rang-r1c.webp', desc:'A szolgálati csoport rangidős ügynöke; a felügyelő távollétében irányítja a csoportot.'},
+  {id:'r2', name:'Felügyelő', level:30, tier:2, board:'img/rang-r2.webp', desc:'Szolgálatparancsnoki feladatok, kisebb csoportok vezetése. Körözést rendelhet el.'},
+  {id:'r2b', name:'Főfelügyelő', level:33, tier:2, board:'img/rang-r2b.webp', desc:'Több szolgálati csoport felügyelete, bevetések helyszíni irányítása.'},
+  {id:'r3', name:'Kiemelt főfelügyelő', level:40, tier:2, board:'img/rang-r3.webp', desc:'Műveletek tervezése és irányítása, kiképzések vezetése.'},
+  {id:'r4a', name:'Alparancsnok', level:45, tier:3, board:'img/rang-r4a.webp', desc:'Az egységparancsnok helyettese, műveleti szinten irányít.'},
+  {id:'r4', name:'Parancsnok', level:50, tier:3, board:'img/rang-r4.webp', desc:'Egység vagy főosztály vezetője, a Vészhelyzeti Tanács tagja.'},
+  {id:'r4b', name:'Főparancsnok', level:53, tier:3, board:'img/rang-r4b.webp', desc:'Több egység összehangolt irányítása, a parancsnoki kar vezetője.'},
+  {id:'r5a', name:'Főbiztos-helyettes', level:57, tier:4, board:'img/rang-r5a.webp', desc:'A Főbiztos általános helyettese; távollétében teljes jogkörrel helyettesíti.'},
+  {id:'r5', name:'Főbiztos', level:60, tier:4, board:'img/rang-r5.webp', desc:'A Hatóság vezetője; vészhelyzetben az ország második legmagasabb rangú tisztségviselője.'},
 ];
 const RANK = Object.fromEntries(RANKS.map(r => [r.id, r]));
 const UNITS = [
@@ -2130,7 +2140,7 @@ const isLeader = uid => isOwnerUid(uid) || levelOf(uid) >= 50;
 const unitOf = uid => (S.roles[uid] && S.roles[uid].unit) || null;
 const rankName = r => (r && (S.config.rankNames?.[r.id] || r.name)) || '';
 function nameOf(uid){ const u = S.users[uid]; return (u && (u.rpName || u.username)) || (uid === me() && S.auth ? S.auth.username : 'Ismeretlen'); }
-function rankColor(uid){ const r = rankOf(uid); return r ? `var(--rk${r.id.slice(1)})` : 'var(--ink-2)'; }
+function rankColor(uid){ const r = rankOf(uid); return r ? `var(--rk${[0, 1, 2, 4, 5][r.tier || 0]})` : 'var(--ink-2)'; }
 function memberIds(){ const ids = new Set(Object.keys(S.roles).filter(id => RANK[S.roles[id]?.rank])); if (S.ownerUid) ids.add(S.ownerUid); return [...ids]; }
 function canViewCh(uid, ch){
   if (!isMember(uid) || !ch) return false;
