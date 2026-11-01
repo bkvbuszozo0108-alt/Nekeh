@@ -1165,7 +1165,8 @@ body.shot-guard img,body.shot-guard .mug,body.shot-guard .av.has-photo,body.shot
 #shotGuard{position:fixed;inset:0;z-index:99999;background:#06102A;color:#E3CA7B;display:none;flex-direction:column;align-items:center;justify-content:center;gap:10px;font-family:var(--f-display);text-align:center}
 #shotGuard b{font-size:42px;letter-spacing:.2em}
 #shotGuard span{font:600 15px var(--f-body);color:#B7C2DC}
-body.shot-cover #shotGuard{display:flex}
+body.shot-cover #shotGuard,body.dev-open #shotGuard{display:flex}
+body.dev-open img,body.dev-open .mug,body.dev-open .av.has-photo{visibility:hidden!important}
 @media print{img,.mug,.org-patches,.unit .patch,.div-card .art,.insig-band{visibility:hidden!important}}
 </style>
 </head>
@@ -4446,6 +4447,19 @@ $('#pn-rbx').addEventListener('change', async () => {
   ['gesturestart', 'gesturechange', 'gestureend'].forEach(t => document.addEventListener(t, e => e.preventDefault(), {passive:false}));
   document.addEventListener('touchmove', e => { if (e.touches && e.touches.length > 1) e.preventDefault(); }, {passive:false});
   let lastTap = 0; document.addEventListener('touchend', e => { const n = Date.now(); if (n - lastTap < 300 && !e.target.closest('input,textarea,select')) e.preventDefault(); lastTap = n; }, {passive:false});
+  // block the usual ways to open the browser's inspector / page source
+  document.addEventListener('keydown', e => {
+    const k = (e.key || '').toLowerCase(), c = e.ctrlKey || e.metaKey;
+    if (k === 'f12' || (c && e.shiftKey && ['i', 'j', 'c', 'k', 'e', 'm'].includes(k)) || (e.metaKey && e.altKey && ['i', 'j', 'c', 'u'].includes(k)) || (c && k === 'u')) { e.preventDefault(); e.stopPropagation(); cover(1500); }
+  }, true);
+  document.addEventListener('contextmenu', e => { if (!e.target.closest('input,textarea,[contenteditable]')) e.preventDefault(); }, true);
+  // if the inspector is open anyway (docked), hide every image and cover the page
+  const devCheck = () => {
+    const w = window.outerWidth - window.innerWidth > 170, h = window.outerHeight - window.innerHeight > 200;
+    const open = (w || h) && window.outerWidth > 0;
+    document.body.classList.toggle('dev-open', open);
+  };
+  setInterval(devCheck, 700); window.addEventListener('resize', devCheck);
   window.addEventListener('blur', blurOn);
   window.addEventListener('focus', () => setTimeout(blurOff, 150));
   document.addEventListener('visibilitychange', () => { if (document.hidden) blurOn(); else setTimeout(blurOff, 150); });
