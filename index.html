@@ -1339,7 +1339,7 @@ function scheduleRender(withSubs){
   if (withSubs) S._needSubs = true;
   if (rafPending) return;
   rafPending = true;
-  requestAnimationFrame(() => { rafPending = false; if (S._needSubs) { S._needSubs = false; syncSubs(); } renderAll(); });
+  setTimeout(() => { rafPending = false; if (S._needSubs) { S._needSubs = false; syncSubs(); } renderAll(); }, 16);
 }
 
 /* ================= routing ================= */
