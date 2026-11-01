@@ -1115,7 +1115,10 @@ img.missing{opacity:0}
 .divs{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:20px}
 .div-card{background:var(--card);border:1px solid var(--rule);border-radius:12px;overflow:hidden;display:grid;grid-template-columns:minmax(0,250px) minmax(0,1fr);transition:transform .3s cubic-bezier(.2,.7,.2,1),box-shadow .3s,border-color .3s}
 .div-card:hover{transform:translateY(-4px);box-shadow:var(--shadow);border-color:var(--gold)}
-.div-card .art{background:radial-gradient(circle at 30% 20%,#18244A,var(--patch-bg) 70%);display:flex;align-items:center;justify-content:center;gap:10px;padding:18px 14px;position:relative}
+.div-card .art{background:radial-gradient(circle at 30% 20%,#18244A,var(--patch-bg) 70%);display:flex;flex-direction:column;align-items:center;justify-content:center;gap:14px;padding:18px 14px;position:relative}
+.div-card .art .pair{display:flex;align-items:center;gap:10px}
+.div-card .art .rc{width:190px;height:auto;filter:drop-shadow(0 6px 12px rgba(0,0,0,.45));transition:transform .5s cubic-bezier(.2,.7,.2,1)}
+.div-card:hover .art .rc{transform:rotate(-2deg)}
 .div-card .art .lg{width:104px;height:104px;filter:drop-shadow(0 6px 14px rgba(0,0,0,.45))}
 .div-card .art .pt{width:104px;height:auto;filter:drop-shadow(0 6px 14px rgba(0,0,0,.45));transition:transform .5s cubic-bezier(.2,.7,.2,1)}
 .div-card:hover .art .pt{transform:rotate(4deg) scale(1.05)}
@@ -1131,7 +1134,10 @@ img.missing{opacity:0}
 .unit .patch{position:relative}
 .unit .patch>img:first-child{filter:drop-shadow(0 10px 18px rgba(0,0,0,.55))}
 .org-node .units img{filter:drop-shadow(0 2px 3px rgba(0,0,0,.35))}
-.unit .patch .lg{position:absolute;right:12px;bottom:12px;width:58px;height:58px;filter:drop-shadow(0 4px 8px rgba(0,0,0,.5))}
+.unit .patch{display:flex!important;align-items:center;justify-content:center;gap:16px}
+.unit .patch .side{display:flex;flex-direction:column;align-items:center;gap:14px}
+.unit .patch .rc{width:132px;height:auto;filter:drop-shadow(0 6px 12px rgba(0,0,0,.5))}
+.unit .patch .lg{width:60px;height:60px;filter:drop-shadow(0 4px 8px rgba(0,0,0,.5))}
 .ch-intro .band{max-width:110px!important}
 .insig-band{align-self:stretch;display:flex;justify-content:space-between;align-items:center;gap:16px;flex-wrap:wrap;margin-top:18px;padding:14px 18px;border:1px dashed var(--rule);border-radius:10px;background:var(--card)}
 .insig-band .row{display:flex;gap:6px}
@@ -2291,16 +2297,16 @@ function buildStatic(){
   if (unitsBuilt) return; unitsBuilt = true;
   const wrap = $('#unitCards');
   for (const u of UNITS) wrap.append(h('article', {class:'unit'},
-    h('div', {class:'patch'}, h('img', {src:u.patch, alt:u.name + ' felvarró', loading:'lazy'}), h('img', {class:'lg', src:u.logo, alt:u.name + ' logó', loading:'lazy'})),
+    h('div', {class:'patch'}, h('img', {src:u.patch, alt:u.name + ' pajzs alakú felvarró', loading:'lazy'}), h('div', {class:'side'}, h('img', {class:'rc', src:`img/tab-${u.id}.webp`, alt:u.name + ' kis téglalap alakú felvarró', loading:'lazy'}), h('img', {class:'lg', src:u.logo, alt:u.name + ' logó', loading:'lazy'}))),
     h('div', {class:'bd'}, h('span', {class:'par', text:u.parent}), h('h3', {text:u.name}), h('p', {text:u.desc}),
-      h('div', {class:'dl-row'}, h('a', {href:`jelkepek/felvarro-${u.id}.png`, download:true, text:'Felvarró (PNG)'}), h('a', {href:`jelkepek/logo-${u.id}.png`, download:true, text:'Logó (PNG)'})),
+      h('div', {class:'dl-row'}, h('a', {href:`jelkepek/felvarro-${u.id}.png`, download:true, text:'Pajzs (PNG)'}), h('a', {href:`jelkepek/teglalap-${u.id}.png`, download:true, text:'Kis téglalap (PNG)'}), h('a', {href:`jelkepek/logo-${u.id}.png`, download:true, text:'Logó (PNG)'})),
       h('div', {class:'ft'}, h('span', {class:'u-count', 'data-unit':u.id}), h('button', {class:'btn btn-line btn-sm', type:'button', onclick:() => { S.prefUnit = u.id; location.hash = 'jelentkezes'; }, text:'Jelentkezés ide'})))));
   const dc = $('#divCards');
   for (const d of DIVISIONS) dc.append(h('article', {class:'div-card'},
-    h('div', {class:'art'}, h('img', {class:'lg', src:`img/logo-${d.id}.webp`, alt:d.name + ' logó', loading:'lazy'}), h('img', {class:'pt', src:`img/folt-${d.id}.webp`, alt:d.name + ' felvarró', loading:'lazy'})),
+    h('div', {class:'art'}, h('div', {class:'pair'}, h('img', {class:'lg', src:`img/logo-${d.id}.webp`, alt:d.name + ' logó', loading:'lazy'}), h('img', {class:'pt', src:`img/folt-${d.id}.webp`, alt:d.name + ' pajzs alakú felvarró', loading:'lazy'})), h('img', {class:'rc', src:`img/tab-${d.id}.webp`, alt:d.name + ' kis téglalap alakú felvarró', loading:'lazy'})),
     h('div', {class:'bd'}, h('span', {class:'eyebrow', text:d.short}), h('h3', {text:d.name}), h('p', {text:d.desc}),
       d.units.length ? h('div', {class:'subs'}, d.units.map(id => h('a', {href:'#egysegek', onclick:e => { e.preventDefault(); document.getElementById('unitCards').scrollIntoView({behavior:'smooth', block:'start'}); }}, h('img', {src:UNIT[id].logo, alt:''}), UNIT[id].short))) : null,
-      h('div', {class:'dl-row'}, h('a', {href:`jelkepek/felvarro-${d.id}.png`, download:true, text:'Felvarró (PNG)'}), h('a', {href:`jelkepek/logo-${d.id}.png`, download:true, text:'Logó (PNG)'})))));
+      h('div', {class:'dl-row'}, h('a', {href:`jelkepek/felvarro-${d.id}.png`, download:true, text:'Pajzs (PNG)'}), h('a', {href:`jelkepek/teglalap-${d.id}.png`, download:true, text:'Kis téglalap (PNG)'}), h('a', {href:`jelkepek/logo-${d.id}.png`, download:true, text:'Logó (PNG)'})))));
   const ir = $('#insigRow');
   if (ir) for (const id of [...DIVISIONS.map(d => d.id), ...UNITS.map(u => u.id)]) ir.append(h('img', {src:`img/logo-${id}.webp`, alt:'', loading:'lazy', width:'38', height:'38'}));
   const pick = $('#unitPick');
