@@ -43,6 +43,12 @@ service cloud.firestore {
       allow write: if isOwner();
     }
 
+    // Csak az állomány látja (pl. a hangközvetítő szerver belépési adatai)
+    match /private/{doc} {
+      allow read: if isMember();
+      allow write: if isOwner();
+    }
+
     // Hivatalos Közlöny
     match /decrees/{id} {
       allow read: if true;

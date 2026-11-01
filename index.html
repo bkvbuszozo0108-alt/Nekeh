@@ -861,6 +861,10 @@ table.roster{width:100%;border-collapse:collapse;font-size:14px;min-width:720px}
   .demo-strip .acts{margin-left:0}
 }
 @media (prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}}
+.turn-test{display:flex;align-items:center;gap:12px;flex-wrap:wrap;margin-top:12px}
+.turn-test #s-turn-res{font-size:13px;color:var(--muted,#5b6577)}
+.turn-test #s-turn-res.ok{color:#1d7a46;font-weight:600}
+.turn-test #s-turn-res.bad{color:#b3261e;font-weight:600}
 </style>
 </head>
 <body>
@@ -1179,10 +1183,11 @@ table.roster{width:100%;border-collapse:collapse;font-size:14px;min-width:720px}
             <div class="fld"><label for="s-motd">Közlemény a főoldalon</label><textarea id="s-motd" maxlength="600" style="min-height:70px" placeholder="Üresen hagyva nem jelenik meg."></textarea></div>
             <div class="fld"><span class="lab">Rendfokozatok elnevezése</span><div class="rank-names" id="rankNameInputs"></div></div>
             <div class="fld"><label for="s-rules">Szabályzat</label><textarea id="s-rules" maxlength="4000" style="min-height:200px"></textarea><small>Soronként egy szabály. A belső rendszer #szabályzat csatornáján jelenik meg.</small></div>
-            <details class="fld"><summary class="lab" style="cursor:pointer">Saját hangközvetítő szerver (TURN) – nem kötelező</summary>
-              <p class="hint" style="margin-top:8px">Alapból egy ingyenes nyilvános közvetítő szerver segíti a hangkapcsolatot. Ha saját TURN-szervered van (pl. egy ingyenes Metered-fiókból), itt megadhatod.</p>
-              <div class="grid2"><div class="fld" style="grid-column:1/-1"><label for="s-turn-urls">Címek (vesszővel elválasztva)</label><input id="s-turn-urls" placeholder="turn:example.com:3478, turns:example.com:443?transport=tcp"></div>
+            <details class="fld" id="turnBox"><summary class="lab" style="cursor:pointer">Hangközvetítő szerver (TURN) – mobilnetes és szigorúbb hálózatokhoz</summary>
+              <p class="hint" style="margin:8px 0 14px;line-height:1.55">A hangcsatornák a legtöbb otthoni Wi-Fi-n közvetlenül kapcsolódnak. Mobilinterneten, iskolai vagy céges hálózaton, illetve szigorúbb routerek mögött viszont közvetítő szerver kell, különben a résztvevők nem hallják egymást. Ingyenes fiók például az <a href="https://www.expressturn.com/" target="_blank" rel="noopener">ExpressTURN</a>-nél (havi 1000 GB) – a vezérlőpulton kapott címet, felhasználónevet és jelszót írd be ide. Metered-fióknál a teljes „API URL” (https://…) is beírható a Címek mezőbe. Ezeket az adatokat csak az állomány tagjai látják.</p>
+              <div class="grid2"><div class="fld" style="grid-column:1/-1"><label for="s-turn-urls">Címek (vesszővel elválasztva) vagy API URL</label><input id="s-turn-urls" placeholder="pl. turn:relay1.expressturn.com:3478, turn:relay1.expressturn.com:3478?transport=tcp"></div>
               <div class="fld"><label for="s-turn-user">Felhasználónév</label><input id="s-turn-user" autocomplete="off"></div><div class="fld"><label for="s-turn-cred">Jelszó / kulcs</label><input id="s-turn-cred" autocomplete="off"></div></div>
+              <div class="turn-test"><button class="btn btn-line btn-sm" type="button" id="s-turn-test">Kapcsolat tesztelése</button><span id="s-turn-res" role="status"></span></div>
             </details>
             <div style="display:flex;justify-content:flex-end"><button class="btn btn-navy" type="submit">Beállítások mentése</button></div>
           </div></form>
@@ -1749,6 +1754,7 @@ function syncSubs(){
     W.set('myapp@' + uid, () => B.watchDoc('applications/' + uid, d => { S.myApp = d; changed(); }, e => { dbErr('myapp')(e); S.myApp = null; changed(); }));
     if (S.ownerUid === uid) W.set('apps@' + uid, () => B.watchCol('applications', {}, l => { S.apps = Object.fromEntries(l.map(d => [d.id, d])); S.loaded.apps = true; changed(); }, dbErr('apps')));
     if (isMember(uid)) {
+      W.set('turn@' + uid, () => B.watchDoc('private/voice', d => { S.turn = d || null; turnCache = {key:'', at:0, list:null}; if (!settingsDirty && S.route === 'vezetes') changed(); }, dbErr('turn')));
       W.set('presence@' + uid, () => B.watchCol('presence', {}, l => { S.presence = Object.fromEntries(l.map(d => [d.id, d])); changed(); }, dbErr('presence')));
       W.set('dutylog@' + uid, () => B.watchCol('dutylog', {order:'start', dir:'desc', limit:500}, l => { S.dutylog = l; S.loaded.dutylog = true; changed(); }, dbErr('dutylog')));
       W.set('orders@' + uid, () => B.watchCol('orders', {order:'createdAt', dir:'desc', limit:100}, l => { S.orders = l; S.loaded.orders = true; changed(); }, dbErr('orders')));
@@ -1780,7 +1786,7 @@ function scheduleRender(withSubs){
 /* ================= routing ================= */
 const ROUTES = ['fooldal','egysegek','kozlony','jelentkezes','bejelentes','belepes','iroda','belso','szolgalat','jelentesek','parancsok','naptar','allomany','akta','vezetes'];
 function route(){
-  let r = location.hash.slice(1);
+  let r = location.hash.slice(1).replace(/^\/+/, '');
   if (!ROUTES.includes(r)) r = 'fooldal';
   S.route = r;
   $$('.view').forEach(v => v.hidden = v.id !== 'v-' + r);
@@ -2396,20 +2402,50 @@ function renderTyping(){
 
 /* ================= voice (WebRTC mesh, signalling through the database, STUN + TURN relay) ================= */
 const VC = {room:null, joinedAt:0, stream:null, pcs:new Map(), meta:new Map(), audios:new Map(), vols:store.get('vols', {}), muted:false, deaf:false, ptt:store.get('ptt', false), pttDown:false,
-  unsub:null, hb:null, sync:null, handled:new Set(), ctx:null, meters:new Map(), speaking:new Set(), meterTimer:null, joining:false, ice:null, blocked:false, deviceId:store.get('mic', ''), lastPeers:null, myLevel:0, devices:[]};
+  unsub:null, hb:null, sync:null, handled:new Set(), ctx:null, meters:new Map(), speaking:new Set(), meterTimer:null, joining:false, ice:null, blocked:false, deviceId:store.get('mic', ''), lastPeers:null, myLevel:0, devices:[], seen:new Map()};
 function freshVoice(room){ const now = Date.now(); return (S.voiceMembers[room] || []).filter(m => now - (m.ts || 0) < 150000).sort((a, b) => (a.joinedAt || 0) - (b.joinedAt || 0)); }
+const STUN_URLS = ['stun:stun.l.google.com:19302', 'stun:stun1.l.google.com:19302', 'stun:stun.cloudflare.com:3478'];
+let turnCache = {key:'', at:0, list:null};
+function turnCfg(){ const t = (S.turn && S.turn.urls) ? S.turn : S.config.turn; return t && t.urls ? t : null; }
+const hasTurn = () => !!turnCfg();
+async function turnServers(t){
+  const raw = String(t.urls || '').trim();
+  if (!raw) return [];
+  if (/^https:\/\//i.test(raw)) {
+    if (turnCache.key === raw && turnCache.list && Date.now() - turnCache.at < 30 * 60e3) return turnCache.list;
+    const ctl = new AbortController(), to = setTimeout(() => ctl.abort(), 6000);
+    try {
+      const r = await fetch(raw, {signal:ctl.signal, cache:'no-store'});
+      if (!r.ok) throw new Error('HTTP ' + r.status);
+      const j = await r.json();
+      const list = (Array.isArray(j) ? j : (j.iceServers || [])).filter(x => x && x.urls);
+      turnCache = {key:raw, at:Date.now(), list};
+      return list;
+    } finally { clearTimeout(to); }
+  }
+  return [{urls:raw.split(/[\s,]+/).filter(Boolean), username:t.username || '', credential:t.credential || ''}];
+}
 async function iceServers(){
-  const list = [{urls:['stun:stun.l.google.com:19302','stun:stun1.l.google.com:19302']}];
-  const t = S.config.turn;
-  if (t && t.urls) list.push({urls:String(t.urls).split(/[\s,]+/).filter(Boolean), username:t.username || '', credential:t.credential || ''});
-  try {
-    const username = (Math.floor(Date.now() / 1000) + 12 * 3600) + ':nekeh';
-    const key = await crypto.subtle.importKey('raw', new TextEncoder().encode('openrelayprojectsecret'), {name:'HMAC', hash:'SHA-1'}, false, ['sign']);
-    const sig = new Uint8Array(await crypto.subtle.sign('HMAC', key, new TextEncoder().encode(username)));
-    let bin = ''; for (const b of sig) bin += String.fromCharCode(b);
-    list.push({urls:['turn:staticauth.openrelay.metered.ca:80','turn:staticauth.openrelay.metered.ca:80?transport=tcp','turn:staticauth.openrelay.metered.ca:443','turns:staticauth.openrelay.metered.ca:443?transport=tcp'], username, credential:btoa(bin)});
-  } catch {}
+  const list = [{urls:STUN_URLS}];
+  const t = turnCfg();
+  if (t) { try { list.push(...await turnServers(t)); } catch (e) { console.warn('[NEKEH] turn', e && e.message); } }
   return list;
+}
+async function probeRelay(t){
+  const servers = await turnServers(t);
+  if (!servers.length) return {ok:false, errs:[], msg:'Nincs megadva cím.'};
+  const pc = new RTCPeerConnection({iceServers:servers, iceTransportPolicy:'relay'});
+  pc.createDataChannel('probe');
+  const errs = [];
+  return new Promise(res => {
+    let fin = false;
+    const done = r => { if (fin) return; fin = true; clearTimeout(to); try { pc.close(); } catch {} res(r); };
+    const to = setTimeout(() => done({ok:false, errs}), 10000);
+    pc.onicecandidate = e => { if (e.candidate && / typ relay/.test(e.candidate.candidate)) done({ok:true, proto:(e.candidate.candidate.split(' ')[2] || '').toUpperCase()}); };
+    pc.onicecandidateerror = e => { if (e.errorCode && e.errorCode !== 701) errs.push(e.errorCode); };
+    pc.onicegatheringstatechange = () => { if (pc.iceGatheringState === 'complete') setTimeout(() => done({ok:false, errs}), 100); };
+    pc.createOffer().then(o => pc.setLocalDescription(o)).catch(e => done({ok:false, errs, msg:e.message}));
+  });
 }
 function openVoice(id, join){
   S.view = 'voice'; S.vch = id; $('#console').classList.remove('show-chans');
@@ -2448,7 +2484,7 @@ async function joinVoice(room){
   }
   if (VC.room) await leaveVoice(true, true);
   VC.ice = await iceServers();
-  VC.room = room; VC.stream = stream; VC.joinedAt = Date.now(); VC.muted = false; VC.deaf = false; VC.handled = new Set(); VC.lastPeers = null; VC.blocked = false;
+  VC.room = room; VC.stream = stream; VC.joinedAt = Date.now(); VC.muted = false; VC.deaf = false; VC.handled = new Set(); VC.lastPeers = null; VC.blocked = false; VC.seen = new Map();
   applyMicState(); addMeter(me(), stream); listDevices();
   try {
     await S.B.set(`voice/${room}/members/${me()}`, {joinedAt:VC.joinedAt, ts:Date.now(), muted:false, deaf:false});
@@ -2523,9 +2559,11 @@ function voiceSync(){
   VC.lastPeers = ids;
   if (!ids.has(me()) && S.voiceMembers[VC.room]) S.B.set(`voice/${VC.room}/members/${me()}`, {joinedAt:VC.joinedAt, ts:now, muted:VC.muted, deaf:VC.deaf}).catch(() => {});
   for (const id of [...VC.pcs.keys()]) if (!ids.has(id)) { closePeer(id); VC.meta.delete(id); }
+  for (const id of [...VC.seen.keys()]) if (!ids.has(id)) VC.seen.delete(id);
   for (const p of list) {
     if (p.id === me()) continue;
     const pc = VC.pcs.get(p.id), m = VC.meta.get(p.id) || {};
+    if (!VC.seen.has(p.id) || (pc && pc.connectionState === 'connected')) VC.seen.set(p.id, now);
     if (!pc) { if (iAmCaller(p) && (!m.retryAt || now >= m.retryAt)) callPeer(p.id, (m.tries || 0) + 1); continue; }
     const st = pc.connectionState;
     const bad = st === 'failed' || ((st === 'new' || st === 'connecting') && now - m.created > 20000) || (st === 'disconnected' && m.discAt && now - m.discAt > 8000);
@@ -2647,6 +2685,9 @@ function renderVoiceStage(){
   const parts = [h('div', {class:'vhead'}, h('span', {class:'ic', html:icon('speaker', 26)}), h('div', null, h('h3', {text:v.name}), h('p', {text:`${v.topic} · ${people.length}/${VOICE_MAX} fő`})))];
   if (joined && VC.blocked) parts.push(h('div', {class:'notice warn'}, h('div', null, h('b', {text:'A böngésző nem engedte elindítani a hangot'}), 'Kattints a gombra, és hallani fogod a többieket. ', h('button', {class:'btn btn-gold btn-sm', type:'button', text:'Hang engedélyezése', onclick:unblockAudio}))));
   parts.push(people.length ? tiles : h('p', {class:'empty', text:'Most senki sincs a csatornában. Csatlakozz elsőként.'}));
+  const stuck = joined && [...VC.seen.values()].some(t => Date.now() - t > 30000);
+  if (stuck && !hasTurn()) parts.push(h('div', {class:'notice warn'}, h('div', null, h('b', {text:'Nem sikerül összekapcsolódni valakivel'}), 'Valószínűleg valamelyikőtök hálózata (pl. mobilinternet, iskolai vagy céges Wi-Fi) nem enged közvetlen hangkapcsolatot. Addig próbáljatok otthoni Wi-Fi-ről csatlakozni. Végleges megoldás: a Főbiztos a Vezetés → Beállítások → Hangközvetítő szerver alatt adjon meg egy ingyenes TURN-szervert.')));
+  else if (stuck) parts.push(h('div', {class:'notice warn'}, h('div', null, h('b', {text:'A kapcsolat lassan jön létre'}), 'A rendszer folyamatosan újrapróbálkozik. Ha egy percen belül sem javul, lépj ki és csatlakozz újra, a vezetés pedig ellenőrizze a közvetítő szervert a Beállításokban („Kapcsolat tesztelése”).')));
   if (joined && people.length <= 1) parts.push(h('div', {class:'notice'}, h('div', null, h('b', {text:'Egyedül vagy a csatornában'}), 'Amint valaki más is belép, automatikusan összekapcsolódtok. Addig a lenti szintjelzőn ellenőrizheted a mikrofonodat.')));
   parts.push(ctl);
   if (joined && VC.ptt) {
@@ -2660,7 +2701,7 @@ function renderVoiceStage(){
     sel.addEventListener('change', () => { switchMic(sel.value); sel.blur(); });
     parts.push(h('div', {class:'vdiag'}, h('div', {class:'fld'}, h('label', {for:'micSel', text:'Mikrofon'}), sel), h('div', {class:'fld'}, h('span', {class:'lab', text:'Saját hangszint'}), h('div', {class:'meter'}, h('i', {id:'myLevel'})))));
   }
-  parts.push(h('p', {class:'empty', style:'text-align:center;font-size:12px', text:'A hang közvetlenül, vagy ha a hálózat nem engedi, közvetítő szerveren át halad. A kapcsolat megszakadásakor a rendszer magától újrapróbálkozik.'}));
+  parts.push(h('p', {class:'empty', style:'text-align:center;font-size:12px', text:hasTurn() ? 'A hang közvetlenül, vagy ha a hálózat nem engedi, közvetítő szerveren át halad. A kapcsolat megszakadásakor a rendszer magától újrapróbálkozik.' : 'A hang közvetlenül halad a résztvevők között. A kapcsolat megszakadásakor a rendszer magától újrapróbálkozik.'}));
   stage.replaceChildren(...parts);
 }
 
@@ -2744,7 +2785,7 @@ function renderAdmin(){
 }
 function fillSettings(){
   $('#s-motd').value = S.config.motd || ''; $('#s-rules').value = S.config.rules || DEFAULT_RULES;
-  const tc = S.config.turn || {}; $('#s-turn-urls').value = tc.urls || ''; $('#s-turn-user').value = tc.username || ''; $('#s-turn-cred').value = tc.credential || '';
+  const tc = turnCfg() || {}; $('#s-turn-urls').value = tc.urls || ''; $('#s-turn-user').value = tc.username || ''; $('#s-turn-cred').value = tc.credential || '';
   const box = $('#rankNameInputs');
   if (!box.childElementCount) RANKS.forEach((r, i) => box.append(h('div', {class:'fld'}, h('label', {for:'rn-' + r.id, text:`${i + 1}. fokozat`}), h('input', {id:'rn-' + r.id, maxlength:'30', placeholder:r.name}))));
   for (const r of RANKS) $('#rn-' + r.id).value = S.config.rankNames?.[r.id] || r.name;
@@ -3437,11 +3478,24 @@ $('#btnMembers').addEventListener('click', () => { if (matchMedia('(min-width: 1
 $('#msgs').addEventListener('click', () => { $('#console').classList.remove('show-chans'); if (S.showMembersNarrow) { S.showMembersNarrow = false; $('#console').classList.remove('show-mem'); } });
 $('#msgs').addEventListener('scroll', () => { const b = $('#msgs'); if (b.scrollHeight - b.scrollTop - b.clientHeight < 40) markRead(); }, {passive:true});
 $('#admSettings').addEventListener('input', () => { settingsDirty = true; });
+$('#s-turn-test').addEventListener('click', async () => {
+  const btn = $('#s-turn-test'), out = $('#s-turn-res');
+  const t = {urls:$('#s-turn-urls').value.trim(), username:$('#s-turn-user').value.trim(), credential:$('#s-turn-cred').value.trim()};
+  if (!t.urls) { out.className = 'bad'; out.textContent = 'Előbb add meg a szerver címét.'; return; }
+  btn.disabled = true; out.className = ''; out.textContent = 'Tesztelés folyamatban… (max. 10 mp)';
+  let r; try { r = await probeRelay(t); } catch (e) { r = {ok:false, errs:[], msg:e.message}; }
+  btn.disabled = false;
+  if (r.ok) { out.className = 'ok'; out.textContent = `Működik – a közvetítő szerver válaszol (${r.proto}). Ne felejtsd el menteni a beállításokat.`; }
+  else if (r.errs.includes(401)) { out.className = 'bad'; out.textContent = 'Hibás felhasználónév vagy jelszó (401). Másold be újra a vezérlőpultról.'; }
+  else if (r.errs.length) { out.className = 'bad'; out.textContent = `A szerver elutasította a kérést (hibakód: ${[...new Set(r.errs)].join(', ')}). Ellenőrizd az adatokat.`; }
+  else { out.className = 'bad'; out.textContent = r.msg ? 'Hiba: ' + r.msg : 'Nem érkezett válasz. Ellenőrizd a címet és a portot (pl. :3478).'; }
+});
 $('#admSettings').addEventListener('submit', async e => {
   e.preventDefault();
   const rankNames = {}; for (const r of RANKS) { const v = $('#rn-' + r.id).value.trim(); if (v && v !== r.name) rankNames[r.id] = v; }
   const turn = {urls:$('#s-turn-urls').value.trim(), username:$('#s-turn-user').value.trim(), credential:$('#s-turn-cred').value.trim()};
-  await saveConfig({motd:$('#s-motd').value.trim(), rules:$('#s-rules').value.trim() || DEFAULT_RULES, rankNames, turn}, 'Beállítások mentve.');
+  try { await S.B.set('private/voice', {...turn, updatedAt:Date.now()}); turnCache = {key:'', at:0, list:null}; } catch (err) { return toast(errText(err)); }
+  await saveConfig({motd:$('#s-motd').value.trim(), rules:$('#s-rules').value.trim() || DEFAULT_RULES, rankNames, turn:null}, 'Beállítások mentve.');
   settingsDirty = false;
 });
 $('#decForm').addEventListener('submit', async e => {
