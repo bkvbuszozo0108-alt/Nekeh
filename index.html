@@ -575,6 +575,222 @@ table.roster{width:100%;border-collapse:collapse;font-size:14px;min-width:720px}
 .toasts{position:fixed;left:50%;bottom:calc(20px + env(safe-area-inset-bottom,0px));transform:translateX(-50%);display:flex;flex-direction:column;gap:8px;z-index:200;width:min(440px,calc(100% - 32px))}
 .toast{background:var(--ink);color:var(--paper);border-radius:8px;padding:10px 14px;font-size:14px;box-shadow:var(--shadow)}
 
+/* ---------- official texture ---------- */
+.hero,.page-head{position:relative;overflow:hidden}
+.hero::before,.page-head::before{content:"";position:absolute;inset:0;pointer-events:none;
+  background:repeating-radial-gradient(circle at 88% 22%,rgba(220,193,115,.075) 0 1px,transparent 1px 13px),repeating-radial-gradient(circle at 6% 120%,rgba(255,255,255,.035) 0 1px,transparent 1px 17px)}
+.hero .wrap,.page-head .wrap{position:relative}
+.page-head.slim .wrap{padding-block:20px 22px}
+.page-head .sub{display:flex;flex-wrap:wrap;gap:10px;align-items:center;color:var(--on-navy-2);margin-top:8px;font-size:14px}
+
+/* ---------- member navigation ---------- */
+.bell{position:relative;display:inline-grid;place-items:center;width:38px;height:38px;border-radius:50%;color:var(--on-navy);border:1px solid rgba(255,255,255,.2);flex:none;text-decoration:none}
+.bell:hover{background:rgba(255,255,255,.1)}
+.bell .n{position:absolute;top:-5px;right:-5px;background:var(--danger);color:#fff;border-radius:999px;font-size:11px;font-weight:700;padding:0 5px;line-height:17px;border:2px solid var(--navy);min-width:20px;text-align:center}
+.subnav{background:var(--card);border-bottom:1px solid var(--rule);position:relative;z-index:15}
+.subnav .in{display:flex;gap:2px;align-items:center;max-width:1280px;margin:0 auto;padding:0 var(--gutter-r) 0 var(--gutter);overflow-x:auto;scrollbar-width:none}
+.subnav .in::-webkit-scrollbar{display:none}
+.subnav .lbl{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-ink);font-weight:700;margin-right:10px;white-space:nowrap}
+.subnav a{display:inline-flex;align-items:center;gap:7px;padding:12px 11px;font-size:13px;font-weight:600;color:var(--ink-2);text-decoration:none;white-space:nowrap;border-bottom:2px solid transparent}
+.subnav a:hover{color:var(--ink)}
+.subnav a.on{color:var(--ink);border-bottom-color:var(--gold)}
+.subnav a .n{background:var(--danger);color:#fff;border-radius:999px;font-size:11px;padding:0 6px;line-height:17px}
+
+/* ---------- member pages ---------- */
+.mpage{padding-block:28px 64px}
+.mgate:empty{display:none}
+.dash{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:18px;align-items:start}
+.span4{grid-column:span 4;min-width:0}.span5{grid-column:span 5;min-width:0}.span6{grid-column:span 6;min-width:0}.span7{grid-column:span 7;min-width:0}.span8{grid-column:span 8;min-width:0}.span12{grid-column:1/-1;min-width:0}
+.stack{display:flex;flex-direction:column;gap:14px;min-width:0}
+.card{background:var(--card);border:1px solid var(--rule);border-radius:10px;min-width:0}
+.card.sticky{position:sticky;top:12px}
+.card>.ch{display:flex;align-items:center;gap:10px;padding:13px 18px;border-bottom:1px solid var(--rule)}
+.card>.ch h2{font-size:15px;font-weight:700;flex:1;letter-spacing:.01em}
+.card>.ch .cnt{font-size:12px;color:var(--ink-3)}
+.card>.ch .more{font-size:12px;font-weight:600;color:var(--link);text-decoration:none}
+.card>.cb{padding:16px 18px;display:flex;flex-direction:column;gap:14px;min-width:0}
+.row-btns{display:flex;gap:8px;flex-wrap:wrap}
+.stats{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.stats.four{grid-template-columns:repeat(4,minmax(0,1fr))}
+.stat{border:1px solid var(--rule);border-radius:8px;padding:10px 12px;background:var(--paper);min-width:0}
+.stat span{display:block;font-size:11px;letter-spacing:.06em;text-transform:uppercase;color:var(--ink-3);font-weight:600}
+.stat b{display:block;font-family:var(--f-display);font-size:19px;margin-top:3px;font-variant-numeric:tabular-nums;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.qa{display:grid;grid-template-columns:1fr 1fr;gap:8px}
+.qa a{display:flex;align-items:center;gap:8px;border:1px solid var(--rule);border-radius:8px;padding:9px 10px;text-decoration:none;color:var(--ink);font-size:13px;font-weight:600}
+.qa a:hover{border-color:var(--gold)}
+.qa a svg{color:var(--gold-ink);flex:none}
+.todo{list-style:none;margin:0;padding:0}
+.todo li a{display:flex;gap:12px;align-items:flex-start;padding:10px 2px;border-bottom:1px solid var(--rule);text-decoration:none;color:var(--ink)}
+.todo li:last-child a{border-bottom:0}
+.todo li a:hover b{color:var(--link)}
+.todo .ti{width:30px;height:30px;border-radius:8px;background:var(--gold-tint);color:var(--gold-ink);display:grid;place-items:center;flex:none}
+.todo .tt{min-width:0}
+.todo b{display:block;font-size:14px;overflow-wrap:anywhere}
+.todo small{color:var(--ink-3);font-size:12px}
+.chip{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--rule);border-radius:999px;padding:2px 10px;font-size:12px;font-weight:600;color:var(--ink-2);background:var(--card);white-space:nowrap}
+.chip.ok{color:var(--ok);border-color:var(--ok);background:var(--ok-bg)}
+.chip.bad{color:var(--danger);border-color:var(--danger);background:var(--danger-bg)}
+.muted{color:var(--ink-3)}
+.grow{flex:1;min-width:0}
+
+/* duty */
+.dutyw{display:flex;flex-direction:column;gap:12px}
+.dutyw .dstate{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.dutyw .timer{font-size:36px;font-weight:500;letter-spacing:.04em;color:var(--ink-3);line-height:1.1}
+.dutyw.on .timer{color:var(--ok)}
+.dutyw .dsub{font-size:13px;color:var(--ink-3)}
+.grp{margin:4px 0 0;font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3)}
+.onrow{display:flex;align-items:center;gap:10px;padding:6px 0;border-bottom:1px solid var(--rule)}
+.onrow b{display:block;font-size:14px}
+.onrow small{display:block;font-size:12px;color:var(--ink-3)}
+.timer-sm{font-size:13px;color:var(--ok)}
+
+/* tables */
+.tbl{width:100%;border-collapse:collapse;font-size:14px}
+.tbl th{text-align:left;font-size:11px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);font-weight:700;padding:10px 12px;border-bottom:1px solid var(--rule);white-space:nowrap}
+.tbl td{padding:9px 12px;border-bottom:1px solid var(--rule);vertical-align:middle}
+.tbl tr:last-child td{border-bottom:0}
+.tbl tr.click{cursor:pointer}
+.tbl tr.click:hover td,.tbl tr.click:focus-visible td{background:var(--hover)}
+.tbl .who{display:flex;align-items:center;gap:10px}
+.tbl .who b{display:block}
+.tbl .who span{font-size:12px;color:var(--ink-3)}
+.tbl.roster{min-width:760px}
+.filters{display:flex;gap:12px;flex-wrap:wrap;margin-bottom:16px;align-items:flex-end}
+.filters .fld{min-width:170px}
+.ustats{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+
+/* tabs */
+.tabs{display:flex;gap:2px;border-bottom:1px solid var(--rule);margin-bottom:20px;overflow-x:auto}
+.tabs button{border:0;background:none;padding:11px 14px;font-weight:600;font-size:14px;color:var(--ink-3);cursor:pointer;border-bottom:2px solid transparent;white-space:nowrap;display:inline-flex;gap:7px;align-items:center}
+.tabs button:hover{color:var(--ink)}
+.tabs button[aria-selected="true"]{color:var(--ink);border-bottom-color:var(--gold)}
+.tabs .n{background:var(--sunk-2);color:var(--ink-2);border-radius:999px;font-size:11px;padding:0 7px;line-height:18px}
+.tabs .n.hot{background:var(--danger);color:#fff}
+
+/* official documents */
+.doc{background:var(--card);border:1px solid var(--rule);border-radius:8px;position:relative;overflow:hidden}
+.doc-head{display:flex;gap:14px;align-items:center;padding:14px 20px;border-bottom:2px solid var(--gold)}
+.doc-head img{width:44px;height:44px;flex:none}
+.doc-head .t{min-width:0}
+.doc-head .t b{display:block;font-family:var(--f-display);font-size:13px;letter-spacing:.05em;font-weight:600}
+.doc-head .t span{display:block;font-size:11px;color:var(--ink-3);letter-spacing:.12em;text-transform:uppercase;margin-top:2px}
+.doc-head .ref{margin-left:auto;text-align:right;flex:none}
+.doc-head .ref span{display:block;font-size:10px;letter-spacing:.14em;text-transform:uppercase;color:var(--ink-3)}
+.doc-head .ref b{font-family:var(--f-mono);font-size:13px;color:var(--gold-ink);font-weight:500}
+.doc-body{padding:18px 20px;display:flex;flex-direction:column;gap:14px;position:relative}
+.doc-body::after{content:"";position:absolute;right:18px;bottom:6px;width:150px;height:150px;background:url(img/cimer.webp) center/contain no-repeat;opacity:.05;pointer-events:none}
+.doc-title{font-family:var(--f-display);font-size:19px;font-weight:600;line-height:1.25}
+.doc-sec h4{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--ink-3);margin:0 0 4px}
+.doc-sec p{white-space:pre-wrap;overflow-wrap:anywhere}
+.doc-foot{display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;align-items:flex-end;border-top:1px dashed var(--rule);padding:14px 20px;font-size:13px;color:var(--ink-3)}
+.doc-foot b{display:block;color:var(--ink);font-family:var(--f-display);font-weight:600;font-size:15px}
+.doc-foot .lbl{display:block;font-size:10px;letter-spacing:.14em;text-transform:uppercase}
+.doc-foot span{display:block}
+.doc-foot .stamp{position:static;transform:rotate(-6deg);display:inline-block;margin-bottom:8px}
+.doc-actions{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end;padding:14px 20px;border-top:1px solid var(--rule);background:var(--paper)}
+.doc-actions .fld{flex:1;min-width:220px}
+.xlist{display:flex;flex-direction:column;gap:12px}
+.xitem{border:1px solid var(--rule);border-radius:8px;background:var(--card)}
+.xitem>summary{display:flex;align-items:center;gap:12px;padding:12px 14px;cursor:pointer;list-style:none;flex-wrap:wrap}
+.xitem>summary::-webkit-details-marker{display:none}
+.xitem>summary .code{font-family:var(--f-mono);font-size:12px;color:var(--gold-ink);font-weight:500;min-width:30px}
+.xitem>summary b{flex:1;min-width:160px}
+.xitem>summary time{font-size:12px;color:var(--ink-3)}
+.xitem[open]>summary{border-bottom:1px solid var(--rule)}
+.xitem>.doc{border:0;border-radius:0 0 8px 8px}
+
+/* orders & events */
+.olist,.evlist{display:flex;flex-direction:column;gap:12px}
+.order{border:1px solid var(--rule);border-left:4px solid var(--link);border-radius:8px;background:var(--card);padding:14px 16px;display:flex;flex-direction:column;gap:8px;min-width:0}
+.order.p2{border-left-color:var(--warn)}.order.p3{border-left-color:var(--danger)}.order.closed{opacity:.62}
+.order .top{display:flex;gap:8px;align-items:center;flex-wrap:wrap;font-size:12px}
+.order .top .code{font-family:var(--f-mono);color:var(--gold-ink)}
+.order h3{font-size:16px;font-weight:700}
+.order p{color:var(--ink-2);white-space:pre-wrap;overflow-wrap:anywhere;font-size:14px}
+.order .meta{font-size:12px;color:var(--ink-3)}
+.order .acts{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.order .prog{font-size:12px;color:var(--ink-2);font-weight:600;margin-right:auto}
+.event{display:grid;grid-template-columns:58px minmax(0,1fr);gap:14px;border:1px solid var(--rule);border-radius:8px;background:var(--card);padding:12px 14px}
+.event.past{opacity:.7}
+.datebadge{border:1px solid var(--rule);border-radius:8px;overflow:hidden;text-align:center;align-self:start;background:var(--card)}
+.datebadge .m{background:var(--navy);color:var(--gold-bright);font-size:11px;font-weight:700;letter-spacing:.1em;padding:3px 0}
+.datebadge .d{font-family:var(--f-display);font-size:22px;padding:4px 0 5px;font-weight:600}
+.event h3{font-size:15px;font-weight:700}
+.event .meta{font-size:12px;color:var(--ink-3);display:flex;gap:6px;flex-wrap:wrap;align-items:center;margin-top:3px}
+.event p{font-size:14px;color:var(--ink-2);white-space:pre-wrap;margin-top:6px;overflow-wrap:anywhere}
+.event .acts{display:flex;gap:10px;align-items:center;flex-wrap:wrap;margin-top:10px;font-size:12px;color:var(--ink-3)}
+.listh{font-size:13px;letter-spacing:.1em;text-transform:uppercase;color:var(--ink-3);margin:0 0 2px}
+.pastev summary{cursor:pointer;font-weight:600;color:var(--ink-2);padding:8px 0}
+.pastev .evlist{margin-top:8px}
+.seg{display:inline-flex;border:1px solid var(--rule);border-radius:6px;overflow:hidden}
+.seg button{border:0;background:var(--card);padding:6px 11px;font-size:12px;font-weight:600;cursor:pointer;color:var(--ink-2)}
+.seg button+button{border-left:1px solid var(--rule)}
+.seg button[aria-pressed="true"].y{background:var(--ok-bg);color:var(--ok)}
+.seg button[aria-pressed="true"].m{background:var(--warn-bg);color:var(--warn)}
+.seg button[aria-pressed="true"].n{background:var(--danger-bg);color:var(--danger)}
+
+/* personnel file */
+.akta{display:grid;grid-template-columns:minmax(0,400px) minmax(0,1fr);gap:20px;align-items:start}
+.recs{list-style:none;margin:0 0 0 6px;padding:0;border-left:2px solid var(--rule)}
+.recs li{position:relative;padding:0 0 16px 18px;display:flex;flex-direction:column;gap:3px;align-items:flex-start}
+.recs li:last-child{padding-bottom:0}
+.recs li::before{content:"";position:absolute;left:-7px;top:4px;width:12px;height:12px;border-radius:50%;background:var(--card);border:2px solid var(--gold)}
+.recs li.rec-warning::before{border-color:var(--danger)}
+.recs li.rec-commendation::before{border-color:var(--ok)}
+.recs b{font-size:14px}
+.recs small{color:var(--ink-3);font-size:12px}
+.recs p{font-size:14px;color:var(--ink-2);white-space:pre-wrap}
+.certs{display:flex;gap:6px;flex-wrap:wrap}
+.cert{display:inline-flex;align-items:center;gap:6px;border:1px solid var(--gold);background:var(--gold-tint);color:var(--gold-ink);border-radius:999px;padding:3px 10px;font-size:12px;font-weight:700}
+.hp{position:absolute;left:-9999px;width:1px;height:1px;overflow:hidden}
+.idcard{container-type:inline-size}
+@container (max-width:430px){.idcard .body{grid-template-columns:auto minmax(0,1fr)}.idcard .body .board{display:none}.idcard dl{grid-template-columns:1fr;gap:0}.idcard dd{margin-bottom:6px}}
+
+/* voice extras */
+.vtile{aspect-ratio:auto!important;min-height:168px;padding:30px 12px 12px!important}
+.vtile .volrow{display:flex;align-items:center;gap:6px;width:85%;margin-top:4px;color:var(--on-navy-2)}
+.vtile .volrow input{flex:1;min-width:0;accent-color:var(--gold-bright);height:14px}
+.vtile .conn{max-width:calc(100% - 20px);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.vtile .flags{bottom:auto!important;top:9px}
+.vbtn.sel{border-color:var(--gold);background:var(--gold-tint)}
+.ptt-btn{align-self:center;display:inline-flex;align-items:center;gap:10px;border:2px solid var(--gold);background:var(--navy);color:var(--on-navy);border-radius:999px;padding:14px 26px;font-weight:700;font-size:15px;cursor:pointer;touch-action:none;user-select:none}
+.ptt-btn.down{background:#1C7548;border-color:#57C994}
+.ptt-btn kbd{font-family:var(--f-mono);border:1px solid rgba(255,255,255,.4);border-radius:4px;padding:0 6px;font-size:12px}
+.vdiag{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:14px;max-width:640px;margin:0 auto;width:100%}
+.vdiag select{background:var(--paper);border:1px solid var(--rule);border-radius:6px;padding:9px 10px;width:100%}
+.meter{height:10px;border-radius:999px;background:var(--sunk-2);overflow:hidden;margin-top:10px}
+.meter i{display:block;height:100%;width:0;background:linear-gradient(90deg,#4CC38A,#F0B44C);transition:width .12s linear}
+.voice-float{position:fixed;left:calc(16px + env(safe-area-inset-left,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:90;display:flex;align-items:center;gap:6px;background:var(--navy-deep);color:var(--on-navy);border:1px solid var(--gold);border-radius:999px;padding:5px 6px 5px 14px;box-shadow:var(--shadow)}
+.voice-float a{color:var(--on-navy);font-weight:600;font-size:13px;text-decoration:none;margin-right:4px}
+.voice-float .vf-dot{width:9px;height:9px;border-radius:50%;background:#57C994;box-shadow:0 0 0 3px rgba(87,201,148,.25)}
+.voice-float .icon-btn{color:var(--on-navy-2);width:32px;height:32px}
+.voice-float .icon-btn.red{color:#F2776C}
+
+/* print */
+@media print{
+  html,body{height:auto!important;overflow:visible!important;background:#fff!important}
+  body.printing *{visibility:hidden!important}
+  body.printing .print-target,body.printing .print-target *{visibility:visible!important}
+  body.printing .print-target{position:absolute!important;left:0;top:0;width:100%!important;max-width:760px;box-shadow:none!important}
+  body.printing main{overflow:visible!important}
+  body.printing .doc-actions{display:none!important}
+}
+
+@media (max-width:1100px){
+  .span4,.span5,.span7{grid-column:span 6}
+  .span8{grid-column:1/-1}
+  #ordNewBox,#evtNewBox{grid-column:1/-1;order:-1}
+  .card.sticky{position:static}
+  .akta{grid-template-columns:1fr}
+}
+@media (max-width:760px){
+  .span4,.span5,.span6,.span7{grid-column:1/-1}
+  .stats.four{grid-template-columns:1fr 1fr}
+  .vdiag{grid-template-columns:1fr}
+  .doc-head .ref{display:none}
+}
+
 /* ---------- responsive ---------- */
 @media (max-width:1100px){
   .console{grid-template-columns:248px minmax(0,1fr)}
@@ -666,12 +882,25 @@ table.roster{width:100%;border-collapse:collapse;font-size:14px;min-width:720px}
         <a href="#egysegek">Egységek</a>
         <a href="#kozlony">Közlöny</a>
         <a href="#jelentkezes">Jelentkezés</a>
-        <a href="#belso">Belső rendszer</a>
+        <a href="#bejelentes">Bejelentés</a>
+        <a href="#iroda">Szolgálati felület</a>
         <a href="#vezetes" id="navAdmin" hidden>Vezetés</a>
       </nav>
+      <a class="bell" id="bellBtn" href="#iroda" hidden aria-label="Teendők"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg><span class="n" id="bellN" hidden></span></a>
       <div class="acct-wrap"><button class="acct out" id="acctBtn" type="button" aria-haspopup="menu" aria-expanded="false">Bejelentkezés</button><div class="acct-menu" id="acctMenu" role="menu" hidden></div></div>
     </div>
   </header>
+  <nav class="subnav" id="subnav" aria-label="Szolgálati felület" hidden><div class="in">
+    <span class="lbl">Szolgálati felület</span>
+    <a href="#iroda">Irányítópult</a>
+    <a href="#belso">Kommunikáció</a>
+    <a href="#szolgalat">Szolgálati napló</a>
+    <a href="#jelentesek">Jelentések <span class="n" id="nRep" hidden></span></a>
+    <a href="#parancsok">Parancsok <span class="n" id="nOrd" hidden></span></a>
+    <a href="#naptar">Naptár <span class="n" id="nEvt" hidden></span></a>
+    <a href="#allomany">Állomány</a>
+    <a href="#akta" id="subAkta">Személyi aktám</a>
+  </div></nav>
 
   <main id="main">
     <!-- ================= FŐOLDAL ================= -->
@@ -694,7 +923,7 @@ table.roster{width:100%;border-collapse:collapse;font-size:14px;min-width:720px}
             <div class="lvl" id="homeAlertLvl"><small>I.</small>Normál működés</div>
             <p id="homeAlertDesc">A Hatóság szokásos rend szerint látja el feladatait.</p>
             <div class="scale" id="homeScale"><i class="on ok"></i><i></i><i></i><i></i></div>
-            <div class="meta"><span>Állomány: <b id="statMembers">–</b></span><span>Egységek: <b>3</b></span><span>Szolgálatban: <b id="statOnline">–</b></span></div>
+            <div class="meta"><span>Állomány: <b id="statMembers">–</b></span><span>Egységek: <b>3</b></span><span>Szolgálatban most: <b id="statOnline">–</b></span></div>
           </aside>
         </div>
       </div>
@@ -705,8 +934,8 @@ table.roster{width:100%;border-collapse:collapse;font-size:14px;min-width:720px}
         <h2 class="sec-title">Mit szeretnél intézni?</h2>
         <div class="services">
           <a class="svc" href="#jelentkezes"><span class="ic" data-icon="file"></span><b>Jelentkezés az állományba</b><span>Online felvételi kérelem kérdőívvel, iktatószámmal.</span><span class="go">Kérelem indítása →</span></a>
-          <a class="svc" href="#belepes"><span class="ic" data-icon="key"></span><b>Bejelentkezés</b><span>Belépés szolgálati azonosítóval és jelszóval.</span><span class="go">Belépés →</span></a>
-          <a class="svc" href="#belso"><span class="ic" data-icon="radio"></span><b>Belső kommunikáció</b><span>Szöveges és hangcsatornák az állomány számára.</span><span class="go">Megnyitás →</span></a>
+          <a class="svc" href="#bejelentes"><span class="ic" data-icon="alert"></span><b>Lakossági bejelentés</b><span>Bűncselekmény, vészhelyzet vagy ellátási igény jelzése, fiók nélkül is.</span><span class="go">Bejelentés →</span></a>
+          <a class="svc" href="#iroda"><span class="ic" data-icon="radio"></span><b>Szolgálati felület</b><span>Kommunikáció, hangcsatornák, szolgálati napló, jelentések és parancsok.</span><span class="go">Belépés →</span></a>
           <a class="svc" href="#kozlony"><span class="ic" data-icon="scroll"></span><b>Hivatalos Közlöny</b><span>A Hatóság rendeletei és közleményei.</span><span class="go">Közlöny →</span></a>
         </div>
       </div></section>
@@ -893,12 +1122,12 @@ table.roster{width:100%;border-collapse:collapse;font-size:14px;min-width:720px}
 
     <!-- ================= BEJELENTKEZÉS ================= -->
     <section class="view" id="v-belepes" hidden>
-      <div class="gate-wrap" id="loginBox"></div>
+      <div class="gate-wrap mgate" id="loginBox"></div>
     </section>
 
     <!-- ================= BELSŐ RENDSZER ================= -->
     <section class="view" id="v-belso" hidden style="height:100%">
-      <div class="gate-wrap" id="gate"></div>
+      <div class="gate-wrap mgate" id="gate"></div>
       <div class="console" id="console" hidden>
         <aside class="chan-side" id="chanSide">
           <div class="server-head"><img src="img/cimer.webp" alt="" width="40" height="40"><div><b>NEKEH</b><span>Belső kommunikációs rendszer</span></div></div>
@@ -950,8 +1179,179 @@ table.roster{width:100%;border-collapse:collapse;font-size:14px;min-width:720px}
             <div class="fld"><label for="s-motd">Közlemény a főoldalon</label><textarea id="s-motd" maxlength="600" style="min-height:70px" placeholder="Üresen hagyva nem jelenik meg."></textarea></div>
             <div class="fld"><span class="lab">Rendfokozatok elnevezése</span><div class="rank-names" id="rankNameInputs"></div></div>
             <div class="fld"><label for="s-rules">Szabályzat</label><textarea id="s-rules" maxlength="4000" style="min-height:200px"></textarea><small>Soronként egy szabály. A belső rendszer #szabályzat csatornáján jelenik meg.</small></div>
+            <details class="fld"><summary class="lab" style="cursor:pointer">Saját hangközvetítő szerver (TURN) – nem kötelező</summary>
+              <p class="hint" style="margin-top:8px">Alapból egy ingyenes nyilvános közvetítő szerver segíti a hangkapcsolatot. Ha saját TURN-szervered van (pl. egy ingyenes Metered-fiókból), itt megadhatod.</p>
+              <div class="grid2"><div class="fld" style="grid-column:1/-1"><label for="s-turn-urls">Címek (vesszővel elválasztva)</label><input id="s-turn-urls" placeholder="turn:example.com:3478, turns:example.com:443?transport=tcp"></div>
+              <div class="fld"><label for="s-turn-user">Felhasználónév</label><input id="s-turn-user" autocomplete="off"></div><div class="fld"><label for="s-turn-cred">Jelszó / kulcs</label><input id="s-turn-cred" autocomplete="off"></div></div>
+            </details>
             <div style="display:flex;justify-content:flex-end"><button class="btn btn-navy" type="submit">Beállítások mentése</button></div>
           </div></form>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SZOLGÁLATI FELÜLET: IRÁNYÍTÓPULT ================= -->
+    <section class="view" id="v-iroda" hidden>
+      <div class="page-head slim"><div class="wrap"><img src="img/cimer.webp" alt="" width="72" height="72"><div><nav class="crumbs" aria-label="Morzsamenü"><a href="#fooldal">Főoldal</a><span>›</span><span>Szolgálati felület</span></nav><h1 id="irodaTitle">Szolgálati felület</h1><div class="sub" id="irodaSub"></div></div></div></div>
+      <div class="wrap mpage"><div class="mgate gate-wrap" id="irodaGate"></div><div class="dash" id="irodaBody" hidden></div></div>
+    </section>
+
+    <!-- ================= SZOLGÁLATI NAPLÓ ================= -->
+    <section class="view" id="v-szolgalat" hidden>
+      <div class="page-head slim"><div class="wrap"><img src="img/cimer.webp" alt="" width="72" height="72"><div><nav class="crumbs" aria-label="Morzsamenü"><a href="#iroda">Szolgálati felület</a><span>›</span><span>Szolgálati napló</span></nav><h1>Szolgálati napló</h1><p>Szolgálatba lépés és befejezés, az állomány aktuális beosztása és a szolgálati idő nyilvántartása.</p></div></div></div>
+      <div class="wrap mpage"><div class="mgate gate-wrap" id="szolgalatGate"></div>
+        <div class="dash" id="szolgalatBody" hidden>
+          <div class="span4"><section class="card"><div class="ch"><h2>Saját státusz</h2></div><div class="cb" id="dutyPanel"></div></section></div>
+          <div class="span8"><section class="card"><div class="ch"><h2>Szolgálatban most</h2><span class="cnt" id="onDutyCnt"></span></div><div class="cb" id="onDutyList"></div></section></div>
+          <div class="span12"><section class="card"><div class="ch"><h2>Szolgálati naplóm</h2><span class="cnt" id="myDutyCnt"></span></div><div class="cb" id="myDutyLog"></div></section></div>
+          <div class="span12" id="leaderDuty" hidden><section class="card"><div class="ch"><h2>Az állomány szolgálati ideje</h2><span class="cnt">e heti és 30 napos összesítés</span></div><div class="cb" id="leaderDutyBody"></div></section></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= JELENTÉSEK ================= -->
+    <section class="view" id="v-jelentesek" hidden>
+      <div class="page-head slim"><div class="wrap"><img src="img/cimer.webp" alt="" width="72" height="72"><div><nav class="crumbs" aria-label="Morzsamenü"><a href="#iroda">Szolgálati felület</a><span>›</span><span>Jelentések</span></nav><h1>Jelentések</h1><p>Szolgálati és bevetési jelentések benyújtása, elbírálása és nyilvántartása ügyszámmal.</p></div></div></div>
+      <div class="wrap mpage"><div class="mgate gate-wrap" id="jelentesekGate"></div>
+        <div id="jelentesekBody" hidden>
+          <div class="tabs" id="repTabs" role="tablist">
+            <button type="button" role="tab" data-tab="new">Új jelentés</button>
+            <button type="button" role="tab" data-tab="mine">Jelentéseim <span class="n" id="tMine" hidden></span></button>
+            <button type="button" role="tab" data-tab="inbox" data-leader>Beérkezett jelentések <span class="n" id="tInbox" hidden></span></button>
+            <button type="button" role="tab" data-tab="tips" data-leader>Lakossági bejelentések <span class="n" id="tTips" hidden></span></button>
+          </div>
+          <div id="repPanel-new">
+            <div class="notice warn" id="repEditing" hidden style="margin-bottom:16px"><div><b>Visszaküldött jelentés javítása</b>Javítás után a jelentés újra elbírálásra kerül. <button class="lnk-btn" type="button" id="repEditCancel">Javítás megszakítása</button></div></div>
+            <form class="form" id="repForm" novalidate>
+              <fieldset class="fs"><legend>A jelentés adatai</legend>
+                <p class="hint">A csillaggal jelölt mezők kitöltése kötelező. A jelentés beküldéskor ügyszámot kap.</p>
+                <div class="grid2">
+                  <div class="fld"><label for="r-type">Jelentés típusa <span class="req">*</span></label><select id="r-type"></select></div>
+                  <div class="fld"><label for="r-time">Az esemény időpontja <span class="req">*</span></label><input id="r-time" type="datetime-local"></div>
+                  <div class="fld" style="grid-column:1/-1"><label for="r-title">Tárgy <span class="req">*</span></label><input id="r-title" maxlength="120" placeholder="pl. Zavargás felszámolása a főtéren"></div>
+                  <div class="fld"><label for="r-loc">Helyszín <span class="req">*</span></label><input id="r-loc" maxlength="120" placeholder="pl. Főtér, a városháza előtt"></div>
+                  <div class="fld"><label for="r-inv">Érintett egységek, személyek</label><input id="r-inv" maxlength="200" placeholder="pl. Taktikai Alosztály, két gyanúsított"></div>
+                </div>
+              </fieldset>
+              <fieldset class="fs"><legend>Tényállás</legend>
+                <div class="fld" style="margin-bottom:16px"><label for="r-body">Az esemény leírása <span class="req">*</span></label><textarea id="r-body" maxlength="3000" style="min-height:150px" placeholder="Mi történt, milyen sorrendben, ki mit tett?"></textarea></div>
+                <div class="fld"><label for="r-out">Intézkedések és eredmény</label><textarea id="r-out" maxlength="2000" placeholder="Milyen intézkedések történtek, mi lett az eredmény?"></textarea></div>
+              </fieldset>
+              <div class="form-foot"><small id="repWho"></small><button class="btn btn-navy" type="submit" id="repSubmit">Jelentés beküldése</button></div>
+            </form>
+          </div>
+          <div id="repPanel-mine" hidden><div class="xlist" id="repMine"></div></div>
+          <div id="repPanel-inbox" hidden><div class="xlist" id="repInbox"></div></div>
+          <div id="repPanel-tips" hidden><div class="xlist" id="tipInbox"></div></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= PARANCSOK ================= -->
+    <section class="view" id="v-parancsok" hidden>
+      <div class="page-head slim"><div class="wrap"><img src="img/cimer.webp" alt="" width="72" height="72"><div><nav class="crumbs" aria-label="Morzsamenü"><a href="#iroda">Szolgálati felület</a><span>›</span><span>Parancsok</span></nav><h1>Parancsok</h1><p>A vezetés által kiadott parancsok. Nyugtázd a parancsot, majd jelentsd a végrehajtását.</p></div></div></div>
+      <div class="wrap mpage"><div class="mgate gate-wrap" id="parancsokGate"></div>
+        <div class="dash" id="parancsokBody" hidden>
+          <div class="span8" id="ordListWrap"><div class="olist" id="ordList"></div></div>
+          <div class="span4" id="ordNewBox" hidden><section class="card sticky"><div class="ch"><h2>Parancs kiadása</h2></div><div class="cb">
+            <form id="ordForm" class="stack" novalidate>
+              <div class="fld"><label for="o-title">Tárgy</label><input id="o-title" maxlength="120" placeholder="pl. Járőrszolgálat a kikötőben"></div>
+              <div class="fld"><label for="o-body">A parancs szövege</label><textarea id="o-body" maxlength="2000" style="min-height:120px"></textarea></div>
+              <div class="fld"><label for="o-target">Címzett</label><select id="o-target"></select></div>
+              <div class="grid2">
+                <div class="fld"><label for="o-prio">Sürgősség</label><select id="o-prio"><option value="1">Rutin</option><option value="2">Sürgős</option><option value="3">Azonnali</option></select></div>
+                <div class="fld"><label for="o-due">Határidő</label><input id="o-due" type="date"></div>
+              </div>
+              <button class="btn btn-navy" type="submit">Parancs kiadása</button>
+            </form></div></section></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= NAPTÁR ================= -->
+    <section class="view" id="v-naptar" hidden>
+      <div class="page-head slim"><div class="wrap"><img src="img/cimer.webp" alt="" width="72" height="72"><div><nav class="crumbs" aria-label="Morzsamenü"><a href="#iroda">Szolgálati felület</a><span>›</span><span>Naptár</span></nav><h1>Eseménynaptár</h1><p>Kiképzések, bevetések és állománygyűlések. Jelezd vissza, hogy részt veszel-e.</p></div></div></div>
+      <div class="wrap mpage"><div class="mgate gate-wrap" id="naptarGate"></div>
+        <div class="dash" id="naptarBody" hidden>
+          <div class="span8" id="evtListWrap"><div class="evlist" id="evtList"></div></div>
+          <div class="span4" id="evtNewBox" hidden><section class="card sticky"><div class="ch"><h2>Esemény meghirdetése</h2></div><div class="cb">
+            <form id="evtForm" class="stack" novalidate>
+              <div class="fld"><label for="e-title">Megnevezés</label><input id="e-title" maxlength="100" placeholder="pl. Lőtéri kiképzés"></div>
+              <div class="grid2">
+                <div class="fld"><label for="e-type">Típus</label><select id="e-type"></select></div>
+                <div class="fld"><label for="e-unit">Résztvevők</label><select id="e-unit"></select></div>
+              </div>
+              <div class="fld"><label for="e-start">Időpont</label><input id="e-start" type="datetime-local"></div>
+              <div class="fld"><label for="e-loc">Helyszín</label><input id="e-loc" maxlength="100" placeholder="pl. Kiképzőbázis, lőtér"></div>
+              <div class="fld"><label for="e-desc">Leírás</label><textarea id="e-desc" maxlength="1000" style="min-height:90px"></textarea></div>
+              <button class="btn btn-navy" type="submit">Esemény meghirdetése</button>
+            </form></div></section></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= ÁLLOMÁNY ================= -->
+    <section class="view" id="v-allomany" hidden>
+      <div class="page-head slim"><div class="wrap"><img src="img/cimer.webp" alt="" width="72" height="72"><div><nav class="crumbs" aria-label="Morzsamenü"><a href="#iroda">Szolgálati felület</a><span>›</span><span>Állomány</span></nav><h1>Állománytábla</h1><p>A Hatóság teljes állománya rendfokozat, egység és szolgálati állapot szerint. Kattints egy tagra a személyi aktájához.</p></div></div></div>
+      <div class="wrap mpage"><div class="mgate gate-wrap" id="allomanyGate"></div>
+        <div id="allomanyBody" hidden>
+          <div class="ustats" id="rosterStats"></div>
+          <div class="filters">
+            <div class="fld grow"><label for="ro-q">Keresés</label><input id="ro-q" type="search" placeholder="Név, azonosító, jelvényszám vagy Roblox-név"></div>
+            <div class="fld"><label for="ro-unit">Egység</label><select id="ro-unit"></select></div>
+            <div class="fld"><label for="ro-rank">Rendfokozat</label><select id="ro-rank"></select></div>
+          </div>
+          <section class="card"><div class="tbl-wrap" id="rosterList"></div></section>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SZEMÉLYI AKTA ================= -->
+    <section class="view" id="v-akta" hidden>
+      <div class="page-head slim"><div class="wrap"><img src="img/cimer.webp" alt="" width="72" height="72"><div><nav class="crumbs" aria-label="Morzsamenü"><a href="#iroda">Szolgálati felület</a><span>›</span><a href="#allomany">Állomány</a><span>›</span><span>Személyi akta</span></nav><h1 id="aktaTitle">Személyi akta</h1><p>Szolgálati adatok, minősítések, dicséretek és fegyelmi bejegyzések.</p></div></div></div>
+      <div class="wrap mpage"><div class="mgate gate-wrap" id="aktaGate"></div>
+        <div id="aktaBody" hidden>
+          <div id="aktaContent"></div>
+          <section class="card" id="recBox" hidden style="margin-top:20px"><div class="ch"><h2>Új bejegyzés: <span id="recFor"></span></h2></div><div class="cb">
+            <form id="recForm" class="grid2" novalidate>
+              <div class="fld"><label for="rec-type">Bejegyzés típusa</label><select id="rec-type"><option value="commendation">Dicséret</option><option value="cert">Minősítés megadása</option><option value="warning">Figyelmeztetés</option><option value="note">Feljegyzés</option></select></div>
+              <div class="fld" id="rec-cert-wrap" hidden><label for="rec-cert">Minősítés</label><select id="rec-cert"></select></div>
+              <div class="fld" id="rec-title-wrap"><label for="rec-title">Cím</label><input id="rec-title" maxlength="100" placeholder="pl. Kiemelkedő helytállás bevetés közben"></div>
+              <div class="fld" style="grid-column:1/-1"><label for="rec-text">Indoklás</label><textarea id="rec-text" maxlength="1000" style="min-height:80px"></textarea></div>
+              <div style="grid-column:1/-1;display:flex;justify-content:flex-end"><button class="btn btn-navy" type="submit">Bejegyzés rögzítése</button></div>
+            </form></div></section>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= LAKOSSÁGI BEJELENTÉS ================= -->
+    <section class="view" id="v-bejelentes" hidden>
+      <div class="page-head"><div class="wrap"><img src="img/cimer.webp" alt="" width="72" height="72"><div><nav class="crumbs" aria-label="Morzsamenü"><a href="#fooldal">Főoldal</a><span>›</span><span>Lakossági bejelentés</span></nav><h1>Lakossági bejelentés</h1><p>Bűncselekményt, vészhelyzetet vagy ellátási igényt jelezhetsz a Hatóságnak. Bejelentést fiók nélkül is tehetsz.</p></div></div></div>
+      <div class="wrap apply-grid">
+        <aside class="apply-side">
+          <div class="box"><h3>Mikor tegyél bejelentést?</h3><ul><li>Bűncselekményt láttál vagy elszenvedtél</li><li>Vészhelyzet alakult ki a szerveren</li><li>Élelmiszer-, gyógyszer- vagy szállásigény</li><li>Panaszod van a Hatóság eljárására</li></ul></div>
+          <div class="box"><h3>Fontos</h3><p style="font-size:14px;color:var(--ink-2)">Ez a felület a Roblox-szerepjáték eseményeire szolgál. Valódi vészhelyzetben hívd a <b>112</b>-t.</p></div>
+        </aside>
+        <div style="min-width:0;display:flex;flex-direction:column;gap:18px">
+          <div id="tipDone" hidden></div>
+          <form class="form" id="tipForm" novalidate>
+            <fieldset class="fs"><legend>A bejelentés tárgya</legend>
+              <div class="grid2">
+                <div class="fld"><label for="t-cat">Típus <span class="req">*</span></label><select id="t-cat"></select></div>
+                <div class="fld"><label for="t-loc">Helyszín <span class="req">*</span></label><input id="t-loc" maxlength="120" placeholder="pl. Belváros, benzinkút mellett"></div>
+                <div class="fld" style="grid-column:1/-1"><label for="t-text">Mi történt? <span class="req">*</span></label><textarea id="t-text" maxlength="2000" style="min-height:140px"></textarea></div>
+              </div>
+            </fieldset>
+            <fieldset class="fs"><legend>Bejelentő</legend>
+              <p class="hint">Nem kötelező. Ha megadod, a Hatóság felveheti veled a kapcsolatot a játékban.</p>
+              <div class="grid2">
+                <div class="fld"><label for="t-name">Név</label><input id="t-name" maxlength="60"></div>
+                <div class="fld"><label for="t-roblox">Roblox-felhasználónév</label><input id="t-roblox" maxlength="40"></div>
+              </div>
+              <div class="hp" aria-hidden="true"><label for="t-web">Weboldal</label><input id="t-web" tabindex="-1" autocomplete="off"></div>
+            </fieldset>
+            <div class="form-foot"><small>A bejelentés ügyszámot kap, és a Hatóság vezetése bírálja el.</small><button class="btn btn-navy" type="submit" id="tipSubmit">Bejelentés beküldése</button></div>
+          </form>
         </div>
       </div>
     </section>
@@ -959,7 +1359,7 @@ table.roster{width:100%;border-collapse:collapse;font-size:14px;min-width:720px}
     <footer class="foot" id="foot">
       <div class="wrap cols">
         <div class="brandf"><img src="img/cimer.webp" alt="" width="52" height="52"><div><b>Nemzeti Egységes Közrendvédelmi és Ellátási Hatóság</b><span>„Mindenki felett, mindenkiért.”</span></div></div>
-        <div><b>Ügyintézés</b><a href="#jelentkezes">Felvételi kérelem</a><a href="#belepes">Bejelentkezés</a><a href="#belso">Belső rendszer</a></div>
+        <div><b>Ügyintézés</b><a href="#jelentkezes">Felvételi kérelem</a><a href="#bejelentes">Lakossági bejelentés</a><a href="#belepes">Bejelentkezés</a><a href="#iroda">Szolgálati felület</a></div>
         <div><b>Tájékoztatás</b><a href="#kozlony">Hivatalos Közlöny</a><a href="#egysegek">Egységek és rendfokozatok</a><a href="#fooldal">A Hatóságról</a></div>
       </div>
       <div class="wrap legal"><span>© <span id="year">2026</span> NEKEH · Főbiztosi Hivatal</span><span>Roblox szerepjáték-frakció. A NEKEH kitalált szervezet, nem valós állami szerv.</span></div>
@@ -971,6 +1371,7 @@ table.roster{width:100%;border-collapse:collapse;font-size:14px;min-width:720px}
 <div class="pop react-pop" id="reactPop" hidden></div>
 <div class="toasts" id="toasts" aria-live="polite"></div>
 <div id="audioSink" hidden></div>
+<div class="voice-float" id="voiceFloat" hidden></div>
 
 <script>
 "use strict";
@@ -1072,6 +1473,12 @@ const REACTS = [['like','👍'],['ok','✅'],['salute','🫡'],['alert','❗'],[
 const MAX_LEN = 1500;
 const ROMAN = ['I','II','III','IV','V','VI','VII','VIII','IX','X','XI','XII'];
 const AV_COLORS = ['#2B4C8C','#1F6E6A','#7A4E1D','#5B3D8A','#8A2F3C','#3D6B2E','#2F5F7A','#6B4A2B'];
+const REPORT_TYPES = {bj:{name:'Bevetési jelentés', code:'BJ'}, szj:{name:'Szolgálati jelentés', code:'SZJ'}, re:{name:'Rendkívüli esemény jelentése', code:'RE'}, ej:{name:'Ellátási jelentés', code:'EJ'}, kj:{name:'Kiképzési jelentés', code:'KJ'}};
+const ORDER_PRIO = {1:{name:'Rutin', tone:'t-info'}, 2:{name:'Sürgős', tone:'t-warn'}, 3:{name:'Azonnali', tone:'t-danger'}};
+const EVENT_TYPES = {kikepzes:'Kiképzés', bevetes:'Bevetés', gyules:'Állománygyűlés', unnepseg:'Ünnepség', egyeb:'Egyéb'};
+const RECORD_TYPES = {promotion:{name:'Rendfokozat', tone:'t-info'}, commendation:{name:'Dicséret', tone:'t-ok'}, warning:{name:'Figyelmeztetés', tone:'t-danger'}, cert:{name:'Minősítés', tone:'t-warn'}, note:{name:'Feljegyzés', tone:'t-info'}};
+const CERTS = ['Alapkiképzés','Fegyverhasználati vizsga','Elsősegély-nyújtás','Járművezetés','Helikoptervezetés','Mesterlövész-minősítés','Taktikai behatolás','Tárgyalástechnika','Rádióforgalmazás'];
+const TIP_CATS = {bunc:'Bűncselekmény bejelentése', veszh:'Vészhelyzet', ellat:'Ellátási kérelem', panasz:'Panasz', egyeb:'Egyéb'};
 
 /* ================= icons ================= */
 const ICON = {
@@ -1100,6 +1507,13 @@ const ICON = {
   id:'<rect x="3" y="5" width="18" height="14" rx="2"/><circle cx="9" cy="11" r="2.5"/><path d="M5.5 16.5c.6-1.8 2-2.8 3.5-2.8s2.9 1 3.5 2.8M15 10h3M15 14h3"/>',
   user:'<circle cx="12" cy="8" r="4"/><path d="M4 21c1-4 4-6 8-6s7 2 8 6"/>',
   shield:'<path d="M12 3l7 3v6c0 4.5-3 7.5-7 9-4-1.5-7-4.5-7-9V6z"/>',
+  alert:'<path d="M12 3L2 20h20z"/><path d="M12 10v4M12 17h.01"/>',
+  doc:'<path d="M14 3H6a1 1 0 0 0-1 1v16a1 1 0 0 0 1 1h12a1 1 0 0 0 1-1V8z"/><path d="M14 3v5h5M9 12h6M9 16h4"/>',
+  flag:'<path d="M5 21V4M5 4h11l-2 4 2 4H5"/>',
+  calendar:'<rect x="3" y="5" width="18" height="16" rx="2"/><path d="M3 10h18M8 3v4M16 3v4"/>',
+  users:'<circle cx="9" cy="8" r="3.5"/><path d="M2.5 20c.6-3.6 3.3-5.5 6.5-5.5s5.9 1.9 6.5 5.5"/><path d="M16 4.6a3.5 3.5 0 0 1 0 6.8M18 14.8c2 .7 3.2 2.4 3.5 5.2"/>',
+  print:'<path d="M6 9V3h12v6"/><rect x="3" y="9" width="18" height="8" rx="2"/><path d="M6 14h12v7H6z"/>',
+  check:'<path d="M5 12l5 5L20 7"/>',
 };
 function icon(name, size=18){ return `<svg width="${size}" height="${size}" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">${ICON[name]||''}</svg>`; }
 
@@ -1245,7 +1659,17 @@ function LocalBackend(){
     watchDoc(p, cb){ const f = () => cb(docOut(p)); subs.add(f); setTimeout(f, 0); return () => subs.delete(f); },
     watchCol(p, o, cb){ const f = () => cb(colOut(p, o || {})); subs.add(f); setTimeout(f, 0); return () => subs.delete(f); },
     async set(p, data, merge){ db[p] = merge ? {...(db[p] || {}), ...clone(data)} : clone(data); persist(); },
-    async update(p, data){ if (!db[p]) throw fail('not-found'); db[p] = {...db[p], ...clone(data)}; persist(); },
+    async update(p, data){
+      if (!db[p]) throw fail('not-found');
+      const d = db[p];
+      for (const [k, v] of Object.entries(clone(data))) {
+        if (!k.includes('.')) { d[k] = v; continue; }
+        const parts = k.split('.'); let o = d;
+        for (const part of parts.slice(0, -1)) { if (!o[part] || typeof o[part] !== 'object') o[part] = {}; o = o[part]; }
+        o[parts[parts.length - 1]] = v;
+      }
+      persist();
+    },
     async add(col, data){ const id = rid(); db[col + '/' + id] = clone(data); persist(); return id; },
     async del(p){ delete db[p]; persist(); },
     async rx(p, key, uid, on){ if (!db[p]) throw fail('not-found'); const d = db[p]; d.rx = d.rx || {}; const s = new Set(d.rx[key] || []); on ? s.add(uid) : s.delete(uid); d.rx[key] = [...s]; persist(); },
@@ -1260,9 +1684,10 @@ const S = {
   B:null, mode:null, ready:false, bootError:null,
   auth:undefined, ownerUid:undefined, config:{...DEFAULT_CONFIG}, users:{}, roles:{}, myApp:undefined, apps:{}, decrees:[], presence:{},
   heads:{}, msgs:{}, voiceMembers:{},
-  loaded:{config:false, users:false, roles:false, apps:false, decrees:false, msgs:{}}, msgErr:{},
+  loaded:{config:false, users:false, roles:false, apps:false, decrees:false, msgs:{}, dutylog:false, reports:false, orders:false, events:false}, msgErr:{},
   route:'fooldal', ch:store.get('ch','altalanos'), view:'text', vch:null, prio:1, reply:null, editing:null,
   showMembers:true, showMembersNarrow:false, reapply:false, prefUnit:null,
+  duty:{}, dutylog:[], reports:[], orders:[], events:[], records:{subj:null, list:[]}, tips:[], aktaUid:null, repTab:'new', editReport:null, tipDone:null,
 };
 const SUBS = new Map();
 
@@ -1317,13 +1742,23 @@ function syncSubs(){
   W.set('owner', () => B.watchDoc('meta/owner', d => { S.ownerUid = d ? d.uid : null; changed(); }, dbErr('owner')));
   W.set('config', () => B.watchDoc('config/main', d => { S.config = {...DEFAULT_CONFIG, ...(d || {})}; S.loaded.config = true; changed(); }, dbErr('config')));
   W.set('decrees', () => B.watchCol('decrees', {order:'date', dir:'desc', limit:100}, l => { S.decrees = l; S.loaded.decrees = true; changed(); }, dbErr('decrees')));
+  W.set('roles@' + (uid || 'anon'), () => B.watchCol('roles', {}, l => { S.roles = Object.fromEntries(l.map(d => [d.id, d])); S.loaded.roles = true; changed(); }, dbErr('roles')));
+  W.set('duty@' + (uid || 'anon'), () => B.watchCol('duty', {}, l => { S.duty = Object.fromEntries(l.map(d => [d.id, d])); changed(); }, dbErr('duty')));
   if (uid) {
     W.set('users@' + uid, () => B.watchCol('users', {}, l => { S.users = Object.fromEntries(l.map(d => [d.id, d])); S.loaded.users = true; changed(); }, dbErr('users')));
-    W.set('roles@' + uid, () => B.watchCol('roles', {}, l => { S.roles = Object.fromEntries(l.map(d => [d.id, d])); S.loaded.roles = true; changed(); }, dbErr('roles')));
     W.set('myapp@' + uid, () => B.watchDoc('applications/' + uid, d => { S.myApp = d; changed(); }, e => { dbErr('myapp')(e); S.myApp = null; changed(); }));
     if (S.ownerUid === uid) W.set('apps@' + uid, () => B.watchCol('applications', {}, l => { S.apps = Object.fromEntries(l.map(d => [d.id, d])); S.loaded.apps = true; changed(); }, dbErr('apps')));
     if (isMember(uid)) {
       W.set('presence@' + uid, () => B.watchCol('presence', {}, l => { S.presence = Object.fromEntries(l.map(d => [d.id, d])); changed(); }, dbErr('presence')));
+      W.set('dutylog@' + uid, () => B.watchCol('dutylog', {order:'start', dir:'desc', limit:500}, l => { S.dutylog = l; S.loaded.dutylog = true; changed(); }, dbErr('dutylog')));
+      W.set('orders@' + uid, () => B.watchCol('orders', {order:'createdAt', dir:'desc', limit:100}, l => { S.orders = l; S.loaded.orders = true; changed(); }, dbErr('orders')));
+      W.set('events@' + uid, () => B.watchCol('events', {order:'start', dir:'desc', limit:80}, l => { S.events = l; S.loaded.events = true; changed(); }, dbErr('events')));
+      if (isLeader(uid)) {
+        W.set('reports-all@' + uid, () => B.watchCol('reports', {order:'createdAt', dir:'desc', limit:150}, l => { S.reports = l; S.loaded.reports = true; changed(); }, dbErr('reports')));
+        W.set('tips@' + uid, () => B.watchCol('tips', {order:'at', dir:'desc', limit:100}, l => { S.tips = l; changed(); }, dbErr('tips')));
+      } else W.set('reports-mine@' + uid, () => B.watchCol('reports', {where:['uid', '==', uid]}, l => { S.reports = l; S.loaded.reports = true; changed(); }, dbErr('reports')));
+      const subj = S.route === 'akta' && S.aktaUid ? S.aktaUid : uid;
+      if (subj === uid || isLeader(uid)) W.set(`records:${subj}@${uid}`, () => B.watchCol('records', {where:['uid', '==', subj]}, l => { S.records = {subj, list:l.sort((a, b) => b.at - a.at)}; changed(); }, dbErr('records')));
       for (const c of visibleChannels()) if (c.kind !== 'rules') W.set(`head:${c.id}@${uid}`, () => B.watchCol(`channels/${c.id}/messages`, {order:'ts', dir:'desc', limit:1}, l => { S.heads[c.id] = l[0] || null; changed(); }, dbErr('head:' + c.id)));
       const ch = curCh();
       if (ch.kind !== 'rules') W.set(`msgs:${ch.id}@${uid}`, () => B.watchCol(`channels/${ch.id}/messages`, {order:'ts', dir:'desc', limit:80}, l => { S.msgs[ch.id] = l.slice().reverse(); S.loaded.msgs[ch.id] = true; S.msgErr[ch.id] = false; changed(); }, dbErr(`msgs:${ch.id}@${uid}`)));
@@ -1343,17 +1778,18 @@ function scheduleRender(withSubs){
 }
 
 /* ================= routing ================= */
-const ROUTES = ['fooldal','egysegek','kozlony','jelentkezes','belepes','belso','vezetes'];
+const ROUTES = ['fooldal','egysegek','kozlony','jelentkezes','bejelentes','belepes','iroda','belso','szolgalat','jelentesek','parancsok','naptar','allomany','akta','vezetes'];
 function route(){
   let r = location.hash.slice(1);
   if (!ROUTES.includes(r)) r = 'fooldal';
   S.route = r;
   $$('.view').forEach(v => v.hidden = v.id !== 'v-' + r);
-  $$('#nav a').forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + r));
+  $$('#nav a').forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + r || (a.getAttribute('href') === '#iroda' && MEMBER_ROUTES.includes(r))));
   $('#nav').classList.remove('open'); $('#menuBtn').setAttribute('aria-expanded','false');
   closeAcctMenu();
   $('#main').scrollTop = 0;
   if (r === 'belso') S.forceBottom = true;
+  if (S.B) syncSubs();
   renderAll();
   heartbeat();
 }
@@ -1367,6 +1803,15 @@ function renderAll(){
   if (S.route === 'belepes') renderLogin();
   if (S.route === 'belso') renderInternal();
   if (S.route === 'vezetes') renderAdmin();
+  if (S.route === 'iroda') renderIroda();
+  if (S.route === 'szolgalat') renderSzolgalat();
+  if (S.route === 'jelentesek') renderJelentesek();
+  if (S.route === 'parancsok') renderParancsok();
+  if (S.route === 'naptar') renderNaptar();
+  if (S.route === 'allomany') renderAllomany();
+  if (S.route === 'akta') renderAkta();
+  if (S.route === 'bejelentes') renderBejelentes();
+  renderVoiceFloat();
 }
 function renderChrome(){
   $('#demoStrip').hidden = S.mode !== 'demo';
@@ -1374,6 +1819,7 @@ function renderChrome(){
   const inApp = S.route === 'belso' && access() === 'member';
   $('#main').classList.toggle('is-app', inApp);
   $('#foot').hidden = S.route === 'belso' || S.route === 'belepes';
+  renderSubnav();
   const btn = $('#acctBtn');
   const key = JSON.stringify([me(), S.auth && nameOf(me()), access(), rankName(rankOf(me()))]);
   if (btn.dataset.k === key) return;
@@ -1393,7 +1839,7 @@ function openAcctMenu(){
   const item = (ic, label, fn) => h('button', {type:'button', role:'menuitem', html:icon(ic, 16), onclick:() => { closeAcctMenu(); fn(); }}, label);
   if (S.users[me()]) m.append(item('id', 'Szolgálati igazolványom', () => openIdCard(me())));
   if (S.users[me()]) m.append(item('user', 'Profil és jelszó', openProfileEdit));
-  if (st === 'member') m.append(item('radio', 'Belső rendszer', () => { location.hash = 'belso'; }));
+  if (st === 'member') { m.append(item('radio', 'Szolgálati felület', () => { location.hash = 'iroda'; })); m.append(item('doc', 'Személyi aktám', () => { S.aktaUid = null; location.hash = 'akta'; })); }
   else m.append(item('file', 'Kérelmem állapota', () => { location.hash = 'jelentkezes'; }));
   if (isOwnerUid(me())) m.append(item('shield', 'Vezetés', () => { location.hash = 'vezetes'; }));
   m.append(item('exit', 'Kijelentkezés', doLogout));
@@ -1411,7 +1857,7 @@ function renderHome(){
   $('#homeAlertDesc').textContent = a.desc;
   $$('#homeScale i').forEach((i, k) => { i.className = k + 1 <= lvl ? 'on ' + a.tone : ''; });
   $('#statMembers').textContent = S.loaded.roles ? memberIds().length + ' fő' : '–';
-  $('#statOnline').textContent = Object.keys(S.presence).length ? Object.keys(S.presence).filter(isOnline).length + ' fő' : '–';
+  $('#statOnline').textContent = Object.values(S.duty).filter(d => d.on && d.since && Date.now() - d.since < 18 * 3600e3).length + ' fő';
   const motd = (S.config.motd || '').trim(); $('#motd').hidden = !motd; $('#motdText').textContent = motd;
   if (S.route !== 'fooldal') return;
   const box = $('#homeDecrees'); box.replaceChildren();
@@ -1432,6 +1878,13 @@ function buildStatic(){
   const pick = $('#unitPick');
   for (const u of UNITS) pick.append(h('input', {type:'radio', name:'unit', id:'u-' + u.id, value:u.id}), h('label', {for:'u-' + u.id}, h('span', {class:'pi'}, h('img', {src:u.patch, alt:''})), h('span', {text:u.name})));
   $$('.svc .ic[data-icon]').forEach(el => el.innerHTML = icon(el.dataset.icon, 22));
+  $('#r-type').replaceChildren(...Object.entries(REPORT_TYPES).map(([k, v]) => h('option', {value:k, text:v.name})));
+  $('#e-type').replaceChildren(...Object.entries(EVENT_TYPES).map(([k, v]) => h('option', {value:k, text:v})));
+  $('#e-unit').replaceChildren(h('option', {value:'', text:'Teljes állomány'}), ...UNITS.map(x => h('option', {value:x.id, text:x.name})));
+  $('#rec-cert').replaceChildren(...CERTS.map(c => h('option', {value:c, text:c})));
+  $('#t-cat').replaceChildren(h('option', {value:'', text:'Válassz…'}), ...Object.entries(TIP_CATS).map(([k, v]) => h('option', {value:k, text:v})));
+  $('#ro-unit').replaceChildren(h('option', {value:'', text:'Mind'}), ...UNITS.map(x => h('option', {value:x.id, text:x.short})), h('option', {value:'-', text:'Beosztás nélkül'}));
+  $('#ro-rank').replaceChildren(h('option', {value:'', text:'Mind'}));
 }
 function renderUnitsPage(){
   const counts = {}; for (const id of memberIds()) { const u = unitOf(id); if (u) counts[u] = (counts[u] || 0) + 1; }
@@ -1629,7 +2082,7 @@ function renderLogin(){
   const box = $('#loginBox');
   const st = access();
   const key = JSON.stringify([S.ready, !!S.auth, S.ownerUid === null, st, S.bootError]);
-  guardedRender(box, key, () => {
+  renderGate(box, key, () => {
     if (S.bootError) return h('div', {class:'login'}, h('div', {class:'bd'}, h('div', {class:'notice danger'}, h('div', null, h('b', {text:'A rendszer nem indult el'}), S.bootError))));
     if (!S.ready) return h('p', {class:'empty', text:'Betöltés…'});
     if (S.auth && S.ownerUid === null) return setupCard();
@@ -1646,16 +2099,8 @@ function renderInternal(){
   const show = st === 'member';
   gate.hidden = show; con.hidden = !show;
   renderChrome();
-  if (show) { gate.dataset.k = ''; renderConsole(); return; }
-  const key = JSON.stringify([st, S.myApp && S.myApp.status, S.ownerUid === null]);
-  guardedRender(gate, key, () => {
-    if (st === 'loading') return h('p', {class:'empty', text:'Betöltés…'});
-    if (st === 'out') return S.ownerUid === null ? h('div', {class:'two-col'}, setupCard(), loginCard('ig')) : loginCard('ig', 'A belső rendszer csak az állomány tagjai számára érhető el. Lépj be a szolgálati azonosítóddal.');
-    if (st === 'member-noprofile') return profileCreateCard();
-    const msg = st === 'applicant' ? {pending:'A kérelmed elbírálás alatt áll. A belső rendszer a felvétel után nyílik meg.', interview:'Interjúra hívtak. Keresd a vezetést az időpontért.', rejected:'A kérelmedet elutasították. Új kérelmet a Jelentkezés oldalon adhatsz be.', accepted:'A felvételed rögzítése folyamatban. Frissíts egy perc múlva.'}[S.myApp.status] || '' : 'Ezzel az azonosítóval még nem adtál be felvételi kérelmet.';
-    return h('div', {class:'login'}, h('div', {class:'hd'}, h('img', {src:'img/cimer.webp', alt:''}), h('b', {text:'Nincs hozzáférésed'}), h('span', {text:'Belső informatikai rendszer'})),
-      h('div', {class:'bd'}, h('div', {class:'idrow'}, avatarEl(me(), 'av'), h('div', null, h('b', {text:nameOf(me())}), h('span', {text:st === 'applicant' ? 'Jelentkező' : 'Nem állományi tag'}))), h('p', {style:'color:var(--ink-2);font-size:14px', text:msg}), h('a', {class:'btn btn-gold', href:'#jelentkezes', text:st === 'applicant' ? 'Kérelmem megtekintése' : 'Jelentkezés az állományba'})));
-  });
+  if (show) { if (gate.childElementCount) { gate.replaceChildren(); gate.dataset.k = ''; } renderConsole(); return; }
+  renderGate(gate, JSON.stringify([st, S.myApp && S.myApp.status, S.ownerUid === null]), () => gateCard(st, 'ig'));
 }
 function profileCreateCard(){
   const f = h('form', {style:'display:flex;flex-direction:column;gap:12px'},
@@ -1949,46 +2394,84 @@ function renderTyping(){
   el.append(h('span', {class:'dots'}, h('i'), h('i'), h('i')), h('span', {text:who.length === 1 ? `${names[0]} éppen ír…` : who.length <= 3 ? `${names.join(', ')} éppen írnak…` : 'Többen éppen írnak…'}));
 }
 
-/* ================= voice (WebRTC mesh, signalling through the database) ================= */
-const VC = {room:null, joinedAt:0, stream:null, pcs:new Map(), audios:new Map(), muted:false, deaf:false, unsub:null, hb:null, handled:new Set(), ctx:null, meters:new Map(), speaking:new Set(), meterTimer:null, joining:false};
+/* ================= voice (WebRTC mesh, signalling through the database, STUN + TURN relay) ================= */
+const VC = {room:null, joinedAt:0, stream:null, pcs:new Map(), meta:new Map(), audios:new Map(), vols:store.get('vols', {}), muted:false, deaf:false, ptt:store.get('ptt', false), pttDown:false,
+  unsub:null, hb:null, sync:null, handled:new Set(), ctx:null, meters:new Map(), speaking:new Set(), meterTimer:null, joining:false, ice:null, blocked:false, deviceId:store.get('mic', ''), lastPeers:null, myLevel:0, devices:[]};
 function freshVoice(room){ const now = Date.now(); return (S.voiceMembers[room] || []).filter(m => now - (m.ts || 0) < 150000).sort((a, b) => (a.joinedAt || 0) - (b.joinedAt || 0)); }
+async function iceServers(){
+  const list = [{urls:['stun:stun.l.google.com:19302','stun:stun1.l.google.com:19302']}];
+  const t = S.config.turn;
+  if (t && t.urls) list.push({urls:String(t.urls).split(/[\s,]+/).filter(Boolean), username:t.username || '', credential:t.credential || ''});
+  try {
+    const username = (Math.floor(Date.now() / 1000) + 12 * 3600) + ':nekeh';
+    const key = await crypto.subtle.importKey('raw', new TextEncoder().encode('openrelayprojectsecret'), {name:'HMAC', hash:'SHA-1'}, false, ['sign']);
+    const sig = new Uint8Array(await crypto.subtle.sign('HMAC', key, new TextEncoder().encode(username)));
+    let bin = ''; for (const b of sig) bin += String.fromCharCode(b);
+    list.push({urls:['turn:staticauth.openrelay.metered.ca:80','turn:staticauth.openrelay.metered.ca:80?transport=tcp','turn:staticauth.openrelay.metered.ca:443','turns:staticauth.openrelay.metered.ca:443?transport=tcp'], username, credential:btoa(bin)});
+  } catch {}
+  return list;
+}
 function openVoice(id, join){
   S.view = 'voice'; S.vch = id; $('#console').classList.remove('show-chans');
   renderConsole();
   if (join && VC.room !== id) joinVoice(id);
 }
+function chime(up){
+  if (!VC.ctx) return;
+  try {
+    const c = VC.ctx, o = c.createOscillator(), g = c.createGain(), t = c.currentTime;
+    o.type = 'sine'; o.frequency.setValueAtTime(up ? 620 : 560, t); o.frequency.linearRampToValueAtTime(up ? 880 : 380, t + .16);
+    g.gain.setValueAtTime(.0001, t); g.gain.exponentialRampToValueAtTime(.07, t + .02); g.gain.exponentialRampToValueAtTime(.0001, t + .26);
+    o.connect(g).connect(c.destination); o.start(t); o.stop(t + .3);
+  } catch {}
+}
+function getMic(){ return navigator.mediaDevices.getUserMedia({audio:{deviceId:VC.deviceId ? {exact:VC.deviceId} : undefined, echoCancellation:true, noiseSuppression:true, autoGainControl:true}, video:false}); }
+function applyMicState(){ const on = !VC.muted && (!VC.ptt || VC.pttDown); if (VC.stream) VC.stream.getAudioTracks().forEach(t => t.enabled = on); }
 async function joinVoice(room){
   if (VC.joining) return;
-  const v = VCH[room]; if (!canVoice(me(), v)) return toast('Ehhez a hangcsatornához nincs jogosultságod.');
+  const v = VCH[room];
+  if (!canVoice(me(), v)) return toast('Ehhez a hangcsatornához nincs jogosultságod.');
   if (freshVoice(room).filter(p => p.id !== me()).length >= VOICE_MAX) return toast(`A hangcsatorna megtelt (legfeljebb ${VOICE_MAX} fő).`);
-  if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia || typeof RTCPeerConnection === 'undefined') return toast('Ez a böngésző vagy nézet nem támogatja a hangkapcsolatot. Nyisd meg az oldalt Chrome-ban, Edge-ben vagy Firefoxban.');
+  if (!navigator.mediaDevices || !navigator.mediaDevices.getUserMedia || typeof RTCPeerConnection === 'undefined') return toast('Ez a böngésző nem támogatja a hangkapcsolatot. Nyisd meg az oldalt Chrome-ban, Edge-ben, Firefoxban vagy Safariban.');
   VC.joining = true;
-  let stream;
-  try { stream = await navigator.mediaDevices.getUserMedia({audio:{echoCancellation:true, noiseSuppression:true, autoGainControl:true}, video:false}); }
-  catch (e) { VC.joining = false; return toast(S.mode === 'demo' ? 'A bemutató nézetben a mikrofon le van tiltva. A saját címen futó éles oldalon a hangcsatorna működik.' : 'A mikrofonhoz nem kaptunk hozzáférést. Engedélyezd a böngésző címsorában, majd próbáld újra.'); }
-  if (VC.room) await leaveVoice(true);
-  VC.room = room; VC.stream = stream; VC.joinedAt = Date.now(); VC.muted = false; VC.deaf = false; VC.handled = new Set();
-  try { VC.ctx = new (window.AudioContext || window.webkitAudioContext)(); } catch { VC.ctx = null; }
-  addMeter(me(), stream);
+  if (!VC.ctx) { try { VC.ctx = new (window.AudioContext || window.webkitAudioContext)(); } catch { VC.ctx = null; } }
+  try { if (VC.ctx && VC.ctx.state === 'suspended') VC.ctx.resume(); } catch {}
+  let stream = null;
+  try { stream = await getMic(); }
+  catch (e) {
+    if (VC.deviceId) { VC.deviceId = ''; store.set('mic', ''); try { stream = await getMic(); } catch {} }
+    if (!stream) {
+      VC.joining = false;
+      const denied = e && (e.name === 'NotAllowedError' || e.name === 'SecurityError');
+      return toast(S.mode === 'demo' ? 'A bemutató nézetben a mikrofon le van tiltva. Az élő oldalon a hangcsatorna működik.' : denied ? 'A mikrofont a böngésző letiltotta. Kattints a címsorban a lakat ikonra, engedélyezd a mikrofont, majd próbáld újra.' : 'Nem található használható mikrofon. Csatlakoztass egyet, majd próbáld újra.');
+    }
+  }
+  if (VC.room) await leaveVoice(true, true);
+  VC.ice = await iceServers();
+  VC.room = room; VC.stream = stream; VC.joinedAt = Date.now(); VC.muted = false; VC.deaf = false; VC.handled = new Set(); VC.lastPeers = null; VC.blocked = false;
+  applyMicState(); addMeter(me(), stream); listDevices();
   try {
     await S.B.set(`voice/${room}/members/${me()}`, {joinedAt:VC.joinedAt, ts:Date.now(), muted:false, deaf:false});
     VC.unsub = S.B.watchCol(`voice/${room}/signals`, {where:['to', '==', me()]}, list => list.forEach(handleSignal), e => console.warn('signals', e));
     VC.hb = setInterval(() => { if (VC.room) S.B.set(`voice/${VC.room}/members/${me()}`, {ts:Date.now()}, true).catch(() => {}); }, 30000);
-    toast('Csatlakoztál: ' + v.name);
-  } catch (e) { toast(errText(e)); await leaveVoice(true); }
+    VC.sync = setInterval(voiceSync, 4000);
+    chime(true); toast('Csatlakoztál: ' + v.name);
+  } catch (e) { toast(errText(e)); VC.joining = false; await leaveVoice(true); return; }
   VC.joining = false;
   voiceSync(); renderAll();
 }
-async function leaveVoice(silent){
+async function leaveVoice(silent, keepCtx){
   if (!VC.room) return;
   const room = VC.room;
   VC.room = null;
   if (VC.unsub) { try { VC.unsub(); } catch {} VC.unsub = null; }
-  clearInterval(VC.hb); VC.hb = null;
+  clearInterval(VC.hb); clearInterval(VC.sync); VC.hb = VC.sync = null;
   for (const id of [...VC.pcs.keys()]) closePeer(id);
+  VC.meta.clear();
   if (VC.stream) VC.stream.getTracks().forEach(t => t.stop());
-  VC.stream = null; VC.meters.clear(); VC.speaking.clear(); clearInterval(VC.meterTimer); VC.meterTimer = null;
-  if (VC.ctx) { try { VC.ctx.close(); } catch {} VC.ctx = null; }
+  VC.stream = null; VC.meters.clear(); VC.speaking.clear(); clearInterval(VC.meterTimer); VC.meterTimer = null; VC.blocked = false; VC.pttDown = false;
+  if (!silent) chime(false);
+  if (!keepCtx && VC.ctx) { const c = VC.ctx; VC.ctx = null; setTimeout(() => { try { c.close(); } catch {} }, 450); }
   try { await S.B.del(`voice/${room}/members/${me()}`); } catch {}
   if (!silent) toast('Kiléptél a hangcsatornából.');
   renderAll();
@@ -1998,38 +2481,68 @@ function closePeer(id){
   const a = VC.audios.get(id); if (a) { a.srcObject = null; a.remove(); VC.audios.delete(id); }
   VC.meters.delete(id); VC.speaking.delete(id);
 }
-function makePc(id){
-  const pc = new RTCPeerConnection({iceServers:ICE_SERVERS});
+function makePc(id, tries){
+  const pc = new RTCPeerConnection({iceServers:VC.ice || [{urls:'stun:stun.l.google.com:19302'}]});
   VC.stream.getTracks().forEach(t => pc.addTrack(t, VC.stream));
+  VC.meta.set(id, {created:Date.now(), tries:tries || 1});
   pc.ontrack = ev => {
     let a = VC.audios.get(id);
-    if (!a) { a = new Audio(); a.autoplay = true; VC.audios.set(id, a); $('#audioSink').append(a); }
-    a.srcObject = ev.streams[0]; a.muted = VC.deaf; a.play().catch(() => {});
+    if (!a) { a = new Audio(); a.autoplay = true; a.setAttribute('playsinline', ''); VC.audios.set(id, a); $('#audioSink').append(a); }
+    a.srcObject = ev.streams[0]; a.muted = VC.deaf; a.volume = Math.max(0, Math.min(1, (VC.vols[id] ?? 100) / 100));
+    a.play().catch(() => { VC.blocked = true; renderAll(); });
     addMeter(id, ev.streams[0]);
   };
   pc.onconnectionstatechange = () => {
-    if (pc.connectionState === 'failed') { closePeer(id); setTimeout(voiceSync, 1500); }
+    const m = VC.meta.get(id) || {};
+    if (pc.connectionState === 'connected') { m.connectedAt = Date.now(); m.discAt = 0; detectRoute(id, pc); }
+    if (pc.connectionState === 'disconnected') m.discAt = Date.now();
+    VC.meta.set(id, m);
+    if (pc.connectionState === 'failed') setTimeout(voiceSync, 500);
     if (S.view === 'voice') renderVoiceStage();
   };
   VC.pcs.set(id, pc);
   return pc;
 }
-function iceDone(pc){ return new Promise(res => { if (pc.iceGatheringState === 'complete') return res(); const t = setTimeout(res, 3500); pc.addEventListener('icegatheringstatechange', () => { if (pc.iceGatheringState === 'complete') { clearTimeout(t); res(); } }); }); }
+async function detectRoute(id, pc){
+  try {
+    const st = await pc.getStats(); let pair = null;
+    st.forEach(r => { if (r.type === 'transport' && r.selectedCandidatePairId) pair = st.get(r.selectedCandidatePairId); });
+    if (!pair) st.forEach(r => { if (r.type === 'candidate-pair' && r.nominated && r.state === 'succeeded') pair = r; });
+    if (!pair) return;
+    const lc = st.get(pair.localCandidateId), rc = st.get(pair.remoteCandidateId);
+    const m = VC.meta.get(id); if (m) m.route = ((lc && lc.candidateType === 'relay') || (rc && rc.candidateType === 'relay')) ? 'közvetítő szerveren át' : 'közvetlen kapcsolat';
+    if (S.view === 'voice') renderVoiceStage();
+  } catch {}
+}
+function iceDone(pc){ return new Promise(res => { if (pc.iceGatheringState === 'complete') return res(); const t = setTimeout(res, 4000); pc.addEventListener('icegatheringstatechange', () => { if (pc.iceGatheringState === 'complete') { clearTimeout(t); res(); } }); }); }
 function iAmCaller(peer){ return (VC.joinedAt > (peer.joinedAt || 0)) || (VC.joinedAt === peer.joinedAt && me() > peer.id); }
 function voiceSync(){
   if (!VC.room || VC.joining) return;
-  const list = freshVoice(VC.room), ids = new Set(list.map(p => p.id));
-  for (const id of [...VC.pcs.keys()]) if (!ids.has(id)) closePeer(id);
-  for (const p of list) if (p.id !== me() && !VC.pcs.has(p.id) && iAmCaller(p)) callPeer(p.id);
+  const list = freshVoice(VC.room), ids = new Set(list.map(p => p.id)), now = Date.now();
+  if (VC.lastPeers) { for (const id of ids) if (id !== me() && !VC.lastPeers.has(id)) { chime(true); break; } for (const id of VC.lastPeers) if (id !== me() && !ids.has(id)) { chime(false); break; } }
+  VC.lastPeers = ids;
+  if (!ids.has(me()) && S.voiceMembers[VC.room]) S.B.set(`voice/${VC.room}/members/${me()}`, {joinedAt:VC.joinedAt, ts:now, muted:VC.muted, deaf:VC.deaf}).catch(() => {});
+  for (const id of [...VC.pcs.keys()]) if (!ids.has(id)) { closePeer(id); VC.meta.delete(id); }
+  for (const p of list) {
+    if (p.id === me()) continue;
+    const pc = VC.pcs.get(p.id), m = VC.meta.get(p.id) || {};
+    if (!pc) { if (iAmCaller(p) && (!m.retryAt || now >= m.retryAt)) callPeer(p.id, (m.tries || 0) + 1); continue; }
+    const st = pc.connectionState;
+    const bad = st === 'failed' || ((st === 'new' || st === 'connecting') && now - m.created > 20000) || (st === 'disconnected' && m.discAt && now - m.discAt > 8000);
+    if (bad && iAmCaller(p)) { const tries = m.tries || 1; closePeer(p.id); VC.meta.set(p.id, {tries, retryAt:now + Math.min(15000, 2500 * tries)}); }
+    else if (bad && now - m.created > 45000) { closePeer(p.id); VC.meta.delete(p.id); }
+  }
+  if (S.view === 'voice' && S.route === 'belso') renderVoiceStage();
+  renderVoiceBar(); renderVoiceFloat();
 }
-async function callPeer(id){
+async function callPeer(id, tries){
   try {
-    const pc = makePc(id);
+    const pc = makePc(id, tries);
     await pc.setLocalDescription(await pc.createOffer());
     await iceDone(pc);
     if (!VC.room || VC.pcs.get(id) !== pc) return;
     await S.B.add(`voice/${VC.room}/signals`, {from:me(), to:id, type:'offer', sdp:pc.localDescription.sdp, ts:Date.now()});
-  } catch (e) { console.warn('call', e); closePeer(id); }
+  } catch (e) { console.warn('call', e); closePeer(id); VC.meta.set(id, {tries, retryAt:Date.now() + 4000}); }
 }
 async function handleSignal(sig){
   if (!VC.room || VC.handled.has(sig.id)) return;
@@ -2040,11 +2553,11 @@ async function handleSignal(sig){
   try {
     if (sig.type === 'offer') {
       closePeer(sig.from);
-      const pc = makePc(sig.from);
+      const pc = makePc(sig.from, 1);
       await pc.setRemoteDescription({type:'offer', sdp:sig.sdp});
       await pc.setLocalDescription(await pc.createAnswer());
       await iceDone(pc);
-      if (!VC.room) return;
+      if (!VC.room || VC.pcs.get(sig.from) !== pc) return;
       await S.B.add(`voice/${room}/signals`, {from:me(), to:sig.from, type:'answer', sdp:pc.localDescription.sdp, ts:Date.now()});
     } else if (sig.type === 'answer') {
       const pc = VC.pcs.get(sig.from);
@@ -2057,52 +2570,98 @@ function addMeter(id, stream){
   try {
     const src = VC.ctx.createMediaStreamSource(stream), an = VC.ctx.createAnalyser(); an.fftSize = 512; src.connect(an);
     VC.meters.set(id, {an, buf:new Uint8Array(an.frequencyBinCount)});
-    if (!VC.meterTimer) VC.meterTimer = setInterval(pollMeters, 160);
+    if (!VC.meterTimer) VC.meterTimer = setInterval(pollMeters, 150);
   } catch {}
 }
 function pollMeters(){
   let dirty = false;
   for (const [id, m] of VC.meters) {
     m.an.getByteFrequencyData(m.buf); let sum = 0; for (const x of m.buf) sum += x;
-    const loud = sum / m.buf.length > 14 && !(id === me() && VC.muted);
+    const lvl = sum / m.buf.length;
+    if (id === me()) { VC.myLevel = lvl; const bar = $('#myLevel'); if (bar) bar.style.width = Math.min(100, lvl * 2.2) + '%'; }
+    const micOn = id !== me() || (!VC.muted && (!VC.ptt || VC.pttDown));
+    const loud = lvl > 14 && micOn;
     if (loud !== VC.speaking.has(id)) { loud ? VC.speaking.add(id) : VC.speaking.delete(id); dirty = true; }
   }
   if (dirty) { $$('[data-vp]').forEach(el => el.classList.toggle('speaking', VC.speaking.has(el.dataset.vp))); $$('[data-vt]').forEach(el => el.classList.toggle('speaking', VC.speaking.has(el.dataset.vt))); }
 }
-function setMute(v){ VC.muted = v; if (VC.stream) VC.stream.getAudioTracks().forEach(t => t.enabled = !v); if (VC.room) S.B.set(`voice/${VC.room}/members/${me()}`, {muted:v, ts:Date.now()}, true).catch(() => {}); renderAll(); }
+async function listDevices(){ try { VC.devices = (await navigator.mediaDevices.enumerateDevices()).filter(d => d.kind === 'audioinput'); } catch { VC.devices = []; } if (S.view === 'voice') renderVoiceStage(); }
+async function switchMic(id){
+  VC.deviceId = id; store.set('mic', id);
+  if (!VC.room) return;
+  try {
+    const ns = await getMic(), nt = ns.getAudioTracks()[0];
+    for (const pc of VC.pcs.values()) for (const s of pc.getSenders()) if (s.track && s.track.kind === 'audio') await s.replaceTrack(nt);
+    if (VC.stream) VC.stream.getTracks().forEach(t => t.stop());
+    VC.stream = ns; applyMicState(); VC.meters.delete(me()); addMeter(me(), ns);
+    toast('Mikrofon átváltva.');
+  } catch (e) { toast('Ezt a mikrofont nem sikerült használni.'); }
+}
+function unblockAudio(){ try { VC.ctx && VC.ctx.resume(); } catch {} for (const a of VC.audios.values()) a.play().catch(() => {}); VC.blocked = false; renderAll(); }
+function setMute(v){ VC.muted = v; applyMicState(); if (VC.room) S.B.set(`voice/${VC.room}/members/${me()}`, {muted:v, ts:Date.now()}, true).catch(() => {}); renderAll(); }
 function setDeaf(v){ VC.deaf = v; for (const a of VC.audios.values()) a.muted = v; if (v && !VC.muted) setMute(true); if (VC.room) S.B.set(`voice/${VC.room}/members/${me()}`, {deaf:v, ts:Date.now()}, true).catch(() => {}); renderAll(); }
+function setPtt(v){ VC.ptt = v; store.set('ptt', v); VC.pttDown = false; applyMicState(); renderAll(); }
+function pttPress(down){ if (!VC.room || !VC.ptt || VC.pttDown === down) return; VC.pttDown = down; applyMicState(); const b = $('#pttBtn'); if (b) b.classList.toggle('down', down); }
 function renderVoiceBar(){
   const bar = $('#voiceBar');
   if (!VC.room) { bar.hidden = true; return; }
-  bar.hidden = false; bar.replaceChildren(
-    h('div', {class:'st'}, h('b', {text:'Hangkapcsolat él'}), h('span', {text:VCH[VC.room].name + ' · ' + freshVoice(VC.room).length + ' fő'})),
+  bar.hidden = false; bar.replaceChildren(...[
+    h('div', {class:'st'}, h('b', {text:VC.blocked ? 'Hang letiltva' : 'Hangkapcsolat él'}), h('span', {text:VCH[VC.room].name + ' · ' + freshVoice(VC.room).length + ' fő' + (VC.ptt ? ' · V gomb' : '')})),
+    VC.blocked ? h('button', {class:'icon-btn red', type:'button', title:'Hang engedélyezése', 'aria-label':'Hang engedélyezése', html:icon('speaker'), onclick:unblockAudio}) : null,
     h('button', {class:'icon-btn' + (VC.muted ? ' red' : ''), type:'button', title:VC.muted ? 'Mikrofon be' : 'Némítás', 'aria-label':VC.muted ? 'Mikrofon bekapcsolása' : 'Némítás', html:icon(VC.muted ? 'micOff' : 'mic'), onclick:() => setMute(!VC.muted)}),
     h('button', {class:'icon-btn' + (VC.deaf ? ' red' : ''), type:'button', title:VC.deaf ? 'Hang be' : 'Hang ki', 'aria-label':VC.deaf ? 'Hang bekapcsolása' : 'Hang kikapcsolása', html:icon(VC.deaf ? 'headOff' : 'head'), onclick:() => setDeaf(!VC.deaf)}),
-    h('button', {class:'icon-btn red', type:'button', title:'Kilépés', 'aria-label':'Kilépés a hangcsatornából', html:icon('phoneOff'), onclick:() => leaveVoice()}));
+    h('button', {class:'icon-btn red', type:'button', title:'Kilépés', 'aria-label':'Kilépés a hangcsatornából', html:icon('phoneOff'), onclick:() => leaveVoice()})].filter(Boolean));
 }
 function renderVoiceStage(){
-  const v = VCH[S.vch]; if (!v) return;
+  const v = VCH[S.vch]; if (!v || S.view !== 'voice') return;
   $('#msgs').hidden = true; $('#composer').hidden = true; $('#typing').hidden = true;
   const stage = $('#voiceStage'); stage.hidden = false;
+  if (focusInside(stage)) return;
   $('#chIcon').innerHTML = icon(v.view ? 'lock' : 'speaker', 20); $('#chName').textContent = v.name; $('#chTopic').textContent = v.topic;
   const joined = VC.room === v.id, people = freshVoice(v.id);
   const tiles = h('div', {class:'vtiles'}, people.map(p => {
-    const pc = VC.pcs.get(p.id);
-    const conn = p.id === me() ? 'Te' : joined ? (pc ? ({connected:'Kapcsolódva', connecting:'Kapcsolódás…', new:'Kapcsolódás…', failed:'Sikertelen', disconnected:'Megszakadt'}[pc.connectionState] || '') : 'Várakozás…') : '';
-    return h('div', {class:'vtile' + (VC.speaking.has(p.id) ? ' speaking' : ''), 'data-vt':p.id}, h('span', {class:'conn', text:conn}), avatarEl(p.id, 'av'), h('b', {text:nameOf(p.id)}), h('span', {text:rankName(rankOf(p.id))}),
+    const pc = VC.pcs.get(p.id), m = VC.meta.get(p.id) || {}, isMe = p.id === me();
+    let conn = '';
+    if (isMe) conn = VC.ptt ? (VC.pttDown ? 'Te · adás' : 'Te · gombnyomásra') : 'Te';
+    else if (joined) conn = pc ? ({connected:m.route || 'Kapcsolódva', connecting:'Kapcsolódás…', new:'Kapcsolódás…', failed:'Újrapróbálás…', disconnected:'Újrakapcsolódás…'}[pc.connectionState] || '') : (m.retryAt ? 'Újrapróbálás…' : 'Kapcsolódás…');
+    const tile = h('div', {class:'vtile' + (VC.speaking.has(p.id) ? ' speaking' : ''), 'data-vt':p.id}, h('span', {class:'conn', text:conn}), avatarEl(p.id, 'av'), h('b', {text:nameOf(p.id)}), h('span', {text:rankName(rankOf(p.id))}),
       h('span', {class:'flags', html:(p.muted ? icon('micOff', 16) : '') + (p.deaf ? icon('headOff', 16) : '')}));
+    if (joined && !isMe) {
+      const id = 'vol-' + p.id;
+      const range = h('input', {type:'range', id, min:'0', max:'100', value:String(VC.vols[p.id] ?? 100), 'aria-label':nameOf(p.id) + ' hangereje'});
+      range.addEventListener('input', () => { VC.vols[p.id] = +range.value; store.set('vols', VC.vols); const a = VC.audios.get(p.id); if (a) a.volume = +range.value / 100; });
+      range.addEventListener('change', () => range.blur());
+      tile.append(h('div', {class:'volrow'}, h('label', {class:'vol', for:id, html:icon('speaker', 13)}), range));
+    }
+    return tile;
   }));
   const ctl = h('div', {class:'vctl'});
   if (!joined) ctl.append(h('button', {class:'vbtn join', type:'button', html:icon('speaker', 18) + '<span>Csatlakozás a hangcsatornához</span>', onclick:() => joinVoice(v.id)}));
-  else ctl.append(
-    h('button', {class:'vbtn' + (VC.muted ? ' on' : ''), type:'button', html:icon(VC.muted ? 'micOff' : 'mic', 18) + `<span>${VC.muted ? 'Némítva' : 'Némítás'}</span>`, onclick:() => setMute(!VC.muted)}),
-    h('button', {class:'vbtn' + (VC.deaf ? ' on' : ''), type:'button', html:icon(VC.deaf ? 'headOff' : 'head', 18) + `<span>${VC.deaf ? 'Hang ki' : 'Hang kikapcsolása'}</span>`, onclick:() => setDeaf(!VC.deaf)}),
-    h('button', {class:'vbtn leave', type:'button', html:icon('phoneOff', 18) + '<span>Kilépés</span>', onclick:() => leaveVoice()}));
-  stage.replaceChildren(
-    h('div', {class:'vhead'}, h('span', {class:'ic', html:icon('speaker', 26)}), h('div', null, h('h3', {text:v.name}), h('p', {text:`${v.topic} · ${people.length}/${VOICE_MAX} fő`}))),
-    people.length ? tiles : h('p', {class:'empty', text:'Most senki sincs a csatornában.'}),
-    ctl,
-    h('p', {class:'empty', style:'text-align:center;font-size:12px', text:'A hang közvetlenül a résztvevők között halad. Ha valakit nem hallasz, kérd meg, hogy lépjen ki és be újra.'}));
+  else {
+    ctl.append(
+      h('button', {class:'vbtn' + (VC.muted ? ' on' : ''), type:'button', html:icon(VC.muted ? 'micOff' : 'mic', 18) + `<span>${VC.muted ? 'Némítva' : 'Némítás'}</span>`, onclick:() => setMute(!VC.muted)}),
+      h('button', {class:'vbtn' + (VC.deaf ? ' on' : ''), type:'button', html:icon(VC.deaf ? 'headOff' : 'head', 18) + `<span>${VC.deaf ? 'Hang ki' : 'Hang kikapcsolása'}</span>`, onclick:() => setDeaf(!VC.deaf)}),
+      h('button', {class:'vbtn' + (VC.ptt ? ' sel' : ''), type:'button', 'aria-pressed':String(VC.ptt), html:icon('radio', 18) + '<span>Gombnyomásra beszéd</span>', onclick:() => setPtt(!VC.ptt)}),
+      h('button', {class:'vbtn leave', type:'button', html:icon('phoneOff', 18) + '<span>Kilépés</span>', onclick:() => leaveVoice()}));
+  }
+  const parts = [h('div', {class:'vhead'}, h('span', {class:'ic', html:icon('speaker', 26)}), h('div', null, h('h3', {text:v.name}), h('p', {text:`${v.topic} · ${people.length}/${VOICE_MAX} fő`})))];
+  if (joined && VC.blocked) parts.push(h('div', {class:'notice warn'}, h('div', null, h('b', {text:'A böngésző nem engedte elindítani a hangot'}), 'Kattints a gombra, és hallani fogod a többieket. ', h('button', {class:'btn btn-gold btn-sm', type:'button', text:'Hang engedélyezése', onclick:unblockAudio}))));
+  parts.push(people.length ? tiles : h('p', {class:'empty', text:'Most senki sincs a csatornában. Csatlakozz elsőként.'}));
+  if (joined && people.length <= 1) parts.push(h('div', {class:'notice'}, h('div', null, h('b', {text:'Egyedül vagy a csatornában'}), 'Amint valaki más is belép, automatikusan összekapcsolódtok. Addig a lenti szintjelzőn ellenőrizheted a mikrofonodat.')));
+  parts.push(ctl);
+  if (joined && VC.ptt) {
+    const pb = h('button', {class:'ptt-btn', id:'pttBtn', type:'button', html:icon('mic', 22) + '<span>Tartsd lenyomva a beszédhez <kbd>V</kbd></span>'});
+    pb.addEventListener('pointerdown', e => { e.preventDefault(); pttPress(true); });
+    ['pointerup','pointerleave','pointercancel'].forEach(t => pb.addEventListener(t, () => pttPress(false)));
+    parts.push(pb);
+  }
+  if (joined) {
+    const sel = h('select', {id:'micSel', 'aria-label':'Mikrofon'}, h('option', {value:'', text:'Alapértelmezett mikrofon'}), VC.devices.map((d, i) => { const o = h('option', {value:d.deviceId, text:d.label || `Mikrofon ${i + 1}`}); if (d.deviceId === VC.deviceId) o.selected = true; return o; }));
+    sel.addEventListener('change', () => { switchMic(sel.value); sel.blur(); });
+    parts.push(h('div', {class:'vdiag'}, h('div', {class:'fld'}, h('label', {for:'micSel', text:'Mikrofon'}), sel), h('div', {class:'fld'}, h('span', {class:'lab', text:'Saját hangszint'}), h('div', {class:'meter'}, h('i', {id:'myLevel'})))));
+  }
+  parts.push(h('p', {class:'empty', style:'text-align:center;font-size:12px', text:'A hang közvetlenül, vagy ha a hálózat nem engedi, közvetítő szerveren át halad. A kapcsolat megszakadásakor a rendszer magától újrapróbálkozik.'}));
+  stage.replaceChildren(...parts);
 }
 
 /* ================= modals ================= */
@@ -2113,11 +2672,11 @@ function openModal(title, body, foot){
   setTimeout(() => (m.querySelector('input,textarea,select') || m.querySelector('.mf button, .mh button'))?.focus(), 0);
 }
 function closeModal(){ $('#scrim').hidden = true; }
-function openIdCard(uid){
+function idCardEl(uid){
   const r = rankOf(uid), u = UNIT[unitOf(uid)], usr = S.users[uid] || {};
   const nm = h('div', {class:'nm', text:nameOf(uid)}); nm.style.color = rankColor(uid);
   const photo = h('span', {class:'photo', text:initials(nameOf(uid))}); photo.style.background = avColor(uid);
-  const card = h('div', {class:'idcard'},
+  return h('div', {class:'idcard'},
     h('div', {class:'top'}, h('img', {src:'img/cimer.webp', alt:''}), h('div', null, h('b', {text:'NEKEH'}), h('span', {text:'SZOLGÁLATI IGAZOLVÁNY'}))),
     h('div', {class:'body'}, photo,
       h('div', {style:'min-width:0'}, nm, h('div', {class:'rb', text:r ? rankName(r) : 'Nem állományi tag'}),
@@ -2126,12 +2685,17 @@ function openIdCard(uid){
           h('dt', {text:'Egység'}), h('dd', {text:u ? u.name : (isOwnerUid(uid) ? 'Főbiztosi Hivatal' : '—')}),
           h('dt', {text:'Roblox'}), h('dd', {text:usr.roblox || '—'}),
           h('dt', {text:'Nyilvántartva'}), h('dd', {text:usr.createdAt ? fmtDate(usr.createdAt) : '—'}),
-          h('dt', {text:'Állapot'}), h('dd', {text:isOnline(uid) ? 'Szolgálatban (online)' : 'Nem elérhető'}))),
+          h('dt', {text:'Állapot'}), h('dd', {text:onDuty(uid) ? 'Szolgálatban' : isOnline(uid) ? 'Elérhető' : 'Nem elérhető'}))),
       r?.board ? h('img', {class:'board', src:r.board, alt:rankName(r) + ' vállap'}) : h('span'),
       usr.bio ? h('div', {class:'bio', text:usr.bio}) : null));
+}
+function openIdCard(uid){
+  const card = idCardEl(uid);
   const foot = [];
+  if (canPrint()) foot.push(h('button', {class:'btn btn-line', type:'button', html:icon('print', 15) + '<span>Nyomtatás</span>', onclick:() => printEl(card)}));
+  if (isMember(me()) && (uid === me() || isLeader(me()))) foot.push(h('button', {class:'btn btn-line', type:'button', text:'Személyi akta', onclick:() => openAkta(uid === me() ? null : uid)}));
   if (uid === me()) foot.push(h('button', {class:'btn btn-line', type:'button', text:'Profil és jelszó', onclick:openProfileEdit}));
-  if (isOwnerUid(me()) && uid !== me()) foot.push(h('a', {class:'btn btn-line', href:'#vezetes', text:'Kezelés a Vezetés oldalon', onclick:closeModal}));
+  if (isOwnerUid(me()) && uid !== me()) foot.push(h('a', {class:'btn btn-line', href:'#vezetes', text:'Kezelés', onclick:closeModal}));
   openModal('Szolgálati igazolvány', card, foot.length ? foot : null);
 }
 function openProfileEdit(){
@@ -2180,6 +2744,7 @@ function renderAdmin(){
 }
 function fillSettings(){
   $('#s-motd').value = S.config.motd || ''; $('#s-rules').value = S.config.rules || DEFAULT_RULES;
+  const tc = S.config.turn || {}; $('#s-turn-urls').value = tc.urls || ''; $('#s-turn-user').value = tc.username || ''; $('#s-turn-cred').value = tc.credential || '';
   const box = $('#rankNameInputs');
   if (!box.childElementCount) RANKS.forEach((r, i) => box.append(h('div', {class:'fld'}, h('label', {for:'rn-' + r.id, text:`${i + 1}. fokozat`}), h('input', {id:'rn-' + r.id, maxlength:'30', placeholder:r.name}))));
   for (const r of RANKS) $('#rn-' + r.id).value = S.config.rankNames?.[r.id] || r.name;
@@ -2187,9 +2752,18 @@ function fillSettings(){
 async function saveConfig(patch, okMsg){ try { await S.B.set('config/main', {...patch, updatedAt:Date.now()}, true); toast(okMsg || 'Mentve.'); } catch (e) { toast(errText(e)); } }
 async function setRole(uid, patch, okMsg){
   const cur = S.roles[uid] || {};
+  const before = cur.rank || (isOwnerUid(uid) ? 'r5' : null);
   const next = {rank:cur.rank || 'r0', unit:cur.unit || null, since:cur.since || Date.now(), ...patch};
+  if (patch.rank && before && patch.rank !== before) next.since = Date.now();
   next.level = RANK[next.rank].level;
-  try { await S.B.set('roles/' + uid, next); toast(okMsg); } catch (e) { toast(errText(e)); }
+  try {
+    await S.B.set('roles/' + uid, next); toast(okMsg);
+    if (patch.rank && before && patch.rank !== before) {
+      const up = RANK[patch.rank].level > RANK[before].level;
+      S.B.add('records', {uid, type:'promotion', title:`${up ? 'Előléptetés' : 'Visszaminősítés'}: ${rankName(RANK[before])} → ${rankName(RANK[patch.rank])}`, text:'', by:me(), at:Date.now()}).catch(() => {});
+    }
+    if (patch.unit !== undefined && cur.unit && patch.unit !== cur.unit) S.B.add('records', {uid, type:'note', title:`Áthelyezés: ${UNIT[cur.unit]?.name || '—'} → ${UNIT[patch.unit]?.name || 'beosztás nélkül'}`, text:'', by:me(), at:Date.now()}).catch(() => {});
+  } catch (e) { toast(errText(e)); }
 }
 function renderAdmApps(){
   const box = $('#admApps');
@@ -2215,7 +2789,7 @@ function renderAdmApps(){
       const note = h('textarea', {id:'d-note-' + uid, maxlength:'500', style:'min-height:60px', placeholder:'Megjegyzés a kérelmezőnek (elutasításnál kötelező)'});
       const dec = async (patch, msg) => { try { await S.B.update('applications/' + uid, {...patch, note:note.value.trim()}); toast(msg); } catch (e) { toast(errText(e)); } };
       const accept = h('button', {class:'btn btn-navy btn-sm', type:'button', text:'Felvétel Újoncként'});
-      accept.addEventListener('click', async () => { accept.disabled = true; await setRole(uid, {rank:(S.roles[uid]?.rank) || 'r0', unit:sel.value}, `${a.rpName || 'A kérelmező'} felvéve.`); await dec({status:'accepted', decidedAt:Date.now()}, 'Határozat rögzítve.'); });
+      accept.addEventListener('click', async () => { accept.disabled = true; await setRole(uid, {rank:(S.roles[uid]?.rank) || 'r0', unit:sel.value}, `${a.rpName || 'A kérelmező'} felvéve.`); await dec({status:'accepted', decidedAt:Date.now()}, 'Határozat rögzítve.'); S.B.add('records', {uid, type:'note', title:'Felvétel az állományba', text:`Újonc rendfokozattal, beosztás: ${UNIT[sel.value]?.name || '—'}. Kérelem: ${a.ref || ''}`, by:me(), at:Date.now()}).catch(() => {}); });
       const inter = h('button', {class:'btn btn-line btn-sm', type:'button', text:'Behívás interjúra', onclick:() => dec({status:'interview'}, 'Interjúra behívva.')});
       const reject = h('button', {class:'btn btn-danger btn-sm', type:'button', text:'Elutasítás'});
       reject.addEventListener('click', () => { if (!note.value.trim()) { note.focus(); return toast('Elutasításnál írj indoklást.'); } dec({status:'rejected', decidedAt:Date.now()}, 'Kérelem elutasítva.'); });
@@ -2263,6 +2837,494 @@ function renderAdmDecrees(){
   }
 }
 
+/* ================= member area: helpers ================= */
+const MEMBER_ROUTES = ['iroda','belso','szolgalat','jelentesek','parancsok','naptar','allomany','akta'];
+function genCode(code){ const d = new Date(), p = n => String(n).padStart(2,'0'); return `${code}/${d.getFullYear()}/${p(d.getMonth()+1)}${p(d.getDate())}-${Math.random().toString(36).slice(2,6).toUpperCase()}`; }
+const fmtDur = mins => { mins = Math.max(0, Math.round(mins)); const hh = Math.floor(mins / 60), mm = mins % 60; return hh ? `${hh} ó ${mm} p` : `${mm} perc`; };
+const fmtDT = ts => new Date(ts).toLocaleString('hu-HU', {year:'numeric', month:'2-digit', day:'2-digit', hour:'2-digit', minute:'2-digit'});
+const fmtClock = ms => { const s = Math.max(0, Math.floor(ms / 1000)), p = n => String(n).padStart(2,'0'); return `${p(Math.floor(s / 3600))}:${p(Math.floor(s / 60) % 60)}:${p(s % 60)}`; };
+const toLocalInput = ts => { const d = new Date(ts - new Date(ts).getTimezoneOffset() * 60000); return d.toISOString().slice(0, 16); };
+function weekStart(){ const d = new Date(); d.setHours(0,0,0,0); d.setDate(d.getDate() - (d.getDay() + 6) % 7); return d.getTime(); }
+const onDuty = uid => { const d = S.duty[uid]; return !!(d && d.on && d.since && Date.now() - d.since < 18 * 3600e3); };
+function dutyMins(uid, from){ let m = 0; for (const l of S.dutylog) if (l.uid === uid && l.start >= from) m += l.mins || 0; if (onDuty(uid) && S.duty[uid].since >= from) m += (Date.now() - S.duty[uid].since) / 60000; return m; }
+function orderForMe(o){ const u = me(), t = o.target || {type:'all'}; return t.type === 'all' || (t.type === 'unit' && t.value === unitOf(u)) || (t.type === 'user' && t.value === u); }
+function orderAudience(o){ const t = o.target || {type:'all'}, ids = memberIds(); return t.type === 'all' ? ids : t.type === 'unit' ? ids.filter(id => unitOf(id) === t.value) : ids.filter(id => id === t.value); }
+const activeOrdersForMe = () => S.orders.filter(o => o.status !== 'closed' && orderForMe(o));
+const upcomingEvents = () => S.events.filter(e => e.start >= Date.now() - 2 * 3600e3).sort((a, b) => a.start - b.start);
+const eventForMe = e => !e.unit || e.unit === unitOf(me()) || isLeader(me());
+function targetLabel(t){ t = t || {type:'all'}; return t.type === 'all' ? 'Teljes állomány' : t.type === 'unit' ? (UNIT[t.value]?.name || 'Egység') : nameOf(t.value); }
+const canPrint = () => S.mode === 'live';
+function printEl(el){
+  if (!el) return;
+  el.classList.add('print-target'); document.body.classList.add('printing');
+  try { window.print(); } finally { setTimeout(() => { el.classList.remove('print-target'); document.body.classList.remove('printing'); }, 300); }
+}
+function actionItems(){
+  const u = me(), items = [];
+  if (!u || !isMember(u)) return items;
+  for (const o of activeOrdersForMe()) if (!(o.acks && o.acks[u])) items.push({kind:'order', o});
+  for (const e of upcomingEvents()) if (eventForMe(e) && !(e.rsvp && e.rsvp[u])) items.push({kind:'event', e});
+  for (const r of S.reports) if (r.uid === u && r.status === 'returned') items.push({kind:'report-returned', r});
+  if (isLeader(u)) {
+    for (const r of S.reports) if (r.status === 'submitted' && r.uid !== u) items.push({kind:'report-review', r});
+    for (const t of S.tips) if (t.status === 'new') items.push({kind:'tip', t});
+  }
+  if (isOwnerUid(u)) for (const [id, a] of Object.entries(S.apps)) if (a && a.status === 'pending') items.push({kind:'app', id, a});
+  return items;
+}
+function renderSubnav(){
+  const st = access();
+  $('#subnav').hidden = !(MEMBER_ROUTES.includes(S.route) && st === 'member');
+  const items = st === 'member' ? actionItems() : [];
+  const cnt = kinds => items.filter(i => kinds.includes(i.kind)).length;
+  const set = (id, n) => { const el = $('#' + id); el.hidden = !n; el.textContent = String(n); };
+  set('nRep', cnt(['report-returned','report-review','tip'])); set('nOrd', cnt(['order'])); set('nEvt', cnt(['event']));
+  $('#bellBtn').hidden = st !== 'member';
+  const bn = $('#bellN'); bn.hidden = !items.length; bn.textContent = String(items.length);
+  $('#bellBtn').setAttribute('aria-label', items.length ? `Teendők: ${items.length}` : 'Nincs teendő');
+  $$('#subnav a').forEach(a => a.classList.toggle('on', a.getAttribute('href') === '#' + S.route));
+}
+
+/* ---------- gates ---------- */
+function renderGate(box, key, build){
+  $$('.mgate').forEach(g => { if (g !== box && g.childElementCount) { g.replaceChildren(); g.dataset.k = ''; } });
+  guardedRender(box, key, build);
+}
+function gateCard(st, prefix){
+  if (st === 'loading') return h('p', {class:'empty', text:'Betöltés…'});
+  if (st === 'out') return S.ownerUid === null ? h('div', {class:'two-col'}, setupCard(), loginCard(prefix)) : loginCard(prefix, 'A szolgálati felület csak az állomány tagjai számára érhető el. Lépj be a szolgálati azonosítóddal.');
+  if (st === 'member-noprofile') return profileCreateCard();
+  const msg = st === 'applicant' ? ({pending:'A kérelmed elbírálás alatt áll. A szolgálati felület a felvétel után nyílik meg.', interview:'Interjúra hívtak. Keresd a vezetést az időpontért.', rejected:'A kérelmedet elutasították. Új kérelmet a Jelentkezés oldalon adhatsz be.', accepted:'A felvételed rögzítése folyamatban. Frissíts egy perc múlva.'}[S.myApp.status] || '') : 'Ezzel az azonosítóval még nem adtál be felvételi kérelmet.';
+  return h('div', {class:'login'}, h('div', {class:'hd'}, h('img', {src:'img/cimer.webp', alt:''}), h('b', {text:'Nincs hozzáférésed'}), h('span', {text:'Szolgálati felület'})),
+    h('div', {class:'bd'}, h('div', {class:'idrow'}, avatarEl(me(), 'av'), h('div', null, h('b', {text:nameOf(me())}), h('span', {text:st === 'applicant' ? 'Jelentkező' : 'Nem állományi tag'}))), h('p', {style:'color:var(--ink-2);font-size:14px', text:msg}), h('a', {class:'btn btn-gold', href:'#jelentkezes', text:st === 'applicant' ? 'Kérelmem megtekintése' : 'Jelentkezés az állományba'})));
+}
+function memberGate(route){
+  const st = access(), gate = $('#' + route + 'Gate'), body = $('#' + route + 'Body');
+  const ok = st === 'member';
+  gate.hidden = ok; body.hidden = !ok;
+  if (!ok) renderGate(gate, JSON.stringify([st, S.myApp && S.myApp.status, S.ownerUid === null]), () => gateCard(st, 'g' + route));
+  else if (gate.childElementCount) { gate.replaceChildren(); gate.dataset.k = ''; }
+  return ok;
+}
+
+/* ---------- shared components ---------- */
+function card(title, extra, ...body){ return h('section', {class:'card'}, h('div', {class:'ch'}, h('h2', {text:title}), extra || null), h('div', {class:'cb'}, ...body)); }
+const stat = (label, value) => h('div', {class:'stat'}, h('span', {text:label}), h('b', {text:String(value)}));
+function officialDoc(o){
+  const d = h('article', {class:'doc'});
+  d.append(h('div', {class:'doc-head'}, h('img', {src:'img/cimer.webp', alt:''}), h('div', {class:'t'}, h('b', {text:'Nemzeti Egységes Közrendvédelmi és Ellátási Hatóság'}), h('span', {text:o.kind})), h('div', {class:'ref'}, h('span', {text:'Ügyszám'}), h('b', {text:o.ref || '—'}))));
+  const b = h('div', {class:'doc-body'});
+  if (o.title) b.append(h('h3', {class:'doc-title', text:o.title}));
+  if (o.rows && o.rows.length) b.append(h('dl', {class:'kv'}, o.rows.flatMap(([k, v]) => [h('dt', {text:k}), h('dd', null, v == null || v === '' ? '—' : v)])));
+  for (const sec of (o.sections || [])) if (sec && sec[1]) b.append(h('div', {class:'doc-sec'}, h('h4', {text:sec[0]}), h('p', {text:sec[1]})));
+  d.append(b);
+  d.append(h('div', {class:'doc-foot'}, h('div', null, o.footL || ''), h('div', {style:'text-align:right'}, o.footR || '')));
+  if (o.actions && o.actions.length) d.append(h('div', {class:'doc-actions'}, o.actions));
+  return d;
+}
+function signBlock(uid, label, ts){ return h('div', null, h('span', {class:'lbl', text:label}), h('b', {text:nameOf(uid)}), h('span', {text:[rankName(rankOf(uid)), S.users[uid]?.badge].filter(Boolean).join(' · ')}), ts ? h('span', {text:'Kelt: ' + fmtDT(ts)}) : null); }
+const printBtn = getEl => canPrint() ? h('button', {class:'btn btn-line btn-sm', type:'button', html:icon('print', 15) + '<span>Nyomtatás</span>', onclick:ev => printEl(getEl(ev.currentTarget))}) : null;
+function keepOpen(box){ return new Set($$('details[open]', box).map(d => d.dataset.id)); }
+const focusInside = box => box.contains(document.activeElement) && /INPUT|TEXTAREA|SELECT/.test(document.activeElement.tagName);
+
+/* ---------- dashboard ---------- */
+function renderIroda(){
+  if (!memberGate('iroda')) return;
+  const u = me(), r = rankOf(u), usr = S.users[u] || {};
+  const hr = new Date().getHours();
+  const greet = hr < 5 ? 'Jó éjszakát' : hr < 10 ? 'Jó reggelt' : hr < 18 ? 'Jó napot' : hr < 22 ? 'Jó estét' : 'Jó éjszakát';
+  $('#irodaTitle').textContent = `${greet}, ${usr.rpName || nameOf(u)}!`;
+  const a = ALERTS[S.config.alert] || ALERTS[1];
+  $('#irodaSub').replaceChildren(h('span', {text:[rankName(r), UNIT[unitOf(u)]?.name || (isOwnerUid(u) ? 'Főbiztosi Hivatal' : null), new Date().toLocaleDateString('hu-HU', {month:'long', day:'numeric', weekday:'long'})].filter(Boolean).join(' · ')}), h('span', {class:'pill t-' + a.tone, text:`${a.roman} fokozat · ${a.name}`}));
+  const body = $('#irodaBody'); body.replaceChildren();
+  body.append(h('div', {class:'span4'}, card('Szolgálati igazolvány', null, idCardEl(u), h('div', {class:'row-btns'}, h('a', {class:'btn btn-line btn-sm', href:'#akta', onclick:() => { S.aktaUid = null; }, text:'Személyi aktám'}), printBtn(b => b.closest('.card').querySelector('.idcard'))))));
+  body.append(h('div', {class:'span4'}, card('Szolgálati státusz', h('a', {class:'more', href:'#szolgalat', text:'Napló →'}), dutyWidget(false))));
+  const ords = activeOrdersForMe();
+  body.append(h('div', {class:'span4'}, card('Áttekintés', null,
+    h('div', {class:'stats'}, stat('Szolgálatban most', memberIds().filter(onDuty).length + ' fő'), stat('Állomány', memberIds().length + ' fő'), stat('Nyitott parancsaim', ords.filter(o => !(o.done && o.done[u])).length), stat('Heti szolgálati időm', fmtDur(dutyMins(u, weekStart())))),
+    h('div', {class:'qa'},
+      h('a', {href:'#jelentesek', onclick:() => { S.repTab = 'new'; }, html:icon('doc', 16) + '<span>Új jelentés</span>'}),
+      h('a', {href:'#belso', html:icon('radio', 16) + '<span>Kommunikáció</span>'}),
+      h('a', {href:'#naptar', html:icon('calendar', 16) + '<span>Naptár</span>'}),
+      h('a', {href:'#allomany', html:icon('users', 16) + '<span>Állomány</span>'})))));
+  const items = actionItems();
+  body.append(h('div', {class:'span7'}, card('Teendők', h('span', {class:'cnt', text:items.length ? items.length + ' tétel' : ''}), items.length ? h('ul', {class:'todo'}, items.slice(0, 8).map(todoEl)) : h('p', {class:'empty', text:'Nincs függő teendőd.'}))));
+  const evs = upcomingEvents().filter(eventForMe).slice(0, 4);
+  body.append(h('div', {class:'span5'}, card('Közelgő események', h('a', {class:'more', href:'#naptar', text:'Naptár →'}), evs.length ? h('div', {class:'evlist'}, evs.map(e => eventEl(e, true))) : h('p', {class:'empty', text:'Nincs közelgő esemény.'}))));
+  body.append(h('div', {class:'span7'}, card('Aktív parancsok', h('a', {class:'more', href:'#parancsok', text:'Összes →'}), ords.length ? h('div', {class:'olist'}, ords.slice(0, 4).map(o => orderEl(o, true))) : h('p', {class:'empty', text:'Nincs rád vonatkozó aktív parancs.'}))));
+  body.append(h('div', {class:'span5'}, card('Hivatalos Közlöny', h('a', {class:'more', href:'#kozlony', text:'Közlöny →'}), S.decrees.length ? h('div', {class:'dlist'}, S.decrees.slice(0, 3).map(d => h('a', {class:'dmini', href:'#kozlony'}, h('span', {class:'no', text:decreeNo(d)}), h('b', {text:d.title}), h('time', {text:fmtDate(d.date)})))) : h('p', {class:'empty', text:'Még nincs kihirdetett rendelet.'}))));
+}
+function todoEl(i){
+  const row = (ic, title, sub, href, fn) => h('li', null, h('a', {href, onclick:fn || null}, h('span', {class:'ti', html:icon(ic, 16)}), h('span', {class:'tt'}, h('b', {text:title}), h('small', {text:sub}))));
+  switch (i.kind) {
+    case 'order': return row('flag', 'Nyugtázandó parancs: ' + i.o.title, `${(ORDER_PRIO[i.o.prio] || ORDER_PRIO[1]).name} · ${i.o.ref}`, '#parancsok');
+    case 'event': return row('calendar', 'Visszajelzés szükséges: ' + i.e.title, fmtDT(i.e.start), '#naptar');
+    case 'report-returned': return row('doc', 'Visszaküldött jelentés: ' + i.r.title, i.r.ref, '#jelentesek', () => { S.repTab = 'mine'; });
+    case 'report-review': return row('doc', 'Elbírálandó jelentés: ' + i.r.title, nameOf(i.r.uid) + ' · ' + i.r.ref, '#jelentesek', () => { S.repTab = 'inbox'; });
+    case 'tip': return row('alert', 'Új lakossági bejelentés', (TIP_CATS[i.t.cat] || '') + ' · ' + i.t.ref, '#jelentesek', () => { S.repTab = 'tips'; });
+    default: return row('file', 'Felvételi kérelem: ' + (i.a.rpName || ''), i.a.ref || '', '#vezetes');
+  }
+}
+
+/* ---------- duty ---------- */
+function dutyWidget(full){
+  const u = me(), on = onDuty(u), d = S.duty[u] || {};
+  const box = h('div', {class:'dutyw' + (on ? ' on' : '')});
+  box.append(h('div', {class:'dstate'}, h('span', {class:'pill ' + (on ? 't-ok' : 't-info'), text:on ? 'Szolgálatban' : 'Szolgálaton kívül'}), on && d.note ? h('span', {class:'chip', text:d.note}) : null));
+  box.append(h('div', {class:'timer mono', 'data-since':on ? String(d.since) : '', text:on ? fmtClock(Date.now() - d.since) : '00:00:00'}));
+  box.append(h('p', {class:'dsub', text:on ? 'Szolgálatba lépés: ' + fmtDT(d.since) : `E heti szolgálati idő: ${fmtDur(dutyMins(u, weekStart()))}`}));
+  if (full && !on) box.append(h('div', {class:'fld'}, h('label', {for:'dutyNote', text:'Beosztás vagy hívójel (nem kötelező)'}), h('input', {id:'dutyNote', maxlength:'40', placeholder:'pl. Járőr-2, Bázisvédelem'})));
+  box.append(h('button', {class:'btn ' + (on ? 'btn-danger' : 'btn-gold'), type:'button', text:on ? 'Szolgálat befejezése' : 'Szolgálatba lépés', onclick:toggleDuty}));
+  return box;
+}
+let dutyBusy = false;
+async function toggleDuty(){
+  if (dutyBusy) return; dutyBusy = true;
+  const u = me(), d = S.duty[u] || {}, now = Date.now();
+  try {
+    if (onDuty(u)) {
+      const mins = Math.min(1440, Math.max(1, Math.round((now - d.since) / 60000)));
+      await S.B.add('dutylog', {uid:u, start:d.since, end:now, mins, note:d.note || '', unit:unitOf(u) || null});
+      await S.B.set('duty/' + u, {on:false, since:null, note:'', ts:now});
+      toast(`Szolgálat befejezve. Időtartam: ${fmtDur(mins)}.`);
+    } else {
+      const note = (($('#dutyNote') || {}).value || '').trim().slice(0, 40);
+      await S.B.set('duty/' + u, {on:true, since:now, note, ts:now, unit:unitOf(u) || null});
+      toast('Szolgálatba léptél.');
+    }
+  } catch (e) { toast(errText(e)); }
+  dutyBusy = false;
+}
+function renderSzolgalat(){
+  if (!memberGate('szolgalat')) return;
+  const u = me(), L = isLeader(u);
+  if (document.activeElement?.id !== 'dutyNote') $('#dutyPanel').replaceChildren(dutyWidget(true));
+  const on = memberIds().filter(onDuty);
+  $('#onDutyCnt').textContent = on.length + ' fő';
+  const list = $('#onDutyList'); list.replaceChildren();
+  if (!on.length) list.append(h('p', {class:'empty', text:'Jelenleg senki sincs szolgálatban.'}));
+  else {
+    const groups = [...UNITS.map(x => [x.id, x.name]), [null, 'Egységbe nem sorolt / vezetés']];
+    for (const [gid, gname] of groups) {
+      const g = on.filter(id => (unitOf(id) || null) === gid); if (!g.length) continue;
+      list.append(h('h4', {class:'grp', text:`${gname} — ${g.length}`}));
+      for (const id of g) { const d = S.duty[id]; const nm = h('b', {text:nameOf(id)}); nm.style.color = rankColor(id);
+        list.append(h('div', {class:'onrow'}, avatarEl(id, 'av av-sm'), h('div', {class:'grow'}, nm, h('small', {text:rankName(rankOf(id)) + (d.note ? ' · ' + d.note : '')})), h('span', {class:'mono timer-sm', 'data-since':String(d.since), text:fmtClock(Date.now() - d.since)}))); }
+    }
+  }
+  const mine = S.dutylog.filter(l => l.uid === u).sort((a, b) => b.start - a.start);
+  const d30 = Date.now() - 30 * 864e5;
+  $('#myDutyCnt').textContent = `${mine.length} szolgálat`;
+  const tb = h('tbody', null, mine.slice(0, 40).map(l => h('tr', null, h('td', {text:fmtDate(l.start)}), h('td', {class:'mono', text:fmtTime(l.start)}), h('td', {class:'mono', text:fmtTime(l.end)}), h('td', {text:fmtDur(l.mins)}), h('td', {text:l.note || '—'}))));
+  $('#myDutyLog').replaceChildren(h('div', {class:'stats four'}, stat('E héten', fmtDur(dutyMins(u, weekStart()))), stat('Utolsó 30 nap', fmtDur(dutyMins(u, d30))), stat('Összesen', fmtDur(dutyMins(u, 0))), stat('Szolgálatok', mine.length)),
+    mine.length ? h('div', {class:'tbl-wrap'}, h('table', {class:'tbl'}, h('thead', null, h('tr', null, ['Dátum','Kezdés','Befejezés','Időtartam','Beosztás'].map(t => h('th', {text:t})))), tb)) : h('p', {class:'empty', text:'Még nincs lezárt szolgálatod. Lépj szolgálatba a bal oldali gombbal.'}));
+  $('#leaderDuty').hidden = !L;
+  if (L) {
+    const rows = memberIds().map(id => ({id, w:dutyMins(id, weekStart()), m:dutyMins(id, d30), last:Math.max(0, ...S.dutylog.filter(l => l.uid === id).map(l => l.end || 0))})).sort((a, b) => b.w - a.w || b.m - a.m);
+    $('#leaderDutyBody').replaceChildren(h('div', {class:'tbl-wrap'}, h('table', {class:'tbl'}, h('thead', null, h('tr', null, ['Tag','Rendfokozat','Egység','E héten','30 nap','Utolsó szolgálat',''].map(t => h('th', {text:t})))),
+      h('tbody', null, rows.map(r => h('tr', {class:'click', onclick:() => openAkta(r.id)}, h('td', null, h('div', {class:'who'}, avatarEl(r.id, 'av av-sm'), h('b', {text:nameOf(r.id)}))), h('td', {text:rankName(rankOf(r.id))}), h('td', {text:UNIT[unitOf(r.id)]?.short || '—'}), h('td', {class:'mono', text:fmtDur(r.w)}), h('td', {class:'mono', text:fmtDur(r.m)}), h('td', {text:r.last ? fmtStamp(r.last) : '—'}), h('td', null, onDuty(r.id) ? h('span', {class:'pill t-ok', text:'Szolgálatban'}) : null)))))));
+  }
+}
+
+/* ---------- reports ---------- */
+const REPORT_STAMP = {submitted:['BEÉRKEZETT','pending'], approved:['ELFOGADVA','ok'], returned:['VISSZAKÜLDVE','danger']};
+const REPORT_PILL = {submitted:['Elbírálás alatt','t-warn'], approved:['Elfogadva','t-ok'], returned:['Visszaküldve','t-danger']};
+function reportDoc(r, actions){
+  const T = REPORT_TYPES[r.type] || REPORT_TYPES.bj, st = REPORT_STAMP[r.status] || REPORT_STAMP.submitted;
+  return officialDoc({kind:T.name, ref:r.ref, title:r.title,
+    rows:[['Helyszín', r.location], ['Az esemény ideje', r.time ? fmtDT(r.time) : ''], ['Érintettek', r.involved], ['Egység', UNIT[r.unit]?.name || '']],
+    sections:[['Az esemény leírása', r.body], ['Intézkedések és eredmény', r.outcome], ['Elbírálói megjegyzés', r.reviewNote]],
+    footL:signBlock(r.uid, 'Jelentést tette', r.createdAt),
+    footR:h('div', null, h('span', {class:'stamp ' + st[1], text:st[0]}), r.reviewer ? h('span', {text:'Elbírálta: ' + nameOf(r.reviewer) + (r.reviewedAt ? ', ' + fmtDate(r.reviewedAt) : '')}) : null),
+    actions});
+}
+function reportItem(r, mode, open){
+  const T = REPORT_TYPES[r.type] || REPORT_TYPES.bj, pill = REPORT_PILL[r.status] || REPORT_PILL.submitted;
+  const det = h('details', {class:'xitem', 'data-id':r.id}); if (open.has(r.id)) det.open = true;
+  det.append(h('summary', null, h('span', {class:'code', text:T.code}), h('b', {text:r.title}), mode === 'inbox' ? h('span', {class:'chip', text:nameOf(r.uid)}) : null, h('time', {text:fmtStamp(r.createdAt)}), h('span', {class:'pill ' + pill[1], text:pill[0]})));
+  const acts = [];
+  if (mode === 'inbox' && r.status === 'submitted') {
+    const note = h('textarea', {id:'rv-' + r.id, maxlength:'600', style:'min-height:56px', placeholder:'Megjegyzés (visszaküldésnél kötelező)'});
+    acts.push(h('div', {class:'fld'}, h('label', {for:'rv-' + r.id, text:'Elbírálás'}), note),
+      h('button', {class:'btn btn-navy btn-sm', type:'button', text:'Elfogadás', onclick:() => reviewReport(r, 'approved', note.value.trim())}),
+      h('button', {class:'btn btn-danger btn-sm', type:'button', text:'Visszaküldés javításra', onclick:() => { if (!note.value.trim()) { note.focus(); return toast('Írd meg, mit kell javítani.'); } reviewReport(r, 'returned', note.value.trim()); }}));
+  }
+  if (mode === 'mine' && r.status === 'returned') acts.push(h('button', {class:'btn btn-gold btn-sm', type:'button', text:'Javítás és újraküldés', onclick:() => editReport(r)}));
+  const pb = printBtn(b => b.closest('.doc')); if (pb) acts.push(pb);
+  det.append(reportDoc(r, acts));
+  return det;
+}
+async function reviewReport(r, status, note){ try { await S.B.update('reports/' + r.id, {status, reviewNote:note || '', reviewer:me(), reviewedAt:Date.now()}); toast(status === 'approved' ? 'Jelentés elfogadva.' : 'Jelentés visszaküldve.'); } catch (e) { toast(errText(e)); } }
+function editReport(r){
+  S.editReport = r.id; S.repTab = 'new';
+  const set = (id, v) => { $('#' + id).value = v || ''; };
+  set('r-type', r.type); set('r-title', r.title); set('r-loc', r.location); set('r-inv', r.involved); set('r-body', r.body); set('r-out', r.outcome);
+  $('#r-time').value = r.time ? toLocalInput(r.time) : '';
+  renderAll(); $('#main').scrollTop = 0;
+}
+async function submitReport(e){
+  e.preventDefault(); clearErrs($('#repForm'));
+  const v = id => $('#' + id).value.trim(), errs = [];
+  const need = (id, msg, min=1) => { if (v(id).length < min) { errs.push(id); fieldErr(id, msg); } };
+  need('r-title', 'Add meg a jelentés tárgyát.', 3); need('r-loc', 'Add meg a helyszínt.', 2); need('r-time', 'Add meg az esemény idejét.'); need('r-body', 'Legalább 30 karakterben írd le az eseményt.', 30);
+  if (errs.length) { $('#' + errs[0]).focus(); return; }
+  const data = {type:v('r-type'), title:v('r-title'), location:v('r-loc'), time:new Date(v('r-time')).getTime() || Date.now(), involved:v('r-inv'), body:v('r-body'), outcome:v('r-out')};
+  const btn = $('#repSubmit'); btn.disabled = true;
+  try {
+    if (S.editReport) { await S.B.update('reports/' + S.editReport, {...data, status:'submitted', resubmittedAt:Date.now()}); toast('Jelentés újraküldve.'); }
+    else { const ref = genCode((REPORT_TYPES[data.type] || REPORT_TYPES.bj).code); await S.B.add('reports', {...data, uid:me(), unit:unitOf(me()) || null, ref, status:'submitted', createdAt:Date.now()}); toast('Jelentés iktatva: ' + ref); }
+    S.editReport = null; $('#repForm').reset(); S.repTab = 'mine'; renderAll();
+  } catch (err) { toast(errText(err)); }
+  btn.disabled = false;
+}
+function tipItem(t, open){
+  const det = h('details', {class:'xitem', 'data-id':t.id}); if (open.has(t.id)) det.open = true;
+  det.append(h('summary', null, h('span', {class:'code', text:'LB'}), h('b', {text:TIP_CATS[t.cat] || 'Bejelentés'}), h('span', {class:'chip', text:t.location || '—'}), h('time', {text:fmtStamp(t.at)}), h('span', {class:'pill ' + (t.status === 'new' ? 't-warn' : 't-ok'), text:t.status === 'new' ? 'Új' : 'Feldolgozva'})));
+  const acts = [];
+  if (t.status === 'new') acts.push(h('button', {class:'btn btn-navy btn-sm', type:'button', text:'Feldolgozottnak jelölés', onclick:async () => { try { await S.B.update('tips/' + t.id, {status:'done', doneBy:me(), doneAt:Date.now()}); toast('Bejelentés feldolgozva.'); } catch (e) { toast(errText(e)); } }}));
+  if (isOwnerUid(me())) { const del = h('button', {class:'btn btn-danger btn-sm', type:'button', text:'Törlés'}); del.addEventListener('click', async () => { if (del.dataset.armed !== '1') { del.dataset.armed = '1'; del.textContent = 'Biztosan?'; setTimeout(() => { del.dataset.armed = ''; del.textContent = 'Törlés'; }, 3000); return; } try { await S.B.del('tips/' + t.id); } catch (e) { toast(errText(e)); } }); acts.push(del); }
+  det.append(officialDoc({kind:'Lakossági bejelentés', ref:t.ref, title:TIP_CATS[t.cat] || 'Bejelentés',
+    rows:[['Helyszín', t.location], ['Bejelentő', t.name || 'névtelen'], ['Roblox', t.roblox], ['Beérkezett', fmtDT(t.at)]], sections:[['A bejelentés szövege', t.text]],
+    footL:h('div', null, h('span', {class:'lbl', text:'Iktatta'}), h('b', {text:'Főbiztosi Hivatal'})),
+    footR:h('div', null, h('span', {class:'stamp ' + (t.status === 'new' ? 'pending' : 'ok'), text:t.status === 'new' ? 'IKTATVA' : 'FELDOLGOZVA'}), t.doneBy ? h('span', {text:'Feldolgozta: ' + nameOf(t.doneBy)}) : null), actions:acts}));
+  return det;
+}
+function renderJelentesek(){
+  if (!memberGate('jelentesek')) return;
+  const u = me(), L = isLeader(u);
+  $$('#repTabs [data-leader]').forEach(b => b.hidden = !L);
+  if (!L && (S.repTab === 'inbox' || S.repTab === 'tips')) S.repTab = 'new';
+  $$('#repTabs button').forEach(b => b.setAttribute('aria-selected', String(b.dataset.tab === S.repTab)));
+  for (const t of ['new','mine','inbox','tips']) $('#repPanel-' + t).hidden = t !== S.repTab;
+  const mine = S.reports.filter(r => r.uid === u).sort((a, b) => b.createdAt - a.createdAt);
+  const inbox = S.reports.slice().sort((a, b) => (a.status === 'submitted' ? 0 : 1) - (b.status === 'submitted' ? 0 : 1) || b.createdAt - a.createdAt);
+  const setN = (id, n, hot) => { const el = $('#' + id); el.textContent = n ? String(n) : ''; el.hidden = !n; el.classList.toggle('hot', !!hot); };
+  setN('tMine', mine.length, mine.some(r => r.status === 'returned')); setN('tInbox', inbox.filter(r => r.status === 'submitted' && r.uid !== u).length, true); setN('tTips', S.tips.filter(t => t.status === 'new').length, true);
+  if (S.repTab === 'new') {
+    if (!$('#r-time').value) $('#r-time').value = toLocalInput(Date.now());
+    $('#repWho').textContent = 'Jelentéstevő: ' + [nameOf(u), rankName(rankOf(u)), S.users[u]?.badge].filter(Boolean).join(' · ');
+    $('#repEditing').hidden = !S.editReport; $('#repSubmit').textContent = S.editReport ? 'Javított jelentés újraküldése' : 'Jelentés beküldése';
+  }
+  const fill = (boxId, list, mode, empty) => {
+    const box = $('#' + boxId); if (focusInside(box)) return;
+    const open = keepOpen(box); box.replaceChildren();
+    if (!list.length) box.append(h('div', {class:'empty-doc', text:empty})); else list.forEach(x => box.append(mode === 'tips' ? tipItem(x, open) : reportItem(x, mode, open)));
+  };
+  if (S.repTab === 'mine') fill('repMine', mine, 'mine', S.loaded.reports ? 'Még nem adtál be jelentést.' : 'Betöltés…');
+  if (S.repTab === 'inbox') fill('repInbox', inbox, 'inbox', 'Nincs beérkezett jelentés.');
+  if (S.repTab === 'tips') fill('tipInbox', S.tips, 'tips', 'Nincs lakossági bejelentés.');
+}
+
+/* ---------- orders ---------- */
+function orderEl(o, compact){
+  const u = me(), P = ORDER_PRIO[o.prio] || ORDER_PRIO[1], closed = o.status === 'closed';
+  const overdue = o.due && o.due < Date.now() && !closed;
+  const el = h('article', {class:'order p' + (o.prio || 1) + (closed ? ' closed' : '')});
+  el.append(h('div', {class:'top'}, h('span', {class:'code', text:o.ref}), h('span', {class:'pill ' + P.tone, text:P.name}), h('span', {class:'chip', text:targetLabel(o.target)}), o.due ? h('span', {class:'chip' + (overdue ? ' bad' : ''), text:'Határidő: ' + fmtDate(o.due)}) : null, closed ? h('span', {class:'chip', text:'Lezárva'}) : null));
+  el.append(h('h3', {text:o.title}));
+  el.append(h('p', {text:compact && o.body.length > 180 ? o.body.slice(0, 180) + '…' : o.body}));
+  el.append(h('div', {class:'meta', text:`Kiadta: ${nameOf(o.issuedBy)} (${rankName(rankOf(o.issuedBy))}) · ${fmtStamp(o.createdAt)}`}));
+  const acts = h('div', {class:'acts'});
+  if (orderForMe(o) && !closed) {
+    const ack = o.acks && o.acks[u], done = o.done && o.done[u];
+    if (!ack) acts.append(h('button', {class:'btn btn-gold btn-sm', type:'button', text:'Tudomásul vettem', onclick:() => S.B.update('orders/' + o.id, {['acks.' + u]:Date.now()}).then(() => toast('Parancs nyugtázva.')).catch(e => toast(errText(e)))}));
+    else if (!done) acts.append(h('span', {class:'chip ok', text:'Nyugtázva ' + fmtTime(ack)}), h('button', {class:'btn btn-navy btn-sm', type:'button', text:'Végrehajtást jelentem', onclick:() => S.B.update('orders/' + o.id, {['done.' + u]:Date.now()}).then(() => toast('Végrehajtás jelentve.')).catch(e => toast(errText(e)))}));
+    else acts.append(h('span', {class:'chip ok', text:'Végrehajtva ' + fmtStamp(done)}));
+  }
+  if (!compact && isLeader(u)) {
+    const aud = orderAudience(o), ak = aud.filter(id => o.acks && o.acks[id]), dn = aud.filter(id => o.done && o.done[id]);
+    const missing = aud.filter(id => !(o.acks && o.acks[id])).map(nameOf);
+    acts.append(h('span', {class:'prog', title:missing.length ? 'Még nem nyugtázta: ' + missing.join(', ') : 'Mindenki nyugtázta', text:`Nyugtázta: ${ak.length}/${aud.length} · Végrehajtotta: ${dn.length}/${aud.length}`}));
+    if (!closed) acts.append(h('button', {class:'btn btn-line btn-sm', type:'button', text:'Lezárás', onclick:() => S.B.update('orders/' + o.id, {status:'closed', closedAt:Date.now()}).catch(e => toast(errText(e)))}));
+    const del = h('button', {class:'btn btn-danger btn-sm', type:'button', text:'Törlés'});
+    del.addEventListener('click', () => { if (del.dataset.armed !== '1') { del.dataset.armed = '1'; del.textContent = 'Biztosan?'; setTimeout(() => { del.dataset.armed = ''; del.textContent = 'Törlés'; }, 3000); return; } S.B.del('orders/' + o.id).catch(e => toast(errText(e))); });
+    acts.append(del);
+  }
+  if (acts.childElementCount) el.append(acts);
+  return el;
+}
+function fillTargetSelect(sel, withUsers){
+  if (document.activeElement === sel) return;
+  const cur = sel.value;
+  const opts = [h('option', {value:'all', text:'Teljes állomány'})];
+  const g1 = h('optgroup', {label:'Egység'}, UNITS.map(x => h('option', {value:'unit:' + x.id, text:x.name})));
+  opts.push(g1);
+  if (withUsers) opts.push(h('optgroup', {label:'Személy'}, memberIds().sort((a, b) => nameOf(a).localeCompare(nameOf(b), 'hu')).map(id => h('option', {value:'user:' + id, text:`${nameOf(id)} (${rankName(rankOf(id))})`}))));
+  sel.replaceChildren(...opts);
+  if ([...sel.querySelectorAll('option')].some(o => o.value === cur)) sel.value = cur;
+}
+function renderParancsok(){
+  if (!memberGate('parancsok')) return;
+  const L = isLeader(me());
+  $('#ordNewBox').hidden = !L; $('#ordListWrap').className = L ? 'span8' : 'span12';
+  if (L) fillTargetSelect($('#o-target'), true);
+  const list = (L ? S.orders.slice() : S.orders.filter(orderForMe)).sort((a, b) => (a.status === 'closed') - (b.status === 'closed') || b.createdAt - a.createdAt);
+  const box = $('#ordList'); box.replaceChildren();
+  if (!list.length) box.append(h('div', {class:'empty-doc', text:S.loaded.orders ? 'Nincs kiadott parancs.' : 'Betöltés…'}));
+  else list.forEach(o => box.append(orderEl(o, false)));
+}
+async function submitOrder(e){
+  e.preventDefault(); clearErrs($('#ordForm'));
+  const title = $('#o-title').value.trim(), body = $('#o-body').value.trim();
+  if (title.length < 3) { fieldErr('o-title', 'Add meg a parancs tárgyát.'); return $('#o-title').focus(); }
+  if (body.length < 5) { fieldErr('o-body', 'Írd le a parancs tartalmát.'); return $('#o-body').focus(); }
+  const tv = $('#o-target').value, i = tv.indexOf(':');
+  const target = i < 0 ? {type:'all'} : {type:tv.slice(0, i), value:tv.slice(i + 1)};
+  const due = $('#o-due').value ? new Date($('#o-due').value + 'T23:59').getTime() : null;
+  const o = {ref:genCode('PAR'), title, body, target, prio:+$('#o-prio').value || 1, due, issuedBy:me(), createdAt:Date.now(), status:'active', acks:{}, done:{}};
+  try { await S.B.add('orders', o); $('#ordForm').reset(); toast('Parancs kiadva: ' + o.ref); } catch (err) { toast(errText(err)); }
+}
+
+/* ---------- events ---------- */
+const MONTHS = ['JAN','FEB','MÁR','ÁPR','MÁJ','JÚN','JÚL','AUG','SZEP','OKT','NOV','DEC'];
+function eventEl(e, compact){
+  const u = me(), d = new Date(e.start), past = e.start < Date.now() - 2 * 3600e3;
+  const rs = e.rsvp || {}, cnt = v => Object.values(rs).filter(x => x === v).length;
+  const el = h('article', {class:'event' + (past ? ' past' : '')});
+  el.append(h('div', {class:'datebadge'}, h('div', {class:'m', text:MONTHS[d.getMonth()]}), h('div', {class:'d', text:String(d.getDate())})));
+  const body = h('div', {style:'min-width:0'});
+  body.append(h('h3', {text:e.title}));
+  body.append(h('div', {class:'meta'}, h('span', {text:d.toLocaleDateString('hu-HU', {weekday:'long'}) + ', ' + fmtTime(e.start)}), e.location ? h('span', {text:'· ' + e.location}) : null, h('span', {class:'chip', text:EVENT_TYPES[e.type] || 'Esemény'}), e.unit ? h('span', {class:'chip', text:UNIT[e.unit]?.short || 'Egység'}) : null));
+  if (!compact && e.desc) body.append(h('p', {text:e.desc}));
+  const acts = h('div', {class:'acts'});
+  if (!past && eventForMe(e)) {
+    const seg = h('div', {class:'seg', role:'group', 'aria-label':'Részvétel'});
+    for (const [v, lab, cls] of [['y','Részt veszek','y'],['m','Talán','m'],['n','Nem tudok','n']]) seg.append(h('button', {type:'button', class:cls, 'aria-pressed':String(rs[u] === v), text:lab, onclick:() => S.B.update('events/' + e.id, {['rsvp.' + u]:v}).catch(err => toast(errText(err)))}));
+    acts.append(seg);
+  }
+  const yes = Object.entries(rs).filter(([, v]) => v === 'y').map(([id]) => nameOf(id));
+  acts.append(h('span', {title:yes.length ? 'Részt vesz: ' + yes.join(', ') : '', text:`Részt vesz: ${cnt('y')} · Talán: ${cnt('m')} · Nem: ${cnt('n')}`}));
+  if (!compact && isLeader(u)) { const del = h('button', {class:'btn btn-danger btn-sm', type:'button', text:'Törlés'}); del.addEventListener('click', () => { if (del.dataset.armed !== '1') { del.dataset.armed = '1'; del.textContent = 'Biztosan?'; setTimeout(() => { del.dataset.armed = ''; del.textContent = 'Törlés'; }, 3000); return; } S.B.del('events/' + e.id).catch(err => toast(errText(err))); }); acts.append(del); }
+  body.append(acts);
+  el.append(body);
+  return el;
+}
+function renderNaptar(){
+  if (!memberGate('naptar')) return;
+  const L = isLeader(me());
+  $('#evtNewBox').hidden = !L; $('#evtListWrap').className = L ? 'span8' : 'span12';
+  if (L && !$('#e-start').value && document.activeElement?.id !== 'e-start') { const t = new Date(Date.now() + 864e5); t.setMinutes(0, 0, 0); t.setHours(20); $('#e-start').value = toLocalInput(t.getTime()); }
+  const up = upcomingEvents().filter(e => L || eventForMe(e));
+  const past = S.events.filter(e => e.start < Date.now() - 2 * 3600e3).sort((a, b) => b.start - a.start).slice(0, 10);
+  const box = $('#evtList'); box.replaceChildren();
+  box.append(h('h3', {class:'listh', text:'Közelgő események'}));
+  if (!up.length) box.append(h('div', {class:'empty-doc', text:S.loaded.events ? 'Nincs meghirdetett esemény.' : 'Betöltés…'}));
+  else up.forEach(e => box.append(eventEl(e, false)));
+  if (past.length) box.append(h('details', {class:'pastev'}, h('summary', {text:`Korábbi események (${past.length})`}), h('div', {class:'evlist'}, past.map(e => eventEl(e, false)))));
+}
+async function submitEvent(e){
+  e.preventDefault(); clearErrs($('#evtForm'));
+  const title = $('#e-title').value.trim(), start = new Date($('#e-start').value).getTime();
+  if (title.length < 3) { fieldErr('e-title', 'Add meg az esemény nevét.'); return $('#e-title').focus(); }
+  if (!start) { fieldErr('e-start', 'Add meg az időpontot.'); return $('#e-start').focus(); }
+  const ev = {title, type:$('#e-type').value, start, location:$('#e-loc').value.trim(), desc:$('#e-desc').value.trim(), unit:$('#e-unit').value || null, createdBy:me(), createdAt:Date.now(), rsvp:{}};
+  try { await S.B.add('events', ev); $('#evtForm').reset(); toast('Esemény meghirdetve.'); } catch (err) { toast(errText(err)); }
+}
+
+/* ---------- roster ---------- */
+function openAkta(uid){ S.aktaUid = uid; closeModal(); if (S.route === 'akta') { syncSubs(); renderAll(); } else location.hash = 'akta'; }
+function renderAllomany(){
+  if (!memberGate('allomany')) return;
+  const rsel = $('#ro-rank');
+  if (document.activeElement !== rsel) { const cur = rsel.value; rsel.replaceChildren(h('option', {value:'', text:'Mind'}), ...[...RANKS].reverse().map(r => h('option', {value:r.id, text:rankName(r)}))); rsel.value = cur; }
+  const q = $('#ro-q').value.trim().toLowerCase(), fu = $('#ro-unit').value, fr = $('#ro-rank').value;
+  const all = memberIds();
+  $('#rosterStats').replaceChildren(h('span', {class:'chip', text:`Állomány: ${all.length} fő`}), h('span', {class:'chip ok', text:`Szolgálatban: ${all.filter(onDuty).length} fő`}), ...UNITS.map(x => h('span', {class:'chip', text:`${x.short}: ${all.filter(id => unitOf(id) === x.id).length}`})));
+  const ids = all.filter(id => {
+    const usr = S.users[id] || {};
+    if (fu && (fu === '-' ? unitOf(id) : unitOf(id) !== fu)) return false;
+    if (fr && rankOf(id)?.id !== fr) return false;
+    if (q && ![usr.rpName, usr.username, usr.badge, usr.roblox].some(x => String(x || '').toLowerCase().includes(q))) return false;
+    return true;
+  }).sort((a, b) => levelOf(b) - levelOf(a) || nameOf(a).localeCompare(nameOf(b), 'hu'));
+  const tb = h('tbody', null, ids.map(id => {
+    const r = rankOf(id), usr = S.users[id] || {};
+    const nm = h('b', {text:nameOf(id)}); nm.style.color = rankColor(id);
+    return h('tr', {class:'click', tabindex:'0', onclick:() => openAkta(id), onkeydown:ev => { if (ev.key === 'Enter') openAkta(id); }},
+      h('td', null, h('div', {class:'who'}, avatarEl(id, 'av av-sm'), h('div', null, nm, h('span', {text:'@' + (usr.username || '—')})))),
+      h('td', null, h('span', {class:'rk-chip'}, r?.board ? h('img', {src:r.board, alt:''}) : null, rankName(r))),
+      h('td', {text:UNIT[unitOf(id)]?.name || (isOwnerUid(id) ? 'Főbiztosi Hivatal' : '—')}),
+      h('td', {class:'mono', text:usr.badge || '—'}),
+      h('td', null, onDuty(id) ? h('span', {class:'pill t-ok', text:'Szolgálatban'}) : isOnline(id) ? h('span', {class:'pill t-info', text:'Elérhető'}) : h('span', {class:'muted', text:'—'})),
+      h('td', {text:usr.createdAt ? fmtDate(usr.createdAt) : '—'}));
+  }));
+  $('#rosterList').replaceChildren(ids.length ? h('table', {class:'tbl roster'}, h('thead', null, h('tr', null, ['Név','Rendfokozat','Egység','Jelvényszám','Állapot','Nyilvántartva'].map(t => h('th', {text:t})))), tb) : h('p', {class:'empty', style:'padding:16px', text:'Nincs a szűrésnek megfelelő tag.'}));
+}
+
+/* ---------- personnel file ---------- */
+function renderAkta(){
+  if (!memberGate('akta')) return;
+  const u = S.aktaUid && (isMember(S.aktaUid) || S.users[S.aktaUid]) ? S.aktaUid : me(), self = u === me(), L = isLeader(me());
+  const usr = S.users[u] || {}, r = rankOf(u), role = S.roles[u] || {};
+  $('#aktaTitle').textContent = self ? 'Személyi aktám' : 'Személyi akta – ' + nameOf(u);
+  const box = $('#aktaContent'); if (focusInside(box)) return;
+  box.replaceChildren();
+  const recs = (S.records.subj === u ? S.records.list : []);
+  const certs = recs.filter(x => x.type === 'cert');
+  const left = h('div', {class:'stack'}, card('Szolgálati igazolvány', null, idCardEl(u), h('div', {class:'row-btns'}, printBtn(b => b.closest('.card').querySelector('.idcard')), !self ? h('a', {class:'btn btn-line btn-sm', href:'#allomany', text:'← Vissza az állományhoz'}) : null)));
+  const right = h('div', {class:'stack'});
+  right.append(card('Szolgálati adatok', null, h('dl', {class:'kv'},
+    h('dt', {text:'Rendfokozat'}), h('dd', {text:rankName(r) || '—'}), h('dt', {text:'Egység'}), h('dd', {text:UNIT[unitOf(u)]?.name || (isOwnerUid(u) ? 'Főbiztosi Hivatal' : '—')}),
+    h('dt', {text:'Jelvényszám'}), h('dd', {class:'mono', text:usr.badge || '—'}), h('dt', {text:'Azonosító'}), h('dd', {class:'mono', text:usr.username ? '@' + usr.username : '—'}),
+    h('dt', {text:'Roblox'}), h('dd', {text:usr.roblox || '—'}), h('dt', {text:'Nyilvántartásba véve'}), h('dd', {text:usr.createdAt ? fmtDate(usr.createdAt) : '—'}),
+    h('dt', {text:'Jelenlegi rendfokozat óta'}), h('dd', {text:role.since ? fmtDate(role.since) : '—'}), h('dt', {text:'Állapot'}), h('dd', {text:onDuty(u) ? 'Szolgálatban' : isOnline(u) ? 'Elérhető' : 'Nem elérhető'}))));
+  if (self || L) {
+    const reps = S.reports.filter(x => x.uid === u);
+    right.append(card('Szolgálati teljesítmény', null, h('div', {class:'stats four'}, stat('Szolgálat e héten', fmtDur(dutyMins(u, weekStart()))), stat('Szolgálat 30 nap', fmtDur(dutyMins(u, Date.now() - 30 * 864e5))), stat('Jelentések', reps.length), stat('Elfogadott jelentés', reps.filter(x => x.status === 'approved').length))));
+    right.append(card('Minősítések', h('span', {class:'cnt', text:certs.length + ' db'}), certs.length ? h('div', {class:'certs'}, certs.map(c => h('span', {class:'cert', title:c.text || '', html:icon('check', 13) + `<span>${esc(c.title)}</span>`}))) : h('p', {class:'empty', text:'Még nincs rögzített minősítés.'})));
+    const hist = recs.filter(x => x.type !== 'cert');
+    right.append(card('Bejegyzések', h('span', {class:'cnt', text:hist.length + ' db'}), hist.length ? h('ul', {class:'recs'}, hist.map(x => h('li', {class:'rec-' + x.type}, h('span', {class:'pill ' + (RECORD_TYPES[x.type]?.tone || 't-info'), text:RECORD_TYPES[x.type]?.name || 'Bejegyzés'}), h('b', {text:x.title}), h('small', {text:`${fmtDate(x.at)} · ${nameOf(x.by)}`}), x.text ? h('p', {text:x.text}) : null))) : h('p', {class:'empty', text:'Az aktában még nincs bejegyzés.'})));
+  } else right.append(h('div', {class:'notice'}, h('div', null, h('b', {text:'Korlátozott betekintés'}), 'Más tag teljes aktáját csak a vezetés tekintheti meg.')));
+  box.append(h('div', {class:'akta'}, left, right));
+  const recBox = $('#recBox'); recBox.hidden = !(L && !self); $('#recFor').textContent = nameOf(u);
+  $('#rec-cert-wrap').hidden = $('#rec-type').value !== 'cert'; $('#rec-title-wrap').hidden = $('#rec-type').value === 'cert';
+}
+async function submitRecord(e){
+  e.preventDefault(); clearErrs($('#recForm'));
+  const type = $('#rec-type').value, title = type === 'cert' ? $('#rec-cert').value : $('#rec-title').value.trim(), text = $('#rec-text').value.trim();
+  if (type !== 'cert' && title.length < 3) { fieldErr('rec-title', 'Adj címet a bejegyzésnek.'); return $('#rec-title').focus(); }
+  const uid = S.aktaUid || me();
+  try { await S.B.add('records', {uid, type, title, text, by:me(), at:Date.now()}); $('#recForm').reset(); renderAkta(); toast('Bejegyzés rögzítve az aktában.'); } catch (err) { toast(errText(err)); }
+}
+
+/* ---------- public tip ---------- */
+function renderBejelentes(){
+  const done = $('#tipDone'), form = $('#tipForm');
+  if (S.tipDone) {
+    const t = S.tipDone; form.hidden = true; done.hidden = false;
+    if (done.dataset.k !== t.ref) { done.dataset.k = t.ref; done.replaceChildren(officialDoc({kind:'Lakossági bejelentés – iktatási igazolás', ref:t.ref, title:TIP_CATS[t.cat],
+      rows:[['Helyszín', t.location], ['Bejelentő', t.name || 'névtelen'], ['Beérkezett', fmtDT(t.at)]], sections:[['A bejelentés szövege', t.text]],
+      footL:h('div', null, h('span', {class:'lbl', text:'Iktatta'}), h('b', {text:'Főbiztosi Hivatal'}), h('span', {text:'A bejelentést a Hatóság vezetése bírálja el.'})),
+      footR:h('span', {class:'stamp pending', text:'IKTATVA'}),
+      actions:[h('button', {class:'btn btn-navy btn-sm', type:'button', text:'Új bejelentés', onclick:() => { S.tipDone = null; renderBejelentes(); }}), printBtn(b => b.closest('.doc'))].filter(Boolean)})); }
+  } else { form.hidden = false; done.hidden = true; done.dataset.k = ''; }
+}
+async function submitTip(e){
+  e.preventDefault(); clearErrs($('#tipForm'));
+  if ($('#t-web').value) return;
+  const v = id => $('#' + id).value.trim(), errs = [];
+  if (!v('t-cat')) { errs.push('t-cat'); fieldErr('t-cat', 'Válaszd ki a bejelentés típusát.'); }
+  if (v('t-loc').length < 2) { errs.push('t-loc'); fieldErr('t-loc', 'Add meg a helyszínt.'); }
+  if (v('t-text').length < 20) { errs.push('t-text'); fieldErr('t-text', 'Legalább 20 karakterben írd le, mi történt.'); }
+  if (errs.length) return $('#' + errs[0]).focus();
+  const last = store.get('tipAt', 0); if (Date.now() - last < 120000) return toast('Két bejelentés között várj legalább 2 percet.');
+  const t = {cat:v('t-cat'), location:v('t-loc').slice(0, 120), text:v('t-text').slice(0, 2000), name:v('t-name').slice(0, 60), roblox:v('t-roblox').slice(0, 40), ref:genCode('LB'), at:Date.now(), status:'new'};
+  const btn = $('#tipSubmit'); btn.disabled = true;
+  try { await S.B.add('tips', t); store.set('tipAt', Date.now()); S.tipDone = t; $('#tipForm').reset(); renderBejelentes(); $('#main').scrollTop = 0; toast('Bejelentés iktatva: ' + t.ref); }
+  catch (err) { toast(errText(err)); }
+  btn.disabled = false;
+}
+
+/* ---------- floating voice pill (outside the console) ---------- */
+function renderVoiceFloat(){
+  const f = $('#voiceFloat');
+  const show = !!VC.room && !(S.route === 'belso' && access() === 'member');
+  f.hidden = !show; if (!show) return;
+  f.replaceChildren(h('span', {class:'vf-dot'}), h('a', {href:'#belso', onclick:() => { S.view = 'voice'; S.vch = VC.room; }, text:VCH[VC.room]?.name || 'Hang'}),
+    h('button', {class:'icon-btn' + (VC.muted ? ' red' : ''), type:'button', 'aria-label':VC.muted ? 'Mikrofon bekapcsolása' : 'Némítás', html:icon(VC.muted ? 'micOff' : 'mic', 16), onclick:() => setMute(!VC.muted)}),
+    h('button', {class:'icon-btn red', type:'button', 'aria-label':'Kilépés a hangcsatornából', html:icon('phoneOff', 16), onclick:() => leaveVoice()}));
+}
+
 /* ================= demo tools ================= */
 async function loadSample(){
   if (S.mode !== 'demo') return;
@@ -2296,6 +3358,19 @@ async function loadSample(){
   ];
   msgs.forEach(([ch, uid, t, hoursAgo, p], i) => { const m = {uid, t, ts:now - hoursAgo * H, rx:i === 1 ? {like:['pelda_2','pelda_3'], salute:['pelda_4']} : {}}; if (p) m.p = p; seed[`channels/${ch}/messages/sample${i}`] = m; });
   seed['decrees/sample1'] = {no:1, year:new Date().getFullYear(), date:now - 2 * 24 * H, title:'a belső kommunikációs rendszer használatáról', body:'1. § A Hatóság állománya a belső kommunikációt kizárólag a NEKEH belső rendszerén keresztül folytatja.\n2. § A #bevetés-irányítás csatornán közölt riasztásokat minden szolgálatban lévő tag köteles nyugtázni.\n3. § Ez a rendelet a kihirdetését követő napon lép hatályba.', author:ownerId};
+  const D1 = 864e5;
+  seed['duty/pelda_1'] = {on:true, since:now - 1.6 * H, note:'Járőr-1', ts:now, unit:'taktikai'};
+  seed['duty/pelda_3'] = {on:true, since:now - 0.4 * H, note:'Megfigyelőpont', ts:now, unit:'mesterlovesz'};
+  [['pelda_1', 2, 3.5], ['pelda_1', 4, 2], ['pelda_2', 1, 4], ['pelda_3', 3, 1.5], ['pelda_4', 2, 2.5], ['pelda_5', 5, 1]].forEach(([u, dAgo, hrs], i) => { const st = now - dAgo * D1; seed['dutylog/sample' + i] = {uid:u, start:st, end:st + hrs * H, mins:Math.round(hrs * 60), note:'', unit:null}; });
+  seed['orders/sample1'] = {ref:'PAR/2026/1101-A7KD', title:'Fokozott járőrözés a kikötő térségében', body:'A Taktikai Alosztály a mai naptól 18:00 és 23:00 között két járőrrel biztosítja a kikötő térségét. Rendkívüli eseményt a #bevetés-irányítás csatornán kell jelenteni.', target:{type:'unit', value:'taktikai'}, prio:2, due:now + 2 * D1, issuedBy:ownerId, createdAt:now - 5 * H, status:'active', acks:{pelda_1:now - 4 * H}, done:{}};
+  seed['orders/sample2'] = {ref:'PAR/2026/1101-Q2MZ', title:'Részvétel a vasárnapi állománygyűlésen', body:'Minden állományi tag köteles megjelenni a vasárnapi állománygyűlésen egyenruhában.', target:{type:'all'}, prio:1, due:now + 4 * D1, issuedBy:ownerId, createdAt:now - 26 * H, status:'active', acks:{pelda_2:now - 20 * H, pelda_4:now - 10 * H}, done:{}};
+  const ev = (t, days, hr) => { const x = new Date(now + days * D1); x.setHours(hr, 0, 0, 0); return x.getTime(); };
+  seed['events/sample1'] = {title:'Lőtéri kiképzés', type:'kikepzes', start:ev(0, 1, 19), location:'Kiképzőbázis, lőtér', desc:'Fegyverhasználati gyakorlat, utána minősítő vizsga.', unit:null, createdBy:ownerId, createdAt:now, rsvp:{pelda_1:'y', pelda_3:'y', pelda_4:'m'}};
+  seed['events/sample2'] = {title:'Állománygyűlés', type:'gyules', start:ev(0, 4, 18), location:'Főhadiszállás, nagyterem', desc:'Negyedéves értékelés, előléptetések kihirdetése.', unit:null, createdBy:ownerId, createdAt:now, rsvp:{pelda_2:'y'}};
+  seed['reports/sample1'] = {uid:'pelda_1', type:'bj', ref:'BJ/2026/1031-K4PW', title:'Zavargás felszámolása a főtéren', location:'Főtér, a városháza előtt', time:now - 26 * H, involved:'Taktikai Alosztály, Ellátás, 3 gyanúsított', body:'21:40-kor riasztás érkezett tömegverekedésről. A helyszínre két egység vonult. A tömeget feloszlattuk, három személyt előállítottunk.', outcome:'A helyszín 22:15-re biztosítva. Sérülés nem történt, a gyanúsítottakat átadtuk a vizsgálati részlegnek.', unit:'taktikai', status:'submitted', createdAt:now - 25 * H};
+  seed['tips/sample1'] = {cat:'bunc', location:'Belváros, benzinkút mellett', text:'Két álarcos személy egy fekete autóból fegyverrel fenyegette a kút dolgozóját, majd észak felé hajtottak el.', name:'', roblox:'Civil_Peter22', ref:'LB/2026/1101-T8XC', at:now - 2 * H, status:'new'};
+  seed['records/sample1'] = {uid:'pelda_1', type:'commendation', title:'Kiemelkedő helytállás a főtéri zavargás során', text:'A gyors és szakszerű beavatkozásért.', by:ownerId, at:now - D1};
+  seed['records/sample2'] = {uid:'pelda_1', type:'cert', title:'Taktikai behatolás', text:'', by:ownerId, at:now - 6 * D1};
   B.seed(seed);
   toast(S.auth ? 'Példaadatok betöltve.' : 'Példaadatok betöltve. Főbiztos belépés: fobiztos / demo1234');
 }
@@ -2320,7 +3395,7 @@ async function boot(){
     const prev = me();
     S.auth = a;
     if ((a && a.uid) !== prev) {
-      S.users = {}; S.roles = {}; S.myApp = undefined; S.apps = {}; S.heads = {}; S.msgs = {}; S.voiceMembers = {}; S.presence = {};
+      S.users = {}; S.roles = {}; S.myApp = undefined; S.dutylog = []; S.reports = []; S.orders = []; S.events = []; S.tips = []; S.records = {subj:null, list:[]}; S.aktaUid = null; S.editReport = null; S.apps = {}; S.heads = {}; S.msgs = {}; S.voiceMembers = {}; S.presence = {};
       S.loaded = {...S.loaded, users:false, roles:false, apps:false, msgs:{}}; S.msgErr = {}; S.reapply = false;
       $('#applyStatus').dataset.k = '';
       if (VC.room) leaveVoice(true);
@@ -2330,6 +3405,8 @@ async function boot(){
   syncSubs(); renderAll();
   setInterval(() => { heartbeat(); renderTyping(); if (S.route === 'belso' && access() === 'member') { renderMembers(); renderChanList(); } }, 15000);
   setInterval(renderTyping, 3000);
+  setInterval(() => { $$('[data-since]').forEach(el => { const t = +el.dataset.since; if (t) el.textContent = fmtClock(Date.now() - t); }); }, 1000);
+  setInterval(() => { if (['iroda','szolgalat','allomany'].includes(S.route)) renderAll(); }, 60000);
 }
 
 /* ================= events ================= */
@@ -2363,7 +3440,8 @@ $('#admSettings').addEventListener('input', () => { settingsDirty = true; });
 $('#admSettings').addEventListener('submit', async e => {
   e.preventDefault();
   const rankNames = {}; for (const r of RANKS) { const v = $('#rn-' + r.id).value.trim(); if (v && v !== r.name) rankNames[r.id] = v; }
-  await saveConfig({motd:$('#s-motd').value.trim(), rules:$('#s-rules').value.trim() || DEFAULT_RULES, rankNames}, 'Beállítások mentve.');
+  const turn = {urls:$('#s-turn-urls').value.trim(), username:$('#s-turn-user').value.trim(), credential:$('#s-turn-cred').value.trim()};
+  await saveConfig({motd:$('#s-motd').value.trim(), rules:$('#s-rules').value.trim() || DEFAULT_RULES, rankNames, turn}, 'Beállítások mentve.');
   settingsDirty = false;
 });
 $('#decForm').addEventListener('submit', async e => {
@@ -2383,6 +3461,20 @@ $('#demoReset').addEventListener('click', async e => {
 document.addEventListener('visibilitychange', () => { if (!document.hidden) { heartbeat(true); markRead(); } });
 window.addEventListener('pagehide', () => { if (VC.room && me()) { try { S.B.del(`voice/${VC.room}/members/${me()}`); } catch {} } });
 window.addEventListener('resize', () => { if (S.route === 'belso' && access() === 'member') renderConsole(); });
+
+$('#repForm').addEventListener('submit', submitReport);
+$('#repEditCancel').addEventListener('click', () => { S.editReport = null; $('#repForm').reset(); renderAll(); });
+$$('#repTabs button').forEach(b => b.addEventListener('click', () => { S.repTab = b.dataset.tab; renderAll(); }));
+$('#ordForm').addEventListener('submit', submitOrder);
+$('#evtForm').addEventListener('submit', submitEvent);
+$('#recForm').addEventListener('submit', submitRecord);
+$('#rec-type').addEventListener('change', () => { $('#rec-cert-wrap').hidden = $('#rec-type').value !== 'cert'; $('#rec-title-wrap').hidden = $('#rec-type').value === 'cert'; });
+$('#tipForm').addEventListener('submit', submitTip);
+['ro-q','ro-unit','ro-rank'].forEach(id => $('#' + id).addEventListener('input', renderAllomany));
+$('#subAkta').addEventListener('click', () => { S.aktaUid = null; if (S.route === 'akta') { syncSubs(); renderAll(); } });
+document.addEventListener('keydown', e => { if ((e.key === 'v' || e.key === 'V') && !e.repeat && !/INPUT|TEXTAREA|SELECT/.test(document.activeElement?.tagName || '') && !document.activeElement?.isContentEditable) pttPress(true); });
+document.addEventListener('keyup', e => { if (e.key === 'v' || e.key === 'V') pttPress(false); });
+window.addEventListener('blur', () => pttPress(false));
 
 boot();
 </script>

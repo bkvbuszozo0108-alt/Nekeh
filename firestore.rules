@@ -61,7 +61,7 @@ service cloud.firestore {
 
     // Rendfokozat és egység: csak a Főbiztos állítja
     match /roles/{uid} {
-      allow read: if signedIn();
+      allow read: if true;
       allow write: if isOwner();
     }
 
@@ -86,6 +86,63 @@ service cloud.firestore {
         || request.resource.data.diff(resource.data).affectedKeys().hasOnly(['rx'])
       );
       allow delete: if signedIn() && (resource.data.uid == request.auth.uid || isOwner());
+    }
+
+    // Szolgálati napló: aktuális státusz (nyilvános létszámhoz) és lezárt szolgálatok
+    match /duty/{uid} {
+      allow read: if true;
+      allow write: if isMember() && request.auth.uid == uid;
+    }
+    match /dutylog/{id} {
+      allow read: if isMember();
+      allow create: if isMember() && request.resource.data.uid == request.auth.uid
+        && request.resource.data.mins is number && request.resource.data.mins <= 1440;
+      allow delete: if isOwner();
+    }
+
+    // Jelentések
+    match /reports/{id} {
+      allow read: if isLeader() || (signedIn() && resource.data.uid == request.auth.uid);
+      allow create: if isMember() && request.resource.data.uid == request.auth.uid && request.resource.data.status == 'submitted';
+      allow update: if isLeader()
+        || (signedIn() && resource.data.uid == request.auth.uid && resource.data.status == 'returned' && request.resource.data.status == 'submitted');
+      allow delete: if isOwner();
+    }
+
+    // Parancsok: a vezetés adja ki, a tagok nyugtáznak
+    match /orders/{id} {
+      allow read: if isMember();
+      allow create, delete: if isLeader();
+      allow update: if isLeader() || (isMember() && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['acks', 'done']));
+    }
+
+    // Eseménynaptár
+    match /events/{id} {
+      allow read: if isMember();
+      allow create, delete: if isLeader();
+      allow update: if isLeader() || (isMember() && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['rsvp']));
+    }
+
+    // Személyi akta bejegyzései
+    match /records/{id} {
+      allow read: if isLeader() || (signedIn() && resource.data.uid == request.auth.uid);
+      allow create: if isLeader() && request.resource.data.by == request.auth.uid;
+      allow delete: if isOwner();
+    }
+
+    // Lakossági bejelentések: bárki beküldhet, csak a vezetés olvassa
+    match /tips/{id} {
+      allow create: if request.resource.data.keys().hasOnly(['cat', 'location', 'text', 'name', 'roblox', 'ref', 'at', 'status'])
+        && request.resource.data.status == 'new'
+        && request.resource.data.cat is string && request.resource.data.cat.size() <= 20
+        && request.resource.data.location is string && request.resource.data.location.size() <= 120
+        && request.resource.data.text is string && request.resource.data.text.size() >= 10 && request.resource.data.text.size() <= 2000
+        && request.resource.data.name is string && request.resource.data.name.size() <= 60
+        && request.resource.data.roblox is string && request.resource.data.roblox.size() <= 40
+        && request.resource.data.ref is string && request.resource.data.ref.size() <= 40
+        && request.resource.data.at is number;
+      allow read, update: if isLeader();
+      allow delete: if isOwner();
     }
 
     // Online jelzés és "éppen ír…"
