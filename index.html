@@ -1239,6 +1239,42 @@ body.rec-hide img,body.rec-hide .mug,body.rec-hide .av.has-photo,body.rec-hide .
 .medsheet .doc-actions{padding:10px 16px;border-top:1px solid var(--rule)}
 @media (max-width:860px){.unit-hero{grid-template-columns:1fr}.uh-stats{grid-template-columns:repeat(4,minmax(0,1fr))}.vrow{grid-template-columns:1fr}.varrow{display:none}}
 @media (max-width:520px){.uh-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.vgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
+
+/* Központi gép */
+.kz{display:grid;grid-template-columns:320px minmax(0,1fr) 360px;grid-template-rows:auto minmax(0,1fr);gap:10px;padding:10px;height:calc(100dvh - 150px);min-height:600px;background:#050b1a;color:#e6eaf4}
+.kz-top{grid-column:1/-1;display:flex;align-items:center;flex-wrap:wrap;gap:10px 14px;min-width:0;background:#0a2667;border-bottom:2px solid #c7a957;border-radius:8px;padding:8px 14px}
+.kz-top .t{display:flex;flex-direction:column}.kz-top .t b{color:#e3ca7b;letter-spacing:.04em}.kz-top .t span{font-size:12px;color:#b7c2dc}
+.kz-top .st{display:flex;gap:8px;align-items:center;margin-left:auto;flex-wrap:wrap}.kz-top .clk{font-size:18px;min-width:90px;text-align:right}
+.kz-top .btn-line{color:#e6eaf4;border-color:#3a5199;background:transparent}
+.kz .chip{background:transparent;color:#b7c2dc;border-color:#22346a}.kz .chip.ok{color:#57c994;border-color:#57c994}
+.kz-left,.kz-right{background:#091534;border:1px solid #22346a;border-radius:8px;display:flex;flex-direction:column;min-height:0;padding:10px;gap:8px}
+.kz-lh{display:flex;align-items:center;gap:8px}.kz-lh b{color:#e3ca7b;letter-spacing:.06em}.kz-lh span{font-size:12px;color:#a7b1ca;flex:1}
+.kz-calls,.kz-body{overflow:auto;display:flex;flex-direction:column;gap:8px;min-height:0;flex:1;padding-right:2px}
+.kz-row{display:flex;gap:6px;flex-wrap:wrap;align-items:center}
+.kz-chip{border:1px solid #22346a;background:#071028;color:#a7b1ca;border-radius:999px;padding:4px 11px;font-size:12px;font-weight:600;cursor:pointer}
+.kz-chip.on{background:#173a87;color:#fff;border-color:#173a87}.kz-chip.on.gold{background:#dcc173;color:#1a1405;border-color:#dcc173}
+.kz-call{display:flex;flex-direction:column;gap:2px;text-align:left;background:#0e1d42;border:1px solid color-mix(in srgb,var(--p) 45%,#22346a);border-left:4px solid var(--p);border-radius:8px;padding:8px 10px;color:inherit;cursor:pointer}
+.kz-call.sel{background:#173a87;border-color:#dcc173}.kz-call.closed{opacity:.6}
+.kz-call .top{display:flex;justify-content:space-between;font:600 11px/1.4 var(--f-mono,monospace)}.kz-call b{font-size:14px}.kz-call small{font-size:12px;color:#a7b1ca}.kz-call small.ok{color:#57c994}.kz-call small.warn{color:#f0b54e}
+.kz-map{position:relative;background:#0d151e;border:1px solid #22346a;border-radius:8px;overflow:hidden;min-height:0}
+.kz-map canvas{width:100%;height:100%;display:block;cursor:grab;touch-action:none}.kz-map canvas:active{cursor:grabbing}
+.kz-legend{position:absolute;top:10px;left:10px;display:flex;gap:12px;background:rgba(5,11,26,.8);border-radius:999px;padding:4px 12px;font-size:12px;font-weight:700;pointer-events:none}
+.kz-zoom{position:absolute;top:10px;right:10px;display:flex;flex-direction:column;gap:4px}.kz-zoom button{width:34px;height:34px;border-radius:6px;border:0;background:#173a87;color:#fff;font-size:18px;cursor:pointer}
+.kz-hint{position:absolute;left:12px;bottom:10px;font-size:13px;color:#e3ca7b;pointer-events:none}
+.kz-card{background:#0e1d42;border:1px solid #22346a;border-radius:8px;padding:10px;display:flex;flex-direction:column;gap:5px}.kz-card h3{font-size:17px;margin:0}.kz-card p{margin:0;font-size:14px;color:#c9d0e2}
+.kz-ref{font:700 11px/1.4 var(--f-mono,monospace);color:#a7b1ca}.kz-meta{font-size:12px;color:#a7b1ca}.kz-note{font-size:13px;color:#e3ca7b}
+.kz-sec{font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:#77829f;margin-top:4px}
+.kz-list{display:flex;flex-direction:column;gap:4px}
+.kz-unit{display:flex;align-items:center;gap:8px;background:#071028;border:1px solid #22346a;border-radius:6px;padding:6px 8px;color:inherit;cursor:pointer;text-align:left}
+.kz-unit.on{background:#14321f;border-color:#2ea062}.kz-unit .dot{width:10px;height:10px;border-radius:50%;flex:none}.kz-unit .nm{flex:1;display:flex;flex-direction:column;min-width:0}.kz-unit .nm small{font-size:11px;color:#a7b1ca}.kz-unit .act{font-size:11px;font-weight:700;color:#dcc173}.kz-unit.on .act{color:#57c994}
+.kz-uhead{display:flex;gap:10px;align-items:center}.kz-uhead div{display:flex;flex-direction:column}.kz-uhead small{font-size:12px;color:#a7b1ca}
+.kz-av{width:40px;height:40px;border-radius:50%;border:2px solid;display:grid;place-items:center;font-weight:700;background:#071028;flex:none}
+.kz-in{width:100%;background:#071028;border:1px solid #22346a;border-radius:6px;color:#e6eaf4;padding:8px 10px;font:inherit;font-size:14px}.kz-in:focus{outline:2px solid #c7a957;outline-offset:0}
+.kz-send{display:flex;gap:6px}.kz-log{display:flex;flex-direction:column;gap:6px}
+.kz-msg{background:#0e1d42;border-radius:6px;padding:6px 9px;font-size:13px}.kz-msg .hd{font:600 11px/1.5 var(--f-mono,monospace);color:#8ce6aa}.kz-msg.hq .hd{color:#e3ca7b}.kz-msg.urgent{background:#461418}
+.kz-empty{color:#77829f;font-size:14px;padding:10px;border:1px dashed #22346a;border-radius:8px;text-align:center}
+.kz .hint{color:#a7b1ca;font-size:12px;margin:0}
+@media (max-width:1100px){.kz .chip{white-space:normal}.kz-top .st{margin-left:0}.kz{grid-template-columns:minmax(0,1fr);grid-template-rows:auto 420px auto auto;height:auto}.kz-map{grid-row:2}.kz-left{max-height:420px}.kz-right{max-height:600px}}
 </style>
 </head>
 <body>
@@ -1263,6 +1299,7 @@ body.rec-hide img,body.rec-hide .mug,body.rec-hide .av.has-photo,body.rec-hide .
         <a href="#bejelentes">Bejelentés</a>
         <a href="#korozes">Körözések</a>
         <a href="#iroda">Szolgálati felület</a>
+        <a href="#kozpont" id="navKozpont" hidden>Központi gép</a>
         <a href="#vezetes" id="navAdmin" hidden>Vezetés</a>
       </nav>
       <a class="bell" id="bellBtn" href="#iroda" hidden aria-label="Teendők"><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9"/><path d="M10.3 21a1.94 1.94 0 0 0 3.4 0"/></svg><span class="n" id="bellN" hidden></span></a>
@@ -1386,7 +1423,7 @@ body.rec-hide img,body.rec-hide .mug,body.rec-hide .av.has-photo,body.rec-hide .
               <div class="org-patches"><a class="pt" href="#egysegek"><img src="img/folt-mesterlovesz.webp" alt="Mesterlövész Egység felvarró" width="92" height="118" loading="lazy"><span>Mesterlövész Egység</span></a><a class="pt" href="#egysegek"><img src="img/folt-taktikai.webp" alt="Taktikai és Fegyverspecifikus Alosztály felvarró" width="92" height="118" loading="lazy"><span>Taktikai és Fegyverspecifikus Alosztály</span></a></div></div>
             <div class="org-node"><div class="org-art"><img class="org-logo" src="img/logo-ellatasi-fo.webp" alt="A Személyellátási és Logisztikai Főosztály logója" width="84" height="84"></div><b>Személyellátási és Logisztikai Főosztály</b><span>Ellátás, evakuáció, egészségügy</span>
               <div class="org-patches"><a class="pt" href="#egysegek"><img src="img/folt-ellatas.webp" alt="Ellátás felvarró" width="92" height="118" loading="lazy"><span>Ellátás</span></a></div></div>
-            <div class="org-node"><div class="org-art"><img class="org-logo" src="img/logo-strategiai.webp" alt="A Stratégiai Tervezési és Vészhelyzeti Tanács logója" width="84" height="84"></div><b>Stratégiai Tervezési és Vészhelyzeti Tanács</b><span>Tervezés, krízisdöntések</span><div class="org-patches"><a class="pt" href="#egysegek"><img src="img/folt-strategiai.webp" alt="Stratégiai Tanács felvarró" width="92" height="118" loading="lazy"><span>A Tanács felvarrója</span></a></div></div>
+            <div class="org-node"><div class="org-art"><img class="org-logo" src="img/logo-strategiai.webp" alt="A Stratégiai Tervezési és Vészhelyzeti Tanács logója" width="84" height="84"></div><b>Stratégiai Tervezési és Vészhelyzeti Tanács</b><span>Tervezés, krízisdöntések</span><div class="org-patches"><a class="pt" href="#egysegek"><img src="img/folt-strategiai.webp" alt="Stratégiai Tanács felvarró" width="92" height="118" loading="lazy"><span>A Tanács felvarrója</span></a><a class="pt" href="#egysegek"><img src="img/folt-iranyitas.webp" alt="Központi Irányítás felvarró" width="92" height="118" loading="lazy"><span>Központi Irányítás</span></a></div></div>
             <div class="org-node"><div class="org-art"><img class="org-logo" src="img/logo-titkos.webp" alt="A Titkos Műveletek Osztályának logója" width="84" height="84"></div><b>Titkos Műveletek Osztálya</b><span>Minősített műveletek</span><div class="org-patches"><a class="pt" href="#egysegek"><img src="img/folt-titkos.webp" alt="Titkos Műveletek Osztálya felvarró" width="92" height="118" loading="lazy"><span>Az Osztály felvarrója</span></a></div></div>
           </div>
           <div class="insig-band"><span style="font-size:14px;color:var(--ink-2)">Minden főosztály és egység saját logót és felvarrót visel.</span><span class="row" id="insigRow"></span><a class="btn btn-line btn-sm" href="#egysegek">Jelképek megtekintése →</a></div>
@@ -1575,6 +1612,7 @@ body.rec-hide img,body.rec-hide .mug,body.rec-hide .av.has-photo,body.rec-hide .
           <div class="panel"><div class="ph"><h2>Riasztási fokozat</h2><span class="cnt">A főoldalon és a belső rendszerben azonnal megjelenik.</span></div><div class="pb"><div class="alert-seg" id="admAlert"></div></div></div>
           <div class="panel"><div class="ph"><h2>Felvételi kérelmek</h2><span class="cnt" id="admAppsCnt"></span></div><div class="pb" id="admApps"></div></div>
           <div class="panel"><div class="ph"><h2>Állomány</h2><span class="cnt" id="admRosterCnt"></span></div><div class="pb"><div class="tbl-wrap" id="admRoster"></div></div></div>
+          <div class="panel"><div class="ph"><h2>Központi gép – saját belépés</h2><span class="cnt" id="admKzCnt"></span></div><div class="pb" id="admKzBody" style="display:flex;flex-direction:column;gap:14px"></div></div>
           <div class="panel"><div class="ph"><h2>Roblox-játék összekapcsolása</h2><span class="cnt" id="admRbxCnt"></span></div><div class="pb" id="admRbxBody" style="display:flex;flex-direction:column;gap:14px"></div></div>
           <div class="panel"><div class="ph"><h2>Rendelet kihirdetése</h2><span class="cnt" id="decNext"></span></div><div class="pb" style="display:flex;flex-direction:column;gap:16px">
             <form id="decForm" style="display:flex;flex-direction:column;gap:14px">
@@ -1614,6 +1652,25 @@ body.rec-hide img,body.rec-hide .mug,body.rec-hide .av.has-photo,body.rec-hide .
           <div class="utabs" id="unitTabs" role="tablist" aria-label="Egységek"></div>
           <div class="dash" id="egysegDash"></div>
         </div>
+      </div>
+    </section>
+
+    <!-- ================= KÖZPONTI GÉP (diszpécserpult) ================= -->
+    <section class="view" id="v-kozpont" hidden>
+      <div class="wrap mpage" id="kozpontGateWrap"><div class="mgate gate-wrap" id="kozpontGate"></div></div>
+      <div class="kz" id="kozpontBody" hidden>
+        <header class="kz-top"><img src="img/logo-iranyitas.webp" alt="" width="40" height="40"><div class="t"><b>NEKEH · KÖZPONTI IRÁNYÍTÁS</b><span>Központi gép · diszpécserpult</span></div><div class="st" id="kzStatus"></div><div class="clk mono" id="kzClock"></div></header>
+        <aside class="kz-left">
+          <div class="kz-lh"><b>HÍVÁSOK</b><span id="kzCallCnt"></span><button type="button" class="btn btn-gold btn-sm" id="kzNew">+ Új hívás</button></div>
+          <div class="kz-row" id="kzFilter"><button type="button" class="kz-chip on" data-f="aktiv">Aktív</button><button type="button" class="kz-chip" data-f="osszes">Összes</button></div>
+          <div class="kz-calls" id="kzCalls"></div>
+        </aside>
+        <div class="kz-map"><canvas id="kzCanvas"></canvas>
+          <div class="kz-legend"><span style="color:#57c994">● Egység</span><span style="color:#f0b54e">◆ Hívás</span><span style="color:#78aaff">■ Jármű</span></div>
+          <div class="kz-zoom"><button type="button" id="kzZoomIn" aria-label="Nagyítás">+</button><button type="button" id="kzZoomOut" aria-label="Kicsinyítés">−</button><button type="button" id="kzZoomHome" aria-label="Alaphelyzet">⌂</button></div>
+          <div class="kz-hint" id="kzHint"></div>
+        </div>
+        <aside class="kz-right"><div class="kz-row kz-tabs" id="kzTabs"></div><div class="kz-body" id="kzBody"></div></aside>
       </div>
     </section>
 
@@ -1903,13 +1960,14 @@ const RANK = Object.fromEntries(RANKS.map(r => [r.id, r]));
 const UNITS = [
   {id:'mesterlovesz', name:'Mesterlövész Egység', short:'Mesterlövész', patch:'img/folt-mesterlovesz.webp', band:'img/logo-mesterlovesz.webp', logo:'img/logo-mesterlovesz.webp', parent:'Közrendvédelmi Parancsnokság', desc:'Nagy távolságú precíziós támogatás, megfigyelés és felderítés a gyorsbeavatkozó műveletek során.'},
   {id:'taktikai', name:'Taktikai és Fegyverspecifikus Alosztály', short:'Taktikai Alosztály', patch:'img/folt-taktikai.webp', band:'img/logo-taktikai.webp', logo:'img/logo-taktikai.webp', parent:'Közrendvédelmi Parancsnokság', desc:'Terrorelhárítás, épületbehatolás, speciális fegyverzet kezelése és harctéri egészségügyi támogatás.'},
+  {id:'iranyitas', name:'Központi Irányítás', short:'Központi Irányítás', patch:'img/folt-iranyitas.webp', band:'img/logo-iranyitas.webp', logo:'img/logo-iranyitas.webp', parent:'Stratégiai Tervezési és Vészhelyzeti Tanács', desc:'112-es hívásfogadás, az egységek riasztása és koordinálása, rádióforgalom és élő helyzetkép – a Központi gépen, a játékban és a weboldalon is.'},
   {id:'ellatas', name:'Ellátás', short:'Ellátás', patch:'img/folt-ellatas.webp', band:'img/logo-ellatas.webp', logo:'img/logo-ellatas.webp', parent:'Személyellátási és Logisztikai Főosztály', desc:'Élelmiszer-, gyógyszer- és vízellátás, evakuáció, ideiglenes szállások és egészségügyi ellátóhelyek telepítése.'},
 ];
 const UNIT = Object.fromEntries(UNITS.map(u => [u.id, u]));
 const DIVISIONS = [
   {id:'kozrend', name:'Közrendvédelmi Parancsnokság', short:'Rendfenntartás, gyorsbeavatkozás', units:['mesterlovesz','taktikai'], desc:'Országos bűnmegelőzési és rendfenntartási műveletek, elit gyorsbeavatkozó egységek: terrorelhárítás, kiberbiztonság, bűnüldözés.'},
   {id:'ellatasi-fo', name:'Személyellátási és Logisztikai Főosztály', short:'Ellátás, evakuáció, egészségügy', units:['ellatas'], desc:'Élelmiszer-, gyógyszer- és vízellátás, evakuációs műveletek, ideiglenes lakóhelyek és egészségügyi ellátó egységek telepítése.'},
-  {id:'strategiai', name:'Stratégiai Tervezési és Vészhelyzeti Tanács', short:'Tervezés, krízisdöntések', units:[], desc:'Hosszú távú tervezés, krízisforgatókönyvek kidolgozása és a Főbiztos döntéseinek előkészítése. Tagjai a Parancsnokok.'},
+  {id:'strategiai', name:'Stratégiai Tervezési és Vészhelyzeti Tanács', short:'Tervezés, krízisdöntések', units:['iranyitas'], desc:'Hosszú távú tervezés, krízisforgatókönyvek kidolgozása és a Főbiztos döntéseinek előkészítése. Tagjai a Parancsnokok.'},
   {id:'titkos', name:'Titkos Műveletek Osztálya', short:'Minősített műveletek', units:[], desc:'Minősített műveletek és felderítés. Az osztály tagjainak kiléte és tevékenysége nem nyilvános.'},
 ];
 const ASSIGN = [
@@ -1919,6 +1977,7 @@ const ASSIGN = [
   {id:'ellatasi-fo', name:'Személyellátási és Logisztikai Főosztály', short:'Személyellátás'},
   {id:'ellatas', name:'Ellátás', short:'Ellátás'},
   {id:'strategiai', name:'Stratégiai Tervezési és Vészhelyzeti Tanács', short:'Vészhelyzeti Tanács'},
+  {id:'iranyitas', name:'Központi Irányítás', short:'Központi Irányítás'},
   {id:'titkos', name:'Titkos Műveletek Osztálya', short:'Titkos Műveletek'},
 ];
 for (const d of DIVISIONS) if (!UNIT[d.id]) UNIT[d.id] = {...d, short:(ASSIGN.find(a => a.id === d.id) || d).short, logo:'img/logo-' + d.id + '.webp', patch:'img/folt-' + d.id + '.webp', band:'img/logo-' + d.id + '.webp'};
@@ -1941,6 +2000,7 @@ const CATS = [
     {id:'u-mesterlovesz', name:'mesterlövész', unit:'mesterlovesz', topic:'A Mesterlövész Egység csatornája.'},
     {id:'u-taktikai', name:'taktikai-alosztály', unit:'taktikai', topic:'A Taktikai és Fegyverspecifikus Alosztály csatornája.'},
     {id:'u-ellatas', name:'ellátás', unit:'ellatas', topic:'Az Ellátás egység csatornája.'},
+    {id:'u-iranyitas', name:'központi-irányítás', unit:'iranyitas', topic:'A Központi Irányítás (diszpécserek) csatornája.'},
   ]},
   {name:'Vezetés', ch:[
     {id:'parancsnoki', name:'parancsnoki-törzs', view:50, topic:'A parancsnokok és a Főbiztos egyeztetése.'},
@@ -2204,7 +2264,7 @@ const S = {
   loaded:{config:false, users:false, roles:false, apps:false, decrees:false, msgs:{}, dutylog:false, reports:false, orders:false, events:false, persons:false, pubWanted:false}, msgErr:{},
   route:'fooldal', ch:store.get('ch','altalanos'), view:'text', vch:null, prio:1, reply:null, editing:null,
   showMembers:true, showMembersNarrow:false, reapply:false, prefUnit:null,
-  duty:{}, dutylog:[], reports:[], orders:[], events:[], records:{subj:null, list:[]}, tips:[], aktaUid:null, unitTab:store.get('unitTab', null), unitReports:{}, unitOpen:new Set(), repTab:'new', editReport:null, tipDone:null,
+  duty:{}, dutylog:[], reports:[], orders:[], events:[], records:{subj:null, list:[]}, tips:[], aktaUid:null, unitTab:store.get('unitTab', null), unitReports:{}, unitOpen:new Set(), dispatchUid:null, dispatchMeta:null, kz:{main:null, map:null, live:[], wanted:[], reports:[]}, repTab:'new', editReport:null, tipDone:null,
   persons:[], pubWanted:[], entries:{pid:null, list:[]}, rbxlinks:{}, rbxcode:null, gameservers:[], gameMeta:null, gameSecret:null, personId:null, personDoc:null, personEdit:false, attach:null,
 };
 const SUBS = new Map();
@@ -2287,6 +2347,17 @@ function syncSubs(){
   W.set('pubwanted@' + (uid || 'anon'), () => B.watchCol('persons', {where:['publicWanted', '==', true]}, l => { S.pubWanted = l; S.loaded.pubWanted = true; changed(); }, e => { dbErr('pubwanted')(e); S.loaded.pubWanted = true; changed(); }));
   W.set('gameservers', () => B.watchCol('gameservers', {}, l => { S.gameservers = l; changed(); }, dbErr('gameservers')));
   if (uid) {
+    W.set('dispmeta@' + uid, () => B.watchDoc('meta/dispatch', d => { S.dispatchUid = d ? d.uid : null; S.dispatchMeta = d; changed(); }, e => { dbErr('dispmeta')(e); }));
+    if (canKozpont(uid) && S.route === 'kozpont') {
+      W.set('kzmain@' + uid, () => B.watchDoc('dispatch/main', d => { S.kz.main = d; scheduleRender(); }, dbErr('kzmain')));
+      W.set('kzmap@' + uid, () => B.watchDoc('dispatch/map', d => { S.kz.map = d; scheduleRender(); }, dbErr('kzmap')));
+      W.set('kzlive@' + uid, () => B.watchCol('live', {}, l => { S.kz.live = l; scheduleRender(); }, dbErr('kzlive')));
+      W.set('kzwanted@' + uid, () => B.watchCol('persons', {where:['wanted', '==', true]}, l => { S.kz.wanted = l; scheduleRender(); }, dbErr('kzwanted')));
+      if (!isLeader(uid)) {
+        W.set('kztips@' + uid, () => B.watchCol('tips', {order:'at', dir:'desc', limit:60}, l => { S.tips = l; scheduleRender(); }, dbErr('kztips')));
+        W.set('kzreports@' + uid, () => B.watchCol('reports', {order:'createdAt', dir:'desc', limit:30}, l => { S.kz.reports = l; scheduleRender(); }, dbErr('kzreports')));
+      }
+    }
     W.set('users@' + uid, () => B.watchCol('users', {}, l => { S.users = Object.fromEntries(l.map(d => [d.id, d])); S.loaded.users = true; changed(); }, dbErr('users')));
     W.set('myapp@' + uid, () => B.watchDoc('applications/' + uid, d => { S.myApp = d; changed(); }, e => { dbErr('myapp')(e); S.myApp = null; changed(); }));
     if (S.ownerUid === uid) {
@@ -2338,7 +2409,7 @@ function scheduleRender(withSubs){
 }
 
 /* ================= routing ================= */
-const ROUTES = ['fooldal','egysegek','egyseg','kozlony','jelentkezes','bejelentes','korozes','belepes','iroda','belso','szolgalat','jelentesek','nyilvantartas','szemely','parancsok','naptar','allomany','akta','vezetes'];
+const ROUTES = ['fooldal','egysegek','egyseg','kozpont','kozlony','jelentkezes','bejelentes','korozes','belepes','iroda','belso','szolgalat','jelentesek','nyilvantartas','szemely','parancsok','naptar','allomany','akta','vezetes'];
 function route(){
   let r = location.hash.slice(1).replace(/^\/+/, '');
   if (!ROUTES.includes(r)) r = 'fooldal';
@@ -2366,6 +2437,7 @@ function renderAll(){
   if (S.route === 'vezetes') renderAdmin();
   if (S.route === 'iroda') renderIroda();
   if (S.route === 'egyseg') renderEgyseg();
+  if (S.route === 'kozpont') { kzSetup(); renderKozpont(false); }
   if (S.route === 'szolgalat') renderSzolgalat();
   if (S.route === 'jelentesek') renderJelentesek();
   if (S.route === 'parancsok') renderParancsok();
@@ -2382,18 +2454,21 @@ function renderAll(){
 function renderChrome(){
   $('#demoStrip').hidden = S.mode !== 'demo';
   $('#navAdmin').hidden = !(me() && isOwnerUid(me()));
+  $('#navKozpont').hidden = !(me() && canKozpont(me()));
+  // a Központi gép saját fiókja csak a diszpécserpultot használja
+  if (me() && isDispatchAcct(me()) && !['kozpont', 'fooldal', 'kozlony', 'korozes', 'bejelentes', 'egysegek'].includes(S.route)) location.hash = 'kozpont';
   const inApp = S.route === 'belso' && access() === 'member';
   $('#main').classList.toggle('is-app', inApp);
   $('#foot').hidden = S.route === 'belso' || S.route === 'belepes';
   renderSubnav();
   const btn = $('#acctBtn');
-  const key = JSON.stringify([me(), S.auth && nameOf(me()), access(), rankName(rankOf(me())), S.users[me()] && S.users[me()].photo]);
+  const key = JSON.stringify([me(), S.auth && nameOf(me()), access(), rankName(rankOf(me())), S.users[me()] && S.users[me()].photo, S.dispatchUid]);
   if (btn.dataset.k === key) return;
   btn.dataset.k = key; btn.replaceChildren();
   if (!S.auth) { btn.className = 'acct out'; btn.textContent = S.ready ? 'Bejelentkezés' : '…'; return; }
   btn.className = 'acct';
   const st = access();
-  const sub = st === 'member' || st === 'member-noprofile' ? rankName(rankOf(me())) : st === 'applicant' ? 'Jelentkező' : st === 'loading' ? ' ' : 'Vendég';
+  const sub = isDispatchAcct(me()) ? 'Központi gép' : st === 'member' || st === 'member-noprofile' ? rankName(rankOf(me())) : st === 'applicant' ? 'Jelentkező' : st === 'loading' ? ' ' : 'Vendég';
   btn.append(avatarEl(me(), 'av'), h('span', {class:'t'}, h('b', {text:nameOf(me())}), h('span', {text:sub})));
   btn.setAttribute('aria-label', 'Fiók: ' + nameOf(me()));
 }
@@ -2407,6 +2482,7 @@ function openAcctMenu(){
   if (S.users[me()]) m.append(item('user', 'Profil és jelszó', openProfileEdit));
   if (st === 'member') { m.append(item('radio', 'Szolgálati felület', () => { location.hash = 'iroda'; })); m.append(item('doc', 'Személyi aktám', () => { S.aktaUid = null; location.hash = 'akta'; })); }
   else m.append(item('file', 'Kérelmem állapota', () => { location.hash = 'jelentkezes'; }));
+  if (canKozpont(me())) m.append(item('radio', 'Központi gép', () => { location.hash = 'kozpont'; }));
   if (isOwnerUid(me())) m.append(item('shield', 'Vezetés', () => { location.hash = 'vezetes'; }));
   m.append(item('exit', 'Kijelentkezés', doLogout));
   m.hidden = false; $('#acctBtn').setAttribute('aria-expanded', 'true');
@@ -3358,7 +3434,7 @@ function renderAdmin(){
   if (!ok) return;
   const seg = $('#admAlert'); seg.replaceChildren();
   for (const k of [1,2,3,4]) { const a = ALERTS[k]; seg.append(h('button', {type:'button', class:a.tone, 'aria-pressed':String((S.config.alert || 1) === k), onclick:() => saveConfig({alert:k}, `Riasztási fokozat: ${a.roman} ${a.name}`)}, h('b', {text:a.roman + ' ' + a.name}), h('span', {text:a.desc}))); }
-  renderAdmApps(); renderAdmRoster(); renderAdmDecrees(); renderAdmRbx();
+  renderAdmApps(); renderAdmRoster(); renderAdmDecrees(); renderAdmRbx(); renderAdmKozpont();
   if (!settingsDirty) fillSettings();
 }
 function fillSettings(){
@@ -3739,7 +3815,7 @@ function renderJelentesek(){
 
 /* ---------- egységek saját felülete ---------- */
 const MED_UNITS = ['ellatas', 'ellatasi-fo'];
-const UNIT_CH = {mesterlovesz:'u-mesterlovesz', taktikai:'u-taktikai', ellatas:'u-ellatas', 'ellatasi-fo':'u-ellatas'};
+const UNIT_CH = {mesterlovesz:'u-mesterlovesz', taktikai:'u-taktikai', ellatas:'u-ellatas', 'ellatasi-fo':'u-ellatas', iranyitas:'u-iranyitas'};
 function myUnitTabs(){ const u = me(); return isLeader(u) ? ASSIGN.map(a => a.id) : unitsOf(u).filter(id => UNIT[id]); }
 function unitMembers(id){
   const kids = (DIVISIONS.find(d => d.id === id) || {}).units || [];
@@ -3839,6 +3915,9 @@ function renderEgyseg(){
   const id = S.unitTab, kids = (DIVISIONS.find(d => d.id === id) || {}).units || [];
   const med = MED_UNITS.includes(id), combat = ['kozrend', 'mesterlovesz', 'taktikai'].includes(id);
   dash.replaceChildren(h('div', {class:'span12'}, unitHero(id)));
+  if (id === 'iranyitas') dash.append(h('div', {class:'span12'}, card('Központi gép', h('a', {class:'more', href:'#kozpont', text:'Megnyitás →'}),
+    h('p', {style:'margin:0;color:var(--ink-2)', text:'Az egység munkaeszköze a Központi gép: élő térkép a szolgálatban lévő egységekkel és járművekkel, a 112-es hívások fogadása és kiosztása, rádióforgalom a játékba, lakossági bejelentések és körözések. A játékban a bázison álló diszpécserpulttal, a weben itt érhető el.'}),
+    h('div', {class:'row-btns'}, h('a', {class:'btn btn-gold', href:'#kozpont', text:'Központi gép megnyitása'})))));
   if (med) {
     const ej = unitReports(id).filter(r => r.type === 'ej'), weekly = ej.filter(r => r.createdAt >= weekStart());
     const rosc = ej.filter(r => parseEj(r).rosc).length;
@@ -3859,6 +3938,304 @@ function renderEgyseg(){
     const w = S.persons.filter(p => p.wanted).sort((a, b) => (b.wlevel || 0) - (a.wlevel || 0)).slice(0, 8);
     dash.append(h('div', {class:'span12'}, card('Aktív körözések', h('a', {class:'more', href:'#nyilvantartas', text:'Nyilvántartás →'}), w.length ? h('ul', {class:'umem'}, w.map(p => h('li', null, h('button', {type:'button', onclick:() => openPerson(p.id)}, h('span', {class:'nm'}, h('b', {text:p.name || '—'}), h('small', {text:[p.rbxName, p.wreason].filter(Boolean).join(' · ')})), h('span', {class:'pill t-danger', text:(p.wlevel || 1) + '. fokozat'}))))) : h('p', {class:'empty', text:'Nincs aktív körözés.'}))));
   }
+}
+
+/* ================= KÖZPONTI GÉP (diszpécserpult a weben) ================= */
+// Adatok: dispatch/main (hívások, rádió – a játékkal közös), dispatch/map (a pálya felülnézete), live/{szerver} (élő pozíciók)
+const KZ = {view:{zoom:1, ox:0, oy:0}, sel:null, tab:'hivas', filter:'aktiv', radioCh:0, picking:false, pick:null, form:false, mapHash:null, rects:[], hits:[], drag:null, beat:null};
+const KZ_PRIO = {1:{name:'Normál', c:'#6ea0ff'}, 2:{name:'Sürgős', c:'#f0963c'}, 3:{name:'Életveszély', c:'#ff4646'}};
+const KZ_STAT = {uj:['Új', '#f2776c'], kiosztva:['Kiosztva', '#f0b54e'], folyamatban:['Folyamatban', '#6ea0ff'], lezart:['Lezárva', '#77829f']};
+const KZ_USTAT = [
+  {id:'szabad', name:'Szabad', code:'10-8', c:'#2ea062'}, {id:'uton', name:'Úton', code:'10-76', c:'#d6961e'}, {id:'helyszin', name:'Helyszínen', code:'10-23', c:'#346ec8'},
+  {id:'elfoglalt', name:'Elfoglalt', code:'10-6', c:'#c86428'}, {id:'uldozes', name:'Üldözés', code:'10-80', c:'#c82832'}, {id:'szunet', name:'Szünet', code:'10-7', c:'#787c86'},
+];
+const KZ_US = Object.fromEntries(KZ_USTAT.map(s => [s.id, s]));
+const KZ_CH = [{id:0, name:'Mindenki'}, {id:1, name:'Központi'}, {id:2, name:'Taktikai'}, {id:3, name:'Ellátás'}, {id:4, name:'Parancsnoki'}];
+const isDispatchAcct = uid => !!uid && !!S.dispatchUid && uid === S.dispatchUid;
+const canKozpont = uid => !!uid && (isDispatchAcct(uid) || isLeader(uid) || inUnit(uid, 'iranyitas'));
+const kzName = () => isDispatchAcct(me()) ? 'Központi gép' : [rankName(rankOf(me())), nameOf(me())].filter(Boolean).join(' ');
+function kzId(p){ const a = 'abcdefghijkmnpqrstuvwxyz23456789'; let s = p; const r = new Uint8Array(9); crypto.getRandomValues(r); for (const x of r) s += a[x % a.length]; return s; }
+async function kzWrite(fields){
+  try { await S.B.update('dispatch/main', fields); }
+  catch (e) { if (String(e && (e.code || e.message)).includes('not-found')) { await S.B.set('dispatch/main', {at:Date.now()}, true); await S.B.update('dispatch/main', fields); } else throw e; }
+}
+function kzCalls(){
+  const c = (S.kz.main && S.kz.main.calls) || {};
+  return Object.entries(c).filter(([, v]) => v && typeof v === 'object').map(([id, v]) => ({...v, id, units:(v.units && !Array.isArray(v.units)) ? v.units : {}}))
+    .sort((a, b) => ((a.status === 'lezart') - (b.status === 'lezart')) || ((b.prio || 1) - (a.prio || 1)) || ((b.at || 0) - (a.at || 0)));
+}
+function kzUnits(){
+  const out = [], seen = new Set();
+  for (const l of S.kz.live) if (Date.now() - (l.at || 0) < 150e3) for (const u of (l.units || [])) if (!seen.has(u.uid)) { seen.add(u.uid); out.push({...u, server:l.id}); }
+  return out.sort((a, b) => (b.lvl || 0) - (a.lvl || 0) || String(a.n).localeCompare(String(b.n), 'hu'));
+}
+function kzCars(){ const out = []; for (const l of S.kz.live) if (Date.now() - (l.at || 0) < 150e3) for (const c of (l.cars || [])) out.push(c); return out; }
+function kzRadio(){ const r = (S.kz.main && S.kz.main.radio) || {}; return Object.entries(r).map(([id, m]) => ({...m, id})).filter(m => m && m.at).sort((a, b) => b.at - a.at); }
+const kzAgo = ms => { const s = Math.max(0, Math.floor((Date.now() - (ms || 0)) / 1000)); return s < 60 ? s + ' mp' : s < 3600 ? Math.floor(s / 60) + ' p' : Math.floor(s / 3600) + ' ó'; };
+
+// ---- térkép (vászon) ----
+function kzParseMap(){
+  const m = S.kz.map;
+  if (!m || m.hash === KZ.mapHash) return;
+  KZ.mapHash = m.hash;
+  KZ.rects = String(m.rects || '').split(';').map(s => s.split(',')).filter(a => a.length >= 6).map(a => ({x:+a[0], z:+a[1], w:+a[2], d:+a[3], r:+a[4], c:'#' + a[5], big:(+a[2]) * (+a[3]) > 100000}));
+}
+function kzBounds(){ return (S.kz.map && S.kz.map.bounds) || {minX:-200, minZ:-200, maxX:200, maxZ:200}; }
+function kzProj(cv){
+  const b = kzBounds(), W = cv.clientWidth, H = cv.clientHeight;
+  const sc = Math.min(W / (b.maxX - b.minX), H / (b.maxZ - b.minZ)) * KZ.view.zoom;
+  const cx = (b.minX + b.maxX) / 2, cz = (b.minZ + b.maxZ) / 2;
+  return {sc, p:(x, z) => [W / 2 + (x - cx) * sc + KZ.view.ox, H / 2 + (z - cz) * sc + KZ.view.oy], u:(px, py) => [(px - W / 2 - KZ.view.ox) / sc + cx, (py - H / 2 - KZ.view.oy) / sc + cz]};
+}
+function kzMix(hex, toward, t){ const a = parseInt(hex.slice(1), 16), b = parseInt(toward.slice(1), 16); const m = (s) => Math.round(((a >> s) & 255) * (1 - t) + ((b >> s) & 255) * t); return `rgb(${m(16)},${m(8)},${m(0)})`; }
+function kzDraw(){
+  const cv = $('#kzCanvas'); if (!cv || !cv.isConnected) return;
+  const dpr = window.devicePixelRatio || 1, W = cv.clientWidth, H = cv.clientHeight;
+  if (cv.width !== Math.round(W * dpr) || cv.height !== Math.round(H * dpr)) { cv.width = Math.round(W * dpr); cv.height = Math.round(H * dpr); }
+  const g = cv.getContext('2d'); g.setTransform(dpr, 0, 0, dpr, 0, 0);
+  g.fillStyle = '#0d151e'; g.fillRect(0, 0, W, H);
+  kzParseMap();
+  const P = kzProj(cv), b = kzBounds();
+  // rács 50 méterenként
+  g.strokeStyle = '#1c2838'; g.lineWidth = 1; const step = 50 / 0.28;
+  for (let x = Math.floor(b.minX / step) * step; x <= b.maxX; x += step) { const [px] = P.p(x, 0); g.beginPath(); g.moveTo(px, 0); g.lineTo(px, H); g.stroke(); }
+  for (let z = Math.floor(b.minZ / step) * step; z <= b.maxZ; z += step) { const [, py] = P.p(0, z); g.beginPath(); g.moveTo(0, py); g.lineTo(W, py); g.stroke(); }
+  for (const r of KZ.rects) {
+    const [px, py] = P.p(r.x, r.z);
+    g.save(); g.translate(px, py); g.rotate(r.r * Math.PI / 180);
+    g.fillStyle = kzMix(r.c, '#0d151e', r.big ? 0.75 : 0.3);
+    g.fillRect(-r.w * P.sc / 2, -r.d * P.sc / 2, Math.max(1, r.w * P.sc), Math.max(1, r.d * P.sc));
+    g.restore();
+  }
+  KZ.hits = [];
+  const label = (txt, x, y, col) => { g.font = '600 12px Inter, system-ui, sans-serif'; const w = g.measureText(txt).width + 10; g.fillStyle = 'rgba(5,11,26,.8)'; g.beginPath(); g.roundRect(x, y - 9, w, 18, 4); g.fill(); g.fillStyle = col || '#fff'; g.fillText(txt, x + 5, y + 4); };
+  for (const c of kzCars()) {
+    const [px, py] = P.p(c.x, c.z);
+    g.save(); g.translate(px, py); g.rotate(-(c.h || 0)); g.fillStyle = c.used ? '#78aaff' : '#46526a'; g.strokeStyle = '#fff'; g.lineWidth = 1; g.beginPath(); g.roundRect(-4, -6, 8, 12, 2); g.fill(); g.stroke(); g.restore();
+    if (c.used) label(c.n + (c.by ? ' · ' + c.by : ''), px + 8, py, '#b8d0ff');
+  }
+  for (const c of kzCalls()) {
+    if (c.status === 'lezart' || c.x == null || c.z == null) continue;
+    const [px, py] = P.p(c.x, c.z), s = KZ.sel === c.id ? 11 : 8, col = (KZ_PRIO[c.prio] || KZ_PRIO[1]).c;
+    if ((c.prio || 1) >= 2) { const t = (Date.now() % 1400) / 1400; g.strokeStyle = col; g.globalAlpha = 1 - t; g.lineWidth = 2; g.beginPath(); g.arc(px, py, 10 + t * 22, 0, Math.PI * 2); g.stroke(); g.globalAlpha = 1; }
+    g.save(); g.translate(px, py); g.rotate(Math.PI / 4); g.fillStyle = col; g.strokeStyle = '#fff'; g.lineWidth = KZ.sel === c.id ? 3 : 1.5; g.fillRect(-s, -s, s * 2, s * 2); g.strokeRect(-s, -s, s * 2, s * 2); g.restore();
+    label(c.ref || c.title || 'Hívás', px + 14, py, col);
+    KZ.hits.push({x:px, y:py, r:14, fn:() => { KZ.sel = c.id; KZ.tab = 'hivas'; renderKozpont(true); }});
+  }
+  for (const u of kzUnits()) {
+    const [px, py] = P.p(u.x, u.z), st = KZ_US[u.s] || KZ_US.szabad;
+    g.save(); g.translate(px, py); g.rotate(-(u.h || 0)); g.fillStyle = '#fff'; g.beginPath(); g.moveTo(0, -13); g.lineTo(4, -7); g.lineTo(-4, -7); g.fill(); g.restore();
+    g.fillStyle = st.c; g.strokeStyle = '#fff'; g.lineWidth = 2; g.beginPath(); g.arc(px, py, 7, 0, Math.PI * 2); g.fill(); g.stroke();
+    label((u.b || u.n) + (u.veh ? ' 🚓' : ''), px + 10, py, '#fff');
+    KZ.hits.push({x:px, y:py, r:10, fn:() => { KZ.tab = 'egysegek'; renderKozpont(true); }});
+  }
+  if (KZ.pick) { const [px, py] = P.p(KZ.pick.x, KZ.pick.z); g.save(); g.translate(px, py); g.rotate(Math.PI / 4); g.fillStyle = '#fff'; g.fillRect(-7, -7, 14, 14); g.restore(); label('ÚJ HÍVÁS', px + 12, py, '#fff'); }
+  if (!S.kz.map) { g.fillStyle = '#77829f'; g.font = '500 14px Inter, system-ui, sans-serif'; g.textAlign = 'center'; g.fillText('A pálya térképe akkor jelenik meg, ha egy játékszerver fut.', W / 2, H / 2); g.textAlign = 'start'; }
+}
+function kzMapEvents(cv){
+  cv.addEventListener('wheel', e => { e.preventDefault(); const f = e.deltaY < 0 ? 1.2 : 1 / 1.2; const r = cv.getBoundingClientRect(), mx = e.clientX - r.left - cv.clientWidth / 2, my = e.clientY - r.top - cv.clientHeight / 2; const nz = Math.min(14, Math.max(0.5, KZ.view.zoom * f)), k = nz / KZ.view.zoom; KZ.view.ox = mx - (mx - KZ.view.ox) * k; KZ.view.oy = my - (my - KZ.view.oy) * k; KZ.view.zoom = nz; kzDraw(); }, {passive:false});
+  cv.addEventListener('pointerdown', e => { KZ.drag = {x:e.clientX, y:e.clientY, ox:KZ.view.ox, oy:KZ.view.oy, moved:false}; cv.setPointerCapture(e.pointerId); });
+  cv.addEventListener('pointermove', e => { const d = KZ.drag; if (!d) return; const dx = e.clientX - d.x, dy = e.clientY - d.y; if (Math.hypot(dx, dy) > 4) d.moved = true; if (d.moved) { KZ.view.ox = d.ox + dx; KZ.view.oy = d.oy + dy; kzDraw(); } });
+  cv.addEventListener('pointerup', e => {
+    const d = KZ.drag; KZ.drag = null; if (!d || d.moved) return;
+    const r = cv.getBoundingClientRect(), x = e.clientX - r.left, y = e.clientY - r.top;
+    if (KZ.picking) { const [wx, wz] = kzProj(cv).u(x, y); KZ.pick = {x:Math.round(wx), z:Math.round(wz)}; KZ.picking = false; $('#kzHint').textContent = ''; const l = $('#kzPickLbl'); if (l) { l.textContent = `Helyszín a térképen: X ${KZ.pick.x}, Z ${KZ.pick.z}`; l.style.color = 'var(--ok)'; } kzDraw(); return; }
+    const hit = KZ.hits.slice().reverse().find(hh => Math.hypot(hh.x - x, hh.y - y) <= hh.r); if (hit) hit.fn();
+  });
+}
+function kzCenterOn(x, z){ const cv = $('#kzCanvas'); if (!cv) return; KZ.view.zoom = Math.max(KZ.view.zoom, 3); KZ.view.ox = 0; KZ.view.oy = 0; const P = kzProj(cv), [px, py] = P.p(x, z); KZ.view.ox = cv.clientWidth / 2 - px; KZ.view.oy = cv.clientHeight / 2 - py; kzDraw(); }
+
+// ---- műveletek ----
+async function kzSaveCall(c){ const {id, ...rest} = c; rest.upd = Date.now(); await kzWrite({['calls.' + id]: rest}); }
+async function kzNewCall(d){
+  const id = kzId('c'), ref = genCode('HV');
+  const c = {ref, cat:'egyeb', title:d.title, text:d.text || '', loc:d.loc || '', at:Date.now(), status:'uj', units:{}, by:kzName(), src:'web', prio:d.prio || 1, kind:d.kind || 'call'};
+  if (d.x != null) { c.x = d.x; c.z = d.z; c.y = 4; }
+  if (d.tip) c.tip = d.tip;
+  await kzWrite({['calls.' + id]: {...c, upd:Date.now()}});
+  return id;
+}
+async function kzRadioSend(ch, text){ const id = kzId('r'); await kzWrite({['radio.' + id]: {ch, text, name:kzName(), from:'KÖZPONT', at:Date.now(), src:'web', urgent:false}}); }
+
+// ---- jobb oldali fülek ----
+function kzCallDetail(){
+  const c = kzCalls().find(x => x.id === KZ.sel);
+  if (!c) return [h('div', {class:'kz-empty', text:'Válassz egy hívást a bal oldali listából vagy a térképen.'})];
+  const p = KZ_PRIO[c.prio] || KZ_PRIO[1], out = [];
+  out.push(h('div', {class:'kz-card', style:`border-color:${p.c}`},
+    h('div', {class:'kz-ref', style:`color:${p.c}`, text:`${c.ref || ''} · ${p.name.toUpperCase()}`}),
+    h('h3', {text:c.title || 'Hívás'}), c.text ? h('p', {text:c.text}) : null,
+    h('div', {class:'kz-meta', text:'Helyszín: ' + (c.loc || '—')}),
+    h('div', {class:'kz-meta', text:`Bejelentő: ${c.by || '—'} · ${kzAgo(c.at)} ezelőtt${c.src === 'web' ? ' · webről' : ' · játékból'}`}),
+    c.note ? h('div', {class:'kz-note', text:'Központ: ' + c.note}) : null));
+  out.push(h('div', {class:'kz-sec', text:'Állapot'}));
+  out.push(h('div', {class:'kz-row'}, Object.entries(KZ_STAT).map(([k, v]) => h('button', {type:'button', class:'kz-chip' + (c.status === k ? ' on' : ''), style:c.status === k ? `background:${v[1]};border-color:${v[1]}` : '', text:v[0], onclick:async () => { try { await kzSaveCall({...c, status:k}); if (k === 'lezart' && c.tip) S.B.update('tips/' + c.tip, {status:'done', doneBy:me(), doneAt:Date.now()}).catch(() => {}); } catch (e) { toast(errText(e)); } }}))));
+  out.push(h('div', {class:'kz-sec', text:'Egységek kiosztása'}));
+  const us = kzUnits();
+  out.push(us.length ? h('div', {class:'kz-list'}, us.map(u => {
+    const on = c.units && c.units[u.uid] != null, st = KZ_US[u.s] || KZ_US.szabad;
+    const dist = c.x != null ? Math.round(Math.hypot(u.x - c.x, u.z - c.z) * 0.28) : null;
+    return h('button', {type:'button', class:'kz-unit' + (on ? ' on' : ''), onclick:async () => {
+      const units = {...(c.units || {})}; if (on) delete units[u.uid]; else units[u.uid] = u.b || u.n;
+      try { await kzSaveCall({...c, units, status:c.status === 'uj' && Object.keys(units).length ? 'kiosztva' : c.status}); } catch (e) { toast(errText(e)); }
+    }}, h('span', {class:'dot', style:`background:${st.c}`}), h('span', {class:'nm'}, h('b', {text:(u.b ? u.b + ' · ' : '') + u.n}), h('small', {text:[st.name, dist != null ? dist + ' m' : null, u.veh].filter(Boolean).join(' · ')})), h('span', {class:'act', text:on ? '✓ Kiosztva' : 'Kiosztás'}));
+  })) : h('div', {class:'kz-empty', text:'Jelenleg nincs szolgálatban lévő egység a játékban.'}));
+  out.push(h('div', {class:'kz-sec', text:'Megjegyzés az egységeknek'}));
+  const nb = h('input', {class:'kz-in', value:c.note || '', maxlength:'200', placeholder:'pl. fegyveres gyanúsított, a hátsó bejáratnál'});
+  nb.addEventListener('change', async () => { try { await kzSaveCall({...c, note:nb.value.trim()}); } catch (e) { toast(errText(e)); } });
+  out.push(nb);
+  if (c.x != null) out.push(h('button', {type:'button', class:'btn btn-line btn-sm', text:'Térkép ráközelítése', onclick:() => kzCenterOn(c.x, c.z)}));
+  return out;
+}
+function kzUnitsTab(){
+  const us = kzUnits();
+  if (!us.length) return [h('div', {class:'kz-empty', text:'Senki sincs szolgálatban a játékban. (A weboldalon szolgálatban lévők a Szolgálati naplóban látszanak.)'})];
+  return us.map(u => { const st = KZ_US[u.s] || KZ_US.szabad; return h('div', {class:'kz-card'},
+    h('div', {class:'kz-uhead'}, h('span', {class:'kz-av', style:`border-color:${st.c}`, text:initials(u.n || '?')}),
+      h('div', null, h('b', {text:[u.r, u.n].filter(Boolean).join(' ')}), h('small', {text:[u.b, `${st.name} (${st.code})`, 'CH ' + (u.ch || 1), u.veh].filter(Boolean).join(' · ')}))),
+    h('div', {class:'kz-meta', text:'Szolgálatban: ' + (u.since ? kzAgo(u.since) : '—') + ' óta · ' + (UNIT[u.u] ? UNIT[u.u].short : 'beosztás nélkül')})); });
+}
+function kzRadioTab(){
+  const out = [h('div', {class:'kz-row'}, KZ_CH.map(c => h('button', {type:'button', class:'kz-chip' + (KZ.radioCh === c.id ? ' on gold' : ''), text:c.name, onclick:() => { KZ.radioCh = c.id; renderKozpont(true); }})))];
+  const inp = h('input', {class:'kz-in', id:'kzRadioIn', maxlength:'200', placeholder:'Üzenet a csatornára (Enter: adás)'});
+  const send = async () => { const t = inp.value.trim(); if (!t) return; inp.value = ''; try { await kzRadioSend(KZ.radioCh, t); renderKozpont(false); } catch (e) { toast(errText(e)); } };
+  inp.addEventListener('keydown', e => { if (e.key === 'Enter') { e.preventDefault(); send(); } });
+  out.push(h('div', {class:'kz-send'}, inp, h('button', {type:'button', class:'btn btn-gold btn-sm', text:'Adás', onclick:send})));
+  const msgs = kzRadio();
+  out.push(h('div', {class:'kz-sec', text:'Forgalom'}));
+  out.push(msgs.length ? h('div', {class:'kz-log'}, msgs.slice(0, 40).map(m => h('div', {class:'kz-msg' + (m.urgent ? ' urgent' : '') + (m.from === 'KÖZPONT' ? ' hq' : '')},
+    h('div', {class:'hd', text:`${m.ch ? 'CH ' + m.ch : 'MINDENKI'} · ${m.from || ''}${m.name && m.from !== m.name ? ' (' + m.name + ')' : ''} · ${kzAgo(m.at)}`}), h('div', {text:(m.code ? m.code + '  ' : '') + (m.text || '')})))) : h('div', {class:'kz-empty', text:'Még nincs rádióforgalom.'}));
+  return out;
+}
+function kzTipsTab(){
+  const tips = (S.tips || []).filter(t => t.status === 'new');
+  const out = [h('p', {class:'hint', text:'A weboldalon és a játékban érkezett lakossági bejelentések. A „Riasztás” hívást nyit belőle, és a játékban az egységek azonnal megkapják.'})];
+  if (!tips.length) out.push(h('div', {class:'kz-empty', text:'Nincs feldolgozatlan bejelentés.'}));
+  for (const t of tips.slice(0, 30)) {
+    const linked = kzCalls().some(c => c.tip === t.id || c.ref === t.ref);
+    out.push(h('div', {class:'kz-card'}, h('div', {class:'kz-ref', text:`${t.ref || ''} · ${TIP_CATS[t.cat] || 'Bejelentés'}`}), h('p', {text:t.text || ''}), h('div', {class:'kz-meta', text:`Helyszín: ${t.location || '—'} · ${t.name || 'névtelen'} · ${kzAgo(t.at)}`}),
+      h('div', {class:'kz-row'}, linked ? h('span', {class:'chip ok', text:'Hívás nyitva'}) : h('button', {type:'button', class:'btn btn-gold btn-sm', text:'Riasztás', onclick:async () => {
+        try { const id = await kzNewCall({title:TIP_CATS[t.cat] || 'Bejelentés', text:t.text, loc:t.location, prio:(t.cat === 'veszh' || t.cat === 'bunc') ? 2 : 1, tip:t.id}); KZ.sel = id; KZ.tab = 'hivas'; toast('Hívás nyitva, az egységek riasztva.'); renderKozpont(true); } catch (e) { toast(errText(e)); }
+      }}), h('button', {type:'button', class:'btn btn-line btn-sm', text:'Feldolgozva', onclick:() => S.B.update('tips/' + t.id, {status:'done', doneBy:me(), doneAt:Date.now()}).catch(e => toast(errText(e)))}))));
+  }
+  return out;
+}
+function kzWantedTab(){
+  const w = (S.kz.wanted || []).slice().sort((a, b) => (b.wlevel || 0) - (a.wlevel || 0));
+  if (!w.length) return [h('div', {class:'kz-empty', text:'Nincs aktív körözés.'})];
+  return w.map(p => h('div', {class:'kz-card', style:`border-color:${['', '#f0b54e', '#f28c46', '#eb5a50', '#c81e28'][p.wlevel || 1]}`}, h('b', {text:p.name || 'Ismeretlen'}), h('div', {class:'kz-meta', text:`${p.wlevel || 1}. fokozat · ${p.no || ''}${p.rbxName ? ' · ' + p.rbxName : ''}`}), p.wreason ? h('p', {text:p.wreason}) : null));
+}
+function kzReportsTab(){
+  const l = (S.kz.reports && S.kz.reports.length ? S.kz.reports : S.reports).slice().sort((a, b) => b.createdAt - a.createdAt).slice(0, 25);
+  if (!l.length) return [h('div', {class:'kz-empty', text:'Nincs megjeleníthető jelentés.'})];
+  return l.map(r => h('div', {class:'kz-card'}, h('div', {class:'kz-ref', text:`${(REPORT_TYPES[r.type] || REPORT_TYPES.bj).code} · ${r.ref || ''}`}), h('b', {text:r.title}), h('div', {class:'kz-meta', text:`${nameOf(r.uid)} · ${fmtStamp(r.createdAt)}${r.location ? ' · ' + r.location : ''}`})));
+}
+function kzNewForm(){
+  const t = h('input', {class:'kz-in', maxlength:'80', placeholder:'Cím, pl. „Lövöldözés a főtéren”'});
+  const tx = h('textarea', {class:'kz-in', maxlength:'600', rows:'3', placeholder:'Részletek (mit jelentettek, hány érintett, veszély)'});
+  const lo = h('input', {class:'kz-in', maxlength:'120', placeholder:'Helyszín (szövegesen, nem kötelező)'});
+  let prio = 1;
+  const pr = h('div', {class:'kz-row'}, [1, 2, 3].map(i => h('button', {type:'button', class:'kz-chip' + (i === 1 ? ' on' : ''), style:i === 1 ? `background:${KZ_PRIO[1].c};border-color:${KZ_PRIO[1].c}` : '', text:KZ_PRIO[i].name, onclick:e => { prio = i; [...pr.children].forEach((b, j) => { const on = j + 1 === i; b.classList.toggle('on', on); b.style.cssText = on ? `background:${KZ_PRIO[j + 1].c};border-color:${KZ_PRIO[j + 1].c}` : ''; }); }})));
+  KZ.pick = null;
+  return [h('div', {class:'kz-sec', text:'Új hívás rögzítése'}), t, tx, lo, pr,
+    h('div', {class:'kz-meta', id:'kzPickLbl', text:'Helyszín a térképen: nincs megjelölve'}),
+    h('button', {type:'button', class:'btn btn-line btn-sm', text:'Helyszín kijelölése a térképen', onclick:() => { KZ.picking = true; $('#kzHint').textContent = 'Kattints a térképre a hívás helyének megjelöléséhez…'; }}),
+    h('div', {class:'kz-row'}, h('button', {type:'button', class:'btn btn-gold btn-sm', text:'Hívás rögzítése és riasztás', onclick:async e => {
+      if (t.value.trim().length < 3) { t.focus(); return toast('Adj meg egy rövid címet.'); }
+      e.target.disabled = true;
+      try { const id = await kzNewCall({title:t.value.trim(), text:tx.value.trim(), loc:lo.value.trim() || (KZ.pick ? `X ${KZ.pick.x}, Z ${KZ.pick.z}` : ''), prio, x:KZ.pick ? KZ.pick.x : null, z:KZ.pick ? KZ.pick.z : null}); KZ.sel = id; KZ.tab = 'hivas'; KZ.form = false; KZ.pick = null; toast('Hívás rögzítve – a játékban az egységek riasztást kapnak.'); renderKozpont(true); }
+      catch (err) { toast(errText(err)); e.target.disabled = false; }
+    }}), h('button', {type:'button', class:'btn btn-line btn-sm', text:'Mégse', onclick:() => { KZ.form = false; KZ.pick = null; KZ.picking = false; $('#kzHint').textContent = ''; renderKozpont(true); }}))];
+}
+
+function renderKozpont(force){
+  const gate = $('#kozpontGate'), body = $('#kozpontBody');
+  const u = me(), ok = !!u && canKozpont(u);
+  gate.hidden = ok; body.hidden = !ok; $('#kozpontGateWrap').hidden = ok;
+  if (!ok) {
+    const st = access();
+    renderGate(gate, JSON.stringify(['kz', st, !!u, S.dispatchUid]), () => !u ? loginCard('gkz', 'A Központi gépet a saját szolgálati azonosítóddal, vagy a Központi gép külön belépési adataival érheted el.') :
+      h('div', {class:'login'}, h('div', {class:'hd'}, h('img', {src:'img/logo-iranyitas.webp', alt:''}), h('b', {text:'Nincs hozzáférésed'}), h('span', {text:'Központi gép'})), h('div', {class:'bd'}, h('p', {style:'color:var(--ink-2);font-size:14px', text:'A Központi gépet a Központi Irányítás egység tagjai, a vezetés, valamint a Központi gép saját fiókja használhatja.'}))));
+    return;
+  }
+  if (gate.childElementCount) { gate.replaceChildren(); gate.dataset.k = ''; }
+  // fejléc
+  const units = kzUnits(), live = S.kz.live.filter(l => Date.now() - (l.at || 0) < 150e3);
+  $('#kzStatus').replaceChildren(
+    h('span', {class:'chip ' + (live.length ? 'ok' : ''), text:live.length ? `● ${live.length} játékszerver · ${units.length} egység szolgálatban` : '○ Nincs futó játékszerver'}),
+    h('span', {class:'chip', text:kzName()}),
+    ...(isDispatchAcct(u) ? [h('button', {type:'button', class:'btn btn-line btn-sm', text:'Kilépés', onclick:doLogout})] : []));
+  // hívások
+  const lst = $('#kzCalls');
+  const calls = kzCalls().filter(c => KZ.filter === 'osszes' || c.status !== 'lezart');
+  $('#kzCallCnt').textContent = calls.length + ' db';
+  $$('#kzFilter button').forEach(b => b.classList.toggle('on', b.dataset.f === KZ.filter));
+  lst.replaceChildren(...(calls.length ? calls.map(c => {
+    const p = KZ_PRIO[c.prio] || KZ_PRIO[1], st = KZ_STAT[c.status] || KZ_STAT.uj, un = Object.values(c.units || {});
+    return h('button', {type:'button', class:'kz-call' + (KZ.sel === c.id ? ' sel' : '') + (c.status === 'lezart' ? ' closed' : ''), style:`--p:${p.c}`, onclick:() => { KZ.sel = c.id; KZ.tab = 'hivas'; KZ.form = false; renderKozpont(true); if (c.x != null) kzCenterOn(c.x, c.z); }},
+      h('div', {class:'top'}, h('span', {style:`color:${p.c}`, text:`● ${p.name.toUpperCase()} · ${c.ref || ''}`}), h('span', {style:`color:${st[1]}`, text:st[0].toUpperCase()})),
+      h('b', {text:c.title || 'Hívás'}), h('small', {text:c.loc || '—'}),
+      h('small', {class:un.length ? 'ok' : 'warn', text:`${kzAgo(c.at)} ezelőtt · ${un.length ? un.join(', ') : 'nincs kiosztva'}`}));
+  }) : [h('div', {class:'kz-empty', text:KZ.filter === 'aktiv' ? 'Nincs aktív hívás.' : 'Nincs hívás.'})]));
+  // fülek
+  const tabs = [['hivas', 'Hívás'], ['egysegek', `Egységek (${units.length})`], ['radio', 'Rádió'], ['bejelentesek', `Bejelentések${(S.tips || []).filter(t => t.status === 'new').length ? ' (' + (S.tips || []).filter(t => t.status === 'new').length + ')' : ''}`], ['korozes', 'Körözések'], ['jelentesek', 'Jelentések']];
+  $('#kzTabs').replaceChildren(...tabs.map(([id, n]) => h('button', {type:'button', class:'kz-chip' + (!KZ.form && KZ.tab === id ? ' on gold' : ''), text:n, onclick:() => { KZ.tab = id; KZ.form = false; renderKozpont(true); }})));
+  const rb = $('#kzBody');
+  const typing = rb.contains(document.activeElement) && /INPUT|TEXTAREA/.test(document.activeElement.tagName) && !(document.activeElement.id === 'kzRadioIn' && !document.activeElement.value);
+  if (!typing || force) {
+    if (KZ.form) { if (!rb.dataset.form) { rb.replaceChildren(...kzNewForm()); rb.dataset.form = '1'; } }
+    else {
+      delete rb.dataset.form;
+      const st = rb.scrollTop, fn = {hivas:kzCallDetail, egysegek:kzUnitsTab, radio:kzRadioTab, bejelentesek:kzTipsTab, korozes:kzWantedTab, jelentesek:kzReportsTab}[KZ.tab] || kzCallDetail;
+      const wasRadio = document.activeElement && document.activeElement.id === 'kzRadioIn';
+      rb.replaceChildren(...fn()); rb.scrollTop = st;
+      if (wasRadio && $('#kzRadioIn')) $('#kzRadioIn').focus();
+    }
+  }
+  kzDraw();
+}
+function kzSetup(){
+  if (KZ.setup) return; KZ.setup = true;
+  kzMapEvents($('#kzCanvas'));
+  $('#kzNew').addEventListener('click', () => { KZ.form = true; delete $('#kzBody').dataset.form; renderKozpont(true); });
+  $$('#kzFilter button').forEach(b => b.addEventListener('click', () => { KZ.filter = b.dataset.f; renderKozpont(true); }));
+  $('#kzZoomIn').addEventListener('click', () => { KZ.view.zoom = Math.min(14, KZ.view.zoom * 1.4); KZ.view.ox *= 1.4; KZ.view.oy *= 1.4; kzDraw(); });
+  $('#kzZoomOut').addEventListener('click', () => { KZ.view.zoom = Math.max(0.5, KZ.view.zoom / 1.4); KZ.view.ox /= 1.4; KZ.view.oy /= 1.4; kzDraw(); });
+  $('#kzZoomHome').addEventListener('click', () => { KZ.view = {zoom:1, ox:0, oy:0}; kzDraw(); });
+  new ResizeObserver(() => kzDraw()).observe($('#kzCanvas'));
+  // pulzáló jelölések, óra, „figyelek” jelzés a játéknak
+  setInterval(() => { if (S.route === 'kozpont' && !document.hidden) { kzDraw(); const c = $('#kzClock'); if (c) c.textContent = new Date().toLocaleTimeString('hu-HU'); } }, 120);
+  setInterval(() => { if (S.route === 'kozpont' && !document.hidden && me() && canKozpont(me())) kzWrite({watchAt:Date.now()}).catch(() => {}); }, 20000);
+  setInterval(() => { if (S.route === 'kozpont' && !document.hidden) renderKozpont(false); }, 5000);
+}
+
+/* ---- Vezetés: a Központi gép saját belépése ---- */
+function renderAdmKozpont(){
+  const box = $('#admKzBody'); if (!box || focusInside(box)) return;
+  const meta = S.dispatchMeta;
+  const key = JSON.stringify([meta, S.mode]); if (box.dataset.k === key) return; box.dataset.k = key;
+  $('#admKzCnt').textContent = meta ? 'Beállítva · azonosító: ' + meta.username : 'Nincs beállítva';
+  const parts = [h('p', {style:'color:var(--ink-2);font-size:14px;max-width:72ch', text:'A Központi gépnek saját belépése van: aki ezzel lép be a weboldalra, egyből a diszpécserpultot kapja (térkép, hívások, kiosztás, rádió, bejelentések, körözések), a többi belső felületet nem látja. A Központi Irányítás tagjai és a vezetés a saját fiókjukkal is elérik.'})];
+  if (!meta) {
+    const u = h('input', {id:'kzAccU', value:'kozpont', maxlength:'20', autocomplete:'off'}), p = h('input', {id:'kzAccP', type:'password', minlength:'8', maxlength:'64', autocomplete:'new-password', placeholder:'legalább 8 karakter'});
+    const mk = h('button', {class:'btn btn-gold', type:'button', text:'Központi gép fiók létrehozása'});
+    mk.addEventListener('click', async () => {
+      const un = u.value.trim(), pw = p.value;
+      if (!USER_RE.test(un)) return toast('Az azonosító 3–20 karakter: betű, szám, pont, aláhúzás.');
+      if (pw.length < 8) return toast('A jelszó legalább 8 karakter legyen.');
+      mk.disabled = true;
+      try { const uid = await S.B.createAux(un, pw); await S.B.set('meta/dispatch', {uid, username:un, createdAt:Date.now()}); p.value = ''; toast('A Központi gép fiókja elkészült. Belépés: ' + un); }
+      catch (e) { toast(errText(e)); mk.disabled = false; }
+    });
+    parts.push(h('div', {class:'grid2'}, h('div', {class:'fld'}, h('label', {for:'kzAccU', text:'Azonosító'}), u), h('div', {class:'fld'}, h('label', {for:'kzAccP', text:'Jelszó'}), p)), h('div', {class:'row-btns'}, mk));
+  } else {
+    const o = h('input', {type:'password', autocomplete:'off', placeholder:'jelenlegi jelszó'}), n = h('input', {type:'password', autocomplete:'new-password', placeholder:'új jelszó (min. 8)'});
+    const ch = h('button', {class:'btn btn-navy btn-sm', type:'button', text:'Jelszó cseréje'});
+    ch.addEventListener('click', async () => { if (n.value.length < 8) return toast('Az új jelszó legalább 8 karakter legyen.'); ch.disabled = true; try { await S.B.rotateAux(meta.username, o.value, n.value); o.value = ''; n.value = ''; toast('A Központi gép jelszava megváltozott.'); } catch (e) { toast(errText(e)); } ch.disabled = false; });
+    parts.push(h('ol', {class:'steps-sm'}, h('li', null, 'Belépés: ', h('b', {text:'Bejelentkezés'}), ' → azonosító: ', h('b', {text:meta.username}), ' + a beállított jelszó.'), h('li', null, 'A diszpécserpult címe: ', h('a', {href:'#kozpont', text:location.origin + location.pathname + '#kozpont'}))),
+      h('div', {class:'grid2'}, h('div', {class:'fld'}, h('label', {text:'Jelenlegi jelszó'}), o), h('div', {class:'fld'}, h('label', {text:'Új jelszó'}), n)), h('div', {class:'row-btns'}, ch, h('a', {class:'btn btn-line btn-sm', href:'#kozpont', text:'Központi gép megnyitása'})));
+  }
+  box.replaceChildren(...parts);
 }
 
 /* ---------- orders ---------- */

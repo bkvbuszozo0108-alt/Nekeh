@@ -25,6 +25,13 @@ service cloud.firestore {
       return signedIn() && exists(/databases/$(database)/documents/meta/game)
         && get(/databases/$(database)/documents/meta/game).data.uid == request.auth.uid;
     }
+    // A Központi gép saját fiókja (Vezetés → Központi gép – saját belépés)
+    function isDispatch() {
+      return signedIn() && exists(/databases/$(database)/documents/meta/dispatch)
+        && get(/databases/$(database)/documents/meta/dispatch).data.uid == request.auth.uid;
+    }
+    // aki a diszpécserpultot használhatja: a gép fiókja, a vezetés és a Központi Irányítás tagjai
+    function canDispatch() { return isDispatch() || isLeader() || inUnitR('iranyitas'); }
 
     function canSee(ch) {
       return isMember() && (
@@ -33,6 +40,7 @@ service cloud.firestore {
         || (ch == 'u-mesterlovesz' && unitIs('mesterlovesz'))
         || (ch == 'u-taktikai' && unitIs('taktikai'))
         || (ch == 'u-ellatas' && unitIs('ellatas'))
+        || (ch == 'u-iranyitas' && inUnitR('iranyitas'))
       );
     }
     function canPost(ch) { return canSee(ch) && ch != 'szabalyzat' && (ch != 'kozlemenyek' || isLeader()); }
@@ -48,6 +56,22 @@ service cloud.firestore {
     // A játékszerver-fiók azonosítója és belépési adatai: csak a Főbiztos látja
     match /meta/game {
       allow read, write: if isOwner();
+    }
+    match /meta/dispatch {
+      allow read: if signedIn();
+      allow write: if isOwner();
+    }
+
+    // Központi gép: hívások és rádió (a játék és a webes diszpécser közösen), a pálya térképe, élő pozíciók
+    match /dispatch/{doc} {
+      allow read: if isMember() || isGame() || isDispatch();
+      allow create, update: if isGame() || canDispatch();
+      allow delete: if isOwner();
+    }
+    match /live/{id} {
+      allow read: if isMember() || isDispatch();
+      allow write: if isGame();
+      allow delete: if isGame() || isOwner();
     }
     match /secret/{doc} {
       allow read, write: if isOwner();
@@ -128,7 +152,8 @@ service cloud.firestore {
       allow read: if isLeader() || (signedIn() && resource.data.uid == request.auth.uid)
         // az egység tagjai látják az egységük jelentéseit, az Ellátás minden mentőlapot (EJ)
         || (resource.data.get('unit', null) is string && inUnitR(resource.data.unit))
-        || (resource.data.type == 'ej' && (inUnitR('ellatas') || inUnitR('ellatasi-fo')));
+        || (resource.data.type == 'ej' && (inUnitR('ellatas') || inUnitR('ellatasi-fo')))
+        || canDispatch();
       allow create: if (isMember() && request.resource.data.uid == request.auth.uid && request.resource.data.status == 'submitted')
         || (isGame() && request.resource.data.status == 'submitted' && request.resource.data.src == 'roblox');
       allow update: if isLeader()
@@ -168,13 +193,13 @@ service cloud.firestore {
         && request.resource.data.roblox is string && request.resource.data.roblox.size() <= 40
         && request.resource.data.ref is string && request.resource.data.ref.size() <= 40
         && request.resource.data.at is number;
-      allow read, update: if isLeader();
+      allow read, update: if isLeader() || canDispatch();
       allow delete: if isOwner();
     }
 
     // Személy- és körözési nyilvántartás
     match /persons/{pid} {
-      allow read: if isMember() || isGame() || resource.data.publicWanted == true;
+      allow read: if isMember() || isGame() || isDispatch() || resource.data.publicWanted == true;
       allow create: if (isGame() && request.resource.data.get('publicWanted', false) != true)
         || (isMember() && request.resource.data.createdBy == request.auth.uid
           && (request.resource.data.get('wanted', false) != true || atLeast(30))
