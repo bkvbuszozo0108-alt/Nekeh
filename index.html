@@ -1173,6 +1173,13 @@ body.rec-hide img,body.rec-hide .mug,body.rec-hide .av.has-photo,body.rec-hide .
 @media (max-width:1250px){.ladder{grid-template-columns:repeat(4,minmax(0,1fr))!important}}
 @media (max-width:700px){.ladder{grid-template-columns:repeat(3,minmax(0,1fr))!important}}
 @media (max-width:460px){.ladder{grid-template-columns:repeat(2,minmax(0,1fr))!important}}
+.upick summary{cursor:pointer;list-style:none;padding:6px 10px;border:1px solid var(--rule);border-radius:8px;font-size:13px;max-width:240px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;background:var(--card)}
+.upick summary::-webkit-details-marker{display:none}
+.upick summary::after{content:' ▾';color:var(--ink-3)}
+.upick[open] summary{border-color:var(--gold)}
+.upick-box{margin-top:6px;background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:8px 10px;display:grid;gap:6px;min-width:260px}
+.upick-box label{display:flex;gap:8px;align-items:center;font-size:13px;cursor:pointer;line-height:1.3}
+.upick-box input{accent-color:var(--gold);width:16px;height:16px;flex:none}
 </style>
 </head>
 <body>
@@ -1834,6 +1841,16 @@ const DIVISIONS = [
   {id:'strategiai', name:'Stratégiai Tervezési és Vészhelyzeti Tanács', short:'Tervezés, krízisdöntések', units:[], desc:'Hosszú távú tervezés, krízisforgatókönyvek kidolgozása és a Főbiztos döntéseinek előkészítése. Tagjai a Parancsnokok.'},
   {id:'titkos', name:'Titkos Műveletek Osztálya', short:'Minősített műveletek', units:[], desc:'Minősített műveletek és felderítés. Az osztály tagjainak kiléte és tevékenysége nem nyilvános.'},
 ];
+const ASSIGN = [
+  {id:'kozrend', name:'Közrendvédelmi Parancsnokság', short:'Közrendvédelem'},
+  {id:'mesterlovesz', name:'Mesterlövész Egység', short:'Mesterlövész'},
+  {id:'taktikai', name:'Taktikai és Fegyverspecifikus Alosztály', short:'Taktikai Alosztály'},
+  {id:'ellatasi-fo', name:'Személyellátási és Logisztikai Főosztály', short:'Személyellátás'},
+  {id:'ellatas', name:'Ellátás', short:'Ellátás'},
+  {id:'strategiai', name:'Stratégiai Tervezési és Vészhelyzeti Tanács', short:'Vészhelyzeti Tanács'},
+  {id:'titkos', name:'Titkos Műveletek Osztálya', short:'Titkos Műveletek'},
+];
+for (const d of DIVISIONS) if (!UNIT[d.id]) UNIT[d.id] = {...d, short:(ASSIGN.find(a => a.id === d.id) || d).short, logo:'img/logo-' + d.id + '.webp', patch:'img/folt-' + d.id + '.webp', band:'img/logo-' + d.id + '.webp'};
 const CATS = [
   {name:'Tájékoztatás', ch:[
     {id:'kozlemenyek', name:'közlemények', topic:'Hivatalos közlemények. Írni Parancsnok vagy magasabb rendfokozattal lehet.', post:50, icon:'megaphone'},
@@ -2136,7 +2153,22 @@ function rankOf(uid){
 const isMember = uid => !!rankOf(uid);
 const levelOf = uid => rankOf(uid)?.level ?? 0;
 const isLeader = uid => isOwnerUid(uid) || levelOf(uid) >= 50;
-const unitOf = uid => (S.roles[uid] && S.roles[uid].unit) || null;
+const unitsOf = uid => { const r = S.roles[uid]; if (!r) return []; const l = Array.isArray(r.units) ? r.units.filter(Boolean) : []; if (r.unit && !l.includes(r.unit)) l.unshift(r.unit); return l; };
+const unitOf = uid => unitsOf(uid)[0] || null;
+const inUnit = (uid, u) => unitsOf(uid).includes(u);
+function unitPicker(id){
+  const cur = unitsOf(id);
+  const det = h('details', {class:'upick'}); if (S.upickOpen === id) det.open = true;
+  det.addEventListener('toggle', () => { if (det.open) S.upickOpen = id; else if (S.upickOpen === id) S.upickOpen = null; });
+  const box = h('div', {class:'upick-box'});
+  for (const a of ASSIGN) {
+    const cb = h('input', {type:'checkbox', value:a.id}); cb.checked = cur.includes(a.id);
+    cb.addEventListener('change', () => { const l = [...box.querySelectorAll('input:checked')].map(i => i.value); setRole(id, {units:l, unit:l[0] || null}, `${nameOf(id)} beosztásai: ${l.length ? l.map(u => UNIT[u]?.short || u).join(', ') : 'nincs'}`); });
+    box.append(h('label', null, cb, h('span', {text:a.name})));
+  }
+  det.append(h('summary', {text:cur.length ? cur.map(u => UNIT[u]?.short || u).join(', ') : 'Beosztás nélkül'}), box);
+  return det;
+}
 const rankName = r => (r && (S.config.rankNames?.[r.id] || r.name)) || '';
 function nameOf(uid){ const u = S.users[uid]; return (u && (u.rpName || u.username)) || (uid === me() && S.auth ? S.auth.username : 'Ismeretlen'); }
 function rankColor(uid){ const r = rankOf(uid); return r ? `var(--rk${[0, 1, 2, 4, 5][r.tier || 0]})` : 'var(--ink-2)'; }
@@ -2144,7 +2176,7 @@ function memberIds(){ const ids = new Set(Object.keys(S.roles).filter(id => RANK
 function canViewCh(uid, ch){
   if (!isMember(uid) || !ch) return false;
   if (ch.view && !isLeader(uid)) return false;
-  if (ch.unit && unitOf(uid) !== ch.unit && !isLeader(uid)) return false;
+  if (ch.unit && !inUnit(uid, ch.unit) && !isLeader(uid)) return false;
   return true;
 }
 function canPostCh(uid, ch){ return canViewCh(uid, ch) && ch.kind !== 'rules' && !(ch.post && !isLeader(uid)); }
@@ -2346,14 +2378,14 @@ function buildStatic(){
   $$('.svc .ic[data-icon]').forEach(el => el.innerHTML = icon(el.dataset.icon, 22));
   $('#r-type').replaceChildren(...Object.entries(REPORT_TYPES).map(([k, v]) => h('option', {value:k, text:v.name})));
   $('#e-type').replaceChildren(...Object.entries(EVENT_TYPES).map(([k, v]) => h('option', {value:k, text:v})));
-  $('#e-unit').replaceChildren(h('option', {value:'', text:'Teljes állomány'}), ...UNITS.map(x => h('option', {value:x.id, text:x.name})));
+  $('#e-unit').replaceChildren(h('option', {value:'', text:'Teljes állomány'}), ...ASSIGN.map(x => h('option', {value:x.id, text:x.name})));
   $('#rec-cert').replaceChildren(...CERTS.map(c => h('option', {value:c, text:c})));
   $('#t-cat').replaceChildren(h('option', {value:'', text:'Válassz…'}), ...Object.entries(TIP_CATS).map(([k, v]) => h('option', {value:k, text:v})));
-  $('#ro-unit').replaceChildren(h('option', {value:'', text:'Mind'}), ...UNITS.map(x => h('option', {value:x.id, text:x.short})), h('option', {value:'-', text:'Beosztás nélkül'}));
+  $('#ro-unit').replaceChildren(h('option', {value:'', text:'Mind'}), ...ASSIGN.map(x => h('option', {value:x.id, text:x.short})), h('option', {value:'-', text:'Beosztás nélkül'}));
   $('#ro-rank').replaceChildren(h('option', {value:'', text:'Mind'}));
 }
 function renderUnitsPage(){
-  const counts = {}; for (const id of memberIds()) { const u = unitOf(id); if (u) counts[u] = (counts[u] || 0) + 1; }
+  const counts = {}; for (const id of memberIds()) for (const u of unitsOf(id)) counts[u] = (counts[u] || 0) + 1;
   $$('.u-count').forEach(el => { el.textContent = S.loaded.roles ? `${counts[el.dataset.unit] || 0} fő az állományban` : ''; });
   const lad = $('#ladder'), lk = JSON.stringify(RANKS.map(rankName));
   if (lad.dataset.k === lk) return; lad.dataset.k = lk; lad.replaceChildren();
@@ -3263,7 +3295,7 @@ async function saveConfig(patch, okMsg){ try { await S.B.set('config/main', {...
 async function setRole(uid, patch, okMsg){
   const cur = S.roles[uid] || {};
   const before = cur.rank || (isOwnerUid(uid) ? 'r5' : null);
-  const next = {rank:cur.rank || 'r0', unit:cur.unit || null, since:cur.since || Date.now(), ...(cur.badge ? {badge:cur.badge} : {}), ...patch};
+  const next = {rank:cur.rank || 'r0', unit:cur.unit || null, units:Array.isArray(cur.units) ? cur.units : (cur.unit ? [cur.unit] : []), since:cur.since || Date.now(), ...(cur.badge ? {badge:cur.badge} : {}), ...patch};
   if (patch.rank && before && patch.rank !== before) next.since = Date.now();
   next.level = RANK[next.rank].level;
   try {
@@ -3299,7 +3331,7 @@ function renderAdmApps(){
       const note = h('textarea', {id:'d-note-' + uid, maxlength:'500', style:'min-height:60px', placeholder:'Megjegyzés a kérelmezőnek (elutasításnál kötelező)'});
       const dec = async (patch, msg) => { try { await S.B.update('applications/' + uid, {...patch, note:note.value.trim()}); toast(msg); } catch (e) { toast(errText(e)); } };
       const accept = h('button', {class:'btn btn-navy btn-sm', type:'button', text:'Felvétel Újoncként'});
-      accept.addEventListener('click', async () => { accept.disabled = true; await setRole(uid, {rank:(S.roles[uid]?.rank) || 'r0', unit:sel.value}, `${a.rpName || 'A kérelmező'} felvéve.`); await dec({status:'accepted', decidedAt:Date.now()}, 'Határozat rögzítve.'); S.B.add('records', {uid, type:'note', title:'Felvétel az állományba', text:`Újonc rendfokozattal, beosztás: ${UNIT[sel.value]?.name || '—'}. Kérelem: ${a.ref || ''}`, by:me(), at:Date.now()}).catch(() => {}); });
+      accept.addEventListener('click', async () => { accept.disabled = true; await setRole(uid, {rank:(S.roles[uid]?.rank) || 'r0', unit:sel.value || null, units:sel.value ? [sel.value] : []}, `${a.rpName || 'A kérelmező'} felvéve.`); await dec({status:'accepted', decidedAt:Date.now()}, 'Határozat rögzítve.'); S.B.add('records', {uid, type:'note', title:'Felvétel az állományba', text:`Újonc rendfokozattal, beosztás: ${UNIT[sel.value]?.name || '—'}. Kérelem: ${a.ref || ''}`, by:me(), at:Date.now()}).catch(() => {}); });
       const inter = h('button', {class:'btn btn-line btn-sm', type:'button', text:'Behívás interjúra', onclick:() => dec({status:'interview'}, 'Interjúra behívva.')});
       const reject = h('button', {class:'btn btn-danger btn-sm', type:'button', text:'Elutasítás'});
       reject.addEventListener('click', () => { if (!note.value.trim()) { note.focus(); return toast('Elutasításnál írj indoklást.'); } dec({status:'rejected', decidedAt:Date.now()}, 'Kérelem elutasítva.'); });
@@ -3318,8 +3350,7 @@ function renderAdmRoster(){
     const r = rankOf(id), usr = S.users[id] || {};
     const rsel = h('select', {'aria-label':nameOf(id) + ' rendfokozata'}, RANKS.map(x => { const o = h('option', {value:x.id, text:rankName(x)}); if (r && x.id === r.id) o.selected = true; return o; }));
     rsel.addEventListener('change', () => setRole(id, {rank:rsel.value}, `${nameOf(id)}: ${rankName(RANK[rsel.value])}`));
-    const usel = h('select', {'aria-label':nameOf(id) + ' egysége'}, h('option', {value:'', text:'Beosztás nélkül'}), UNITS.map(x => { const o = h('option', {value:x.id, text:x.short}); if (x.id === unitOf(id)) o.selected = true; return o; }));
-    usel.addEventListener('change', () => setRole(id, {unit:usel.value || null}, `${nameOf(id)} egysége módosítva.`));
+    const usel = unitPicker(id);
     let rm = null;
     if (id !== me()) {
       rm = h('button', {class:'btn btn-danger btn-sm', type:'button', text:'Eltávolítás'});
@@ -3357,11 +3388,11 @@ const toLocalInput = ts => { const d = new Date(ts - new Date(ts).getTimezoneOff
 function weekStart(){ const d = new Date(); d.setHours(0,0,0,0); d.setDate(d.getDate() - (d.getDay() + 6) % 7); return d.getTime(); }
 const onDuty = uid => { const d = S.duty[uid]; return !!(d && d.on && d.since && Date.now() - d.since < 18 * 3600e3); };
 function dutyMins(uid, from){ let m = 0; for (const l of S.dutylog) if (l.uid === uid && l.start >= from) m += l.mins || 0; if (onDuty(uid) && S.duty[uid].since >= from) m += (Date.now() - S.duty[uid].since) / 60000; return m; }
-function orderForMe(o){ const u = me(), t = o.target || {type:'all'}; return t.type === 'all' || (t.type === 'unit' && t.value === unitOf(u)) || (t.type === 'user' && t.value === u); }
-function orderAudience(o){ const t = o.target || {type:'all'}, ids = memberIds(); return t.type === 'all' ? ids : t.type === 'unit' ? ids.filter(id => unitOf(id) === t.value) : ids.filter(id => id === t.value); }
+function orderForMe(o){ const u = me(), t = o.target || {type:'all'}; return t.type === 'all' || (t.type === 'unit' && inUnit(u, t.value)) || (t.type === 'user' && t.value === u); }
+function orderAudience(o){ const t = o.target || {type:'all'}, ids = memberIds(); return t.type === 'all' ? ids : t.type === 'unit' ? ids.filter(id => inUnit(id, t.value)) : ids.filter(id => id === t.value); }
 const activeOrdersForMe = () => S.orders.filter(o => o.status !== 'closed' && orderForMe(o));
 const upcomingEvents = () => S.events.filter(e => e.start >= Date.now() - 2 * 3600e3).sort((a, b) => a.start - b.start);
-const eventForMe = e => !e.unit || e.unit === unitOf(me()) || isLeader(me());
+const eventForMe = e => !e.unit || inUnit(me(), e.unit) || isLeader(me());
 function targetLabel(t){ t = t || {type:'all'}; return t.type === 'all' ? 'Teljes állomány' : t.type === 'unit' ? (UNIT[t.value]?.name || 'Egység') : nameOf(t.value); }
 const canPrint = () => S.mode === 'live';
 function printEl(el){
@@ -3661,7 +3692,7 @@ function fillTargetSelect(sel, withUsers){
   if (document.activeElement === sel) return;
   const cur = sel.value;
   const opts = [h('option', {value:'all', text:'Teljes állomány'})];
-  const g1 = h('optgroup', {label:'Egység'}, UNITS.map(x => h('option', {value:'unit:' + x.id, text:x.name})));
+  const g1 = h('optgroup', {label:'Egység'}, ASSIGN.map(x => h('option', {value:'unit:' + x.id, text:x.name})));
   opts.push(g1);
   if (withUsers) opts.push(h('optgroup', {label:'Személy'}, memberIds().sort((a, b) => nameOf(a).localeCompare(nameOf(b), 'hu')).map(id => h('option', {value:'user:' + id, text:`${nameOf(id)} (${rankName(rankOf(id))})`}))));
   sel.replaceChildren(...opts);
@@ -3743,10 +3774,10 @@ function renderAllomany(){
   if (document.activeElement !== rsel) { const cur = rsel.value; rsel.replaceChildren(h('option', {value:'', text:'Mind'}), ...[...RANKS].reverse().map(r => h('option', {value:r.id, text:rankName(r)}))); rsel.value = cur; }
   const q = $('#ro-q').value.trim().toLowerCase(), fu = $('#ro-unit').value, fr = $('#ro-rank').value;
   const all = memberIds();
-  $('#rosterStats').replaceChildren(h('span', {class:'chip', text:`Állomány: ${all.length} fő`}), h('span', {class:'chip ok', text:`Szolgálatban: ${all.filter(onDuty).length} fő`}), ...UNITS.map(x => h('span', {class:'chip', text:`${x.short}: ${all.filter(id => unitOf(id) === x.id).length}`})));
+  $('#rosterStats').replaceChildren(h('span', {class:'chip', text:`Állomány: ${all.length} fő`}), h('span', {class:'chip ok', text:`Szolgálatban: ${all.filter(onDuty).length} fő`}), ...ASSIGN.map(x => h('span', {class:'chip', text:`${x.short}: ${all.filter(id => inUnit(id, x.id)).length}`})));
   const ids = all.filter(id => {
     const usr = S.users[id] || {};
-    if (fu && (fu === '-' ? unitOf(id) : unitOf(id) !== fu)) return false;
+    if (fu && (fu === '-' ? unitsOf(id).length : !inUnit(id, fu))) return false;
     if (fr && rankOf(id)?.id !== fr) return false;
     if (q && ![usr.rpName, usr.username, badgeOf(id), usr.roblox].some(x => String(x || '').toLowerCase().includes(q))) return false;
     return true;
