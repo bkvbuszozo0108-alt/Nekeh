@@ -3364,7 +3364,7 @@ function renderAdmRoster(){
       h('td', null, badgeInput(id)), h('td', null, rsel), h('td', null, usel),
       h('td', {text:isOnline(id) ? 'Online' : '—'}), h('td', null, rm)));
   }
-  box.replaceChildren(ids.length ? h('table', {class:'roster'}, h('thead', null, h('tr', null, ['Tag','Jelvényszám','Rendfokozat','Egység','Állapot',''].map(t => h('th', {text:t})))), tb) : h('p', {class:'empty', text:'Az állomány még üres. A felvett kérelmezők itt jelennek meg.'}));
+  box.replaceChildren(ids.length ? h('table', {class:'roster'}, h('thead', null, h('tr', null, ['Tag','Jelvényszám','Rendfokozat','Beosztások','Állapot',''].map(t => h('th', {text:t})))), tb) : h('p', {class:'empty', text:'Az állomány még üres. A felvett kérelmezők itt jelennek meg.'}));
 }
 function nextDecreeNo(){ const y = new Date().getFullYear(); return 1 + Math.max(0, ...S.decrees.filter(d => d.year === y).map(d => d.no || 0)); }
 function renderAdmDecrees(){
