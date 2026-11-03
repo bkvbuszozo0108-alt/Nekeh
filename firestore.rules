@@ -139,6 +139,14 @@ service cloud.firestore {
       allow read: if true;
       allow write: if (isMember() && request.auth.uid == uid) || isGame();
     }
+    // Belépési napló: csak biztonsági célú IP-cím + időpont. Mindenki a sajátját írja, csak a vezetőség olvassa.
+    match /loginlog/{uid} {
+      allow read: if isLeader();
+      allow create, update: if signedIn() && request.auth.uid == uid
+        && request.resource.data.ip is string && request.resource.data.ip.size() <= 64;
+      allow delete: if isOwner();
+    }
+
     match /dutylog/{id} {
       allow read: if isMember();
       allow create: if (isMember() && request.resource.data.uid == request.auth.uid
