@@ -1180,6 +1180,65 @@ body.rec-hide img,body.rec-hide .mug,body.rec-hide .av.has-photo,body.rec-hide .
 .upick-box{margin-top:6px;background:var(--card);border:1px solid var(--rule);border-radius:10px;padding:8px 10px;display:grid;gap:6px;min-width:260px}
 .upick-box label{display:flex;gap:8px;align-items:center;font-size:13px;cursor:pointer;line-height:1.3}
 .upick-box input{accent-color:var(--gold);width:16px;height:16px;flex:none}
+
+/* Egységem */
+.utabs{display:flex;gap:8px;flex-wrap:wrap;margin-bottom:16px}
+.utabs button{display:inline-flex;align-items:center;gap:8px;border:1px solid var(--rule);background:var(--card);border-radius:999px;padding:5px 14px 5px 6px;font-size:13px;font-weight:600;color:var(--ink-2);cursor:pointer}
+.utabs button img{width:26px;height:26px;object-fit:contain}
+.utabs button[aria-selected="true"]{background:var(--navy);border-color:var(--navy);color:var(--on-navy)}
+.unit-hero{display:grid;grid-template-columns:auto 1fr auto;gap:22px;align-items:center;background:linear-gradient(135deg,var(--navy-deep),var(--navy) 70%);color:var(--on-navy);border-radius:12px;padding:20px 24px;position:relative;overflow:hidden}
+.unit-hero::after{content:"";position:absolute;inset:auto -40px -60px auto;width:220px;height:220px;border-radius:50%;border:1px solid rgba(199,169,87,.25)}
+.uh-art{display:flex;align-items:flex-end;gap:10px}
+.uh-logo{width:86px;height:86px;object-fit:contain;filter:drop-shadow(0 4px 10px rgba(0,0,0,.35))}
+.uh-patch{width:52px;height:66px;object-fit:contain;margin-left:-22px;filter:drop-shadow(0 3px 6px rgba(0,0,0,.4))}
+.uh-par{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--gold-bright);font-weight:700}
+.uh-txt h2{font-size:22px;margin:2px 0 4px;color:var(--on-navy)}
+.uh-txt p{margin:0;color:var(--on-navy-2);font-size:14px;max-width:62ch}
+.uh-btns{display:flex;gap:8px;flex-wrap:wrap;margin-top:12px}
+.unit-hero .btn-line{color:var(--on-navy);border-color:rgba(245,247,252,.35);background:transparent}
+.uh-stats{display:grid;grid-template-columns:repeat(2,minmax(110px,1fr));gap:8px;position:relative;z-index:1}
+.uh-stats .stat{background:rgba(255,255,255,.07);border:1px solid rgba(255,255,255,.12);border-radius:8px;padding:8px 12px}
+.uh-stats .stat span{color:var(--on-navy-2)}
+.uh-stats .stat b{color:var(--on-navy)}
+.umem{list-style:none;margin:0;padding:0;display:flex;flex-direction:column;gap:2px}
+.umem li>button,.umem li>a{display:flex;align-items:center;gap:10px;width:100%;border:0;background:none;padding:7px 8px;border-radius:8px;text-align:left;cursor:pointer;text-decoration:none;color:inherit}
+.umem li>button:hover{background:var(--hover)}
+.umem .nm{flex:1;min-width:0;display:flex;flex-direction:column}
+.umem .nm b{font-size:14px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.umem .nm small{font-size:12px;color:var(--ink-3)}
+.xlist{display:flex;flex-direction:column;gap:8px}
+.medsheet{border:1px solid var(--rule);border-radius:10px;background:var(--card);margin-top:10px;overflow:hidden}
+.medsheet>header{display:flex;align-items:center;gap:12px;padding:12px 16px;background:linear-gradient(90deg,rgba(200,40,40,.10),transparent);border-bottom:2px solid #C8102E}
+.medsheet>header img{width:40px;height:40px;object-fit:contain}
+.medsheet>header>div{display:flex;flex-direction:column;flex:1}
+.medsheet>header b{font-size:15px}
+.medsheet>header span{font-size:12px;color:var(--ink-3)}
+.medsheet>header .who{text-align:right;flex:0 0 auto}
+.medsheet>header .who b{font-size:17px}
+.medsheet .kv{padding:12px 16px;margin:0}
+.vrow{display:grid;grid-template-columns:1fr auto 1fr;gap:10px;align-items:center;padding:0 16px 12px}
+.varrow{font-size:22px;color:var(--ink-3)}
+.vbox{border:1px solid var(--rule);border-radius:8px;padding:10px;background:var(--sunk)}
+.vbox.arrest{border-color:var(--danger);background:var(--danger-bg)}
+.vh{font-size:11px;font-weight:700;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin-bottom:6px}
+.vgrid{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:6px}
+.vt{display:flex;flex-direction:column;background:var(--card);border-radius:6px;padding:6px 8px;min-width:0}
+.vt span{font-size:11px;color:var(--ink-3)}
+.vt b{font-size:16px;font-variant-numeric:tabular-nums;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.vt small{font-size:10px;color:var(--ink-3)}
+.vt.bad b{color:var(--danger)}
+.vt.txt b{font-size:13px;white-space:normal;line-height:1.25;overflow:visible}
+.tl{padding:4px 16px 14px}
+.tl h4{font-size:12px;letter-spacing:.08em;text-transform:uppercase;color:var(--ink-3);margin:0 0 8px}
+.tl ol{list-style:none;margin:0;padding:0 0 0 14px;border-left:2px solid var(--rule);display:flex;flex-direction:column;gap:6px}
+.tl li{position:relative;display:flex;gap:8px;font-size:13px;flex-wrap:wrap}
+.tl li::before{content:"";position:absolute;left:-20px;top:6px;width:10px;height:10px;border-radius:50%;background:var(--card);border:2px solid var(--gold)}
+.tl li.hot::before{border-color:var(--danger);background:var(--danger)}
+.tl li time{font-family:var(--f-mono,monospace);color:var(--ink-3)}
+.tl li b{color:var(--ink-2)}
+.medsheet .doc-actions{padding:10px 16px;border-top:1px solid var(--rule)}
+@media (max-width:860px){.unit-hero{grid-template-columns:1fr}.uh-stats{grid-template-columns:repeat(4,minmax(0,1fr))}.vrow{grid-template-columns:1fr}.varrow{display:none}}
+@media (max-width:520px){.uh-stats{grid-template-columns:repeat(2,minmax(0,1fr))}.vgrid{grid-template-columns:repeat(2,minmax(0,1fr))}}
 </style>
 </head>
 <body>
@@ -1213,6 +1272,7 @@ body.rec-hide img,body.rec-hide .mug,body.rec-hide .av.has-photo,body.rec-hide .
   <nav class="subnav" id="subnav" aria-label="Szolgálati felület" hidden><div class="in">
     <span class="lbl">Szolgálati felület</span>
     <a href="#iroda">Irányítópult</a>
+    <a href="#egyseg">Egységem</a>
     <a href="#belso">Kommunikáció</a>
     <a href="#szolgalat">Szolgálati napló</a>
     <a href="#jelentesek">Jelentések <span class="n" id="nRep" hidden></span></a>
@@ -1544,6 +1604,17 @@ body.rec-hide img,body.rec-hide .mug,body.rec-hide .av.has-photo,body.rec-hide .
     <section class="view" id="v-iroda" hidden>
       <div class="page-head slim"><div class="wrap"><img src="img/cimer.webp" alt="" width="72" height="72"><div><nav class="crumbs" aria-label="Morzsamenü"><a href="#fooldal">Főoldal</a><span>›</span><span>Szolgálati felület</span></nav><h1 id="irodaTitle">Szolgálati felület</h1><div class="sub" id="irodaSub"></div></div></div></div>
       <div class="wrap mpage"><div class="mgate gate-wrap" id="irodaGate"></div><div class="dash" id="irodaBody" hidden></div></div>
+    </section>
+
+    <!-- ================= EGYSÉGEM: az egységek saját felülete ================= -->
+    <section class="view" id="v-egyseg" hidden>
+      <div class="page-head slim"><div class="wrap"><img src="img/cimer.webp" alt="" width="72" height="72"><div><nav class="crumbs" aria-label="Morzsamenü"><a href="#iroda">Szolgálati felület</a><span>›</span><span>Egységem</span></nav><h1>Egységem</h1><p>Az egység saját felülete: állomány, jelentések, parancsok és az egység munkaeszközei (az Ellátásnál a mentőlapok).</p></div></div></div>
+      <div class="wrap mpage"><div class="mgate gate-wrap" id="egysegGate"></div>
+        <div id="egysegBody" hidden>
+          <div class="utabs" id="unitTabs" role="tablist" aria-label="Egységek"></div>
+          <div class="dash" id="egysegDash"></div>
+        </div>
+      </div>
     </section>
 
     <!-- ================= SZOLGÁLATI NAPLÓ ================= -->
@@ -2133,7 +2204,7 @@ const S = {
   loaded:{config:false, users:false, roles:false, apps:false, decrees:false, msgs:{}, dutylog:false, reports:false, orders:false, events:false, persons:false, pubWanted:false}, msgErr:{},
   route:'fooldal', ch:store.get('ch','altalanos'), view:'text', vch:null, prio:1, reply:null, editing:null,
   showMembers:true, showMembersNarrow:false, reapply:false, prefUnit:null,
-  duty:{}, dutylog:[], reports:[], orders:[], events:[], records:{subj:null, list:[]}, tips:[], aktaUid:null, repTab:'new', editReport:null, tipDone:null,
+  duty:{}, dutylog:[], reports:[], orders:[], events:[], records:{subj:null, list:[]}, tips:[], aktaUid:null, unitTab:store.get('unitTab', null), unitReports:{}, unitOpen:new Set(), repTab:'new', editReport:null, tipDone:null,
   persons:[], pubWanted:[], entries:{pid:null, list:[]}, rbxlinks:{}, rbxcode:null, gameservers:[], gameMeta:null, gameSecret:null, personId:null, personDoc:null, personEdit:false, attach:null,
 };
 const SUBS = new Map();
@@ -2240,7 +2311,12 @@ function syncSubs(){
       if (isLeader(uid)) {
         W.set('reports-all@' + uid, () => B.watchCol('reports', {order:'createdAt', dir:'desc', limit:150}, l => { S.reports = l; S.loaded.reports = true; changed(); }, dbErr('reports')));
         W.set('tips@' + uid, () => B.watchCol('tips', {order:'at', dir:'desc', limit:100}, l => { S.tips = l; changed(); }, dbErr('tips')));
-      } else W.set('reports-mine@' + uid, () => B.watchCol('reports', {where:['uid', '==', uid]}, l => { S.reports = l; S.loaded.reports = true; changed(); }, dbErr('reports')));
+      } else {
+        W.set('reports-mine@' + uid, () => B.watchCol('reports', {where:['uid', '==', uid]}, l => { S.reports = l; S.loaded.reports = true; changed(); }, dbErr('reports')));
+        // a saját egység(ek) jelentései és – az Ellátásnak – az összes mentőlap
+        for (const un of unitsOf(uid)) W.set(`reports-u:${un}@${uid}`, () => B.watchCol('reports', {where:['unit', '==', un]}, l => { S.unitReports[un] = l; changed(); }, dbErr('reports-u:' + un)));
+        if (unitsOf(uid).some(x => MED_UNITS.includes(x))) W.set('reports-ej@' + uid, () => B.watchCol('reports', {where:['type', '==', 'ej']}, l => { S.unitReports.ej = l; changed(); }, dbErr('reports-ej')));
+      }
       const subj = S.route === 'akta' && S.aktaUid ? S.aktaUid : uid;
       if (subj === uid || isLeader(uid)) W.set(`records:${subj}@${uid}`, () => B.watchCol('records', {where:['uid', '==', subj]}, l => { S.records = {subj, list:l.sort((a, b) => b.at - a.at)}; changed(); }, dbErr('records')));
       for (const c of visibleChannels()) if (c.kind !== 'rules') W.set(`head:${c.id}@${uid}`, () => B.watchCol(`channels/${c.id}/messages`, {order:'ts', dir:'desc', limit:1}, l => { S.heads[c.id] = l[0] || null; changed(); }, dbErr('head:' + c.id)));
@@ -2262,7 +2338,7 @@ function scheduleRender(withSubs){
 }
 
 /* ================= routing ================= */
-const ROUTES = ['fooldal','egysegek','kozlony','jelentkezes','bejelentes','korozes','belepes','iroda','belso','szolgalat','jelentesek','nyilvantartas','szemely','parancsok','naptar','allomany','akta','vezetes'];
+const ROUTES = ['fooldal','egysegek','egyseg','kozlony','jelentkezes','bejelentes','korozes','belepes','iroda','belso','szolgalat','jelentesek','nyilvantartas','szemely','parancsok','naptar','allomany','akta','vezetes'];
 function route(){
   let r = location.hash.slice(1).replace(/^\/+/, '');
   if (!ROUTES.includes(r)) r = 'fooldal';
@@ -2289,6 +2365,7 @@ function renderAll(){
   if (S.route === 'belso') renderInternal();
   if (S.route === 'vezetes') renderAdmin();
   if (S.route === 'iroda') renderIroda();
+  if (S.route === 'egyseg') renderEgyseg();
   if (S.route === 'szolgalat') renderSzolgalat();
   if (S.route === 'jelentesek') renderJelentesek();
   if (S.route === 'parancsok') renderParancsok();
@@ -3379,7 +3456,7 @@ function renderAdmDecrees(){
 }
 
 /* ================= member area: helpers ================= */
-const MEMBER_ROUTES = ['iroda','belso','szolgalat','jelentesek','nyilvantartas','szemely','parancsok','naptar','allomany','akta'];
+const MEMBER_ROUTES = ['iroda','egyseg','belso','szolgalat','jelentesek','nyilvantartas','szemely','parancsok','naptar','allomany','akta'];
 function genCode(code){ const d = new Date(), p = n => String(n).padStart(2,'0'); return `${code}/${d.getFullYear()}/${p(d.getMonth()+1)}${p(d.getDate())}-${Math.random().toString(36).slice(2,6).toUpperCase()}`; }
 const fmtDur = mins => { mins = Math.max(0, Math.round(mins)); const hh = Math.floor(mins / 60), mm = mins % 60; return hh ? `${hh} ó ${mm} p` : `${mm} perc`; };
 const fmtDT = ts => new Date(ts).toLocaleString('hu-HU', {year:'numeric', month:'2-digit', day:'2-digit', hour:'2-digit', minute:'2-digit'});
@@ -3658,6 +3735,130 @@ function renderJelentesek(){
   if (S.repTab === 'mine') fill('repMine', mine, 'mine', S.loaded.reports ? 'Még nem adtál be jelentést.' : 'Betöltés…');
   if (S.repTab === 'inbox') fill('repInbox', inbox, 'inbox', 'Nincs beérkezett jelentés.');
   if (S.repTab === 'tips') fill('tipInbox', S.tips, 'tips', 'Nincs lakossági bejelentés.');
+}
+
+/* ---------- egységek saját felülete ---------- */
+const MED_UNITS = ['ellatas', 'ellatasi-fo'];
+const UNIT_CH = {mesterlovesz:'u-mesterlovesz', taktikai:'u-taktikai', ellatas:'u-ellatas', 'ellatasi-fo':'u-ellatas'};
+function myUnitTabs(){ const u = me(); return isLeader(u) ? ASSIGN.map(a => a.id) : unitsOf(u).filter(id => UNIT[id]); }
+function unitMembers(id){
+  const kids = (DIVISIONS.find(d => d.id === id) || {}).units || [];
+  return memberIds().filter(m => inUnit(m, id) || kids.some(k => inUnit(m, k))).sort((a, b) => levelOf(b) - levelOf(a) || nameOf(a).localeCompare(nameOf(b), 'hu'));
+}
+function unitReports(id){
+  const kids = (DIVISIONS.find(d => d.id === id) || {}).units || [];
+  const med = MED_UNITS.includes(id) || kids.some(k => MED_UNITS.includes(k));
+  const seen = new Map();
+  const add = l => { for (const r of (l || [])) if (r.unit === id || kids.includes(r.unit) || (med && r.type === 'ej')) seen.set(r.id, r); };
+  add(S.reports); add(S.unitReports[id]); for (const k of kids) add(S.unitReports[k]); if (med) add(S.unitReports.ej);
+  return [...seen.values()].sort((a, b) => (b.createdAt || 0) - (a.createdAt || 0));
+}
+// az ellátási jelentés szövegéből (játék) kinyert adatok
+function parseVitals(s){
+  s = String(s || '');
+  const g = re => { const m = s.match(re); return m ? m[1] : null; };
+  const arrest = /keringésösszeomlás/.test(s);
+  return {arrest, tudat:g(/tudat:\s*([^,]+)/), hr:arrest ? '0' : g(/pulzus\s*(\d+)/), rr:arrest ? '0' : g(/légzés\s*(\d+)/), spo2:g(/SpO2\s*(\d+)/), bp:arrest ? '—' : g(/vérnyomás\s*(\d+\/\d+)/), ritmus:arrest ? (g(/keringésösszeomlás\s*\(([^)]+)\)/) || 'leállás') : g(/ritmus:\s*([^,]+)/)};
+}
+function parseEj(r){
+  const lines = String(r.body || '').split('\n'), o = {events:[]};
+  let inEv = false;
+  for (const ln of lines) {
+    if (inEv) { if (!ln.trim()) { inEv = false; continue; } o.events.push(ln); continue; }
+    const m = ln.match(/^([^:]+):\s*(.*)$/);
+    if (/^Beavatkozások:/.test(ln)) { inEv = true; continue; }
+    if (!m) continue;
+    const k = m[1].trim(), v = m[2].trim();
+    if (k === 'Beteg') o.patient = v; else if (k === 'Ellátás kezdete') o.start = v; else if (k === 'Kezdeti állapot') o.first = v; else if (k === 'Átadáskori állapot') o.last = v; else if (k === 'Ellátó egység') o.team = v;
+  }
+  if (!o.patient) o.patient = r.involved || '—';
+  if (!o.last && r.outcome) o.last = String(r.outcome).replace(/^Átadáskori állapot:\s*/, '');
+  o.rosc = o.events.some(e => /ROSC/.test(e));
+  o.shocks = o.events.filter(e => /Sokk leadva/.test(e)).length;
+  return o;
+}
+function vitTiles(label, s){
+  const v = parseVitals(s);
+  const t = (k, val, unit, bad) => h('div', {class:'vt' + (bad ? ' bad' : '') + (unit ? '' : ' txt')}, h('span', {text:k}), h('b', {text:val == null ? '—' : val}), unit ? h('small', {text:unit}) : null);
+  return h('div', {class:'vbox' + (v.arrest ? ' arrest' : '')}, h('div', {class:'vh', text:label}), h('div', {class:'vgrid'},
+    t('Pulzus', v.hr, '/perc', v.arrest || +v.hr > 120 || +v.hr < 50), t('SpO₂', v.spo2, '%', +v.spo2 < 92), t('Légzés', v.rr, '/perc', v.arrest || +v.rr > 24),
+    t('Vérnyomás', v.bp, 'Hgmm', v.arrest || (v.bp && +v.bp.split('/')[0] < 90)), t('Tudat', v.tudat || (v.arrest ? 'nem reagál' : null), '', v.arrest), t('Ritmus', v.ritmus, '', v.arrest)));
+}
+function medSheet(r, open){
+  const p = parseEj(r), pill = REPORT_PILL[r.status] || REPORT_PILL.submitted;
+  const det = h('details', {class:'xitem med', 'data-id':r.id}); if (open.has(r.id)) det.open = true;
+  det.append(h('summary', null, h('span', {class:'code', text:'EJ'}), h('b', {text:p.patient}), p.rosc ? h('span', {class:'chip ok', text:'ROSC'}) : null, p.shocks ? h('span', {class:'chip', text:'⚡ ' + p.shocks + ' sokk'}) : null, r.src === 'roblox' ? h('span', {class:'src-chip rbx', text:'Játékból'}) : null, h('time', {text:fmtStamp(r.createdAt)}), h('span', {class:'pill ' + pill[1], text:pill[0]})));
+  const sheet = h('article', {class:'medsheet'});
+  sheet.append(h('header', null, h('img', {src:'img/logo-ellatas.webp', alt:''}), h('div', null, h('b', {text:'Mentőlap · Ellátási jelentés'}), h('span', {text:'NEKEH Ellátás · ' + (r.ref || '')})), h('div', {class:'who'}, h('span', {text:'Beteg'}), h('b', {text:p.patient}))));
+  sheet.append(h('dl', {class:'kv'}, [['Ellátás kezdete', p.start || (r.time ? fmtDT(r.time) : '')], ['Helyszín', r.location], ['Ellátók', p.team || nameOf(r.uid)], ['Beküldte', nameOf(r.uid) + (r.rbxName ? ' (' + r.rbxName + ')' : '')]].flatMap(([k, v]) => [h('dt', {text:k}), h('dd', {text:v || '—'})])));
+  sheet.append(h('div', {class:'vrow'}, vitTiles('Kezdeti állapot', p.first), h('div', {class:'varrow', 'aria-hidden':'true', text:'→'}), vitTiles('Átadáskor', p.last)));
+  if (p.events.length) sheet.append(h('div', {class:'tl'}, h('h4', {text:'Beavatkozások'}), h('ol', null, p.events.map(e => { const m = e.match(/^(\d\d:\d\d)\s*–\s*([^:]+):\s*(.*)$/); return m ? h('li', {class:/sokk|SOKK|ROSC/i.test(m[3]) ? 'hot' : ''}, h('time', {text:m[1]}), h('b', {text:m[2]}), h('span', {text:m[3]})) : h('li', null, h('span', {text:e})); }))));
+  if (r.reviewNote) sheet.append(h('div', {class:'doc-sec'}, h('h4', {text:'Elbírálói megjegyzés'}), h('p', {text:r.reviewNote})));
+  const acts = [];
+  if (isLeader(me()) && r.status === 'submitted') acts.push(h('button', {class:'btn btn-navy btn-sm', type:'button', text:'Elfogadás', onclick:() => reviewReport(r, 'approved', '')}));
+  const pb = printBtn(b => b.closest('.medsheet')); if (pb) acts.push(pb);
+  if (acts.length) sheet.append(h('div', {class:'doc-actions'}, acts));
+  det.append(sheet);
+  return det;
+}
+function unitHero(id){
+  const U = UNIT[id], div = DIVISIONS.find(d => d.id === id), parent = U.parent || (div ? 'Főosztály' : '');
+  const mem = unitMembers(id), on = mem.filter(onDuty);
+  const ords = S.orders.filter(o => o.status !== 'closed' && o.target && o.target.type === 'unit' && o.target.value === id);
+  const reps = unitReports(id).filter(r => r.createdAt > Date.now() - 30 * 864e5);
+  const ch = UNIT_CH[id];
+  return h('section', {class:'unit-hero'},
+    h('div', {class:'uh-art'}, h('img', {class:'uh-logo', src:U.logo, alt:''}), h('img', {class:'uh-patch', src:U.patch, alt:'', onerror:e => e.target.remove()})),
+    h('div', {class:'uh-txt'}, h('span', {class:'uh-par', text:parent}), h('h2', {text:U.name}), h('p', {text:U.desc || ''}),
+      h('div', {class:'uh-btns'}, ch && canViewCh(me(), CH[ch]) ? h('a', {class:'btn btn-gold btn-sm', href:'#belso', onclick:() => { S.ch = ch; S.view = 'text'; store.set('ch', ch); }, html:icon('radio', 15) + '<span>Egységcsatorna</span>'}) : null,
+        h('a', {class:'btn btn-line btn-sm on-navy', href:'#jelentesek', onclick:() => { S.repTab = 'new'; }, html:icon('doc', 15) + '<span>Új jelentés</span>'}))),
+    h('div', {class:'uh-stats'}, stat('Létszám', mem.length + ' fő'), stat('Szolgálatban', on.length + ' fő'), stat('Aktív parancs', ords.length), stat('Jelentés (30 nap)', reps.length)));
+}
+function unitRoster(id){
+  const mem = unitMembers(id);
+  if (!mem.length) return h('p', {class:'empty', text:'Ebbe az egységbe még senki nincs beosztva.'});
+  return h('ul', {class:'umem'}, mem.map(m => h('li', null, h('button', {type:'button', onclick:() => openIdCard(m)}, avatarEl(m, 'av'), h('span', {class:'nm'}, (() => { const b = h('b', {text:nameOf(m)}); b.style.color = rankColor(m); return b; })(), h('small', {text:[rankName(rankOf(m)), badgeOf(m)].filter(Boolean).join(' · ')})), onDuty(m) ? h('span', {class:'pill t-ok', text:S.duty[m] && S.duty[m].note ? S.duty[m].note : 'Szolgálatban'}) : null))));
+}
+function unitReportList(id, types, empty){
+  const box = h('div', {class:'xlist'});
+  const l = unitReports(id).filter(r => !types || types.includes(r.type));
+  if (!l.length) box.append(h('div', {class:'empty-doc', text:empty}));
+  else l.slice(0, 40).forEach(r => box.append(r.type === 'ej' ? medSheet(r, S.unitOpen) : reportItem(r, isLeader(me()) ? 'inbox' : 'view', S.unitOpen)));
+  box.addEventListener('toggle', e => { const d = e.target; if (d.dataset && d.dataset.id) { if (d.open) S.unitOpen.add(d.dataset.id); else S.unitOpen.delete(d.dataset.id); } }, true);
+  return box;
+}
+function renderEgyseg(){
+  if (!memberGate('egyseg')) return;
+  const tabs = myUnitTabs(), body = $('#egysegBody');
+  if (focusInside(body)) return;
+  if (!tabs.includes(S.unitTab)) S.unitTab = tabs[0] || null;
+  $('#unitTabs').replaceChildren(...tabs.map(id => h('button', {type:'button', role:'tab', 'aria-selected':String(id === S.unitTab), onclick:() => { S.unitTab = id; store.set('unitTab', id); renderAll(); }}, h('img', {src:UNIT[id].logo, alt:''}), h('span', {text:UNIT[id].short || UNIT[id].name}))));
+  $('#unitTabs').hidden = tabs.length < 2;
+  const dash = $('#egysegDash');
+  if (!S.unitTab) { dash.replaceChildren(h('div', {class:'span12'}, h('div', {class:'empty-doc', text:'Még nincs egységbeosztásod. A beosztást a vezetés adja meg az Állomány oldalon.'}))); return; }
+  const id = S.unitTab, kids = (DIVISIONS.find(d => d.id === id) || {}).units || [];
+  const med = MED_UNITS.includes(id), combat = ['kozrend', 'mesterlovesz', 'taktikai'].includes(id);
+  dash.replaceChildren(h('div', {class:'span12'}, unitHero(id)));
+  if (med) {
+    const ej = unitReports(id).filter(r => r.type === 'ej'), weekly = ej.filter(r => r.createdAt >= weekStart());
+    const rosc = ej.filter(r => parseEj(r).rosc).length;
+    dash.append(h('div', {class:'span8'}, card('Mentőlapok', h('span', {class:'cnt', text:ej.length ? ej.length + ' eset' : ''}),
+      h('div', {class:'stats'}, stat('Ellátott eset (e héten)', weekly.length), stat('Összes eset', ej.length), stat('Sikeres újraélesztés', rosc), stat('Elbírálásra vár', ej.filter(r => r.status === 'submitted').length)),
+      h('p', {class:'hint', text:'A játékban a mentőstáska ellátási paneljén az „Esetlap → web” gombbal kerül ide a mentőlap; ha 10 percig nem nyúlnak a beteghez, magától is beküldődik.'}),
+      unitReportList(id, ['ej'], S.loaded.reports ? 'Még nincs beküldött mentőlap.' : 'Betöltés…'))));
+  } else {
+    dash.append(h('div', {class:'span8'}, card(combat ? 'Bevetési és eseményjelentések' : 'Az egység jelentései', h('a', {class:'more', href:'#jelentesek', onclick:() => { S.repTab = 'new'; }, text:'Új jelentés →'}),
+      unitReportList(id, combat ? ['bj', 're', 'szj'] : null, S.loaded.reports ? 'Az egységnek még nincs jelentése.' : 'Betöltés…'))));
+  }
+  dash.append(h('div', {class:'span4'}, card('Az egység állománya', h('span', {class:'cnt', text:unitMembers(id).length + ' fő'}), unitRoster(id))));
+  const ords = S.orders.filter(o => o.status !== 'closed' && o.target && o.target.type === 'unit' && (o.target.value === id || kids.includes(o.target.value)));
+  dash.append(h('div', {class:'span6'}, card('Az egység parancsai', h('a', {class:'more', href:'#parancsok', text:'Összes →'}), ords.length ? h('div', {class:'olist'}, ords.slice(0, 5).map(o => orderEl(o, true))) : h('p', {class:'empty', text:'Nincs az egységnek szóló aktív parancs.'}))));
+  const evs = upcomingEvents().filter(e => e.unit === id || kids.includes(e.unit) || !e.unit).slice(0, 5);
+  dash.append(h('div', {class:'span6'}, card('Közelgő események', h('a', {class:'more', href:'#naptar', text:'Naptár →'}), evs.length ? h('div', {class:'evlist'}, evs.map(e => eventEl(e, true))) : h('p', {class:'empty', text:'Nincs közelgő esemény.'}))));
+  if (combat) {
+    const w = S.persons.filter(p => p.wanted).sort((a, b) => (b.wlevel || 0) - (a.wlevel || 0)).slice(0, 8);
+    dash.append(h('div', {class:'span12'}, card('Aktív körözések', h('a', {class:'more', href:'#nyilvantartas', text:'Nyilvántartás →'}), w.length ? h('ul', {class:'umem'}, w.map(p => h('li', null, h('button', {type:'button', onclick:() => openPerson(p.id)}, h('span', {class:'nm'}, h('b', {text:p.name || '—'}), h('small', {text:[p.rbxName, p.wreason].filter(Boolean).join(' · ')})), h('span', {class:'pill t-danger', text:(p.wlevel || 1) + '. fokozat'}))))) : h('p', {class:'empty', text:'Nincs aktív körözés.'}))));
+  }
 }
 
 /* ---------- orders ---------- */
