@@ -2332,7 +2332,7 @@ const S = {
   loaded:{config:false, users:false, roles:false, apps:false, decrees:false, msgs:{}, dutylog:false, reports:false, orders:false, events:false, persons:false, pubWanted:false}, msgErr:{},
   route:'fooldal', ch:store.get('ch','altalanos'), view:'text', vch:null, prio:1, reply:null, editing:null,
   showMembers:true, showMembersNarrow:false, reapply:false, prefUnit:null,
-  duty:{}, dutylog:[], reports:[], orders:[], events:[], records:{subj:null, list:[]}, tips:[], aktaUid:null, unitTab:store.get('unitTab', null), unitReports:{}, unitOpen:new Set(), dispatchUid:null, dispatchMeta:null, kz:{main:null, map:null, live:[], wanted:[], reports:[]}, repTab:'new', editReport:null, tipDone:null,
+  duty:{}, dutylog:[], loginlog:{}, reports:[], orders:[], events:[], records:{subj:null, list:[]}, tips:[], aktaUid:null, unitTab:store.get('unitTab', null), unitReports:{}, unitOpen:new Set(), dispatchUid:null, dispatchMeta:null, kz:{main:null, map:null, live:[], wanted:[], reports:[]}, repTab:'new', editReport:null, tipDone:null,
   persons:[], pubWanted:[], entries:{pid:null, list:[]}, rbxlinks:{}, rbxcode:null, gameservers:[], gameMeta:null, gameSecret:null, personId:null, personDoc:null, personEdit:false, attach:null,
 };
 const SUBS = new Map();
@@ -2449,6 +2449,7 @@ function syncSubs(){
       }
       if (isLeader(uid)) {
         W.set('reports-all@' + uid, () => B.watchCol('reports', {order:'createdAt', dir:'desc', limit:150}, l => { S.reports = l; S.loaded.reports = true; changed(); }, dbErr('reports')));
+        W.set('loginlog@' + uid, () => B.watchCol('loginlog', {}, l => { S.loginlog = Object.fromEntries(l.map(d => [d.id, d])); changed(); }, dbErr('loginlog')));
         W.set('tips@' + uid, () => B.watchCol('tips', {order:'at', dir:'desc', limit:100}, l => { S.tips = l; changed(); }, dbErr('tips')));
       } else {
         W.set('reports-mine@' + uid, () => B.watchCol('reports', {where:['uid', '==', uid]}, l => { S.reports = l; S.loaded.reports = true; changed(); }, dbErr('reports')));
@@ -4466,6 +4467,14 @@ function renderAkta(){
     right.append(card('Minősítések', h('span', {class:'cnt', text:certs.length + ' db'}), certs.length ? h('div', {class:'certs'}, certs.map(c => h('span', {class:'cert', title:c.text || '', html:icon('check', 13) + `<span>${esc(c.title)}</span>`}))) : h('p', {class:'empty', text:'Még nincs rögzített minősítés.'})));
     const hist = recs.filter(x => x.type !== 'cert');
     right.append(card('Bejegyzések', h('span', {class:'cnt', text:hist.length + ' db'}), hist.length ? h('ul', {class:'recs'}, hist.map(x => h('li', {class:'rec-' + x.type}, h('span', {class:'pill ' + (RECORD_TYPES[x.type]?.tone || 't-info'), text:RECORD_TYPES[x.type]?.name || 'Bejegyzés'}), h('b', {text:x.title}), h('small', {text:`${fmtDate(x.at)} · ${nameOf(x.by)}`}), x.text ? h('p', {text:x.text}) : null))) : h('p', {class:'empty', text:'Az aktában még nincs bejegyzés.'})));
+    if (L) {
+      const lg = S.loginlog[u];
+      right.append(card('Biztonsági napló', h('span', {class:'cnt', text:'csak vezetőség'}), h('dl', {class:'kv'},
+        h('dt', {text:'Utolsó belépés · IP-cím'}), h('dd', {class:'mono', text:lg && lg.ip ? lg.ip : '—'}),
+        h('dt', {text:'Belépés ideje'}), h('dd', {text:lg && lg.at ? (fmtDate(lg.at) + ' ' + fmtTime(lg.at)) : '—'}),
+        h('dt', {text:'Böngésző (User-Agent)'}), h('dd', {style:'font-size:12px;color:var(--ink-2);word-break:break-word', text:lg && lg.ua ? lg.ua : '—'})),
+        h('p', {class:'fine', style:'margin-top:8px', text:'Az IP-címet a bejelentkezés rögzíti, biztonsági célból. Más tag nem látja. Helymeghatározás nincs.'})));
+    }
   } else right.append(h('div', {class:'notice'}, h('div', null, h('b', {text:'Korlátozott betekintés'}), 'Más tag teljes aktáját csak a vezetés tekintheti meg.')));
   box.append(h('div', {class:'akta'}, left, right));
   const recBox = $('#recBox'); recBox.hidden = !(L && !self); $('#recFor').textContent = nameOf(u);
@@ -5186,7 +5195,7 @@ async function boot(){
     if (a && a.uid && a.uid !== prev) logLoginIp(a.uid);
     if ((a && a.uid) !== prev) {
       S.persons = []; S.rbxlinks = {}; S.rbxcode = null; S.entries = {pid:null, list:[]}; S.gameMeta = null; S.gameSecret = null; S.personDoc = null; S.loaded.persons = false;
-      S.users = {}; S.roles = {}; S.myApp = undefined; S.dutylog = []; S.reports = []; S.orders = []; S.events = []; S.tips = []; S.records = {subj:null, list:[]}; S.aktaUid = null; S.editReport = null; S.apps = {}; S.heads = {}; S.msgs = {}; S.voiceMembers = {}; S.presence = {};
+      S.users = {}; S.roles = {}; S.myApp = undefined; S.dutylog = []; S.loginlog = {}; S.reports = []; S.orders = []; S.events = []; S.tips = []; S.records = {subj:null, list:[]}; S.aktaUid = null; S.editReport = null; S.apps = {}; S.heads = {}; S.msgs = {}; S.voiceMembers = {}; S.presence = {};
       S.loaded = {...S.loaded, users:false, roles:false, apps:false, msgs:{}}; S.msgErr = {}; S.reapply = false;
       $('#applyStatus').dataset.k = '';
       if (VC.room) leaveVoice(true);
