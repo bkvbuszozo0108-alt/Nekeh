@@ -1307,6 +1307,63 @@ body.rec-hide img,body.rec-hide .mug,body.rec-hide .av.has-photo,body.rec-hide .
 .kz .hint{color:#a7b1ca;font-size:12px;margin:0}
 @media (max-width:1100px){.kz .chip{white-space:normal}.kz-top .st{margin-left:0}.kz{grid-template-columns:minmax(0,1fr);grid-template-rows:auto 420px auto auto;height:auto}.kz-map{grid-row:2}.kz-left{max-height:420px}.kz-right{max-height:600px}}
 </style>
+<style id="nk-phone-forum">
+/* ===== Munkatelefon ===== */
+.nkph{max-width:430px;margin:18px auto 40px;background:linear-gradient(170deg,#0b1f52,#061536 60%,#04102b);border-radius:30px;padding:14px 14px 22px;box-shadow:0 24px 60px rgba(0,0,0,.45),inset 0 0 0 2px rgba(220,193,115,.25);color:#F5F7FC;position:relative;overflow:hidden}
+.nkph::before{content:"";position:absolute;inset:0;background:radial-gradient(120% 60% at 50% -10%,rgba(199,169,87,.16),transparent 60%);pointer-events:none}
+.nkph-bar{display:flex;align-items:center;justify-content:space-between;font:600 12px/1 system-ui,sans-serif;color:#cdd7ef;padding:2px 8px 10px}
+.nkph-bar .r{display:flex;gap:6px;align-items:center}
+.nkph-hd{display:flex;align-items:center;gap:12px;padding:6px 8px 16px;position:relative}
+.nkph-hd .av{width:46px;height:46px;border-radius:50%;flex:0 0 auto;display:grid;place-items:center;font-weight:700;color:#06142f;border:2px solid rgba(220,193,115,.5)}
+.nkph-hd b{display:block;font-size:16px}
+.nkph-hd span{display:block;font-size:12px;color:#aebbd8}
+.nkph-duty{margin-left:auto;font:600 11px/1 system-ui;padding:6px 10px;border-radius:999px;border:1px solid rgba(220,193,115,.4);background:rgba(10,38,103,.6);color:#E3CA7B;cursor:pointer}
+.nkph-duty.on{background:#1c7a3a;border-color:#2fae57;color:#eafff0}
+.nkph-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:14px 8px;padding:8px 6px 4px;position:relative}
+.nkph-app{display:flex;flex-direction:column;align-items:center;gap:6px;background:none;border:0;cursor:pointer;color:#eef2fb;font:500 11px/1.15 system-ui,sans-serif;text-align:center;padding:0}
+.nkph-ic{width:56px;height:56px;border-radius:16px;display:grid;place-items:center;background:linear-gradient(160deg,#17408a,#0c2566);box-shadow:0 6px 14px rgba(0,0,0,.35),inset 0 0 0 1px rgba(255,255,255,.06);position:relative;color:#eaf0ff}
+.nkph-app:active .nkph-ic{transform:scale(.94)}
+.nkph-ic.gold{background:linear-gradient(160deg,#caa94e,#8a6a1e);color:#20160333}
+.nkph-ic.gold svg{color:#2a1f05}
+.nkph-ic.red{background:linear-gradient(160deg,#c0392b,#7d1d16)}
+.nkph-ic.green{background:linear-gradient(160deg,#1f8a43,#115026)}
+.nkph-badge{position:absolute;top:-5px;right:-5px;min-width:19px;height:19px;padding:0 5px;border-radius:999px;background:#e23b2e;color:#fff;font:700 11px/19px system-ui;text-align:center;border:2px solid #0b1f52}
+.nkph-foot{text-align:center;color:#8ea0c6;font-size:11px;padding-top:14px}
+/* ===== Fórum ===== */
+.fcats{display:grid;gap:12px}
+.fcat{display:flex;align-items:center;gap:14px;width:100%;text-align:left;background:var(--card);border:1px solid var(--rule);border-radius:14px;padding:16px;cursor:pointer;color:inherit;transition:border-color .15s,transform .05s}
+.fcat:hover{border-color:var(--gold)}
+.fcat:active{transform:translateY(1px)}
+.fcat .fic{width:46px;height:46px;flex:0 0 auto;border-radius:12px;display:grid;place-items:center;background:var(--navy);color:var(--on-navy)}
+.fcat.staff .fic{background:var(--gold);color:#2a1f05}
+.fcat .ft{flex:1;min-width:0}
+.fcat .ft b{display:block;font-size:16px;color:var(--ink)}
+.fcat .ft span{display:block;font-size:13px;color:var(--ink-2);margin-top:2px}
+.fcat .fm{flex:0 0 auto;text-align:right;color:var(--ink-3);font-size:12px}
+.ftopics{display:grid;gap:8px}
+.ftopic{display:flex;align-items:center;gap:12px;width:100%;text-align:left;background:var(--card);border:1px solid var(--rule);border-radius:12px;padding:13px 15px;cursor:pointer;color:inherit}
+.ftopic:hover{border-color:var(--gold)}
+.ftopic .tt{flex:1;min-width:0}
+.ftopic .tt b{display:block;color:var(--ink);font-size:15px}
+.ftopic .tt span{display:block;color:var(--ink-3);font-size:12px;margin-top:2px}
+.ftopic .tm{color:var(--ink-3);font-size:12px;white-space:nowrap}
+.fchip{display:inline-flex;align-items:center;gap:4px;font:600 11px/1 system-ui;padding:3px 8px;border-radius:999px;margin-right:6px;vertical-align:middle}
+.fchip.pin{background:var(--gold-tint);color:var(--gold-ink)}
+.fchip.lock{background:rgba(226,59,46,.14);color:#c0392b}
+.fchip.staff{background:var(--navy);color:var(--on-navy)}
+.fposts{display:grid;gap:14px;margin-top:4px}
+.fpost{display:flex;gap:12px;background:var(--card);border:1px solid var(--rule);border-radius:12px;padding:14px}
+.fpost .av{width:40px;height:40px;border-radius:50%;flex:0 0 auto;display:grid;place-items:center;font-weight:700;color:#06142f}
+.fpost .pc{flex:1;min-width:0}
+.fpost .ph{display:flex;align-items:center;gap:8px;flex-wrap:wrap;margin-bottom:6px}
+.fpost .ph b{color:var(--ink)}
+.fpost .ph small{color:var(--ink-3);font-size:12px}
+.fpost .pb{color:var(--ink-2);font-size:14px;line-height:1.6;white-space:pre-wrap;word-break:break-word}
+.fpost.op{border-color:var(--gold);box-shadow:0 0 0 1px var(--gold-tint)}
+.fback{display:inline-flex;align-items:center;gap:6px;background:none;border:0;color:var(--ink-2);cursor:pointer;font:600 13px system-ui;padding:6px 0;margin-bottom:6px}
+.fbar{display:flex;align-items:center;gap:10px;flex-wrap:wrap;margin-bottom:14px}
+.fbar h2{font-size:20px;margin:0;flex:1;min-width:0}
+</style>
 </head>
 <body>
 
@@ -1339,12 +1396,14 @@ body.rec-hide img,body.rec-hide .mug,body.rec-hide .av.has-photo,body.rec-hide .
   </header>
   <nav class="subnav" id="subnav" aria-label="Szolgálati felület" hidden><div class="in">
     <span class="lbl">Szolgálati felület</span>
+    <a href="#telefon">Telefon</a>
     <a href="#iroda">Irányítópult</a>
     <a href="#egyseg">Egységem</a>
     <a href="#belso">Kommunikáció</a>
     <a href="#szolgalat">Szolgálati napló</a>
     <a href="#jelentesek">Jelentések <span class="n" id="nRep" hidden></span></a>
     <a href="#nyilvantartas">Nyilvántartás</a>
+    <a href="#forum">Fórum</a>
     <a href="#parancsok">Parancsok <span class="n" id="nOrd" hidden></span></a>
     <a href="#naptar">Naptár <span class="n" id="nEvt" hidden></span></a>
     <a href="#allomany">Állomány</a>
@@ -1975,6 +2034,21 @@ body.rec-hide img,body.rec-hide .mug,body.rec-hide .av.has-photo,body.rec-hide .
       </div>
     </section>
 
+    <!-- ================= MUNKATELEFON ================= -->
+    <section class="view" id="v-telefon" hidden>
+      <div class="wrap mpage"><div class="mgate gate-wrap" id="telefonGate"></div>
+        <div id="telefonBody" hidden></div>
+      </div>
+    </section>
+
+    <!-- ================= FÓRUM ================= -->
+    <section class="view" id="v-forum" hidden>
+      <div class="page-head slim"><div class="wrap"><img src="img/cimer.webp" alt="" width="72" height="72"><div><nav class="crumbs" aria-label="Morzsamenü"><a href="#iroda">Szolgálati felület</a><span>›</span><span>Fórum</span></nav><h1>Szervezeti fórum</h1><p>Tananyagok, protokollok és belső egyeztetés. A tananyag-rovatokba a vezetőség ír, a többiben az állomány is.</p></div></div></div>
+      <div class="wrap mpage"><div class="mgate gate-wrap" id="forumGate"></div>
+        <div id="forumBody" hidden></div>
+      </div>
+    </section>
+
     <footer class="foot" id="foot">
       <div class="wrap cols">
         <div class="brandf"><img src="img/cimer.webp" alt="" width="52" height="52"><div><b>Nemzeti Egységes Közrendvédelmi és Ellátási Hatóság</b><span>„Mindenki felett, mindenkiért.”</span></div></div>
@@ -2336,10 +2410,10 @@ const S = {
   B:null, mode:null, ready:false, bootError:null,
   auth:undefined, ownerUid:undefined, config:{...DEFAULT_CONFIG}, users:{}, roles:{}, myApp:undefined, apps:{}, decrees:[], presence:{},
   heads:{}, msgs:{}, voiceMembers:{},
-  loaded:{config:false, users:false, roles:false, apps:false, decrees:false, msgs:{}, dutylog:false, reports:false, orders:false, events:false, persons:false, pubWanted:false}, msgErr:{},
+  loaded:{config:false, users:false, roles:false, apps:false, decrees:false, msgs:{}, dutylog:false, reports:false, orders:false, events:false, persons:false, pubWanted:false, forumCats:false, forumTopics:false}, msgErr:{},
   route:'fooldal', ch:store.get('ch','altalanos'), view:'text', vch:null, prio:1, reply:null, editing:null,
   showMembers:true, showMembersNarrow:false, reapply:false, prefUnit:null,
-  duty:{}, dutylog:[], loginlog:{}, reports:[], orders:[], events:[], records:{subj:null, list:[]}, tips:[], aktaUid:null, unitTab:store.get('unitTab', null), unitReports:{}, unitOpen:new Set(), dispatchUid:null, dispatchMeta:null, kz:{main:null, map:null, live:[], wanted:[], reports:[]}, repTab:'new', editReport:null, tipDone:null,
+  duty:{}, dutylog:[], loginlog:{}, reports:[], forumCats:{}, forumTopics:[], forumPosts:{tid:null, list:[]}, forumCat:null, forumTopic:null, orders:[], events:[], records:{subj:null, list:[]}, tips:[], aktaUid:null, unitTab:store.get('unitTab', null), unitReports:{}, unitOpen:new Set(), dispatchUid:null, dispatchMeta:null, kz:{main:null, map:null, live:[], wanted:[], reports:[]}, repTab:'new', editReport:null, tipDone:null,
   persons:[], pubWanted:[], entries:{pid:null, list:[]}, rbxlinks:{}, rbxcode:null, gameservers:[], gameMeta:null, gameSecret:null, personId:null, personDoc:null, personEdit:false, attach:null,
 };
 const SUBS = new Map();
@@ -2449,6 +2523,9 @@ function syncSubs(){
       W.set('persons@' + uid, () => B.watchCol('persons', {order:'updatedAt', dir:'desc', limit:400}, l => { S.persons = l; S.loaded.persons = true; changed(); }, e => { dbErr('persons')(e); S.loaded.persons = true; changed(); }));
       W.set('rbxlinks@' + uid, () => B.watchCol('rbxlinks', {}, l => { S.rbxlinks = Object.fromEntries(l.map(d => [d.id, d])); changed(); }, dbErr('rbxlinks')));
       W.set('rbxcode@' + uid, () => B.watchDoc('rbxcodes/' + uid, d => { S.rbxcode = d; changed(); }, dbErr('rbxcode')));
+      W.set('forumcats@' + uid, () => B.watchCol('forumcats', {}, l => { S.forumCats = Object.fromEntries(l.map(d => [d.id, d])); S.loaded.forumCats = true; changed(); }, dbErr('forumcats')));
+      W.set('forumtopics@' + uid, () => B.watchCol('forumtopics', {order:'lastAt', dir:'desc', limit:300}, l => { S.forumTopics = l; S.loaded.forumTopics = true; changed(); }, dbErr('forumtopics')));
+      if (S.route === 'forum' && S.forumTopic) { const tid = S.forumTopic; W.set(`forumposts:${tid}@${uid}`, () => B.watchCol('forumposts', {where:['topicId', '==', tid]}, l => { S.forumPosts = {tid, list:l.slice().sort((a, b) => (a.at || 0) - (b.at || 0))}; changed(); }, dbErr('forumposts'))); }
       if (S.route === 'szemely' && S.personId) {
         const pid = S.personId;
         W.set(`entries:${pid}@${uid}`, () => B.watchCol(`persons/${pid}/entries`, {order:'at', dir:'desc', limit:150}, l => { S.entries = {pid, list:l}; changed(); }, dbErr('entries')));
@@ -2485,7 +2562,7 @@ function scheduleRender(withSubs){
 }
 
 /* ================= routing ================= */
-const ROUTES = ['fooldal','egysegek','egyseg','kozpont','kozlony','jelentkezes','bejelentes','korozes','belepes','iroda','belso','szolgalat','jelentesek','nyilvantartas','szemely','parancsok','naptar','allomany','akta','vezetes','feltetelek'];
+const ROUTES = ['fooldal','egysegek','egyseg','kozpont','kozlony','jelentkezes','bejelentes','korozes','belepes','iroda','belso','szolgalat','jelentesek','nyilvantartas','szemely','parancsok','naptar','allomany','akta','vezetes','feltetelek','telefon','forum'];
 function route(){
   let r = location.hash.slice(1).replace(/^\/+/, '');
   if (!ROUTES.includes(r)) r = 'fooldal';
@@ -2524,6 +2601,8 @@ function renderAll(){
   if (S.route === 'korozes') renderKorozes();
   if (S.route === 'nyilvantartas') renderNyilvantartas();
   if (S.route === 'szemely') renderSzemely();
+  if (S.route === 'telefon') renderTelefon();
+  if (S.route === 'forum') renderForum();
   if (S.route === 'jelentesek' && !repUpl) { repUpl = uploader({max:4, kind:'report'}); $('#r-photos').append(repUpl.el); }
   renderVoiceFloat();
 }
@@ -2535,7 +2614,7 @@ function renderChrome(){
   if (me() && isDispatchAcct(me()) && !['kozpont', 'fooldal', 'kozlony', 'korozes', 'bejelentes', 'egysegek'].includes(S.route)) location.hash = 'kozpont';
   const inApp = S.route === 'belso' && access() === 'member';
   $('#main').classList.toggle('is-app', inApp);
-  $('#foot').hidden = S.route === 'belso' || S.route === 'belepes';
+  $('#foot').hidden = S.route === 'belso' || S.route === 'belepes' || S.route === 'telefon';
   renderSubnav();
   const btn = $('#acctBtn');
   const key = JSON.stringify([me(), S.auth && nameOf(me()), access(), rankName(rankOf(me())), S.users[me()] && S.users[me()].photo, S.dispatchUid]);
@@ -3608,7 +3687,7 @@ function renderAdmDecrees(){
 }
 
 /* ================= member area: helpers ================= */
-const MEMBER_ROUTES = ['iroda','egyseg','belso','szolgalat','jelentesek','nyilvantartas','szemely','parancsok','naptar','allomany','akta'];
+const MEMBER_ROUTES = ['iroda','egyseg','belso','szolgalat','jelentesek','nyilvantartas','szemely','parancsok','naptar','allomany','akta','telefon','forum'];
 function genCode(code){ const d = new Date(), p = n => String(n).padStart(2,'0'); return `${code}/${d.getFullYear()}/${p(d.getMonth()+1)}${p(d.getDate())}-${Math.random().toString(36).slice(2,6).toUpperCase()}`; }
 const fmtDur = mins => { mins = Math.max(0, Math.round(mins)); const hh = Math.floor(mins / 60), mm = mins % 60; return hh ? `${hh} ó ${mm} p` : `${mm} perc`; };
 const fmtDT = ts => new Date(ts).toLocaleString('hu-HU', {year:'numeric', month:'2-digit', day:'2-digit', hour:'2-digit', minute:'2-digit'});
@@ -4533,6 +4612,186 @@ function renderVoiceFloat(){
     h('button', {class:'icon-btn red', type:'button', 'aria-label':'Kilépés a hangcsatornából', html:icon('phoneOff', 16), onclick:() => leaveVoice()}));
 }
 
+
+/* ================= Munkatelefon ================= */
+function renderTelefon(){
+  if (!memberGate('telefon')) return;
+  const box = $('#telefonBody'); const u = me();
+  const items = actionItems();
+  const cnt = ks => items.filter(i => ks.includes(i.kind)).length;
+  const apps = [];
+  const A = (label, ic, act, opts) => apps.push(Object.assign({label, ic, act}, opts || {}));
+  A('Üzenetek', 'radio', () => location.hash = 'belso');
+  A('Fórum', 'book', () => location.hash = 'forum', {tone:'gold'});
+  A('Névjegyek', 'users', () => location.hash = 'allomany');
+  A('Jelentések', 'doc', () => location.hash = 'jelentesek', {badge:cnt(['report-returned','report-review','tip'])});
+  A('Parancsok', 'flag', () => location.hash = 'parancsok', {badge:cnt(['order'])});
+  A('Naptár', 'calendar', () => location.hash = 'naptar', {badge:cnt(['event'])});
+  A('Nyilvántartás', 'search', () => location.hash = 'nyilvantartas');
+  A('Közlöny', 'scroll', () => location.hash = 'kozlony');
+  A('Igazolvány', 'id', () => openIdCard(u), {tone:'gold'});
+  A('Szolgálat', 'shield', () => location.hash = 'szolgalat', {tone:onDuty(u) ? 'green' : ''});
+  if (canKozpont(u)) A('Diszpécser', 'siren', () => location.hash = 'kozpont', {tone:'red'});
+  if (isOwnerUid(u)) A('Vezetés', 'gear', () => location.hash = 'vezetes', {tone:'gold'});
+
+  const now = new Date(), p2 = n => String(n).padStart(2, '0');
+  const r = rankOf(u);
+  box.replaceChildren(h('div', {class:'nkph'},
+    h('div', {class:'nkph-bar'}, h('span', {text:'NEKEH'}), h('span', {text:p2(now.getHours()) + ':' + p2(now.getMinutes())}),
+      h('div', {class:'r'}, h('span', {html:icon('radio', 12)}), h('span', {text:'5G'}), h('span', {text:'100%'}))),
+    h('div', {class:'nkph-hd'}, avatarEl(u, 'av'),
+      h('div', {style:'min-width:0'}, h('b', {text:nameOf(u)}), h('span', {text:(r ? rankName(r) : 'Állomány') + ' · ' + (badgeOf(u) || '—')})),
+      h('button', {class:'nkph-duty' + (onDuty(u) ? ' on' : ''), type:'button', onclick:() => location.hash = 'szolgalat', text:onDuty(u) ? 'Szolgálatban' : 'Nem szolgál'})),
+    h('div', {class:'nkph-grid'}, apps.map(a => h('button', {class:'nkph-app', type:'button', onclick:a.act},
+      h('span', {class:'nkph-ic' + (a.tone ? ' ' + a.tone : '')}, h('span', {html:icon(a.ic, 26)}),
+        a.badge ? h('span', {class:'nkph-badge', text:a.badge > 99 ? '99+' : String(a.badge)}) : null),
+      h('span', {text:a.label})))),
+    h('div', {class:'nkph-foot', text:'NEKEH munkatelefon · ' + fmtDate(Date.now())})));
+}
+
+/* ================= Fórum ================= */
+const FCAT_ICONS = {book:'book', megaphone:'megaphone', target:'target', siren:'siren', shield:'shield', hash:'hash', doc:'doc'};
+function forumGo(cat, topic){ S.forumCat = cat || null; S.forumTopic = topic || null; if (!S.forumTopicMeta || S.forumTopicMeta.id !== S.forumTopic) S.forumTopicMeta = null; if (S.B) syncSubs(); renderAll(); const m = $('#main'); if (m) m.scrollTop = 0; }
+
+async function forumReply(t, body){
+  const now = Date.now();
+  await S.B.add('forumposts', {topicId:t.id, catId:t.catId, by:me(), at:now, body});
+  try { await S.B.update('forumtopics/' + t.id, {lastAt:now, posts:(t.posts || 1) + 1}); } catch (_) {}
+}
+async function forumDelPost(t, pst){
+  if (!confirm('Törlöd ezt a hozzászólást?')) return;
+  try { await S.B.del('forumposts/' + pst.id); toast('Hozzászólás törölve.'); } catch (e) { toast(errText(e)); }
+}
+async function forumDelTopic(t){
+  if (!confirm('Törlöd az egész témát a hozzászólásaival együtt?')) return;
+  try {
+    const ps = (S.forumPosts.tid === t.id ? S.forumPosts.list : []);
+    for (const p of ps) { try { await S.B.del('forumposts/' + p.id); } catch (_) {} }
+    await S.B.del('forumtopics/' + t.id);
+    toast('Téma törölve.'); forumGo(t.catId, null);
+  } catch (e) { toast(errText(e)); }
+}
+function forumNewTopic(catId){
+  const cat = S.forumCats[catId] || {};
+  const ti = h('input', {maxlength:'140', placeholder:'A téma címe'});
+  const bd = h('textarea', {maxlength:'6000', placeholder:cat.staffOnly ? 'A tananyag / bejegyzés szövege…' : 'Az első hozzászólás szövege…', style:'min-height:140px'});
+  const foot = h('button', {class:'btn btn-navy', type:'button', text:'Téma létrehozása', onclick:async () => {
+    const title = ti.value.trim(), body = bd.value.trim();
+    if (!title) { ti.focus(); return; }
+    if (!body) { bd.focus(); return; }
+    foot.disabled = true;
+    try {
+      const now = Date.now();
+      const tid = await S.B.add('forumtopics', {catId, staffOnly:!!cat.staffOnly, title, by:me(), at:now, lastAt:now, posts:1, pinned:false, locked:false});
+      await S.B.add('forumposts', {topicId:tid, catId, by:me(), at:now, body});
+      S.forumTopicMeta = {id:tid, catId, staffOnly:!!cat.staffOnly, title, by:me(), at:now, lastAt:now, posts:1, pinned:false, locked:false};
+      closeModal(); forumGo(catId, tid);
+    } catch (e) { toast(errText(e)); foot.disabled = false; }
+  }});
+  openModal('Új téma – ' + (cat.name || 'Rovat'), h('div', {class:'stack'}, h('div', {class:'fld'}, h('label', {text:'Cím'}), ti), h('div', {class:'fld'}, h('label', {text:'Szöveg'}), bd)), foot);
+}
+function forumNewCat(){
+  const nm = h('input', {maxlength:'60', placeholder:'pl. Mentős ellátás – tananyagok'});
+  const ds = h('input', {maxlength:'140', placeholder:'Rövid leírás'});
+  const ik = h('select', null, [['book','Könyv / tananyag'],['megaphone','Hirdetmény'],['target','Taktikai'],['siren','Riasztás'],['shield','Szolgálat'],['hash','Általános'],['doc','Dokumentum']].map(o => h('option', {value:o[0], text:o[1]})));
+  const st = h('input', {type:'checkbox'});
+  const foot = h('button', {class:'btn btn-navy', type:'button', text:'Rovat létrehozása', onclick:async () => {
+    const name = nm.value.trim();
+    if (!name) { nm.focus(); return; }
+    foot.disabled = true;
+    try { await S.B.add('forumcats', {name, desc:ds.value.trim(), icon:ik.value, staffOnly:st.checked, order:Object.keys(S.forumCats).length}); closeModal(); }
+    catch (e) { toast(errText(e)); foot.disabled = false; }
+  }});
+  openModal('Új rovat', h('div', {class:'stack'}, h('div', {class:'fld'}, h('label', {text:'Név'}), nm), h('div', {class:'fld'}, h('label', {text:'Leírás'}), ds), h('div', {class:'fld'}, h('label', {text:'Ikon'}), ik),
+    h('label', {style:'display:flex;gap:8px;align-items:center;cursor:pointer;font-size:14px;color:var(--ink-2)'}, st, h('span', {text:'Tananyag-rovat (csak a vezetőség írhat bele)'}))), foot);
+}
+async function forumSeed(){
+  const base = [
+    ['Bejelentések', 'Hivatalos hirdetmények és fontos közlemények.', 'megaphone', true],
+    ['Mentős ellátás – tananyagok', 'Betegellátási protokollok, oktatóanyagok, eljárásrendek.', 'book', true],
+    ['Taktikai protokollok', 'Bevetési eljárások, formációk, taktikai útmutatók.', 'target', true],
+    ['Általános', 'Kötetlen egyeztetés, kérdések és javaslatok az állomány számára.', 'hash', false],
+  ];
+  try { let i = 0; for (const b of base) { await S.B.add('forumcats', {name:b[0], desc:b[1], icon:b[2], staffOnly:b[3], order:i++}); } toast('Alap rovatok létrehozva.'); }
+  catch (e) { toast(errText(e)); }
+}
+
+function renderForum(){
+  if (!memberGate('forum')) return;
+  const box = $('#forumBody'); const u = me(); const L = isLeader(u);
+  box.replaceChildren();
+  const cats = Object.entries(S.forumCats).map(([id, c]) => Object.assign({id}, c)).sort((a, b) => (a.order ?? 99) - (b.order ?? 99) || String(a.name || '').localeCompare(String(b.name || ''), 'hu'));
+
+  // ---- TÉMA nézet ----
+  if (S.forumTopic) {
+    const t = S.forumTopics.find(x => x.id === S.forumTopic) || (S.forumTopicMeta && S.forumTopicMeta.id === S.forumTopic ? S.forumTopicMeta : null);
+    if (!t) { if (S.loaded.forumTopics) { forumGo(S.forumCat, null); return; } box.append(h('p', {class:'empty', text:'Betöltés…'})); return; }
+    const cat = S.forumCats[t.catId]; const canPost = (L || !(cat && cat.staffOnly)) && !t.locked;
+    box.append(h('button', {class:'fback', type:'button', onclick:() => forumGo(t.catId, null)}, h('span', {html:icon('reply', 14)}), 'Vissza a témákhoz'));
+    box.append(h('div', {class:'fbar'}, h('h2', {text:t.title || 'Téma'}),
+      t.pinned ? h('span', {class:'fchip pin', text:'Rögzített'}) : null,
+      t.locked ? h('span', {class:'fchip lock', text:'Lezárva'}) : null,
+      L ? h('button', {class:'btn btn-ghost btn-sm', type:'button', text:t.pinned ? 'Rögzítés le' : 'Rögzítés', onclick:() => S.B.update('forumtopics/' + t.id, {pinned:!t.pinned}).catch(e => toast(errText(e)))}) : null,
+      L ? h('button', {class:'btn btn-ghost btn-sm', type:'button', text:t.locked ? 'Feloldás' : 'Lezárás', onclick:() => S.B.update('forumtopics/' + t.id, {locked:!t.locked}).catch(e => toast(errText(e)))}) : null,
+      L ? h('button', {class:'btn btn-ghost btn-sm', type:'button', text:'Törlés', onclick:() => forumDelTopic(t)}) : null));
+    const posts = (S.forumPosts.tid === t.id ? S.forumPosts.list : []);
+    const wrap = h('div', {class:'fposts'});
+    if (!posts.length) wrap.append(h('p', {class:'empty', text:'Betöltés…'}));
+    posts.forEach((pst, i) => wrap.append(h('div', {class:'fpost' + (i === 0 ? ' op' : '')}, avatarEl(pst.by, 'av'),
+      h('div', {class:'pc'}, h('div', {class:'ph'}, h('b', {text:nameOf(pst.by)}),
+        i === 0 ? h('span', {class:'fchip staff', text:'Témanyitó'}) : null, h('small', {text:fmtDT(pst.at)}),
+        (L || pst.by === u) ? h('button', {class:'icon-btn', style:'margin-left:auto', type:'button', 'aria-label':'Törlés', html:icon('trash', 14), onclick:() => forumDelPost(t, pst)}) : null),
+        h('div', {class:'pb', text:pst.body || ''})))));
+    box.append(wrap);
+    if (canPost) {
+      const ta = h('textarea', {maxlength:'4000', placeholder:'Írj hozzászólást…', style:'min-height:90px'});
+      box.append(h('form', {class:'stack', style:'margin-top:16px', onsubmit:e => {
+        e.preventDefault(); const v = ta.value.trim(); if (!v) return;
+        const btn = e.target.querySelector('button'); btn.disabled = true;
+        forumReply(t, v).then(() => { ta.value = ''; }).catch(er => toast(errText(er))).finally(() => { btn.disabled = false; });
+      }}, h('div', {class:'fld'}, h('label', {text:'Hozzászólás'}), ta), h('button', {class:'btn btn-navy', type:'submit', text:'Hozzászólás küldése'})));
+    } else if (t.locked) box.append(h('p', {class:'empty', text:'A téma le van zárva, új hozzászólás nem adható.'}));
+    else box.append(h('p', {class:'empty', text:'Ebbe a rovatba csak a vezetőség írhat. Olvasásra szabadon elérhető.'}));
+    return;
+  }
+
+  // ---- ROVAT nézet ----
+  if (S.forumCat) {
+    const cat = S.forumCats[S.forumCat];
+    if (!cat) { if (S.loaded.forumCats) { forumGo(null, null); return; } box.append(h('p', {class:'empty', text:'Betöltés…'})); return; }
+    const canNew = L || !cat.staffOnly;
+    box.append(h('button', {class:'fback', type:'button', onclick:() => forumGo(null, null)}, h('span', {html:icon('reply', 14)}), 'Vissza a rovatokhoz'));
+    box.append(h('div', {class:'fbar'}, h('h2', {text:cat.name}), cat.staffOnly ? h('span', {class:'fchip staff', text:'Tananyag · hivatalos'}) : null,
+      canNew ? h('button', {class:'btn btn-gold btn-sm', type:'button', text:'Új téma', onclick:() => forumNewTopic(S.forumCat)}) : null));
+    if (cat.desc) box.append(h('p', {style:'color:var(--ink-2);margin:-6px 0 14px', text:cat.desc}));
+    const ts = S.forumTopics.filter(x => x.catId === S.forumCat).sort((a, b) => (b.pinned ? 1 : 0) - (a.pinned ? 1 : 0) || (b.lastAt || 0) - (a.lastAt || 0));
+    const list = h('div', {class:'ftopics'});
+    if (!ts.length) list.append(h('p', {class:'empty', text:S.loaded.forumTopics ? (canNew ? 'Még nincs téma ebben a rovatban. Hozd létre az elsőt.' : 'Ebbe a rovatba a vezetőség még nem töltött fel anyagot.') : 'Betöltés…'}));
+    ts.forEach(t => list.append(h('button', {class:'ftopic', type:'button', onclick:() => forumGo(S.forumCat, t.id)},
+      h('div', {class:'tt'}, h('b', null, t.pinned ? h('span', {class:'fchip pin', text:'Rögzített'}) : null, t.locked ? h('span', {class:'fchip lock', text:'Zárt'}) : null, document.createTextNode(t.title || 'Téma')),
+        h('span', {text:(t.posts || 1) + ' hozzászólás · ' + nameOf(t.by)})),
+      h('span', {class:'tm', text:t.lastAt ? fmtDT(t.lastAt) : ''}))));
+    box.append(list);
+    return;
+  }
+
+  // ---- FŐOLDAL (rovatok) ----
+  if (L) box.append(h('div', {style:'display:flex;justify-content:flex-end;gap:8px;margin-bottom:14px;flex-wrap:wrap'},
+    !cats.length ? h('button', {class:'btn btn-ghost btn-sm', type:'button', text:'Alap rovatok létrehozása', onclick:forumSeed}) : null,
+    h('button', {class:'btn btn-gold btn-sm', type:'button', text:'Új rovat', onclick:forumNewCat})));
+  const wrap = h('div', {class:'fcats'});
+  if (!cats.length) wrap.append(h('p', {class:'empty', text:S.loaded.forumCats ? (L ? 'Még nincs rovat. Hozd létre az alap rovatokat a fenti gombbal.' : 'A fórum feltöltése folyamatban.') : 'Betöltés…'}));
+  cats.forEach(c => {
+    const inCat = S.forumTopics.filter(t => t.catId === c.id);
+    const last = inCat.reduce((m, t) => Math.max(m, t.lastAt || 0), 0);
+    wrap.append(h('button', {class:'fcat' + (c.staffOnly ? ' staff' : ''), type:'button', onclick:() => forumGo(c.id, null)},
+      h('span', {class:'fic', html:icon(FCAT_ICONS[c.icon] || 'book', 22)}),
+      h('span', {class:'ft'}, h('b', null, document.createTextNode(c.name || 'Rovat'), c.staffOnly ? h('span', {class:'fchip staff', style:'margin-left:8px', text:'Tananyag'}) : null), h('span', {text:c.desc || ''})),
+      h('span', {class:'fm'}, h('div', {text:inCat.length + ' téma'}), last ? h('div', {text:fmtDT(last)}) : null)));
+  });
+  box.append(wrap);
+}
+
 /* ================= demo tools ================= */
 async function loadSample(){
   if (S.mode !== 'demo') return;
@@ -5202,7 +5461,7 @@ async function boot(){
     if (a && a.uid && a.uid !== prev) logLoginIp(a.uid);
     if ((a && a.uid) !== prev) {
       S.persons = []; S.rbxlinks = {}; S.rbxcode = null; S.entries = {pid:null, list:[]}; S.gameMeta = null; S.gameSecret = null; S.personDoc = null; S.loaded.persons = false;
-      S.users = {}; S.roles = {}; S.myApp = undefined; S.dutylog = []; S.loginlog = {}; S.reports = []; S.orders = []; S.events = []; S.tips = []; S.records = {subj:null, list:[]}; S.aktaUid = null; S.editReport = null; S.apps = {}; S.heads = {}; S.msgs = {}; S.voiceMembers = {}; S.presence = {};
+      S.users = {}; S.roles = {}; S.myApp = undefined; S.dutylog = []; S.loginlog = {}; S.reports = []; S.forumCats = {}; S.forumTopics = []; S.forumPosts = {tid:null, list:[]}; S.orders = []; S.events = []; S.tips = []; S.records = {subj:null, list:[]}; S.aktaUid = null; S.editReport = null; S.apps = {}; S.heads = {}; S.msgs = {}; S.voiceMembers = {}; S.presence = {};
       S.loaded = {...S.loaded, users:false, roles:false, apps:false, msgs:{}}; S.msgErr = {}; S.reapply = false;
       $('#applyStatus').dataset.k = '';
       if (VC.room) leaveVoice(true);

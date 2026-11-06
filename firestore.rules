@@ -139,6 +139,34 @@ service cloud.firestore {
       allow read: if true;
       allow write: if (isMember() && request.auth.uid == uid) || isGame();
     }
+    // ===== Szervezeti fórum =====
+    function fcat(id) { return get(/databases/$(database)/documents/forumcats/$(id)).data; }
+    function ftopic(id) { return get(/databases/$(database)/documents/forumtopics/$(id)).data; }
+    // Rovatok: mindenki olvassa, csak a vezetőség kezeli.
+    match /forumcats/{id} {
+      allow read: if isMember();
+      allow write: if isLeader();
+    }
+    // Témák: tananyag-rovatba (staffOnly) csak a vezetőség nyit témát; máshova bármely tag.
+    match /forumtopics/{id} {
+      allow read: if isMember();
+      allow create: if isMember() && request.resource.data.by == request.auth.uid
+        && (isLeader() || fcat(request.resource.data.catId).staffOnly != true);
+      // a szerző szerkeszthet; bárki frissítheti a lastAt/posts mezőt (válasz); a vezetőség mindent.
+      allow update: if isLeader()
+        || (resource.data.by == request.auth.uid && request.resource.data.by == resource.data.by)
+        || (isMember() && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['lastAt', 'posts']));
+      allow delete: if isLeader() || resource.data.by == request.auth.uid;
+    }
+    // Hozzászólások: a téma nem lehet lezárt; tananyag-témába csak a vezetőség ír.
+    match /forumposts/{id} {
+      allow read: if isMember();
+      allow create: if isMember() && request.resource.data.by == request.auth.uid
+        && ftopic(request.resource.data.topicId).locked != true
+        && (isLeader() || ftopic(request.resource.data.topicId).staffOnly != true);
+      allow update, delete: if isLeader() || resource.data.by == request.auth.uid;
+    }
+
     // Belépési napló: csak biztonsági célú IP-cím + időpont. Mindenki a sajátját írja, csak a vezetőség olvassa.
     match /loginlog/{uid} {
       allow read: if isLeader();
