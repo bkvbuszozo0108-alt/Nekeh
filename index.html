@@ -4,6 +4,13 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,minimum-scale=1,user-scalable=no,viewport-fit=cover">
 <link rel="icon" href="img/cimer.webp">
+<link rel="manifest" href="manifest.webmanifest">
+<meta name="theme-color" content="#0A2667">
+<link rel="apple-touch-icon" href="img/app/apple-touch-icon.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="NEKEH">
 <title>NEKEH Portál</title>
 <meta name="robots" content="noindex,nofollow,noarchive,nosnippet,noimageindex,notranslate">
 <meta name="googlebot" content="noindex,nofollow,noarchive,nosnippet,noimageindex">
@@ -5299,5 +5306,67 @@ window.addEventListener('blur', () => pttPress(false));
 boot();
 </script>
 
+<script>
+/* ===== Telepíthető app (PWA): service worker + telepítőgomb ===== */
+(function(){
+  "use strict";
+  if ('serviceWorker' in navigator) {
+    window.addEventListener('load', function(){
+      navigator.serviceWorker.register('sw.js', {scope:'./'}).catch(function(){});
+    });
+  }
+  var standalone = window.matchMedia('(display-mode: standalone)').matches || window.navigator.standalone === true;
+  if (standalone) return; // már telepítve, nincs mit felajánlani
+
+  var deferred = null, btn = null;
+
+  function makeBtn(){
+    if (btn) return btn;
+    btn = document.createElement('button');
+    btn.type = 'button';
+    btn.id = 'nk-install';
+    btn.setAttribute('aria-label','Alkalmazás telepítése a telefonra');
+    btn.innerHTML = '<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 3v12"/><path d="m7 10 5 5 5-5"/><path d="M5 21h14"/></svg><span>Telepítés</span>';
+    btn.style.cssText = 'position:fixed;left:50%;transform:translateX(-50%);bottom:calc(16px + env(safe-area-inset-bottom));z-index:9999;display:inline-flex;align-items:center;gap:8px;padding:11px 18px;border:1px solid #DCC173;border-radius:999px;background:#0A2667;color:#F5F7FC;font:600 14px/1 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;box-shadow:0 8px 24px rgba(0,0,0,.35);cursor:pointer';
+    document.body.appendChild(btn);
+    return btn;
+  }
+  function hideBtn(){ if (btn) { btn.remove(); btn = null; } }
+
+  // Android / Chrome: valódi telepítőablak
+  window.addEventListener('beforeinstallprompt', function(e){
+    e.preventDefault();
+    deferred = e;
+    var b = makeBtn();
+    b.onclick = function(){
+      hideBtn();
+      deferred.prompt();
+      deferred.userChoice.finally(function(){ deferred = null; });
+    };
+  });
+  window.addEventListener('appinstalled', function(){ hideBtn(); try{ localStorage.setItem('nk_installed','1'); }catch(_){} });
+
+  // iPhone / iPad (Safari): nincs telepítőablak, útmutatót adunk
+  var ua = navigator.userAgent || '';
+  var isIOS = /iPad|iPhone|iPod/.test(ua) || (navigator.platform === 'MacIntel' && navigator.maxTouchPoints > 1);
+  var isSafari = /^((?!chrome|android|crios|fxios|edgios).)*safari/i.test(ua);
+  if (isIOS && isSafari) {
+    var seen = false; try { seen = localStorage.getItem('nk_ios_hint') === '1'; } catch(_){}
+    if (!seen) {
+      var b2 = makeBtn();
+      b2.querySelector('span').textContent = 'Telepítés a kezdőképernyőre';
+      b2.onclick = function(){
+        try { localStorage.setItem('nk_ios_hint','1'); } catch(_){}
+        var tip = document.createElement('div');
+        tip.style.cssText = 'position:fixed;left:16px;right:16px;bottom:calc(72px + env(safe-area-inset-bottom));z-index:10000;max-width:420px;margin:0 auto;padding:14px 16px;border:1px solid #DCC173;border-radius:14px;background:#061A4C;color:#F5F7FC;font:400 14px/1.5 system-ui,-apple-system,Segoe UI,Roboto,sans-serif;box-shadow:0 10px 30px rgba(0,0,0,.45)';
+        tip.innerHTML = '<b style="color:#E3CA7B">Hozzáadás a kezdőképernyőhöz</b><br>1. Koppints a Safari alján a <b>Megosztás</b> ikonra (négyzet felfelé nyíllal).<br>2. Válaszd a <b>„Főképernyőhöz adás”</b> lehetőséget.<br>3. Koppints a <b>Hozzáadás</b> gombra. Ezután ikonról indul, mint egy app.<div style="text-align:right;margin-top:10px"><button type="button" style="background:#0A2667;color:#F5F7FC;border:1px solid #DCC173;border-radius:8px;padding:7px 14px;font:600 13px system-ui;cursor:pointer">Értem</button></div>';
+        tip.querySelector('button').onclick = function(){ tip.remove(); };
+        document.body.appendChild(tip);
+        hideBtn();
+      };
+    }
+  }
+})();
+</script>
 </body>
 </html>

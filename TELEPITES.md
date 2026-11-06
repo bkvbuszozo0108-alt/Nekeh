@@ -129,3 +129,13 @@ A Spark csomag naponta 50 000 olvasást és 20 000 írást ad. Ez egy néhány t
 | „Ehhez nincs jogosultságod” mindenhol | A 3. lépés szabályai nincsenek publikálva |
 | Az oldal betölt, de bemutató módban van | Az `index.html`-ben a `FIREBASE_CONFIG` még `null` (4. lépés) |
 | A mikrofon nem kapcsol be | Az oldalt https-en nyisd meg, és engedélyezd a mikrofont a címsorban |
+
+## Telefonra telepítés (app)
+
+A portál telepíthető alkalmazásként is működik (PWA) – app store nélkül, a weboldalról.
+
+**Androidon (Chrome):** nyisd meg a weboldalt, és koppints a felugró **„Telepítés”** gombra (vagy a Chrome menü → *Alkalmazás telepítése*). Ezután ikonról indul, teljes képernyőn.
+
+**iPhone / iPad (Safari):** nyisd meg a weboldalt, koppints a **„Telepítés a kezdőképernyőre”** gombra, majd a Safari alján a **Megosztás** ikon → **Főképernyőhöz adás** → **Hozzáadás**.
+
+A telepített app automatikusan frissül, amikor új változatot teszel közzé. Internet nélkül is megnyílik, de a friss adatokhoz (chat, jelentések) hálózat kell.
